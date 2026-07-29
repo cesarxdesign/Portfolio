@@ -164,7 +164,7 @@ window.SPINE = {
   },
 
   /* Shared bits some homes use. */
-  partners: [`NFL`, `Binance`, `Coinbase`, `Circle`, `Solana`, `Twitter`, `Royal Mail`, `Samsung`],
+  partners: [`NFL`, `Binance`, `Coinbase`, `Circle`, `Solana`, `Twitter`, `Royal Mail`],
   contact: `cesarxdesign@gmail.com`
 };
 
