@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en"><head><base href="/starcount/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Starcount &middot; C&eacute;sar Garcia</title>
+<link rel="stylesheet" href="../case-shared.css">
+<style>
+*{box-sizing:border-box}
+:root{
+ --bg:#0e141a;--ink:#f2f6f8;--body:#c3ced6;--lede:#dae3e9;--mut:#7f8f9b;--metab:#dbe4ea;
+ --lab:#66fff7;--line:rgba(140,170,190,.16);--hot:#16444a;--phbd:#33505f;--pht:#7f8f9b;--phtb:#c3ced6;
+ --paperT:rgba(14,20,26,.82);--flagink:#9fb0bc;--panel:#f5f7f8;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(140,170,190,.28);
+ --hair:rgba(140,170,190,.16);--accent:#66fff7;
+ --tw:#1DA1F2;--rm:#DA291C;--cbg:#171d24;--cbd:rgba(255,255,255,.10);--cav1:#39434e;--cav2:#28313a;--cgly:#7d8b95;--cbar:#2b343d;--cnam:#3c4753
+}
+:root[data-theme="light"]{
+ --bg:#f7f9fa;--ink:#15222b;--body:#3d4d59;--lede:#2c3d49;--mut:#7d8b95;--metab:#22323d;
+ --lab:#0b968d;--line:rgba(30,60,80,.15);--hot:#cdebe8;--phbd:#9fb7c1;--pht:#7d8b95;--phtb:#3d4d59;
+ --paperT:rgba(247,249,250,.86);--flagink:#5b6b76;--panel:#ffffff;--ctl:rgba(20,50,70,.05);--ctlbd:rgba(20,50,70,.22);
+ --hair:rgba(30,60,80,.15);--accent:#0b968d;
+ --tw:#1DA1F2;--rm:#DA291C;--cbg:#f0f4f7;--cbd:rgba(30,60,80,.10);--cav1:#e3eaef;--cav2:#ccd7df;--cgly:#8a9ba7;--cbar:#dde4ea;--cnam:#c6d0d8
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:antialiased;padding:0 0 120px;transition:background .25s}
+::selection{background:var(--lab);color:var(--bg)}
+
+/* flag */
+/* structure */
+.page{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad)}
+.sec p:last-child{margin-bottom:0}
+
+/* receipts */
+
+/* venn */
+.venn .vsvg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.s2g{display:flex;gap:46px;align-items:center;margin-top:8px}
+.s2t{flex:1;min-width:0}
+.s2g>.venn{flex:0 0 377.1px;width:377.1px;margin:0}
+@media(max-width:900px){.s2g{flex-direction:column;align-items:flex-start}}
+.venn{position:relative;margin:40px 0 6px;max-width:377.1px;aspect-ratio:377.1/369.1}
+.vc{position:absolute;width:59.6782%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.10);border:0;box-shadow:0 10px 26px rgba(0,0,0,.14),inset 0 1px 1px rgba(255,255,255,.18),inset 0 -10px 22px rgba(255,255,255,.03),inset 0 0 20px rgba(0,0,0,.06)}
+.vc::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(120% 120% at 28% 18%,rgba(255,255,255,.10),rgba(255,255,255,.02) 36%,transparent 56%);pointer-events:none}
+.vc.sc,.vo.sc{left:2.448%;top:2.5014%}
+.vo.sc{border-color:var(--accent)}
+.vc.tw,.vo.tw{left:39.1097%;top:2.5014%}
+.vo.tw{border-color:var(--tw)}
+.vc.rm,.vo.rm{left:20.6966%;top:31.8116%}
+.vo.rm{border-color:var(--rm)}
+.vo{position:absolute;width:59.6782%;aspect-ratio:1;border-radius:50%;border:1px solid}
+/* blur lives only in the overlaps: outer circle clips, inner circle carries the filter */
+.vx{position:absolute;width:59.6782%;aspect-ratio:1;border-radius:50%;overflow:hidden;pointer-events:none}
+.vx>i{position:absolute;display:block;width:100%;aspect-ratio:1;border-radius:50%;backdrop-filter:blur(2.5px) saturate(1.75) brightness(1.03);-webkit-backdrop-filter:blur(2.5px) saturate(1.75) brightness(1.03)}
+.vx.a,.vx.b{left:2.448%;top:2.5014%}
+.vx.c{left:39.1097%;top:2.5014%}
+.vx.a>i{left:61.43%;top:0}
+.vx.b>i{left:30.58%;top:48.06%}
+.vx.c>i{left:-30.85%;top:48.06%}
+.vl{position:absolute;margin:0;font:700 12px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em}
+.vl i{display:block;font-style:normal;font-weight:400;font-size:10px;letter-spacing:.04em;color:var(--pht)}
+.vl.l{left:0;top:10%;text-align:right;transform:translateX(-12%)}
+.vl.r{right:0;top:10%;transform:translateX(12%)}
+.vl.b{left:50%;bottom:-4%;transform:translateX(-50%);text-align:center}
+.vfc{position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);margin:0;font:700 13px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:var(--ink);white-space:nowrap}
+@media(max-width:700px){.vl.l,.vl.r{transform:none}}
+
+/* catchment stack */
+.cstack{display:flex;flex-direction:column;gap:12px;margin:30px 0 6px}
+.cstack .ci{position:relative;width:440px;max-width:100%;height:71px;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.cstack iframe{border:0;width:416px;height:55px;pointer-events:none}
+
+/* screens */
+.scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid var(--line);background:var(--panel)}
+.scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+.srow{display:flex;gap:14px;margin:30px 0 6px}
+.srow .scr{flex:1;min-width:0;margin:0}
+.prow4{display:flex;gap:12px;margin:12px 0}
+.prow4 .scr{flex:1;min-width:0;margin:0}
+.prow4.caps{margin:14px 0}
+.prow4.caps span{flex:1;text-align:center;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--lab)}
+.rowlab{margin:26px 0 10px;padding-left:9px;text-align:left;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--pht)}
+
+/* lightbox */
+
+/* hero glass pair (canonical recipe) */
+.ghero{display:flex;justify-content:center;align-items:center;position:relative;perspective:1300px}
+.ghero .gf{position:relative;overflow:hidden;border-radius:10.5px;backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.3);padding:2.5px}
+.ghero .gf.l{transform:rotateY(23.41deg);z-index:2;width:50.83%}
+.ghero .gf.r{transform:rotateY(-17.11deg);margin-left:-5.85%;z-index:1;width:59.17%}
+.ghero .gf .vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;border-radius:0;box-shadow:none}
+.ghero .gf{border-radius:5.5px}
+.ghero .gf .scr{margin:0;border:0;border-radius:3px;box-shadow:none;position:relative;z-index:1;background:none;clip-path:inset(1px round 2px)}   /* same as 04: tighter corners, no halo, 1px eaten all sides */
+.ghero .seam{display:none;position:absolute;top:-16px;bottom:-16px;width:2px;background:var(--lab);cursor:ew-resize;z-index:6;touch-action:none}
+.ghero .seam::after{content:"";position:absolute;left:50%;top:-7px;width:11px;height:11px;border-radius:50%;background:var(--lab);transform:translateX(-50%)}
+.ghero .seam::before{content:attr(data-f);position:absolute;left:50%;top:-30px;transform:translateX(-50%);font:700 11px/1 'IBM Plex Mono',monospace;color:var(--lab);white-space:nowrap}
+
+/* canonical glass */
+.glassf{position:relative;overflow:hidden;border-radius:10.5px;backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.15);padding:2.5px}
+.glassf>.vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;border-radius:0;box-shadow:none}
+.glassf>.scr,.glassf>.gin,.glassf>.pane{position:relative;z-index:1}
+.glassf>.scr{margin:0;border:0;border-radius:8px;box-shadow:0 0 8px rgba(255,255,255,.22);background:var(--panel)}
+.srow>.glassf{flex:1;min-width:0}
+/* 04: desktop captures, not mobile views, so the corners run tighter.
+   Kept concentric: child 4 + the glass 2.5px padding = 6.5 outer. */
+.srow>.glassf{border-radius:5.5px}
+.srow>.glassf>.scr{border-radius:3px;border:0;box-shadow:none;clip-path:inset(1px round 2px)}
+/* 06 and 07: same treatment as 04 */
+.sec>.glassf:not(.grow){border-radius:9.5px}
+.sec>.glassf:not(.grow)>.scr{border-radius:7px;border:0;box-shadow:none;clip-path:inset(1px round 6px)}   /* eat 1px each way, glass frames what is left */
+.srow .scr{margin:0}
+
+/* 05 split: text + glass pane */
+.s5g{display:flex;gap:46px;align-items:center;margin-top:8px}
+.s5t{flex:1;min-width:0}
+.gpane{display:flex;flex-direction:column;gap:50px}
+/* canon glass: 2.5px bezel, radius = 12px .ci + bezel, plus the multiply bleed copy */
+.gwrap{flex:0 0 auto;border-radius:14.5px;--gp:24px;padding:var(--gp)}
+.gwrap>.gpane{position:relative;z-index:1}
+.gwrap>.gpane.vb{position:absolute;inset:calc(var(--gp) - 2px);filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;pointer-events:none}   /* 12px .ci + 36px pad = 48px pane, + 3.5px frame */
+.gpane .ci{width:146.7px;height:22px;padding:0;overflow:hidden}
+.gpane iframe{border:0;width:416px;height:55px;pointer-events:none;display:block;transform:scale(.4);transform-origin:0 0;margin-left:-8.76px}
+@media(max-width:900px){.s5g{flex-direction:column;align-items:flex-start}.gwrap,.gpane{max-width:100%}.gpane .ci{max-width:100%}}
+
+/* 07 glass rows */
+.grow{margin:26px 0 0}
+.grow>.gin{border-radius:8px;padding:14px 14px 14px;background:var(--ctl)}
+.gin .rowlab{margin:2px 0 12px}
+
+/* 03 inference triangle */
+.tri{position:relative;margin:46px 0 10px;display:flex;gap:80px;align-items:flex-start;width:max-content;--ph:66px;padding-bottom:calc(var(--ph)*2 - 41px)}
+.tri svg.lines{position:absolute;left:0;top:0;width:100%;height:106px;z-index:5;pointer-events:none;overflow:visible}
+.ucard{position:relative;width:183px;flex:0 0 auto}
+.uin{display:flex;gap:11px;align-items:center;position:relative;background:var(--cbg);border:1px solid var(--cbd);border-radius:13px;padding:22px 13px;box-shadow:var(--sh,3px 3px 7px rgba(0,0,0,.16),8px 15px 30px -12px rgba(0,0,0,.5));filter:brightness(var(--br,1))}
+.uin{overflow:hidden}
+.ghost{position:absolute;left:66px;width:90.6px;border:2px dotted var(--pht);pointer-events:none}
+.ghost.g1{top:100%;height:calc(var(--ph) - 47px);border-top:0;border-radius:0 0 5px 5px}
+.ghost.g2{top:calc(100% + var(--ph) - 41px);height:var(--ph);border-radius:5px}
+.ghost.g2::before{content:"?";position:absolute;top:.5px;left:100%;margin-left:14.4px;width:20px;height:20px;border:1px solid var(--pht);border-radius:50%;font:500 11px/18px var(--sysMono);letter-spacing:.14em;text-indent:.14em;text-align:center;color:var(--pht)}
+.ghost.g2::after{content:"";position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:#f0a13e}
+.tricap b{font-weight:700}
+.tricap{position:absolute;left:201.4px;top:133.5px;margin:0;font:500 11px/1.9 var(--sysMono);letter-spacing:.14em;text-transform:uppercase;color:var(--pht);max-width:none}
+.clab{display:block;text-align:center;font:600 11px/1 var(--sysMono);letter-spacing:.2em;text-transform:uppercase;color:var(--pht);margin:0 0 8px}
+.udot{position:absolute;top:8px;left:13px;width:9px;height:9px;border-radius:50%;background:var(--c)}
+.uav{flex:0 0 41px;width:41px;height:41px;border-radius:50%;background:linear-gradient(135deg,var(--cav1),var(--cav2));display:flex;align-items:center;justify-content:center}
+.uav svg{width:22px;height:22px;fill:var(--cgly)}
+.ub{flex:1;min-width:0;height:41px}
+.ub i{display:block;height:8px;border-radius:4px;background:var(--cbar);margin:6px 0 0}
+.ub i.n{height:10px;width:62%;background:var(--cnam);margin-top:0}
+.ub i.post{height:200px;width:88%;border-radius:5px;position:relative}
+.ub i.pdot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;margin:0;background:var(--pd)}
+
+/* foot */
+.foot{max-width:var(--colW);margin-left:auto;margin-right:auto;padding-left:var(--colPad);padding-right:var(--colPad)}
+
+@media(max-width:700px){
+  .srow{flex-direction:column}
+  .prow4{flex-wrap:wrap}
+  .prow4 .scr{flex:1 1 44%}
+  .prow4.caps{display:none}
+}
+/* figure spacing, from the system (Confirmo's 48 above / 56 below) */
+.sec>.tri,.sec>.srow,.sec>.glassf:not(.grow){margin-top:var(--figT);margin-bottom:var(--figB)}
+/* g05 - film strip: label outside the glass, frames butted, glass hugs the strip */
+.g05{margin:var(--figT) 0 var(--figB)}
+.g05>.rowlab{margin:0 0 10px}
+.g05>.glassf.grow{margin:0}
+.grow>.gin{padding:0;border-radius:9px;overflow:hidden;background:none;position:relative}
+.grow>.gin::after{content:"";position:absolute;inset:0;border:1px solid #fff;border-radius:inherit;pointer-events:none;z-index:3}
+.grow .prow4{gap:0;margin:0}
+.grow .prow4 .scr{border:0;border-radius:0}
+.grow .prow4 .scr+.scr::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:#fff;z-index:2;pointer-events:none}
+.glassf.grow{border-color:rgba(255,255,255,.34);padding:8px;border-radius:17px}
+.g05>.prow4.caps{margin:14px 0;padding:0 9px;gap:0}
+.g05>.rowlab,.g05>.prow4.caps{position:relative;z-index:2}
+.g05>.glassf.grow+.rowlab{margin:10px 0 0}
+.ghero{margin:var(--figT1) 0 var(--figB)}
+</style>
+</head><body>
+<div class="flag"><a class="hb" href="/">Home</a><span class="fv">Starcount</span><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></div>
+<script>
+function syncDark(){var d=document.documentElement.getAttribute("data-theme")!=="light";document.querySelectorAll(".gpane iframe").forEach(function(f){try{f.contentDocument.documentElement.classList.toggle("dark",d);}catch(e){}})}
+function tt(){var r=document.documentElement,m=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",m);try{localStorage.setItem("folio0",m);}catch(e){}syncDark();}
+window.addEventListener("load",function(){document.querySelectorAll(".gpane iframe").forEach(function(f){f.addEventListener("load",syncDark)});syncDark();setTimeout(syncDark,600);});
+</script>
+<div class="page">
+
+  <!-- 01 · hero -->
+  <header class="hd">
+    <h1>Hit &pound;1M first-year target, in 91 days</h1>
+    <p class="lede">Starcount built a clever dataset of their own, and had rights to data nobody had monetized before, including Twitter's first-ever data deal. But all that data wouldn't become a product, until I made it lie.</p>
+    <div class="ghero">
+      <div class="gf l"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
+      <div class="gf r"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
+      <div class="seam" id="seam" title="drag the seam"></div>
+    </div>
+  </header>
+
+  <!-- 02 · the receipts -->
+  <div class="band">
+    <div class="in">
+      <div class="stat"><b>&pound;1M</b><span>first-year target</span></div>
+      <div class="stat"><b>91 days</b><span>to reach it</span></div>
+      <div class="stat"><b>1st ever</b><span>Twitter data deal</span></div>
+      <div class="stat"><b>1 lie</b><span>to make it work</span></div>
+    </div>
+    <p class="roleline"><b>Head of Product Design, the company&rsquo;s first designer.</b> Audience intelligence, desktop web, sold into enterprise. I ran discovery across data, engineering, sales and client interviews, and grew the team from one to four within months. 2017-19.</p>
+  </div>
+
+  <!-- 03 · the company -->
+  <section class="sec">
+    <p class="lab">context</p>
+    <h2>Social listening 2.0.</h2>
+    <p>Starcount started where many did: social listening. The difference was a layer of inference on top, teasing out relations between what people follow and what they actually care about. Relations advertisers pay for.</p>
+    <p>The trouble was the medium. All that insight flowed through one product, The Observatory, with a single real client: Starcount&rsquo;s own consultancy, which packaged the findings into reports for big brands. The company wanted out of the report business, and into a product clients could drive themselves.</p>
+    <div class="tri">
+      <svg class="lines" viewBox="0 0 709 106" fill="none" aria-hidden="true">
+        <defs><marker id="ag" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L7.5,4 L1,7 Z" fill="#58c470"/></marker><marker id="ao" markerWidth="9" markerHeight="9" refX="7.5" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L7.5,4 L1,7 Z" fill="#f0a13e"/></marker></defs>
+        <path d="M146,68.5 C195,68.5 206,32.5 255,32.5" stroke="#58c470" stroke-width="1.8" stroke-linecap="round" marker-end="url(#ag)"/>
+        <path d="M409,68.5 C458,68.5 469,32.5 518,32.5" stroke="#f0a13e" stroke-width="1.8" stroke-linecap="round" marker-end="url(#ao)"/>
+      </svg>
+            <div class="ucard" style="--c:#9b6cff;--pd:#58c470"><span class="clab">A</span><i class="ghost g1"></i><i class="ghost g2"></i><span class="uin"><i class="udot"></i><span class="uav"><svg viewBox="0 0 24 24"><path d="M12 12a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Zm0 2.1c-3.9 0-7.2 2-7.2 4.5V20h14.4v-1.4c0-2.5-3.3-4.5-7.2-4.5Z"/></svg></span><span class="ub"><i class="n"></i><i class="post"><i class="pdot"></i></i></span></span></span></div>
+      <div class="ucard" style="--c:#58c470;--pd:#f0a13e"><span class="clab">B</span><span class="uin"><i class="udot"></i><span class="uav"><svg viewBox="0 0 24 24"><path d="M12 12a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Zm0 2.1c-3.9 0-7.2 2-7.2 4.5V20h14.4v-1.4c0-2.5-3.3-4.5-7.2-4.5Z"/></svg></span><span class="ub"><i class="n"></i><i class="post"><i class="pdot"></i></i></span></span></span></div>
+      <div class="ucard" style="--c:#f0a13e;--pd:#0e7490"><span class="clab">C</span><span class="uin"><i class="udot"></i><span class="uav"><svg viewBox="0 0 24 24"><path d="M12 12a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Zm0 2.1c-3.9 0-7.2 2-7.2 4.5V20h14.4v-1.4c0-2.5-3.3-4.5-7.2-4.5Z"/></svg></span><span class="ub"><i class="n"></i><i class="post"><i class="pdot"></i></i></span></span></span></div>
+      <p class="tricap">If A follows B,<br>and B follows C,<br>A <b>might</b> have an interest in C too.</p>
+    </div>
+  </section>
+
+  <!-- 04 · the crossing -->
+  <section class="sec">
+    <p class="lab">product strategy</p>
+    <h2>Three datasets, one vision.</h2>
+    <div class="s2g">
+      <div class="s2t">
+        <p>I overhauled the existing product first, and it caught on with real users, shifting the company&rsquo;s identity from consultancy to product. This led to two landmark data deals: Twitter, and Royal Mail.</p>
+        <p>Each was primed for its own product. But I saw one product. Our main data already did the 1-2 punch: you like this, you might like that. That gave us data confidence and depth. ~20 million UK tweets a day gave us a heartbeat: interests refreshed daily. And the final piece, crossing location metadata with real-world deliveries, on every UK postcode. A live map of what Britain wants.</p>
+      </div>
+      <div class="venn">
+      <svg class="vsvg" viewBox="119.1 24.7 377.1 369.1" fill="none" aria-hidden="true">
+        <defs><path id="rmArc" d="M191.5,322.9 A136.5,136.5 0 0 0 427.9,322.9"/><path id="scArc" d="M117.7,179.5 A127.5,127.5 0 0 1 273.9,23.3"/><path id="twArc" d="M346.1,23.3 A127.5,127.5 0 0 1 502.3,179.5"/></defs>
+        <text font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" letter-spacing="1.92" fill="var(--rm)" text-anchor="middle"><textPath href="#rmArc" startOffset="50%">ROYAL MAIL</textPath></text>
+        <text font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" letter-spacing="1.92" fill="var(--accent)" text-anchor="middle"><textPath href="#scArc" startOffset="50%">STARCOUNT</textPath></text>
+        <text font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="700" letter-spacing="1.92" fill="var(--tw)" text-anchor="middle"><textPath href="#twArc" startOffset="50%">TWITTER</textPath></text>
+      </svg>
+      <div class="vc sc"></div>
+      <div class="vc tw"></div>
+      <div class="vc rm"></div>
+      <div class="vo sc"></div>
+      <div class="vo tw"></div>
+      <div class="vo rm"></div>
+      <div class="vx a"><i></i></div>
+      <div class="vx b"><i></i></div>
+      <div class="vx c"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · the product -->
+  <section class="sec">
+    <p class="lab">iteration</p>
+    <h2>A starved audience.</h2>
+    <div class="s5g">
+      <div class="s5t">
+    <p>Most of our clients were still using 90&rsquo;s software, so when they saw our rough proof of concept, they wanted it on sight. Acknowledging that market need, iterations ran equal parts function and polish, all of it anchored on real requirements.</p>
+    <p>Like the six-state toggle: refined and novel on the surface, doing a real job underneath, saving precious pixel estate on the small laptops sales reps carried to clients, while delivering file upload, processing, cancel, ON, OFF, and delete, all in one component.</p>
+      </div>
+      <div class="glassf gwrap">
+        <div class="gpane vb" aria-hidden="true">
+    <div class="ci"><iframe src="sc-c01.html#embed" scrolling="no" loading="lazy" tabindex="-1" title="catchment DIS"></iframe></div>
+    <div class="ci"><iframe src="sc-c02.html#embed" scrolling="no" loading="lazy" tabindex="-1" title="catchment loading"></iframe></div>
+    <div class="ci"><iframe src="sc-c03.html#embed" scrolling="no" loading="lazy" tabindex="-1" title="catchment ON"></iframe></div>
+    <div class="ci"><iframe src="sc-c04.html#embed" scrolling="no" loading="lazy" tabindex="-1" title="catchment OFF"></iframe></div>
+        </div>
+        <div class="gpane">
+    <div class="ci"><iframe src="sc-c01.html#embed" scrolling="no" loading="lazy" title="catchment DIS"></iframe></div>
+    <div class="ci"><iframe src="sc-c02.html#embed" scrolling="no" loading="lazy" title="catchment loading"></iframe></div>
+    <div class="ci"><iframe src="sc-c03.html#embed" scrolling="no" loading="lazy" title="catchment ON"></iframe></div>
+    <div class="ci"><iframe src="sc-c04.html#embed" scrolling="no" loading="lazy" title="catchment OFF"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · features, mapped -->
+  <section class="sec">
+    <p class="lab">feature design</p>
+    <h2>Features, mapped.</h2>
+    <p>Everything revolved around the map. Clients brought their data to map on top of ours. CRM and catchment files their stores already drew from. And feature requests like dropping a pin to set a bespoke geofence. Filters allowed the users to fine tune an audience, the summary pane updating live.</p>
+    <p>The map could even run the logic in reverse: hand it a market that already worked, and Lookalikes would suggest other areas with similar interests or behaviours.</p>
+    <p>Every iteration upgraded the look and feel too. Sales demoed my most up-to-date prototypes, so every pass of polish did double duty, sharpening the tool and keeping the prospect list eager and growing, even before the price was set.</p>
+    <div class="srow">
+      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-01.html#embed" scrolling="no" loading="lazy" title="sc-01"></iframe></div></div>
+      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-02.html#embed" scrolling="no" loading="lazy" title="sc-02"></iframe></div></div>
+      <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-03.html#embed" scrolling="no" loading="lazy" title="sc-03"></iframe></div></div>
+    </div>
+  </section>
+
+  <!-- 07 · the lie · climax -->
+  <section class="sec">
+    <p class="lab">data visualisation</p>
+    <h2>I made the map lie, correctly.</h2>
+    <p>From the start, the heatmap was one of the best received features. It was visual, and instantly familiar. On first load, users knew exactly what they were looking at. Sadly, it was unusable. An 8% nudge would shut down 90% of the country. Not helpful.</p>
+    <p>London is denser than everywhere else in the UK. That&rsquo;s accurate. But clients looking to better target their marketing want to know where else, besides London, they can find new audiences. That&rsquo;s helpful.</p>
+    <div class="g05">
+    <p class="rowlab">Accurate</p>
+    <div class="glassf grow"><div class="gin"><div class="prow4">
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p01a.html#embed" scrolling="no" loading="lazy" title="sc-p01a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p02a.html#embed" scrolling="no" loading="lazy" title="sc-p02a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p03a.html#embed" scrolling="no" loading="lazy" title="sc-p03a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p04a.html#embed" scrolling="no" loading="lazy" title="sc-p04a"></iframe></div>
+    </div></div></div>
+    <div class="prow4 caps"><span>100%</span><span>top 75%</span><span>top 50%</span><span>top 10%</span></div>
+    <div class="glassf grow"><div class="gin"><div class="prow4">
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p01b.html#embed" scrolling="no" loading="lazy" title="sc-p01b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p02b.html#embed" scrolling="no" loading="lazy" title="sc-p02b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p03b.html#embed" scrolling="no" loading="lazy" title="sc-p03b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p04b.html#embed" scrolling="no" loading="lazy" title="sc-p04b"></iframe></div>
+    </div></div></div>
+    <p class="rowlab">Useful</p>
+    </div>
+    <p style="margin-top:18px">So I worked with the Data team to rebalance it. Technically, that made the map wrong, the way a subway map is wrong: a projection chosen for the decision it serves.</p>
+  </section>
+
+  <!-- 08 · 3d -->
+  <section class="sec">
+    <p class="lab">prototyping</p>
+    <h2>Riding the wave.</h2>
+    <p>Rebalancing set it up. 3D sealed the deal.</p>
+    <p>Heatmaps have a limited set of colors. With the 3D extrusion, height was tied directly to value, and color became a secondary cue. And with the option to animate it, users could create waves, moving as trends: a peak of interest flowing north to south, in or out of London, or spreading out to neighboring areas. It made the map alive.</p>
+    <div class="glassf"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
+    <p>Our clients were sold on the draft. This was something unique, like nothing the industry had seen before.</p>
+  </section>
+
+  <!-- 09 · the money -->
+  <section class="sec">
+    <p class="lab">impact</p>
+    <h2>&pound;1M in 91 days.</h2>
+    <p>Audiences beat its first-year target of &pound;1M in 91 days. The function I had joined as a solo designer reporting into engineering was now a four-person design department, driving product.</p>
+    <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
+    <p>Accurate is a property of the data. Helpful is a design decision. That decision is what clients paid for. To others on my team, it looked like I was taking an unnecessary risk. To me, it was clear I was only doing my job. Design is about tradeoffs. It&rsquo;s about creating something that has a place in the world. And that map had its place.</p>
+  </section>
+
+</div>
+<div class="foot">C&eacute;sar Garcia &middot; Head of Product Design &middot; Starcount</div>
+<script>
+(function(){
+  var T=104.15, O=5.85, KL=28*42.5, KR=15*67.5;
+  if(!/seam/.test(location.hash))return; // seam tool parked: open with #seam
+  var gh=document.querySelector('.ghero'); if(!gh)return;
+  var gl=gh.querySelector('.gf.l'), gr=gh.querySelector('.gf.r'), sm=document.getElementById('seam');
+  var f=0.46;
+  document.getElementById('seam').style.display='block';
+  function apply(){
+    var L=f*T+O/2, R=T+O-L;
+    gl.style.width=L+'%'; gr.style.width=R+'%';
+    gl.style.transform='rotateY('+(KL/L)+'deg)';
+    gr.style.transform='rotateY(-'+(KR/R)+'deg)';
+    requestAnimationFrame(function(){
+      var g=gh.getBoundingClientRect(), a=gl.getBoundingClientRect(), b=gr.getBoundingClientRect();
+      sm.style.left=(((a.right+b.left)/2-g.left)/g.width*100)+'%';
+      sm.setAttribute('data-f',(f*100).toFixed(1)+'%');
+      if(window.scrfit)scrfit();
+    });
+  }
+  sm.addEventListener('pointerdown',function(e){
+    e.preventDefault(); sm.setPointerCapture(e.pointerId);
+    function mv(ev){
+      var g=gh.getBoundingClientRect();
+      f=Math.min(.62,Math.max(.15,(ev.clientX-g.left)/g.width));
+      apply();
+    }
+    function up(){sm.removeEventListener('pointermove',mv);sm.removeEventListener('pointerup',up);}
+    sm.addEventListener('pointermove',mv); sm.addEventListener('pointerup',up);
+  });
+  window.addEventListener('resize',apply); window.addEventListener('load',apply);
+  apply();
+})();
+function scrfit(){document.querySelectorAll('.scr').forEach(function(w){var iw=+w.dataset.w,ih=+w.dataset.h,f=w.querySelector('iframe'),cs=getComputedStyle(w),bw=(parseFloat(cs.borderLeftWidth)||0)+(parseFloat(cs.borderRightWidth)||0),sc=(parseFloat(cs.width)-bw)/iw;f.style.width=iw+'px';f.style.height=ih+'px';f.style.transform='scale('+sc+')';w.style.height=(ih*sc+((parseFloat(cs.borderTopWidth)||0)+(parseFloat(cs.borderBottomWidth)||0)))+'px';});}
+window.addEventListener('resize',scrfit);window.addEventListener('load',scrfit);scrfit();
+</script>
+<script>
+(function(){
+  var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
+  var SUN='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4.3\"/><path d=\"M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5\"/></svg>';
+  var MOON='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linejoin=\"round\"><path d=\"M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z\"/></svg>';
+  function get(){try{return localStorage.getItem(KEY)||"auto"}catch(e){return "auto"}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function paint(){
+    var sys=mq.matches?"dark":"light", p=get();
+    if(p!=="auto"&&p===sys){p="auto";set(p);}
+    document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);
+    var opp=sys==="dark"?"light":"dark";
+    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" data-v="'+opp+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
+                 '<button class="'+(p==="auto"?"on":"")+'" data-v="auto" title="Follow system ('+sys+')">Auto</button>';
+  }
+  function flip(){var sys=mq.matches?"dark":"light";set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");paint();}
+  el.addEventListener("click",flip);
+  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
+  mq.addEventListener("change",paint);
+  window.tt=flip;
+  paint();
+})();
+</script>
+
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
+  api_host:'https://eu.i.posthog.com',
+  persistence:'memory',        /* cookieless: no banner needed */
+  disable_session_recording:true,
+  autocapture:false,
+  capture_pageview:true,
+  capture_pageleave:true       /* gives time-on-page and exit page */
+});
+
+(function(){
+  var PAGE='starcount', seen={}, secs={};
+
+  function depth(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-innerHeight;
+    if(max<=0) return 100;
+    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
+  }
+  function mark(){
+    var d=depth();
+    [25,50,75,100].forEach(function(m){
+      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+    });
+  }
+  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
+
+  /* which sections they actually reached, better than a raw percentage */
+  addEventListener('load',function(){
+    var list=[].slice.call(document.querySelectorAll('section.sec'));
+    if(!list.length||!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i=list.indexOf(e.target);
+        if(secs[i]) return; secs[i]=1;
+        var lab=e.target.querySelector('.lab');
+        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
+      });
+    },{threshold:.4});
+    list.forEach(function(s){io.observe(s);});
+  });
+
+  /* outbound clicks, tagged with the page they left from and how far down */
+  addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
+    var h=a.getAttribute('href')||'', kind=null;
+    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
+    else if(/linkedin\.com/i.test(h)) kind='linkedin';
+    else if(/^mailto:/i.test(h)) kind='email';
+    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
+    else if(/^\/(confirmo|mara|starcount)$/.test(h))
+      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
+  },true);
+})();
+</script>
+</body></html>

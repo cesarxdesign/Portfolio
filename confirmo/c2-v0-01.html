@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>confirmo · old flow · token select</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#dcdce0;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#000;padding:40px 0 80px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+
+/* fixed device frame, baseline = shipped 402x874 */
+.phone{width:402px;height:874px;border-radius:27.5px;overflow:hidden;background:#fff;position:relative;display:flex;flex-direction:column}
+
+/* header (pinned) */
+.hdr{flex:0 0 auto;height:96px;background:linear-gradient(90deg,#fbfbfb 13%,#cd99ff 63%);position:relative;overflow:hidden;z-index:1}
+.ava{position:absolute;left:24px;top:24px;width:48px;height:48px;border-radius:50%;box-shadow:0 2px 12px rgba(0,0,0,.08);display:block}
+.ibadge{position:absolute;left:57px;top:18px;width:18px;height:18px;border-radius:50%;background:#8100ff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.mtitle{position:absolute;left:84px;top:23px;font-weight:500;font-size:21px;letter-spacing:-.4px}
+.mid{position:absolute;left:84px;top:50px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:11px;opacity:.32}
+.mdesc{position:absolute;left:84px;top:62px;font-weight:500;font-size:13px;opacity:.32}
+.mamount{position:absolute;right:22px;top:25px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:19px;letter-spacing:-.4px;color:#1c1c1e}
+
+/* scrolling middle — list runs behind the dock */
+.scroll{flex:1 1 auto;overflow-y:auto;background:#fff;border-radius:22px 22px 0 0;margin-top:-14px;position:relative;z-index:2;padding:16px 0 10px}
+.paywith{text-align:center;font-weight:600;font-size:17px;margin:2px 0 14px}
+.search{width:370px;margin:0 auto;height:46px;border-radius:23px;background:#f4f4f4;display:flex;align-items:center;padding:0 18px;gap:10px}
+.search .ph{flex:1;color:#9a9aa0;font-size:15px}
+.search svg{flex:0 0 auto;color:#5f5a6b;display:block}
+.col{width:370px;margin:10px auto 0}
+.nrow{width:100%;height:72px;display:flex;align-items:center;gap:14px;padding:0 14px;border-radius:40px}
+.nrow.sel{background:#f4f4f4}
+.nlogo{width:46px;height:46px;flex:0 0 46px;border-radius:50%;box-shadow:0 2px 12px rgba(0,0,0,.08);display:block}
+.nname{font-weight:600;font-size:18px;line-height:1.1}
+.nbal{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:13px;color:#b4b4b4;margin-top:3px}
+.select{margin-left:auto;font-weight:600;font-size:14px;white-space:nowrap}
+
+/* pinned dock — Back to Merchant down */
+.dock{flex:0 0 auto;position:relative;z-index:3;background:#fff}
+.backmerch{text-align:center;margin:0;padding:15px 0 0;font-weight:600;font-size:18px;letter-spacing:-.12px;text-decoration:underline;text-underline-offset:3px}
+.expire{width:354px;margin:15px auto 0}
+.track{height:4px;border-radius:8px;background:#f4f4f4;overflow:hidden}
+.track i{display:block;height:4px;border-radius:8px;background:linear-gradient(90deg,#ffd600 4%,#ab48a8 52%,#8100fe 71%,#b45698 100%)}
+.etext{text-align:center;margin-top:11px;font-weight:400;font-size:14px;color:#b0b0b0}
+.etext b{font-family:'IBM Plex Mono',ui-monospace,monospace;color:#000;font-weight:600}
+.footer{margin-top:15px;background:linear-gradient(90deg,#ffd600 49%,#f4f4f1 92%);padding:15px 0 16px}
+.frow{display:flex;align-items:center;justify-content:center;gap:40px}
+.wm{height:11px;width:auto;display:block}
+.eng{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:#000}
+.eng svg{display:block}
+.cookie{text-align:center;margin:9px 20px 0;font-weight:400;font-size:11px;color:rgba(0,0,0,.4)}
+.cookie b{color:#000;font-weight:700}
+</style>
+<style>html.embed{overflow:hidden}html.embed body{padding:0;background:transparent;gap:0}html.embed .cap{display:none}</style>
+<script>if(location.hash==='#embed')document.documentElement.classList.add('embed')</script>
+</head><body>
+<p class="cap">confirmo · original · 02 · token select · 402x874, list scrolls behind dock</p>
+<div class="phone">
+  <div class="hdr">
+    <img class="ava" src="assets/avatar-c.svg" alt="">
+    <div class="mtitle">Payment ID</div>
+    <div class="mid">inviwBEdCBwRxFX</div>
+    <div class="mamount">12.01 EUR</div>
+  </div>
+  <div class="scroll">
+    <p class="paywith">Pay with</p>
+    <div class="search"><span class="ph">Search for a cryptocurrency...</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg></div>
+    <div class="col">
+      <div class="nrow sel"><img class="nlogo" src="assets/token-usdc.svg" alt=""><div><div class="nname">USD Coin</div><div class="nbal">11.285432 USDC</div></div><div class="select">Select &#8594;</div></div>
+      <div class="nrow"><img class="nlogo" src="assets/token-usdt.svg" alt=""><div><div class="nname">Tether USD</div><div class="nbal">11.285143 USDT</div></div></div>
+      <div class="nrow"><img class="nlogo" src="assets/token-usdg.svg" alt=""><div><div class="nname">USDG</div><div class="nbal">11.279854 USDG</div></div></div>
+      <div class="nrow"><img class="nlogo" src="assets/token-btc.svg" alt=""><div><div class="nname">Bitcoin</div><div class="nbal">0.00017606 BTC</div></div></div>
+      <div class="nrow"><img class="nlogo" src="assets/net-ethereum.svg" alt=""><div><div class="nname">Ether</div><div class="nbal">0.00402551 ETH</div></div></div>
+    </div>
+  </div>
+  <div class="dock">
+    <p class="backmerch">Back to Merchant</p>
+    <div class="expire"><div class="track"><i style="width:32px"></i></div><p class="etext">Invoice expires in <b>08m 24s</b></p></div>
+    <div class="footer">
+      <div class="frow">
+        <img class="wm" src="assets/confirmo-wordmark.svg" alt="Confirmo">
+        <span class="eng">English <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span>
+      </div>
+      <p class="cookie">By using the payment gateway, you agree to the terms on the <b>Cookie Policy</b>.</p>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,164 @@
+/* ─────────────────────────────────────────────────────────────────
+   Mara OLD app screens — rebuilt 1:1 from Figma
+   file  XeCmukfCvVLbaPsBSKo0r8  ·  section 4038:29636 ("OLD mara")
+   Frames: 4038:29221 "Home - Full screen" · 4038:29472 "Send Note"
+   Every dimension, colour, radius, size, weight and letter-spacing
+   below is read from the Figma node via get_metadata /
+   get_design_context / get_variable_defs — never eyeballed.
+
+   These frames are 375 x 800 at scale 1 — NOT the 288 x 640 of
+   Section 1 and not the 360 x 800 of Section 2 — so they get their
+   own .n3s frame class and their own components.
+   This file is ADDITIVE: each screen links screens.css first (for
+   the @font-face declarations) and then this file.
+
+   To place a frame in a layout, scale it:
+       .cell { width:300px; height:640px; overflow:hidden }
+       .cell iframe { width:375px; height:800px; border:0;
+                      transform:scale(.8); transform-origin:0 0 }
+   The Mara case-study figure treatment (border, radius, shadow)
+   belongs on the embedding element, so it is not applied here.
+
+   Figma's own frame strokes, for reference — NOT applied here:
+     4038:29221  1.339px #DDDDDD, radius 16px
+     4038:29472  1px      #DDDDDD, radius 16px
+   Because a stroke shifts the generated left/top of every child,
+   ALL coordinates below are taken from get_metadata, not from the
+   generated code.
+
+   Bordered boxes that carry absolutely positioned children draw
+   their stroke with `box-shadow: inset 0 0 0 1px` so the children
+   land on the exact metadata coordinates (Figma strokes do not
+   participate in layout).
+
+   Design-system values in play (get_variable_defs):
+     neutrals/900 #060610 · neutrals/800 #25252E · neutrals/700 #41414D
+     neutrals/600 #7A7A82 · neutrals/400 #DDDDDD · neutrals/200 #E9E9E9
+     neutrals/100 #F4F4F5 · neutrals/white #FFFFFF · Ink Dark #171B1E
+     Primary/400 #FF7500 · Primary/100 #FDECE4
+     Secondary/400 #FFC700 · Secondary/100 #FDEEB6
+     positive/100 #DBEDC7 · negative/400 #E31E2D
+     H3/bold  Satoshi Bold 33/1.2 ls -1
+     H5/black Satoshi Black 23/1.3 ls 0
+     p1/bold  Satoshi Bold 18/1.5   · p1/medium Satoshi Medium 18/1.5 ls 1
+     p1/regular Satoshi Regular 18/1.5 ls 1
+     p2/regular Satoshi Regular 16/1.4
+     p3/bold  Satoshi Bold 14/1.5   · p3/medium Satoshi Medium 14/1.4
+     p4/medium Satoshi Medium 11/1.5
+   ───────────────────────────────────────────────────────────────── */
+
+/* ── the frame — Figma 375 x 800 ─────────────────────────────── */
+.n3s{position:relative;width:375px;height:800px;overflow:hidden;border-radius:12px;background:#FFFFFF;font-family:'SatoshiM',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400;font-size:14px;line-height:normal;color:#25252E;letter-spacing:0;text-align:left;font-style:normal;-webkit-font-smoothing:antialiased}
+.n3s *{box-sizing:border-box;margin:0;padding:0;font:inherit;color:inherit;letter-spacing:inherit;text-align:inherit;max-width:none;font-variant-numeric:inherit}
+.n3s img{display:block;max-width:none}
+.n3s .v{position:absolute}
+.n3s .v>img{display:block;width:100%;height:100%;max-width:none}
+.n3s .ico{position:relative;flex-shrink:0}          /* size set inline */
+.n3s .icoc{position:relative;overflow:hidden;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════════════════════
+   4038:29221 — "Home - Full screen"
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Pixel 5 status bar (7:4768) — 0,0 375x44, clipped ───────── */
+.n3s .p5sb{position:relative;width:375px;height:44px;overflow:hidden;flex-shrink:0}
+.n3s .p5sb>.tm{position:absolute;left:70.5px;top:calc(50% + 7px);transform:translate(-50%,-50%);font-family:'RobotoM',ui-sans-serif,system-ui,sans-serif;font-weight:500;font-size:14px;line-height:16px;letter-spacing:.42px;color:#060610;text-align:center;white-space:nowrap}
+.n3s .p5sb>.wf{position:absolute;right:71.67px;top:calc(50% + 5.5px);transform:translateY(-50%);width:17.333px;height:13px}
+.n3s .p5sb>.rc{position:absolute;right:47.83px;top:calc(50% + 5.5px);transform:translateY(-50%);width:13px;height:13px}
+.n3s .p5sb>.bt{position:absolute;right:24px;top:calc(50% + 5.04px);transform:translateY(-50%);width:8.667px;height:14.083px}
+.n3s .p5sb>.el{position:absolute;left:24px;top:20px;width:18px;height:18px}
+
+/* ── Header navigation (4038:29222) — 0,0 375.0001x114 ───────── */
+.n3s .hdrnav{position:absolute;left:0;top:0;width:375.0001px;display:flex;flex-direction:column;gap:24px;align-items:flex-start;padding-bottom:16px}
+.n3s .hdrnav .wrap{display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;padding:0 24px;width:375px;flex-shrink:0}
+.n3s .hdrnav .row{display:flex;align-items:center;width:100%;flex-shrink:0}
+.n3s .hdrnav .la{display:flex;flex:1 0 0;min-width:1px;align-self:stretch;align-items:center;position:relative}
+.n3s .hdrnav .ti{font-weight:900;font-size:23px;line-height:1.3;color:#060610;white-space:nowrap;flex-shrink:0}
+.n3s .hdrnav .ra{width:115px;height:28px;flex-shrink:0}
+
+/* ── Header Balance (4038:29244) — 0,95 375.0001x93 ──────────── */
+.n3s .hbal{position:absolute;left:0;top:95px;width:375.0001px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:16px 24px}
+.n3s .hbal .col{display:flex;flex-direction:column;align-items:flex-start;width:100%;flex-shrink:0}
+.n3s .hbal .lbl{font-weight:700;font-size:14px;line-height:1.5;color:#41414D;width:100%;flex-shrink:0}
+.n3s .hbal .amtrow{display:flex;gap:8px;align-items:flex-start;width:100%;flex-shrink:0}
+.n3s .hbal .amt{font-weight:700;font-size:33px;line-height:1.2;letter-spacing:-.33px;color:#25252E;white-space:nowrap;flex-shrink:0}
+.n3s .hbal .hide{display:flex;align-items:flex-start;padding:8px;border-radius:4px;flex-shrink:0}
+
+/* ── Tabs (4038:29226) — 375x51, inside Page content ─────────── */
+.n3s .tabs{display:flex;align-items:center;justify-content:space-between;padding:8px;width:375px;flex-shrink:0}
+.n3s .tabs>.tab{display:flex;align-items:center;justify-content:center;padding:4px 12px;border-radius:34px;flex-shrink:0}
+.n3s .tabs>.tab>span{font-weight:500;font-size:18px;line-height:1.5;letter-spacing:.18px;color:#25252E;text-align:center;white-space:nowrap}
+.n3s .tabs>.tab.on{background:#F4F4F5}
+.n3s .tabs>.tab.on>span{font-weight:700;letter-spacing:0}
+
+/* ── referral list (4038:29243) — 0,418 375x598 ──────────────── */
+.n3s .rlist{position:absolute;left:0;top:418px;width:375px;display:flex;flex-direction:column;gap:8px;align-items:center;overflow:hidden;padding-top:8px}
+.n3s .rlist .rhd{display:flex;gap:16px;align-items:center;padding:0 24px;width:100%;flex-shrink:0}
+.n3s .rlist .rhd>.t{display:flex;flex:1 0 0;min-width:1px;gap:4px;align-items:flex-start;font-size:18px;white-space:nowrap}
+.n3s .rlist .rhd .t1{font-weight:700;line-height:1.5;color:#41414D;flex-shrink:0}
+.n3s .rlist .rhd .t2{font-weight:400;line-height:1.5;letter-spacing:.18px;color:#7A7A82;flex-shrink:0}
+.n3s .rlist .box{background:#FFFFFF;display:flex;flex-direction:column;gap:1px;height:555px;align-items:center;overflow:hidden;border-radius:16px;width:100%;flex-shrink:0}
+.n3s .rlist .items{background:#E9E9E9;display:flex;flex-direction:column;gap:1px;align-items:flex-start;flex-shrink:0}
+.n3s .rlist .ri{display:flex;align-items:flex-start;width:375px;flex-shrink:0}
+.n3s .rlist .base{background:#FFFFFF;display:flex;flex:1 0 0;min-width:1px;align-items:center;justify-content:space-between;padding:16px 24px;position:relative}
+.n3s .rlist .nm{display:flex;flex-direction:column;gap:8px;align-items:flex-start;flex-shrink:0}
+.n3s .rlist .nm>.r1{display:flex;gap:16px;align-items:flex-start;flex-shrink:0}
+.n3s .rlist .nm .n{font-weight:700;font-size:14px;line-height:1.5;color:#25252E;white-space:nowrap}
+.n3s .rlist .nm>.r2{display:flex;gap:8px;align-items:flex-start;flex-shrink:0}
+.n3s .rlist .nm>.r2>div{display:flex;gap:4px;align-items:flex-start;flex-shrink:0}
+.n3s .rlist .nm .amt{font-weight:500;font-size:11px;line-height:1.5;color:#7A7A82;white-space:nowrap}
+.n3s .rlist .rw{display:flex;flex-direction:column;gap:8px;align-items:flex-end;justify-content:center;font-weight:500;text-align:right;white-space:nowrap;flex-shrink:0}
+.n3s .rlist .rw .k{font-size:11px;line-height:1.5;color:#7A7A82}
+.n3s .rlist .rw .v2{font-size:14px;line-height:1.4;color:#25252E}
+
+/* ── Bottom Navigation (4038:29245) — 0,715 375x85 ───────────── */
+.n3s .bnav{position:absolute;left:0;top:715px;width:375px;height:85px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E9E9E9;border-radius:16px 16px 0 0}
+.n3s .bnav .fab{position:absolute;left:151.0011px;top:-19.9997px;width:72px;height:72px;background:#FF7500;display:flex;align-items:flex-start;padding:18px;border-radius:60.268px;filter:drop-shadow(0 6.429px 8.571px rgba(241,105,35,.3))}
+.n3s .bnav .tab{position:absolute;top:16.0001px;width:40px;display:flex;flex-direction:column;gap:4px;align-items:center}
+.n3s .bnav .tab>.lb{font-weight:500;font-size:11px;line-height:1.5;color:#7A7A82;white-space:nowrap}
+.n3s .bnav .t5w{position:absolute;left:311.0004px;top:16.0001px;width:40px;height:45px}
+.n3s .bnav .t5{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:50px;height:45px;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.n3s .bnav .t5>.lb{font-weight:500;font-size:11px;line-height:1.5;color:#7A7A82;text-align:center;min-width:100%;width:min-content}
+
+/* ═══════════════════════════════════════════════════════════════
+   4038:29472 — "Send Note"
+   frame effect, for reference — NOT applied here (it is an outer
+   shadow, so it belongs on the embedding element):
+     "thumbnail shadow"  DROP_SHADOW #00000029  0,4  blur 80  spread 0
+   extra colour used by this frame and not in the variable set:
+     Cancel-transaction label #B71723 · input hairline #B9B9BB
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── status bar / roid (4:435) — 0,0 374x48 ──────────────────── */
+.n3s .sbr{position:absolute;left:0;top:0;width:374px;height:48px;background:#FFFFFF}
+.n3s .sbr>.r{position:absolute;right:30.02px;top:18px;width:66.649px;height:11.333px}
+.n3s .sbr>.l{position:absolute;left:27.67px;top:13px;width:66.219px;height:21.667px}
+
+/* ── orange section label — Satoshi Bold 14/16 Primary/400 ───── */
+.n3s .olbl{font-weight:700;font-size:14px;line-height:16px;color:#FF7500;white-space:nowrap;flex-shrink:0}
+
+/* ── grey card (4038:29481 / 4038:29500) ─────────────────────── */
+.n3s .card{background:#F4F4F5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 16px 16px;border-radius:16px;width:100%;flex-shrink:0}
+.n3s .cardrow{display:flex;align-items:center;justify-content:space-between;width:100%;flex-shrink:0}
+
+/* ── Keyboard Toolbar (10:2775) — 0,0 375x42 ─────────────────── */
+.n3s .kbt{position:relative;background:#F6F6F6;width:375px;height:42px;overflow:hidden;flex-shrink:0}
+.n3s .kbt>.ti{position:absolute;left:15px;top:50%;transform:translateY(-50%);display:flex;gap:30px;align-items:flex-start}
+.n3s .kbt .tb{position:relative;width:30px;height:30px;flex-shrink:0}
+.n3s .kbt>.ln{position:absolute;right:18px;top:calc(50% - .5px);transform:translateY(-50%);width:14px;height:3px}
+
+/* ── Numeric Keyboard (7:2481) — 0,42 375x241 ────────────────── */
+.n3s .nkb{position:relative;background:#E6E6E6;width:375px;height:241px;overflow:hidden;flex-shrink:0}
+.n3s .nkb>.keys{position:absolute;left:17px;right:18px;top:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.n3s .nkb .row{display:flex;gap:7px;align-items:flex-start;width:100%;flex-shrink:0}
+.n3s .nkb .k{position:relative;flex:1 0 0;min-width:1px;height:48px;border-radius:6px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}
+.n3s .nkb .k.w{background:#FFFFFF}
+.n3s .nkb .k.g{background:#D1D1D1}
+.n3s .nkb .k>span{position:absolute;left:calc(50% + .5px);top:calc(50% + 13px);transform:translate(-50%,-100%);font-family:'RobotoM',ui-sans-serif,system-ui,sans-serif;font-weight:400;font-size:25px;line-height:25px;color:#000000;text-align:center;white-space:nowrap}
+
+/* ── Bottom Nav (4043:29637) — 0,283 375x42 ──────────────────── */
+.n3s .bnav2{position:relative;background:#E6E6E6;width:375px;height:42px;flex-shrink:0}
+.n3s .bnav2>.g{position:absolute;left:2px;top:13px;width:295px;display:flex;gap:80px;align-items:center;justify-content:center}
+.n3s .bnav2 .sq{position:relative;width:16px;height:16px;flex-shrink:0;filter:drop-shadow(0 0 .15px rgba(255,255,255,.25))}
+.n3s .bnav2 .sq>.b{position:absolute;background:#8C8C8C;border-radius:1.1px}
+.n3s .bnav2>.rv{position:absolute;left:307px;bottom:16px;width:18px;height:10px}

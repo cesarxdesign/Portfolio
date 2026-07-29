@@ -1,0 +1,141 @@
+/* ─────────────────────────────────────────────────────────────────
+   Mara app screens — rebuilt 1:1 from Figma
+   file  XeCmukfCvVLbaPsBSKo0r8  ·  section 4036:29220 ("NEW flows")
+   Sub-frames: 4036:28427 "send" (4 screens), 4036:28493 "withdraw"
+   (4 screens). Every dimension, colour, radius, size, weight and
+   letter-spacing below is read from the Figma node, not eyeballed.
+
+   These frames are 360 x 800 (scale 1), NOT the 288 x 640 (scale .8)
+   of Section 1 — so they get their own .n2s frame class and their
+   own components. This file is ADDITIVE: each screen links
+   screens.css first (for the @font-face declarations) and then this
+   file.
+
+   To place a frame in a layout, scale it:
+       .cell { width:288px; height:640px; overflow:hidden }
+       .cell iframe { width:360px; height:800px; border:0;
+                      transform:scale(.8); transform-origin:0 0 }
+   The Mara case-study figure treatment (border, radius, shadow)
+   belongs on the embedding element, so it is not applied here.
+
+   Figma's own frame stroke, for reference — NOT applied here:
+       1px #DDDDDD, radius 16px  (all 8 frames)
+   ───────────────────────────────────────────────────────────────── */
+
+/* the frame — Figma 360 x 800 */
+.n2s{position:relative;width:360px;height:800px;overflow:hidden;border-radius:12px;background:#FFFFFF;font-family:'SatoshiM',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400;font-size:14px;line-height:normal;color:#25252E;letter-spacing:0;text-align:left;-webkit-font-smoothing:antialiased}
+.n2s *{box-sizing:border-box;margin:0;padding:0;font:inherit;color:inherit;letter-spacing:inherit;text-align:inherit;max-width:none;font-variant-numeric:inherit}
+.n2s img{display:block;max-width:none}
+.n2s .iv{position:absolute}
+.n2s .iv>img{display:block;width:100%;height:100%;max-width:none}
+.n2s .ib{position:relative;overflow:hidden;flex-shrink:0}   /* icon box, size set inline */
+.n2s .num{font-variant-numeric:lining-nums tabular-nums}    /* Figma "lnum"+"tnum" */
+
+/* ── status bar / roid (4:435) — 0,0 360x48 ─────────────────── */
+.n2s .n2sb{position:absolute;left:0;top:0;width:360px;height:48px;background:#FFFFFF}
+.n2s .n2sb>.r{position:absolute;right:30.02px;top:18px;width:66.649px;height:11.333px}
+.n2s .n2sb>.l{position:absolute;left:27.67px;top:13px;width:66.219px;height:21.667px}
+
+/* ── bottom bar / roid (1877:29002) — 0,758 360x42 ──────────── */
+.n2s .n2bb{position:absolute;left:0;top:758px;width:360px;height:42px}
+.n2s .n2bb>.t{position:absolute;left:calc(50% - 86.5px);top:50%;width:11px;height:14px;transform:translate(-50%,-50%)}
+.n2s .n2bb>.c{position:absolute;left:50%;top:50%;width:12px;height:12px;transform:translate(-50%,-50%)}
+.n2s .n2bb>.q{position:absolute;left:calc(50% + 86px);top:50%;width:12px;height:12px;background:#000000;border:1px solid #000000;border-radius:1px;transform:translate(-50%,-50%)}
+
+/* ── topnav / S (1917:30150) — 0,48 360x48 ──────────────────── */
+.n2s .n2tn{position:absolute;left:0;top:48px;width:360px;height:48px;background:#FFFFFF;display:flex;gap:24px;align-items:center;justify-content:center;padding:0 24px}
+.n2s .n2tn>.cb{display:flex;flex-direction:column;height:100%;align-items:center;justify-content:center;padding:8px;width:8px;flex-shrink:0}
+.n2s .n2tn>.ti{flex:1 0 0;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:center;font-weight:700;font-size:18px;line-height:24px;text-align:right;color:#25252E}
+
+/* ── body (auto-layout, px24 py8, gap 8) ────────────────────── */
+.n2s .n2body{position:absolute;left:0;right:0;display:flex;flex-direction:column;gap:8px;align-items:flex-start;padding:8px 24px}
+.n2s .n2sec{display:flex;flex-direction:column;align-items:flex-start;width:100%;flex-shrink:0}
+.n2s .n2sec.ctr{align-items:center}
+.n2s .n2list{display:flex;flex-direction:column;align-items:flex-start;width:100%;flex-shrink:0}
+
+.n2s .n2body.c{align-items:center;gap:0}   /* frames 13/14/17/18: items-center, no gap */
+.n2s .n2list.g8{gap:8px}                   /* list with 8px item gap */
+
+/* ── section header (1917:30144) — h32, py6 ─────────────────── */
+.n2s .n2sh{display:flex;height:32px;align-items:center;justify-content:space-between;padding:6px 0;width:100%;flex-shrink:0}
+.n2s .n2sh>.t{font-weight:700;font-size:14px;line-height:32px;letter-spacing:-.14px;color:#25252E;white-space:nowrap;display:flex;flex-direction:column;justify-content:center}
+.n2s .n2sh>.clear{display:flex;gap:4px;height:20px;align-items:center;justify-content:center;padding:0 6px;width:32px;flex-shrink:0}
+.n2s .n2sh>.clear.on{width:auto;height:auto}   /* hug variant, carries the clear icon */
+
+/* ── List Item (1917:30157) — bg card ───────────────────────── */
+.n2s .n2li{position:relative;background:#F9F9FA;box-shadow:inset 0 0 0 1px rgba(0,0,0,.02);display:flex;gap:8px;align-items:center;padding:16px;border-radius:12px;width:100%;flex-shrink:0}
+.n2s .n2li>.av{position:relative;width:40px;height:40px;border-radius:22.5px;flex-shrink:0}
+.n2s .n2li>.av>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:22.5px;pointer-events:none}
+.n2s .n2li>.bank{position:relative;width:40px;height:40px;flex-shrink:0}   /* leading / <bank> — square, no radius */
+.n2s .n2li>.bw{display:flex;flex:1 0 0;min-width:0;flex-direction:row;align-items:center;align-self:stretch}
+.n2s .n2li .bd{display:flex;flex:1 0 0;min-width:0;flex-direction:column;height:100%;align-items:flex-start;justify-content:center;color:#25252E}
+.n2s .n2li .n{font-weight:700;font-size:14px;line-height:24px;width:100%}
+.n2s .n2li .s{font-weight:400;font-size:11px;line-height:16px;letter-spacing:.22px;width:100%;font-variant-numeric:lining-nums tabular-nums}
+.n2s .n2li>.ed{position:absolute;top:-1px;bottom:-1px;right:15px;display:flex;align-items:center;justify-content:center;padding:16px 0}
+.n2s .n2li .chk{background:#FF7500;display:flex;align-items:center;justify-content:center;padding:4px;border-radius:24px;flex-shrink:0}
+
+/* ── input / amount (1917:30214) — h88 ──────────────────────── */
+.n2s .n2amt{background:#F9F9FA;box-shadow:inset 0 0 0 1px rgba(0,0,0,.02);display:flex;flex-direction:column;height:88px;align-items:center;justify-content:space-between;padding:16px 16px 12px;border-radius:12px;width:100%;flex-shrink:0}
+.n2s .n2amt>.r{display:flex;align-items:center;justify-content:space-between;padding-bottom:4px;width:100%;flex-shrink:0}
+.n2s .n2amt .cur{display:flex;gap:3px;align-items:center;flex-shrink:0}
+.n2s .n2amt .big{font-weight:700;font-size:24px;line-height:32px;letter-spacing:-.24px;color:#25252E;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums;display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+.n2s .n2amt .big.rt{text-align:right}
+.n2s .n2amt>.vb{display:flex;align-items:center;width:100%;flex-shrink:0}
+.n2s .n2amt .bal{font-weight:500;font-size:13px;line-height:16px;letter-spacing:-.13px;color:#25252E;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+
+/* ── input / amount, note variant (gap 6, px16 py12, hug) ───── */
+.n2s .n2note{background:#F9F9FA;box-shadow:inset 0 0 0 1px rgba(0,0,0,.02);display:flex;flex-direction:column;gap:6px;align-items:center;padding:12px 16px;border-radius:12px;width:100%;flex-shrink:0}
+.n2s .n2note>.vb{display:flex;align-items:center;width:100%;flex-shrink:0}
+.n2s .n2note .tx{flex:1 0 0;min-width:0;font-weight:500;font-size:13px;line-height:16px;letter-spacing:-.13px;color:#25252E;font-variant-numeric:lining-nums tabular-nums}
+
+/* ── copy / 2columns (1917:30187) — p18, col gap 18 ─────────── */
+.n2s .n2c2{background:#F9F9FA;box-shadow:inset 0 0 0 1px rgba(0,0,0,.02);display:flex;align-items:flex-start;justify-content:space-between;overflow:hidden;padding:18px;border-radius:12px;width:100%;flex-shrink:0}
+.n2s .n2c2>.l{display:flex;flex-direction:column;gap:18px;align-items:flex-start;font-weight:500;font-size:12px;line-height:16px;letter-spacing:-.12px;color:#25252E;white-space:nowrap;flex-shrink:0}
+.n2s .n2c2>.l.nt{letter-spacing:0}   /* withdraw preview: left column carries no tracking */
+.n2s .n2c2>.r{display:flex;gap:12px;align-items:flex-start;justify-content:flex-end;flex-shrink:0}
+.n2s .n2c2 .vals{display:flex;flex-direction:column;gap:18px;align-items:flex-end;font-weight:700;font-size:12px;line-height:16px;letter-spacing:-.12px;color:#25252E;text-align:right;white-space:nowrap;flex-shrink:0;font-variant-numeric:lining-nums tabular-nums}
+.n2s .n2c2>.l>*,.n2s .n2c2 .vals>*{display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+
+/* ── copy / secondary body (1917:30207) — px12 py8 ──────────── */
+.n2s .n2scb{position:absolute;display:flex;align-items:center;justify-content:center;padding:8px 12px}
+.n2s .n2scb>p{flex:1 0 0;min-width:0;font-weight:500;font-size:11px;line-height:16px;letter-spacing:.11px;color:#25252E;text-align:center}
+
+/* ── fee info (1917:30249) ──────────────────────────────────── */
+.n2s .n2fee{display:flex;align-items:flex-start;padding:8px 16px;width:100%;flex-shrink:0}
+.n2s .n2fee.ctr{gap:6px;justify-content:center}
+.n2s .n2fee>span{flex:1 0 0;min-width:0;font-weight:500;font-size:11px;line-height:16px;letter-spacing:.44px;color:#7A7A82;font-variant-numeric:lining-nums tabular-nums}
+
+/* ── button dock / large (1917:30142) — 360x88, p24 ─────────── */
+.n2s .n2dock{position:absolute;left:0;width:360px;height:88px;background:#FFFFFF;display:flex;align-items:center;padding:24px}
+.n2s .n2btn{display:flex;flex:1 0 0;min-width:0;align-items:center;justify-content:center;padding:8px 16px;border-radius:24px;background:#FF7500}
+.n2s .n2btn>span{flex:1 0 0;min-width:0;font-weight:700;font-size:14px;line-height:24px;letter-spacing:.14px;text-align:center;color:#FFFFFF}
+.n2s .n2btn.dim{opacity:.4}
+
+/* ── Bottom sheet combo (1986:29379) — overlay, sheet 360x284 ─ */
+.n2s .n2sheet{position:absolute;inset:0}
+.n2s .n2sheet>.shader{position:absolute;inset:0;background:rgba(0,0,0,.56);-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
+.n2s .n2sheet>.sh{position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;padding:32px 0 16px;border-radius:24px 24px 0 0}
+.n2s .n2sheet .puller{position:absolute;left:50%;top:8px;width:72px;height:4px;background:#999999;border-radius:8px;transform:translateX(-50%)}
+.n2s .n2sheet .sbody{display:flex;flex-direction:column;align-items:center;padding:8px 24px;width:100%;flex-shrink:0}
+.n2s .n2sheet .bigchk{display:flex;align-items:center;justify-content:center;padding:9.333px;border-radius:24px;background:linear-gradient(180deg,#FF7500,#FF9000);flex-shrink:0}
+.n2s .n2sheet .chk56{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:40px;background:linear-gradient(180deg,#FF7500,#FF9000);flex-shrink:0}   /* edge / check56 (40:23406) */
+.n2s .n2sheet .cc{display:flex;flex-direction:column;align-items:center;width:100%;flex-shrink:0}
+.n2s .n2sheet .th{display:flex;gap:40px;align-items:center;justify-content:center;padding:16px 0;width:100%;flex-shrink:0}
+.n2s .n2sheet .th>div{flex:1 0 0;min-width:0;display:flex;flex-direction:column;justify-content:center;font-weight:700;font-size:16px;line-height:24px;letter-spacing:.16px;color:#41414D;text-align:center}
+.n2s .n2sheet .bc{display:flex;align-items:flex-start;justify-content:center;width:100%;flex-shrink:0}
+.n2s .n2sheet .bc>p{flex:1 0 0;min-width:0;font-weight:500;font-size:12px;line-height:20px;letter-spacing:.12px;color:#25252E;text-align:center}
+.n2s .n2sheet .sdock{background:#FFFFFF;display:flex;align-items:center;padding:24px;width:100%;flex-shrink:0}
+
+/* ── numpad suggestions (2001:29306) — 360x42 ───────────────── */
+.n2s .n2sug{position:absolute;left:0;width:360px;height:42px;background:#F6F6F6}
+.n2s .n2sug>.f{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;padding:4px 48px;font-weight:700;font-size:12px;line-height:24px;letter-spacing:-.12px;color:#25252E;white-space:nowrap}
+.n2s .n2sug>.f>*{display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+
+/* ── Numeric Keyboard (7:2481) — 360x241 ────────────────────── */
+.n2s .n2kb{position:absolute;left:0;width:360px;height:241px;background:#E6E6E6;overflow:hidden}
+.n2s .n2kb>.keys{position:absolute;left:17px;right:18px;top:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.n2s .n2kb .row{display:flex;gap:7px;align-items:flex-start;width:100%;flex-shrink:0}
+.n2s .n2kb .k{position:relative;flex:1 0 0;min-width:0;height:48px;border-radius:6px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}
+.n2s .n2kb .k.n{background:#FFFFFF}
+.n2s .n2kb .k.g{background:#D1D1D1}
+.n2s .n2kb .k>span{position:absolute;left:calc(50% + .5px);top:calc(50% + 13px);transform:translate(-50%,-100%);font-family:'RobotoM',ui-sans-serif,system-ui,sans-serif;font-weight:400;font-size:25px;line-height:25px;color:#000000;text-align:center;white-space:nowrap}

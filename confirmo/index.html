@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en"><head><base href="/confirmo/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirmo &middot; C&eacute;sar Garcia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../case-shared.css">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#12101a;--ink:#f5f3fb;--body:#cfc9e2;--mut:#918aab;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44);--paperT:var(--flagbg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 Inter,sans-serif;font-weight:450;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:var(--grain);pointer-events:none;z-index:60}
+::selection{background:var(--sel)}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ctlbd);border-radius:8px;border:3px solid var(--bg)}
+.flag .fv b{color:var(--accent);font-weight:600}
+
+.page{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad) 120px;position:relative}
+.page::before{content:"";position:absolute;left:-180px;right:-180px;top:-30px;height:780px;background:radial-gradient(720px 460px at 50% 110px,var(--glow),transparent 72%);z-index:-1;pointer-events:none}
+h1,h2{text-wrap:balance}
+p b{color:inherit;font-weight:inherit}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+.sec:last-of-type{position:relative}
+h1,h2{background:linear-gradient(115deg,var(--accent2) 10%,var(--accent) 78%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:var(--ink);padding-bottom:.18em}
+h1{margin-bottom:calc(24px - .18em)}
+h2{margin-bottom:calc(20px - .18em)}
+h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
+
+/* placeholder */
+.ph{border:1.5px dashed var(--phbd);border-radius:16px;background:var(--phbg);background-image:repeating-linear-gradient(45deg,transparent,transparent 17px,var(--line) 17px,var(--line) 18px);padding:28px;margin:32px 0 10px;display:flex;align-items:center;justify-content:center;text-align:center}
+.ph span{font:500 12.5px/1.75 'IBM Plex Mono',monospace;color:var(--mut);max-width:58ch;background:var(--bg);padding:14px 18px;border-radius:10px}
+.ph span b{color:var(--accent);font-weight:600;display:block;margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase;font-size:10.5px}
+.ph.tall{min-height:340px}
+.ph.mid{min-height:240px}
+.ph.small{min-height:150px;max-width:560px}
+
+/* hero: two flows, cash in, two lines out */
+.hero{position:relative;margin:var(--figT1) 0 var(--figB);aspect-ratio:836/470}
+.hstage{position:absolute;left:0;top:0;width:836px;height:470px;transform-origin:0 0;transform:scale(var(--hs,1))}
+.hlines{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.hz0{z-index:0;filter:brightness(.87)}
+.hz2{z-index:2}
+.hz4{z-index:4}.hv0{position:absolute;left:230px;top:0;display:flex;gap:13px;z-index:1}
+.hv0>.glassf::after{content:"";position:absolute;inset:0;background:rgba(10,8,18,.14);z-index:2;border-radius:inherit;pointer-events:none}
+.hv0>.glassf{width:98px;position:relative}
+.hero .glassf{display:block}
+.hv4{position:absolute;left:162px;top:142px;display:flex;gap:16px;z-index:3}
+.hv4>.glassf{width:126px;position:relative;box-shadow:var(--shHb)}
+.hcash{position:absolute;left:2px;top:182px;z-index:4;filter:var(--shH);font:700 21px/1 'IBM Plex Mono',monospace;color:var(--ink);letter-spacing:-.02em}
+
+
+/* 02 accretion stack (horizontal march) */
+.acc{position:relative;height:355px;margin:40px 0 8px;pointer-events:none}
+.acc .pl{position:absolute;top:50%;width:200px;height:320px;margin-top:-185px;border:1.5px dashed var(--phbd);border-radius:18px;background:var(--bg);padding:17px 15px;display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start}
+.acc .pl::before{content:"";position:absolute;inset:0;border-radius:16px;background:var(--phbg)}
+.acc .p1{left:1%;transform:perspective(1600px) rotateX(50deg) rotateZ(-33deg) translateZ(0)}
+.acc .p2{left:25%;transform:perspective(1600px) rotateX(50deg) rotateZ(-33deg) translateZ(46px)}
+.acc .p3{left:49%;transform:perspective(1600px) rotateX(50deg) rotateZ(-33deg) translateZ(92px)}
+.acc .p4{left:73%;transform:perspective(1600px) rotateX(50deg) rotateZ(-33deg) translateZ(140px);box-shadow:-26px 38px 50px -28px rgba(0,0,0,.5)}
+.acc i{display:block;border-radius:4px;position:relative;z-index:1}
+.acc .r{height:9px;background:var(--hair);flex:1 1 100%}
+.acc .r.t{height:13px;flex-basis:62%;margin-right:auto}
+.acc .r.s{flex-basis:44%;margin-right:auto}
+.acc .b{height:22px;flex:1 1 100%;border:1px solid var(--hair);background:transparent;border-radius:7px}
+.acc .c{height:15px;flex:0 0 52px;border:1px solid var(--hair);border-radius:999px}
+.acc .new{background:var(--accent);opacity:.8}
+.acc .b.new,.acc .c.new{background:transparent;border-color:var(--accent);opacity:.95}
+.acc .b.warn{border-color:var(--danger);background:transparent}
+@media(max-width:760px){.acc{height:330px}.acc .pl{width:150px;height:250px;margin-top:-135px}.acc .p1{left:-2%}.acc .p2{left:20%}.acc .p3{left:42%}.acc .p4{left:64%}}
+/* 02 schema screens (technical, code-styled) */
+.g02grid{display:grid;grid-template-columns:minmax(0,1fr) 386px;gap:clamp(24px,3.5vw,44px);align-items:center}
+.g02s{zoom:.84}   /* 16% down: column follows so the graphic keeps its internal measure */
+.g02s{display:flex;align-items:center;justify-content:center;margin-top:6px}
+.scm{flex:0 0 176px;min-width:0;aspect-ratio:440/957;position:relative;overflow:hidden;border:1.5px solid var(--phbd);border-radius:16px;background:var(--bg);padding:12px;font:500 9.5px/1.8 'IBM Plex Mono',monospace;color:var(--body);filter:blur(.7px)}
+.scm::before{content:"";position:absolute;inset:0;border-radius:14px;background:var(--phbg)}
+.scm>*{position:relative;z-index:1}
+.scm+.scm{flex:0 0 188px;margin-left:-52px;z-index:1;background:var(--glass);backdrop-filter:blur(4.5px);-webkit-backdrop-filter:blur(4.5px);filter:blur(.3px)}
+.scm:nth-child(3){flex:0 0 200px;z-index:2;filter:none}
+.scm:nth-child(3) .cl{max-height:390px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 79%,transparent 100%);mask-image:linear-gradient(to bottom,#000 79%,transparent 100%)}
+.scm .sh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--hair);padding-bottom:8px;margin-bottom:11px}
+.scm .sh b{font-weight:600;font-size:8.5px;letter-spacing:.12em;color:var(--ink)}
+.scm .sh i{font-style:normal;font-size:8px;color:var(--mut)}
+.scm .ui{border:1px solid var(--hair);border-radius:6px;padding:4px 8px;margin:9px 0 5px;color:var(--mut);display:flex;align-items:center;gap:6px}
+.scm .ui:first-of-type{margin-top:0}
+.scm .ui .dot{width:11px;height:11px;border-radius:50%;border:1px solid var(--hair);flex:0 0 11px}
+.scm .ui .sq{border-radius:3px}
+.scm .cl{white-space:pre;overflow:hidden;padding-left:8px}
+.scm .cl .fn{color:var(--accent)}
+.scm .cl .cm{color:var(--mut);opacity:.85}
+.scm .cl .wr{color:var(--danger)}
+@media(max-width:760px){.g02grid{grid-template-columns:minmax(0,1fr)}.g02s{max-width:430px}}
+/* 07 climb chart */
+.climb{max-width:64ch;margin:var(--figT) 0 var(--figB)}
+.climb svg{width:100%;height:auto;display:block}
+/* 03 priority list (side note, wireframe grocery style) */
+.s3grid{display:grid;grid-template-columns:minmax(0,1fr) 252px;gap:clamp(28px,4vw,58px);align-items:center}
+.plist{border:1.5px dashed var(--phbd);border-bottom:none;border-radius:12px 12px 0 0;background:var(--phbg);padding:14px 16px 30px;-webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 97%);mask-image:linear-gradient(to bottom,#000 74%,transparent 97%)}
+.plist .pl-h{font:600 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 10px}
+.plist .pi{display:flex;gap:10px;align-items:baseline;padding:12px 0;border-bottom:1px dashed var(--hair)}
+.plist .pi:last-child{border-bottom:none}
+.plist .n{font:500 10px/1 'IBM Plex Mono',monospace;color:var(--mut);flex:0 0 16px}
+.plist .t{font:500 11.6px/1.45 'IBM Plex Mono',monospace;color:var(--body)}
+.plist .pi.top .n{color:var(--accent);font-weight:600}
+.plist .pi.top .t{font-size:13px;font-weight:600;color:var(--ink)}
+.plist .pi.top .t i{font-style:normal;color:var(--accent);display:block;font-size:11px;font-weight:500;margin-top:2px}
+@media(max-width:760px){.s3grid{grid-template-columns:minmax(0,1fr)}.plist{max-width:320px}}
+
+/* receipts */
+
+/* 04 lines graphic */
+.glines{margin:var(--figT) 0 var(--figB)}
+.glines svg{width:100%;height:auto;display:block;overflow:visible}
+.glines image{filter:var(--shB)}
+.glines{position:relative}
+.gframe{position:absolute;z-index:1}
+.scw{display:block;position:relative;width:100%;aspect-ratio:402/874;overflow:hidden}
+.scw iframe{position:absolute;left:0;top:0;width:402px;height:874px;border:0;transform-origin:0 0;transform:scale(var(--s,1));pointer-events:none}
+.scw.v2{aspect-ratio:402/869.5}
+.scw.v2 iframe{height:869.5px}
+.gf1{left:0;top:2.89%;width:19.89%}
+.gf2{left:38.29%;top:2.89%;width:19.89%}
+.gf3{left:76.57%;top:2.89%;width:19.89%}
+.glines text{font-family:'IBM Plex Mono',monospace}
+/* 04 grid: text/graphic · graphic/text */
+.g04{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px) clamp(28px,5vw,64px);align-items:center;margin-top:10px}
+.g04 .ph{margin:0;min-height:220px}
+@media(max-width:760px){.g04{grid-template-columns:minmax(0,1fr)}.g04 .cellB{order:3}.g04 .cellC{order:4}}
+.s5g{display:flex;align-items:center;justify-content:flex-start}
+.s5g>.glassf{width:49.5%;max-width:228px;align-self:center}
+.s5g .glassf{position:relative;display:block}
+.s5g .v2w{position:relative;flex:0 0 54%;max-width:248px;margin-left:-38px;z-index:1}
+.s5g .mks{position:absolute;left:0;top:0;width:116.48%;height:100%;pointer-events:none}
+/* 06 v4 filmstrip */
+.v4line{display:flex;align-items:flex-start;gap:14px;margin:var(--figT) 0 var(--figB)}
+.v4line .gfx{flex:1 1 0;min-width:0;position:relative}
+.glassf{overflow:hidden;border-radius:calc(27.5px*var(--s,1) + 2.5px);backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.3);padding:2.5px}
+.glassf .scw{filter:none;box-shadow:0 0 8px rgba(255,255,255,.22);border-radius:calc(27.5px*var(--s,1));z-index:1}
+.glassf .vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0}
+
+/* states */
+.states{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:var(--figT) 0 var(--figB)}
+.state h4{margin:0 0 8px;font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--ink)}
+.state h4 i{font-style:normal;color:var(--mut);font-weight:500;letter-spacing:.02em;text-transform:none;display:block;margin-top:6px}
+.state .ph{margin:12px 0 0;min-height:130px;padding:16px}
+.state .ph span{padding:10px 12px;font-size:11.5px}
+/* live ConfirmoButton, verbatim from c2-v4 screens */
+.bslot{margin:12px 0 0;height:82px}
+.bstage{width:360px;font-family:'IBM Plex Sans',sans-serif;transform-origin:top left;transform:scale(.72)}
+.bstage .num{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.cbtn{height:96px;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(90deg,#b8a0f8,#7040f0)}
+.cbtn .tk{position:absolute;left:8px;top:50%;transform:translateY(-50%);width:80px;height:80px;border-radius:50%;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+.cbtn .tk img{width:80px;height:80px;display:block}
+.cbtn .tk.empty{background:rgba(255,255,255,.5)}
+.cbtn .nw{position:absolute;left:64px;top:calc(50% + 18px);transform:translateY(-50%);width:48px;height:48px;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.16);background:#333369}
+.cbtn .nw .mk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:31px;width:19.6px;display:block}
+.cbtn .nw .cb{position:absolute;right:2px;top:2px;width:12px;height:12px;display:block}
+.cbtn .nw.empty{background:rgba(255,255,255,.5)}
+.cbtn .bd{position:absolute;left:128px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:1px;color:#fff;opacity:.88;white-space:nowrap}
+.cbtn .bd .top{font-weight:600;font-size:16px;line-height:1.18;letter-spacing:-.16px}
+.cbtn .bd .mid{display:flex;gap:4px;font-size:16px;line-height:1.18}
+.cbtn .bd .mid .on{font-weight:400}
+.cbtn .bd .mid .nwn{font-weight:600;letter-spacing:-.16px}
+.cbtn .bd .bot{font-weight:400;font-size:16px;line-height:1.18}
+.cbtn.empty .bd,.cbtn.faded .bd{opacity:.4}
+.cbtn.empty .bd .top{font-style:italic;font-weight:400}
+.cbtn .bd .bot.sel{font-style:italic;font-weight:400}
+.cbtn .act{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#fff}
+.glassb{position:relative;overflow:hidden;border-radius:31px;backdrop-filter:blur(9.7px) saturate(1.2);-webkit-backdrop-filter:blur(9.7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.55),rgba(255,255,255,.28) 50%,rgba(255,255,255,.16));border:1.39px solid rgba(255,255,255,.6);box-shadow:0 16.7px 38.9px rgba(0,0,0,.3);padding:6.94px}
+.glassb .cbtn{position:relative;z-index:1;box-shadow:0 0 11.1px rgba(255,255,255,.22)}
+.glassb .vbb{position:absolute;left:-2.8px;top:-2.8px;right:-2.8px;bottom:-2.8px;background:linear-gradient(90deg,#b8a0f8,#7040f0);filter:blur(8.3px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0}
+.glassb.gdark .vbb{background:linear-gradient(90deg,#2f0b8e 24%,#7040f0)}
+.cbtn .act svg,.cbtn .act img{display:block}
+.cbtn.dark{background:linear-gradient(90deg,#2f0b8e 24%,#7040f0);box-shadow:0 4px 14px rgba(112,64,240,.24)}
+@media(max-width:760px){.bslot{height:auto}.bstage{width:100%;max-width:360px;transform:none}}
+
+.pull{margin:26px 0 0;font-size:clamp(18px,1.9vw,22px);line-height:1.5;font-weight:600;letter-spacing:-.015em;color:var(--ink);max-width:34ch}
+.pull em{font-style:normal;color:var(--accent)}
+
+.endcta{margin-top:34px}
+.next{display:inline-block;font:600 15px/1 'IBM Plex Mono',monospace;color:var(--accent);border:1px solid var(--ctlbd);background:var(--ctl);padding:15px 22px;border-radius:12px;text-decoration:none}
+
+@media(max-width:760px){
+  .states{grid-template-columns:minmax(0,1fr)}
+  .page{padding:0 22px 90px}
+}
+</style>
+</head><body>
+
+<div class="flag"><a class="hb" href="/">Home</a><span class="fv">Confirmo</span><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></div>
+
+<div class="page">
+
+  <!-- 01 · hero -->
+  <header class="hd">
+    <h1>Tripled conversion, <em>barely scratched the surface</em>.</h1>
+    <p class="lede">Confirmo moves three quarters of a billion dollars a year through a checkout with a 9% success rate, running on a backend that couldn&rsquo;t be touched. And without touching it, I tuned the flow into an extra $135M yearly.</p>
+
+    <div class="hero" aria-label="$750M arrives at the checkout: the old flow converts 9%, the redesigned flow 43%"><div class="hstage">
+      <svg class="hlines hz0" viewBox="0 0 836 470"><path d="M80 192 C118 192 138 106 185 106 H695" fill="none" stroke="var(--mut)" stroke-width="9" stroke-linecap="round" opacity=".55"/></svg>
+      <div class="hv0"><span class="glassf"><img class="vb" src="hero/c2-v0-01.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-01.html#embed" scrolling="no" loading="lazy" title="c2-v0-01"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v0-02.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-02.html#embed" scrolling="no" loading="lazy" title="c2-v0-02"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v0-06.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-06.html#embed" scrolling="no" loading="lazy" title="c2-v0-06"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v0-09.png" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-09.html#embed" scrolling="no" loading="lazy" title="c2-v0-09"></iframe></span></span></div>
+      <div class="hv4"><span class="glassf"><img class="vb" src="hero/c2-v4-01.png" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-01.html#embed" scrolling="no" loading="lazy" title="c2-v4-01"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v4-02.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-02.html#embed" scrolling="no" loading="lazy" title="c2-v4-02"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v4-06.png" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-06.html#embed" scrolling="no" loading="lazy" title="c2-v4-06"></iframe></span></span><span class="glassf"><img class="vb" src="hero/c2-v4-09.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-09.html#embed" scrolling="no" loading="lazy" title="c2-v4-09"></iframe></span></span></div>
+      <svg class="hlines hz2" viewBox="0 0 836 470"><path d="M80 192 C118 192 138 279 185 279 H758" fill="none" stroke="var(--accent)" stroke-width="13" stroke-linecap="round"/></svg><svg class="hlines hz4" viewBox="0 0 836 470"><text x="707" y="111.5" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="600" fill="var(--ink)">9%</text><text x="770" y="285" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="var(--ink)">43%</text></svg><div class="hcash">$750M</div>
+    </div></div>
+
+    <div class="band">
+      <div class="in">
+        <div class="stat"><b>43%</b><span>success, key markets</span></div>
+        <div class="stat"><b>3x</b><span>from 9 to 27%</span></div>
+        <div class="stat"><b>$135M</b><span>added yearly</span></div>
+        <div class="stat"><b>0</b><span>backend changes</span></div>
+      </div>
+      <p class="roleline"><b>Product Design Lead, the company&rsquo;s first designer.</b> The full product surface, buyer and merchant, plus brand and website. I built the component library and design system from scratch, and moved design to the front of product with the CPO. 2025-26.</p>
+    </div>
+  </header>
+
+  <!-- 02 · state of company -->
+  <section class="sec">
+    <p class="lab">context</p>
+    <h2>A flow <em>hardened</em> over the years.</h2>
+    <div class="g02grid">
+      <div>
+      <p>Confirmo grew its yearly volume from 63 to 750 million dollars in three years, and today powers around 60% of prop trading payments worldwide. All through a single flow, built to keep up with crypto&rsquo;s technical requirements.</p>
+      <p>Reverse-engineered from the product, a crypto invoice, the flow was never tailored to humans. A sequence of inputs mandated by spec became stiff, with so many hard dependencies we simply couldn&rsquo;t afford to change.</p>
+      </div>
+      <div class="g02s" aria-label="The same payment screen as a backend blueprint, growing in complexity over three years">
+      <div class="scm">
+        <div class="sh"><b>PAYMENT &#183; v2.4</b><i>blocks: 4</i></div>
+        <div class="cl"><span class="fn">total.crypto</span>
+  precision: 8dp
+</div>
+      </div>
+      <div class="scm">
+        <div class="sh"><b>PAYMENT &#183; v11.1</b><i>blocks: 14</i></div>
+        <div class="cl"><span class="fn">warn.banner</span>
+<span class="fn">tooltip.hint</span>
+<span class="fn">total.fiat</span>
+  precision: 6dp
+  fiat.ref: EUR
+<span class="fn">xr.rate</span>
+  window: 15 min
+<span class="fn">qr.render(addr)</span>
+<span class="fn">addr.copy</span>
+  wrap: 2 lines
+<span class="fn">btn.payWallet</span>
+  fallback: manual
+</div>
+      </div>
+      <div class="scm">
+        <div class="sh"><b>PAYMENT &#183; v21.8</b><i>blocks: 26</i></div>
+        <div class="cl"><span class="wr">warn.banner</span>
+  match(asset,net)
+<span class="fn">tooltip.expand</span>
+  asset: USDC (ERC-20)
+  network: Ethereum
+  contract: 0xa0b8&#8230;6eb48
+  <span class="wr">recovery.fee</span>
+  no.guarantee
+<span class="fn">total.fiat</span>
+  precision: 6dp
+  fiat.ref: EUR
+<span class="fn">xr.table</span>
+  rate.locked
+  product.price
+  network.fees
+<span class="fn">qr.render(addr)</span>
+  format: EIP-681
+<span class="fn">addr.copy</span>
+  checksum: EIP-55
+  wrap: 2 lines
+<span class="fn">btn.payWallet</span>
+  deeplink: wc://
+  fallback: manual
+<span class="wr">timer.expire</span>
+  on.zero: invoice.void
+<span class="fn">footer.locale</span></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · the search -->
+  <section class="sec">
+    <p class="lab">discovery</p>
+    <h2>Looking for <em>trouble</em>.</h2>
+    <div class="s3grid">
+      <div>
+        <p>We were failing to convert 680 million dollars a year. A leak this big had many holes to patch. And with just three steps to the flow, analytics didn&rsquo;t have enough data to paint a full picture.</p>
+        <p>So I added layers. Mapping and reviewing every single screen, looking for wins. Running workshops with Sales, Engineering and Product, logging pain points and opportunities. And finally, my favorite source for insight: Customer Support.</p>
+        <p>With a clear picture and my priorities in place, I started on the loudest complaint: <b>the impossible back button</b>.</p>
+      </div>
+      <div class="plist">
+        <p class="pl-h">priorities</p>
+        <div class="pi top" style="opacity:1"><span class="n">01</span><span class="t">Back button<i>(impossible tho)</i></span></div>
+        <div class="pi"><span class="n">02</span><span class="t">Users sending wrong funds</span></div>
+        <div class="pi"><span class="n">03</span><span class="t">Users sending wrong amount</span></div>
+        <div class="pi"><span class="n">04</span><span class="t">Multi-method payments</span></div>
+        <div class="pi" style="opacity:.7"><span class="n">05</span><span class="t">No feedback on fail</span></div>
+        <div class="pi" style="opacity:.45"><span class="n">06</span><span class="t">Can&rsquo;t connect wallet</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · the trap -->
+  <section class="sec">
+    <p class="lab">root cause</p>
+    <h2>Two taps, <em>you&rsquo;re out</em>.</h2>
+    <p>It turns out, the back button was really impossible. Once an Invoice is created, it listens for payment until ultimately expiring. Deletion or reversal is purposely absent to avoid payments landing on a dead invoice, rendering funds irreversibly lost.</p>
+    <p>The flow starts with a list of tokens, a tap selects one, revealing networks. The second tap selects a network, but triggers five events in total. The selected pair locks the rate, the rate creates an invoice, and the invoice is final: the selection can no longer change, so the user is pushed out.</p>
+
+    <div class="glines">
+      <svg viewBox="0 0 920 424">
+        <defs>
+          <marker id="m04" markerWidth="10" markerHeight="10" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L8,4.5 L1,8 Z" fill="var(--mut)"/></marker>
+          <radialGradient id="scrglow" cx="50%" cy="45%" r="85%"><stop offset="0" stop-color="var(--accent)" stop-opacity=".06"/><stop offset=".25" stop-color="var(--accent)" stop-opacity=".037"/><stop offset=".45" stop-color="var(--accent)" stop-opacity=".02"/><stop offset=".65" stop-color="var(--accent)" stop-opacity=".009"/><stop offset=".82" stop-color="var(--accent)" stop-opacity=".003"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient><filter id="glowsoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="22"/></filter>
+          <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".35" stop-color="#fff" stop-opacity=".05"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <linearGradient id="sheen2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".38" stop-color="#fff" stop-opacity=".07"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        </defs><g transform="translate(-16.3 0)">
+        <ellipse cx="107.8" cy="207" rx="102" ry="140" fill="url(#scrglow)" filter="url(#glowsoft)"/>
+        <ellipse cx="460"   cy="207" rx="102" ry="140" fill="url(#scrglow)" filter="url(#glowsoft)"/>
+        <ellipse cx="812.2" cy="207" rx="102" ry="140" fill="url(#scrglow)" filter="url(#glowsoft)"/>
+
+        
+
+        <!-- key -->
+        <g font-size="11.5">
+          <circle cx="25" cy="417" r="3.2" fill="var(--ok)" stroke="var(--ok)" stroke-width="1.2"/>
+          <text x="36" y="420.5" fill="var(--body)">expected</text>
+        </g>
+
+        <!-- tap 1: forward, at the USDC row -->
+        <text x="228" y="87" font-size="10" font-weight="600" letter-spacing="2" fill="var(--mut)">ONE TAP</text>
+        <line x1="212" y1="101" x2="356" y2="101" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round" marker-end="url(#m04)"/>
+        <g font-size="11.5" fill="var(--body)">
+          <circle cx="217" cy="126" r="3.2" fill="var(--ok)" stroke="var(--ok)" stroke-width="1.2"/>
+          <text x="228" y="129.5" fill="var(--ok)">token selected</text>
+        </g>
+
+        <!-- tap 2: forward + the five triggers -->
+        <text x="580" y="87" font-size="10" font-weight="600" letter-spacing="2" fill="var(--mut)">ONE TAP</text>
+        <line x1="564" y1="101" x2="708" y2="101" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round" marker-end="url(#m04)"/>
+        <g font-size="11.5" fill="var(--body)">
+          <circle cx="569" cy="126" r="3.2" fill="var(--ok)" stroke="var(--ok)" stroke-width="1.2"/><text x="580" y="129.5" fill="var(--ok)">network selected</text>
+          <path d="M565.8 148h6.4M569 144.8v6.4" fill="none" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round"/><text x="580" y="151.5">pair saved</text>
+          <path d="M565.8 170h6.4M569 166.8v6.4" fill="none" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round"/><text x="580" y="173.5">rate locked</text>
+          <path d="M565.8 192h6.4M569 188.8v6.4" fill="none" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round"/><text x="580" y="195.5">invoice created</text>
+          <path d="M565.8 214h6.4M569 210.8v6.4" fill="none" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round"/><text x="580" y="217.5">pushed to Payment</text>
+        </g>
+
+        <!-- back 2 to 1: possible, at footer top -->
+        <line x1="356" y1="353" x2="212" y2="353" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round" marker-end="url(#m04)"/>
+        <g transform="translate(267,314) scale(.85)" display="none"><path d="M9,21 L17,29 L31,12" fill="none" stroke="#2f8f5a" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+
+        <!-- back 3 to 2: broken, at footer top -->
+        <line x1="708" y1="353" x2="661.8" y2="353" stroke="var(--mut)" stroke-width="1.8" stroke-linecap="round" marker-end="url(#m04)"/>
+        <g transform="translate(619.1,336) scale(.85)"><path d="M2 10 L10 2 L20 12 L30 2 L38 10 L28 20 L38 30 L30 38 L20 28 L10 38 L2 30 L12 20 Z" fill="#c53a2c"/></g>
+      </g></svg>
+      <div class="gframe gf1 glassf"><img class="vb" src="hero/c2-v0-01.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-01.html#embed" scrolling="no" loading="lazy" title="c2-v0-01"></iframe></span></div>
+      <div class="gframe gf2 glassf"><img class="vb" src="hero/c2-v0-02.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-02.html#embed" scrolling="no" loading="lazy" title="c2-v0-02"></iframe></span></div>
+      
+      <div class="gframe gf3 glassf"><img class="vb" src="hero/c2-v0-05.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-05.html#embed" scrolling="no" loading="lazy" title="c2-v0-05"></iframe></span></div>
+    </div>
+
+    <p>Users simply trying to see a preview of total to pay were now stuck on a new screen. But the problem wasn&rsquo;t navigation, it was triggering an invoice on network selection.</p>
+
+</section>
+
+  <!-- 05 · ship fast, ship wrong -->
+  <section class="sec">
+    <p class="lab">iteration</p>
+    <h2>Ship fast, get <em>signal</em>.</h2>
+    <div class="g04">
+      <div class="cellC s5g"><span class="glassf"><img class="vb" src="hero/c2-v0-06.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v0-06.html#embed" scrolling="no" loading="lazy" title="c2-v0-06"></iframe></span></span><span class="v2w"><span class="glassf"><img class="vb" src="hero/c2-v2-06.png" alt="" aria-hidden="true"><span class="scw v2"><iframe src="c2-v2-06.html#embed" scrolling="no" loading="lazy" title="c2-v2-06"></iframe></span></span><svg class="mks" viewBox="0 0 311 581" aria-hidden="true">
+        <g transform="translate(286,14) scale(.6)"><path d="M9,21 L17,29 L31,12" fill="none" stroke="#2f8f5a" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g transform="translate(286,69) scale(.6)"><path d="M9,21 L17,29 L31,12" fill="none" stroke="#2f8f5a" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g transform="translate(286,236) scale(.6)"><path d="M9,21 L17,29 L31,12" fill="none" stroke="#2f8f5a" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g transform="translate(287.6,455.6) scale(.52)"><path d="M2 10 L10 2 L20 12 L30 2 L38 10 L28 20 L38 30 L30 38 L20 28 L10 38 L2 30 L12 20 Z" fill="#c53a2c"/></g>
+        <g transform="translate(286,522) scale(.6)"><path d="M9,21 L17,29 L31,12" fill="none" stroke="#2f8f5a" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg></span></div>
+      <div class="cellD">
+        <p>With the flow set in stone, I turned to the surface, transforming every pain point into an improved experience. Iterating. Shipping fast. At 9%, risk was negligible and the signal worth it.</p>
+        <p>The first iterations got many things right, except my biggest bet: breadcrumb navigation. First tap teaches users the push forward, so by the second it&rsquo;s expected. But the mechanics hadn&rsquo;t changed. That same first tap also tells users they can go back. Except by the second tap they were stuck again, with added frustration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · the forward button + results -->
+  <section class="sec">
+    <p class="lab">solution</p>
+    <h2>With no way back, I showed users <em>the way forward</em>.</h2>
+    <p>Everyone wanted a back button. But I knew the problem was creating an invoice, from a selection tap. A mismatch between action and outcome. With the triggers off-limits in the backend, I looked to manipulate the flow from the frontend, capturing the action, and postponing the outcome.</p>
+    <p>Selection taps would be saved on the frontend, reflecting state on the new button. This allowed the user to preview multiple pairings, without triggering the backend.</p>
+    <div class="states">
+      <div class="state"><h4>ASLEEP<i>nothing chosen yet</i></h4>
+        <div class="bslot"><div class="bstage"><div class="glassb"><div class="vbb"></div><div class="cbtn empty"><div class="tk empty"></div><div class="nw empty"></div><div class="bd"><div class="top">select token</div></div></div></div></div></div></div>
+      <div class="state"><h4>WAKING<i>token picked, network pending</i></h4>
+        <div class="bslot"><div class="bstage"><div class="glassb"><div class="vbb"></div><div class="cbtn"><div class="tk"><img src="assets/cb-usdc.svg" alt=""></div><div class="nw empty"></div><div class="bd"><div class="top num">11.284667 USDC</div><div class="bot sel">select network</div></div></div></div></div></div></div>
+      <div class="state"><h4>LIVE<i>ready, waiting on user</i></h4>
+        <div class="bslot"><div class="bstage"><div class="glassb gdark"><div class="vbb"></div><div class="cbtn dark"><div class="tk"><img src="assets/cb-usdc.svg" alt=""></div><div class="nw"><img class="mk" src="assets/cb-eth.svg" alt=""><img class="cb" src="assets/cb-chain.svg" alt=""></div><div class="bd"><div class="top num">11.284667 USDC</div><div class="mid"><span class="on">on</span> <span class="nwn">Ethereum network</span></div><div class="bot">(ERC20)</div></div><span class="act"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></div></div></div></div></div>
+    </div>
+
+    <p>This gave users agency over the transition. Once they tapped to proceed, the saved selection was sent to the backend wrapped as the old trigger-happy network tap.</p>
+
+  </section>
+
+  <!-- 06b · double duty -->
+  <section class="sec">
+    <p class="lab">user experience</p>
+    <h2>Running a <em>tight ship</em>.</h2>
+    <p>The new button became the anchor of the journey. In the first step it saves your selection and moves you forward when you&rsquo;re ready. In the second it carries the money: fiat price, exchange, conversion, and total to pay. In the last, it&rsquo;s a reference, ensuring peace of mind.</p>
+
+    <div class="v4line"><span class="gfx glassf"><img class="vb" src="hero/c2-v4-01.png" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-01.html#embed" scrolling="no" loading="lazy" title="c2-v4-01"></iframe></span></span><span class="gfx glassf"><img class="vb" src="hero/c2-v4-02.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-02.html#embed" scrolling="no" loading="lazy" title="c2-v4-02"></iframe></span></span><span class="gfx glassf"><img class="vb" src="hero/c2-v4-03-nonotif.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-03-nonotif.html#embed" scrolling="no" loading="lazy" title="c2-v4-03-nonotif"></iframe></span></span><span class="gfx glassf"><img class="vb" src="hero/c2-v4-06-fulldock.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-06-fulldock.html#embed" scrolling="no" loading="lazy" title="c2-v4-06-fulldock"></iframe></span></span><span class="gfx glassf"><img class="vb" src="hero/c2-v4-09.webp" alt="" aria-hidden="true"><span class="scw"><iframe src="c2-v4-09.html#embed" scrolling="no" loading="lazy" title="c2-v4-09"></iframe></span></span></div>
+  </section>
+
+  <!-- 07 · closer -->
+  <section class="sec">
+    <p class="lab">impact</p>
+    <h2>3x <em>success</em>.</h2>
+    <p>Traditional checkouts have success rates of 90% and above. Crypto is trickier, averaging closer to 24%. Confirmo trailed the industry at 9%, wasting over half a billion dollars a year in abandoned payments.</p>
+    <p>The redesign delivered. Reaching a 43% success rate in key markets, and 27% overall. It tripled the initial rate, and surpassed the industry average.</p>
+
+    <div class="climb" aria-label="Conversion rate: start 9%, industry average 24%, overall 27%, 43% in key markets">
+      <svg viewBox="0 -10 518 192">
+        <line x1="289" y1="16" x2="289" y2="176" stroke="var(--mut)" stroke-width="1.3" stroke-dasharray="1 6" stroke-linecap="round" opacity=".6"/>
+        <line x1="2" y1="34"  x2="108" y2="34"  stroke="var(--mut)" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+        <line x1="2" y1="96"  x2="324" y2="96"  stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" opacity=".55"/>
+        <line x1="2" y1="158" x2="516" y2="158" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+        <g font-family="'IBM Plex Mono',monospace">
+          <g font-size="10" font-weight="600" letter-spacing="1.6" fill="var(--mut)">
+            <text x="0" y="23">START</text>
+            <text x="0" y="85" fill="var(--ink)">OVERALL</text>
+            <text x="0" y="147" fill="var(--ink)">KEY MARKETS</text>
+            
+            
+            
+            <text x="289" y="6" text-anchor="middle">INDUSTRY</text>
+          </g>
+          <g font-size="10" font-weight="600" letter-spacing="1.6" text-anchor="end">
+            <text x="108" y="23" fill="var(--mut)">9%</text>
+            <text x="324" y="85" fill="var(--ink)">27%</text>
+            <text x="516" y="147" fill="var(--ink)">43%</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <p style="margin-top:26px">Without a single backend change, design alone added <b>135 million dollars</b> a year, raising total converted payments to $202M. This type of validation gave credence to the impact that can be derived from human behaviour analysis, which I followed up with the world&rsquo;s first crypto subscription service. The first Confirmo project built with design and AI right from the start.</p>
+
+  </section>
+
+  <div class="foot">C&eacute;sar Garcia &#183; Product Design Lead &#183; Confirmo</div>
+</div>
+
+<script>
+(function(){
+  var TH={
+    dark:{'--bg':'#12101a','--ink':'#f5f3fb','--body':'#cfc9e2','--mut':'#918aab','--accent':'#c0abf5','--line':'rgba(192,171,245,.15)','--hair':'rgba(192,171,245,.28)','--flagbg':'rgba(18,14,30,.88)','--flagink':'#c9c3de','--ctl':'rgba(255,255,255,.05)','--ctlbd':'rgba(192,171,245,.22)','--ctlon':'rgba(255,255,255,.13)','--phbg':'rgba(192,171,245,.045)','--phbd':'rgba(192,171,245,.35)','--danger':'#e0645a','--ok':'#57b57f','--shA':'drop-shadow(0 12px 26px rgba(0,0,0,.45))','--shB':'drop-shadow(0 18px 38px rgba(0,0,0,.55))','--shH':'drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3))','--shHb':'0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3)','--glow':'rgba(192,171,245,.07)','--accent2':'#e8e0ff','--grain':'.045','--sel':'rgba(192,171,245,.3)','--glass':'rgba(18,16,26,.44)'},
+    light:{'--bg':'#f5f3fa','--ink':'#211e30','--body':'#413c58','--mut':'#7d7794','--accent':'#6f45e0','--line':'rgba(70,45,140,.16)','--hair':'rgba(70,45,140,.24)','--flagbg':'rgba(247,244,253,.92)','--flagink':'#4a4460','--ctl':'rgba(88,54,168,.07)','--ctlbd':'rgba(88,54,168,.24)','--ctlon':'rgba(88,54,168,.13)','--phbg':'rgba(70,45,140,.04)','--phbd':'rgba(70,45,140,.3)','--danger':'#cf4f3e','--ok':'#2f8f5a','--shA':'drop-shadow(0 10px 18px rgba(40,28,80,.14))','--shB':'drop-shadow(0 14px 24px rgba(40,28,80,.18))','--shH':'drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13))','--shHb':'0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13)','--glow':'rgba(111,69,224,.05)','--accent2':'#9a6ff0','--grain':'.03','--sel':'rgba(111,69,224,.22)','--glass':'rgba(245,243,250,.44)'}
+  };
+  var mode='dark';
+  try{var sv=localStorage.getItem('v44'); if(TH[sv]) mode=sv;}catch(e){}
+  try{var h=(location.hash||'').slice(1); if(TH[h]) mode=h;}catch(e){}
+  function apply(){var v=TH[mode],r=document.documentElement;for(var k in v)r.style.setProperty(k,v[k]);r.setAttribute('data-theme',mode);try{localStorage.setItem('v44',mode);}catch(e){}}
+  window.setTheme=function(m){mode=m;apply();};
+  apply();
+  function fit(){var h=document.querySelector('.hero');if(h){var st=h.querySelector('.hstage');if(st)st.style.setProperty('--hs',h.clientWidth/836);}var ws=document.querySelectorAll('.scw');for(var i=0;i<ws.length;i++){var sc=ws[i].clientWidth/402;ws[i].style.setProperty('--s',sc);var g=ws[i].closest('.glassf');if(g)g.style.setProperty('--s',sc);}}
+  window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
+})();
+</script>
+<script>
+(function(){
+  var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
+  var SUN='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4.3\"/><path d=\"M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5\"/></svg>';
+  var MOON='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linejoin=\"round\"><path d=\"M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z\"/></svg>';
+  function get(){try{return localStorage.getItem(KEY)||"auto"}catch(e){return "auto"}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function paint(){
+    var sys=mq.matches?"dark":"light", p=get();
+    if(p!=="auto"&&p===sys){p="auto";set(p);}
+    window.setTheme(p==="auto"?sys:p);
+    var opp=sys==="dark"?"light":"dark";
+    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" data-v="'+opp+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
+                 '<button class="'+(p==="auto"?"on":"")+'" data-v="auto" title="Follow system ('+sys+')">Auto</button>';
+  }
+  function flip(){var sys=mq.matches?"dark":"light";set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");paint();}
+  el.addEventListener("click",flip);
+  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
+  mq.addEventListener("change",paint);
+  window.tt=flip;
+  paint();
+})();
+</script>
+
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
+  api_host:'https://eu.i.posthog.com',
+  persistence:'memory',        /* cookieless: no banner needed */
+  disable_session_recording:true,
+  autocapture:false,
+  capture_pageview:true,
+  capture_pageleave:true       /* gives time-on-page and exit page */
+});
+
+(function(){
+  var PAGE='confirmo', seen={}, secs={};
+
+  function depth(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-innerHeight;
+    if(max<=0) return 100;
+    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
+  }
+  function mark(){
+    var d=depth();
+    [25,50,75,100].forEach(function(m){
+      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+    });
+  }
+  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
+
+  /* which sections they actually reached, better than a raw percentage */
+  addEventListener('load',function(){
+    var list=[].slice.call(document.querySelectorAll('section.sec'));
+    if(!list.length||!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i=list.indexOf(e.target);
+        if(secs[i]) return; secs[i]=1;
+        var lab=e.target.querySelector('.lab');
+        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
+      });
+    },{threshold:.4});
+    list.forEach(function(s){io.observe(s);});
+  });
+
+  /* outbound clicks, tagged with the page they left from and how far down */
+  addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
+    var h=a.getAttribute('href')||'', kind=null;
+    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
+    else if(/linkedin\.com/i.test(h)) kind='linkedin';
+    else if(/^mailto:/i.test(h)) kind='email';
+    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
+    else if(/^\/(confirmo|mara|starcount)$/.test(h))
+      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
+  },true);
+})();
+</script>
+</body></html>

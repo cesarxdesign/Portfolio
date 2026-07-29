@@ -1,99 +1,204 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Cesar Garcia — Product Design Lead</title>
-<link rel="stylesheet" href="styles/case.css">
-</head>
-<body>
+<html lang="en"><head><base href="/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",(p==="auto"||p===sys)?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>César Garcia · Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<script src="spine.js"></script>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f3f4f5;--card:#fff;--ink:#1a1c1f;--body:#4a4e54;--mut:#878c93;--line:#e5e7ea;--accent:#5c626a;--sh1:0 1px 2px rgba(18,20,23,.05);--sh2:0 18px 44px -20px rgba(18,20,23,.22)}
+:root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 28px 44px;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:1080px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.tops{display:flex;align-items:center;gap:22px}
+.tops a{font-size:11px;line-height:1;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-decoration:none}
+.tops a:hover{color:var(--ink)}
+.thsw{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;position:relative;top:-1px}
+.thsw button{font:600 10px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;color:var(--mut);cursor:pointer;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
+.thsw button.ic{width:32px;padding:0;height:20px;display:inline-flex;align-items:center;justify-content:center}
+.thsw button.ic svg{width:14px;height:14px;display:block}
+.thsw button:hover{color:var(--ink)}
+.thsw button.on{background:var(--line);color:var(--ink)}
+header h1{margin:0;font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.03em}
+header p{margin:10px 0 0;color:var(--body);max-width:62ch;font-size:15.5px}
+header p b{color:var(--ink)}
+.vtag{color:var(--mut);font-size:12px}
+.grid{display:grid;gap:20px}
+.grid.mains{grid-template-columns:repeat(3,1fr);padding-top:44px}
+.gap{min-height:0}.gap.a{flex:2 0 0}.gap.b{flex:3 0 0}
+.grid.tail{grid-template-columns:repeat(4,1fr);margin-top:20px}
+a.card{display:flex;flex-direction:column;aspect-ratio:1/1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;color:var(--ink);overflow:hidden;position:relative;transition:transform .16s,box-shadow .16s;box-shadow:var(--sh1)}
+a.card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.mains .card::after{content:"";position:absolute;inset:auto 0 0 0;height:49%;transform:translateY(24%);pointer-events:none;z-index:0;background:linear-gradient(to top,var(--pc,transparent),transparent)}
+.card .media{z-index:1}
+.mains .card.ac-conf{--pc:rgba(112,64,240,.0893)}
+.mains .card.ac-mara{--pc:rgba(255,117,0,.1003)}
+.mains .card.ac-star{--pc:rgba(26,148,192,.16)}          /* light: deeper cyan, same alpha */
+[data-theme="dark"] .mains .card.ac-star{--pc:rgba(32,175,226,.16)}   /* dark keeps the brighter one */
+.card .kick{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.card h2{margin:8px 0 0;font-weight:800;letter-spacing:-.02em}
+.mains .card h2{font-size:clamp(17px,1.9vw,21px);line-height:1.25}
+.card .claim{margin:8px 0 0;color:var(--body);font-size:13.5px;line-height:1.5}
+.card .media{margin-top:auto;display:flex;justify-content:center;align-items:flex-end;gap:10px;min-height:0}
+.card .media img{max-height:150px;width:auto;max-width:46%;border-radius:10px;box-shadow:0 14px 26px -16px rgba(20,10,50,.4)}
+.card .media img.shot{max-width:96%;max-height:140px;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line)}
+/* mains: media grows from the bottom-right corner, bleeds off the edges */
+.mains .card .media{position:relative;z-index:2;margin:16px -40px -48px 0;flex:1;min-height:0;justify-content:flex-end;align-items:flex-start;gap:0}
+.mains .card .media img{max-height:260px;margin-top:10px;max-width:58%;border-radius:10px;box-shadow:0 18px 34px -22px rgba(0,0,0,.4),0 2px 46px 4px rgba(0,0,0,.09)}
+.mains .card.ac-mara .media .duo{white-space:nowrap}
+.mains .card .media .cs{display:inline-block;position:relative;width:117px;height:260px;margin-top:10px;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 18px 34px -22px rgba(0,0,0,.4),0 2px 46px 4px rgba(0,0,0,.09)}
+.mains .card .media .cs:first-child:not(:only-child){z-index:0}
+.mains .card.ac-mara .media img{position:relative;z-index:10;clip-path:inset(1.1px round 9px)}   /* 15.png ships with a 2px #d1d1d1 stroke baked in; 2 src px = 1.04 css px at this scale */
+.mains .card .media .cs iframe{position:absolute;left:0;top:0;width:288px;height:640px;border:0;transform-origin:0 0;transform:scale(.40625);pointer-events:none}
+.mains .card .media img:first-child:not(:only-child),.mains .card .media .cs:first-child:not(:only-child){transform:rotate(-8deg);transform-origin:50% 96%;z-index:1;margin-right:-26%}
+.mains .card .media img:last-child:not(:only-child){transform:rotate(6deg);transform-origin:50% 96%;z-index:2}
+.mains .card .media img.shot{max-width:none;max-height:250px;width:104%;margin-right:-46px;margin-top:8px;object-position:top left;border-radius:6px 0 0 6px;border:1px solid var(--line)}
+.tail .card{padding:18px;aspect-ratio:1/.77}
+.tail .card h2{font-size:15px}
+.tail .card .claim{font-size:12.5px}
+.tail .card .role{margin-top:auto;font-size:11.5px;color:var(--mut)}
+.ptag{margin-top:26px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
+.ptag b{color:var(--body);font-weight:600}
+.foot{padding-top:44px;color:var(--mut);font:500 16px/1.5 Caveat,cursive;letter-spacing:.02em;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;justify-content:center}
+.foot b{color:var(--body);font-weight:600}
+@media(max-width:900px){.grid.mains{grid-template-columns:1fr 1fr}.grid.tail{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid.mains,.grid.tail{grid-template-columns:1fr}a.card{aspect-ratio:auto;min-height:220px}}
+</style>
+</head><body>
+<div class="wrap">
+  <header>
+    <div class="hrow"><h1>César Garcia</h1>
+    <nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+    <p>I solve big problems. <b>First design hire at multiple companies</b>, shipped to 200M+ users worldwide, in payments, pensions, crypto, financial crime, data intelligence. With a background in software engineering, I work through technical constraints rather than around them. Expert in human behaviour.</p>
+  </header>
 
-<div class="topbar"><div class="wrap">
-  <a class="name" href="index.html">Cesar Garcia</a>
-  <a class="back" href="mailto:cesarxdesign@gmail.com">Get in touch</a>
-</div></div>
+  <div class="gap a"></div>
+  <div class="grid mains" id="mains"></div>
+  <div class="grid tail" id="tail"></div>
 
-<!-- ============ HERO / POSITIONING ============ -->
-<header class="hero home-hero"><div class="wrap reveal">
-  <div class="eyebrow">Product Design Lead · FinTech · Lisbon</div>
-  <h1>I turn fintech's messiest journeys into products people actually understand.</h1>
-  <p class="lede">Design leader with 10+ years in fintech and products shipped to 200M+ users. First
-    design hire at multiple companies — I build the design foundations, and the culture, that let a
-    team ship well above its weight.</p>
-  <div class="role">
-    <span><b>Operates</b>&nbsp;&nbsp;Head of Design · Product Owner — has owned product, engineering &amp; support</span>
-    <span><b>Range</b>&nbsp;&nbsp;Payments · Crypto/Web3 · Pensions · Credit · Financial-crime compliance</span>
-  </div>
-</div></header>
+  <div class="ptag"><b>Partners and clients:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
 
-<!-- ============ SELECTED WORK ============ -->
-<section><div class="wrap reveal">
-  <div class="eyebrow kicker">Selected work</div>
-  <h2>Five case studies, one throughline: business outcomes through design.</h2>
-  <div class="cases">
+  <div class="gap b"></div>
 
-    <a class="case-card" href="projects/mara.html">
-      <div class="ct-eyebrow">Mara · Crypto/fiat wallet</div>
-      <h3>Redesigned a 40M-user wallet in a month — and cut onboarding 70%.</h3>
-      <p>Coinbase-backed. Owned it end to end as Head of Design &amp; Product Owner, then ran three
-        cross-functional teams and pitched growth to the board.</p>
-      <div class="ct-metric">40M users · −70% onboarding</div>
-    </a>
+  <div class="foot">Dope footer · <span id="yy"></span></div>
+</div>
+<script>
+(function(){
+  var mains=document.getElementById('mains'), tail=document.getElementById('tail');
+  SPINE.lead(function(p){
+    mains.insertAdjacentHTML('beforeend',
+      '<a class="card ac-'+p.accent+'" href="'+p.href+'">'+
+        '<span class="kick">'+p.meta+'</span>'+
+        '<h2>'+p.home.title+'</h2>'+
+        '<p class="claim">'+p.home.weave+'</p>'+
+        '<div class="media">'+SPINE.media(p.media)+'</div>'+
+      '</a>');
+  });
+  SPINE.more(function(p){
+    tail.insertAdjacentHTML('beforeend',
+      '<a class="card ac-'+p.accent+'" href="'+p.href+'">'+
+        '<span class="kick">'+p.meta+'</span>'+
+        '<h2>'+p.name+'</h2>'+
+        '<p class="claim">'+p.home.title+'</p>'+
+        '<span class="role">'+p.role+'</span>'+
+      '</a>');
+  });
+})();
+document.getElementById("yy").textContent=new Date().getFullYear();
+(function(){
+  var mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
+  var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5"/></svg>';
+  var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z"/></svg>';
+  function get(){try{return localStorage.getItem("folio0")||"auto"}catch(e){return "auto"}}
+  function set(v){try{localStorage.setItem("folio0",v)}catch(e){}}
+  function paint(){
+    var sys=mq.matches?"dark":"light", p=get();
+    /* an explicit pick that matches the system IS auto: keeps it a clean 2-state */
+    if(p!=="auto"&&p===sys){p="auto";set(p);}
+    document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);
+    var opp=sys==="dark"?"light":"dark";
+    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" data-v="'+opp+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
+                 '<button class="'+(p==="auto"?"on":"")+'" data-v="auto" title="Follow system ('+sys+')">Auto</button>';
+  }
+  /* a click anywhere INSIDE the toggle flips it, whichever way: the two buttons are a readout, not two targets */
+  el.addEventListener("click",function(){
+    var sys=mq.matches?"dark":"light";
+    set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");
+    paint();
+  });
+  el.style.cursor="pointer";
+  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
+  mq.addEventListener("change",paint);
+  paint();
+})();
+</script>
 
-    <a class="case-card" href="projects/starcount.html">
-      <div class="ct-eyebrow">Starcount · Audience intelligence</div>
-      <h3>Beat a £1M revenue target in 91 days on the first data deal of its kind.</h3>
-      <p>A tool built on Twitter and Royal Mail data — whose insight made Toyota re-cut a national
-        ad campaign. First designer; grew the team.</p>
-      <div class="ct-metric">£1M in 91 days</div>
-    </a>
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
+  api_host:'https://eu.i.posthog.com',
+  persistence:'memory',        /* cookieless: no banner needed */
+  disable_session_recording:true,
+  autocapture:false,
+  capture_pageview:true,
+  capture_pageleave:true       /* gives time-on-page and exit page */
+});
 
-    <a class="case-card" href="projects/cable.html">
-      <div class="ct-eyebrow">Cable · AML compliance · B2B SaaS</div>
-      <h3>Turned an unsellable build into a product a global bank bought.</h3>
-      <p>Financial-crime compliance — one of the hardest categories in fintech to sell into. Design
-        was the difference between a demo and a deal.</p>
-      <div class="ct-metric">0 → first paying client</div>
-    </a>
+(function(){
+  var PAGE='home', seen={}, secs={};
 
-    <a class="case-card" href="projects/penfold.html">
-      <div class="ct-eyebrow">Penfold · Digital pension</div>
-      <h3>Took a pension proof-of-concept to an award-winning app.</h3>
-      <p>First hire. Built the modular system that let a beta user's off-hand idea ship the same
-        afternoon. Now rated the UK's most user-friendly pension.</p>
-      <div class="ct-metric">Award-winning · UK's most user-friendly</div>
-    </a>
+  function depth(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-innerHeight;
+    if(max<=0) return 100;
+    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
+  }
+  function mark(){
+    var d=depth();
+    [25,50,75,100].forEach(function(m){
+      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+    });
+  }
+  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
 
-    <span class="case-card" style="cursor:default;opacity:.62">
-      <div class="ct-eyebrow">Confirmo · Crypto payments</div>
-      <h3>Lifted checkout payment success from 9% to 43%.</h3>
-      <p>First designer; built the design system 0→1 and launched the first recurring crypto payments
-        product with Circle &amp; Solana. <i>Case study in progress.</i></p>
-      <div class="ct-metric" style="color:var(--ink-3)">9% → 43% payment success · coming soon</div>
-    </span>
+  /* which sections they actually reached, better than a raw percentage */
+  addEventListener('load',function(){
+    var list=[].slice.call(document.querySelectorAll('section.sec'));
+    if(!list.length||!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i=list.indexOf(e.target);
+        if(secs[i]) return; secs[i]=1;
+        var lab=e.target.querySelector('.lab');
+        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
+      });
+    },{threshold:.4});
+    list.forEach(function(s){io.observe(s);});
+  });
 
-  </div>
-</div></section>
+  /* outbound clicks, tagged with the page they left from and how far down */
+  addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
+    var h=a.getAttribute('href')||'', kind=null;
+    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
+    else if(/linkedin\.com/i.test(h)) kind='linkedin';
+    else if(/^mailto:/i.test(h)) kind='email';
+    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
+    else if(/^\/(confirmo|mara|starcount)$/.test(h))
+      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
+  },true);
+})();
+</script>
 
-<!-- ============ CLIENTS / CREDIBILITY ============ -->
-<section><div class="wrap reveal">
-  <div class="eyebrow kicker">Along the way</div>
-  <h2>Clients &amp; partners.</h2>
-  <div class="logos">
-    <b>NFL</b> <b>Binance</b> <b>Coinbase</b> <b>Circle</b> <b>Solana</b> <b>Twitter</b>
-    <b>Royal Mail</b> <b>Samsung</b>
-  </div>
-  <p class="body secondary" style="margin-top:1.6rem">An engineering background (Computer Science, and
-    six years as a software engineer) means I work through technical constraints, not around them.</p>
-</div></section>
-
-<footer><div class="wrap">
-  <span>Cesar Garcia — Product Design Lead · Lisbon, remote across Europe</span>
-  <span><a href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></span>
-</div></footer>
-
-<div class="lb" id="lb"><img alt="" id="lbimg"></div>
-<script src="scripts/case.js"></script>
-</body>
-</html>
+<style>.tail a.card.dead{cursor:default}.tail a.card.dead:hover{transform:none;box-shadow:var(--sh1)}</style>
+<script>
+(function(){
+  var LIVE=['/confirmo','/mara','/starcount'];
+  document.querySelectorAll('.tail a.card').forEach(function(a){
+    if(LIVE.indexOf(a.getAttribute('href'))<0){a.classList.add('dead');a.removeAttribute('href');}
+  });
+})();
+</script>
+</body></html>

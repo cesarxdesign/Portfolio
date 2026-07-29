@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>confirmo · old flow · paid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#dcdce0;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#000;padding:40px 0 80px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+
+/* fixed device frame, baseline = shipped 402x874 */
+.phone{width:402px;height:874px;border-radius:27.5px;overflow:hidden;background:#fff;position:relative;display:flex;flex-direction:column}
+
+/* header (pinned) */
+.hdr{flex:0 0 auto;height:96px;background:linear-gradient(90deg,#fbfbfb 13%,#cd99ff 63%);position:relative;overflow:hidden;z-index:1}
+.ava{position:absolute;left:24px;top:24px;width:48px;height:48px;border-radius:50%;box-shadow:0 2px 12px rgba(0,0,0,.08);display:block}
+.ibadge{position:absolute;left:57px;top:18px;width:18px;height:18px;border-radius:50%;background:#8100ff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.mtitle{position:absolute;left:84px;top:23px;font-weight:500;font-size:21px;letter-spacing:-.4px}
+.mid{position:absolute;left:84px;top:50px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:11px;opacity:.32}
+.mdesc{position:absolute;left:84px;top:62px;font-weight:500;font-size:13px;opacity:.32}
+
+/* scrolling middle — content runs behind the dock */
+.scroll{flex:1 1 auto;overflow-y:auto;background:#fff;border-radius:22px 22px 0 0;margin-top:-14px;position:relative;z-index:2;padding:12px 20px 24px;text-align:center}
+.check{width:52px;height:52px;border-radius:50%;background:#4ec26a;display:flex;align-items:center;justify-content:center;margin:34px auto 0}
+.check svg{width:26px;height:26px;display:block}
+.paidt{font-weight:600;font-size:22px;color:#3a3a3a;margin:16px 0 0}
+.overpaid{font-weight:400;font-size:14px;color:#b0b0b0;max-width:330px;margin:13px auto 0;line-height:1.45}
+.overpaid .hl{color:#8100ff;font-weight:600}
+.overpaid .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.refund{display:inline-flex;align-items:center;gap:12px;margin:28px auto 0;background:#111;color:#fff;border:none;border-radius:999px;padding:13px 26px;font-family:inherit;font-weight:600;font-size:16px;cursor:pointer}
+.refund svg{display:block}
+.overview{display:inline-flex;align-items:center;gap:8px;margin:18px auto 0;background:#fff;color:#111;border:1px solid #e4e4e8;border-radius:999px;padding:10px 18px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer}
+
+/* pinned dock — footer only */
+.dock{flex:0 0 auto;position:relative;z-index:3;background:#fff}
+.footer{background:linear-gradient(90deg,#ffd600 49%,#f4f4f1 92%);padding:15px 0 16px}
+.frow{display:flex;align-items:center;justify-content:center;gap:40px}
+.wm{height:11px;width:auto;display:block}
+.eng{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:#000}
+.eng svg{display:block}
+.cookie{text-align:center;margin:9px 20px 0;font-weight:400;font-size:11px;color:rgba(0,0,0,.4)}
+.cookie b{color:#000;font-weight:700}
+</style>
+<style>html.embed{overflow:hidden}html.embed body{padding:0;background:transparent;gap:0}html.embed .cap{display:none}</style>
+<script>if(location.hash==='#embed')document.documentElement.classList.add('embed')</script>
+</head><body>
+<p class="cap">confirmo · original · 10 · paid · 402x874, content behind dock</p>
+<div class="phone">
+  <div class="hdr">
+    <img class="ava" src="assets/token-usdc.svg" alt="">
+    <div class="mtitle">Payment ID</div>
+    <div class="mid">invTYhrPW6XZ0J7</div>
+    </div>
+  <div class="scroll">
+    <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+    <p class="paidt">Paid</p>
+    <p class="overpaid">Invoice <b class="hl mono">invTYhrPW6XZ0J7</b> has been overpaid by <b class="hl mono">11.284667 USDC</b>.</p>
+    <button class="refund">Request refund <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+    <div><button class="overview">Invoice overview <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  </div>
+  <div class="dock">
+    <div class="footer">
+      <div class="frow">
+        <img class="wm" src="assets/confirmo-wordmark.svg" alt="Confirmo">
+        <span class="eng">English <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></span>
+      </div>
+      <p class="cookie">By using the payment gateway, you agree to the terms on the <b>Cookie Policy</b>.</p>
+    </div>
+  </div>
+</div>
+</body></html>
