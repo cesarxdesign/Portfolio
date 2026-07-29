@@ -28,7 +28,7 @@ window.SPINE = {
     confirmo: {
       name: `Confirmo`, role: `Product Design Lead`,
       meta: `Payments · 2025-26`, note: `Recurring crypto payments`,
-      accent: `conf`, href: `confirmo/index.html`, status: `mega`,
+      accent: `conf`, href: `/confirmo`, status: `mega`,
       media: { type: `phones`, imgs: [`confirmo/hero/c2-v4-06-fulldock.webp`, `confirmo/hero/c2-v4-09.webp`], alt: `Confirmo crypto checkout` },
       home: {
         title: `Added $135M a year with a superficial change`,
@@ -45,7 +45,7 @@ window.SPINE = {
     mara: {
       name: `Mara`, role: `Head of Design & Product Owner`,
       meta: `Digital wallet · 2022-24`, note: `Crypto & fiat wallet for Africa`,
-      accent: `mara`, href: `mara/index.html`, status: `mega`,
+      accent: `mara`, href: `/mara`, status: `mega`,
       media: { type: `phones`, imgs: [`mara/screens/01-home.html`, `mara/assets/onb/15.png`], alt: `Mara wallet, redesigned` },
       home: {
         title: `Saving $6.9M a year whilst improving user experience`,
@@ -62,7 +62,7 @@ window.SPINE = {
     starcount: {
       name: `Starcount`, role: `Head of Product Design`,
       meta: `Data intelligence · 2017-19`, note: `Audience intelligence`,
-      accent: `star`, href: `starcount/index.html`, status: `mega`,
+      accent: `star`, href: `/starcount`, status: `mega`,
       media: { type: `shot`, imgs: [`home-assets/star-04.webp`], alt: `Starcount Audiences 3D density map` },
       home: {
         title: `A one million pound first-year target. Hit in 91 days.`,
@@ -79,7 +79,7 @@ window.SPINE = {
     cable: {
       name: `Cable`, role: `Founding Designer`,
       meta: `Fincrime · 2021-22`, note: `Fincrime & AML platform`,
-      accent: `cable`, href: `cable/index.html`, status: `short`,
+      accent: `cable`, href: `/cable`, status: `short`,
       media: { type: `shot`, imgs: [`home-assets/cable.webp`], alt: `Cable Paper Trails platform` },
       home: {
         title: `A one trick pony, turned full-fledged banking suite`,
@@ -96,7 +96,7 @@ window.SPINE = {
     penfold: {
       name: `Penfold`, role: `Founding Designer, first hire`,
       meta: `Pensions · 2019-20`, note: `Self-serve pensions`,
-      accent: `pen`, href: `penfold/index.html`, status: `short`,
+      accent: `pen`, href: `/penfold`, status: `short`,
       media: { type: `shot`, imgs: [`home-assets/pen.jpg`], alt: `Penfold self-serve pension app` },
       home: {
         title: `From first hire, to an award winning pension`,
@@ -113,7 +113,7 @@ window.SPINE = {
     trustwallet: {
       name: `Trust Wallet`, role: `Lead Product Designer`,
       meta: `Web3 wallet · 2025`, note: `Wallet onboarding, 200M+`,
-      accent: `tw`, href: `trustwallet/index.html`, status: `short`,
+      accent: `tw`, href: `/trustwallet`, status: `short`,
       media: { type: `phones`, imgs: [`trustwallet/assets/s22-01.png`, `trustwallet/assets/s26-03.png`], alt: `Trust Wallet onboarding` },
       home: {
         title: `Wallet onboarding, rebuilt for 200 million.`,
@@ -130,7 +130,7 @@ window.SPINE = {
     orbis: {
       name: `Orbis Pay`, role: `Director of Design`,
       meta: `Fintech / EWA · 2020-21`, note: `Earned wage access`,
-      accent: `orbis`, href: `orbis/index.html`, status: `cut`,
+      accent: `orbis`, href: `/orbis`, status: `cut`,
       media: { type: `shot`, imgs: [`orbis/assets/01-hero.jpg`], alt: `Orbis Pay earned wage access` },
       home: {
         title: `Earned wage access, designed end to end.`,
@@ -147,7 +147,7 @@ window.SPINE = {
     done: {
       name: `Done`, role: `Co-founder, still working on it`,
       meta: `Fitness · ongoing`, note: `Fitness app, v1 & v2`,
-      accent: `done`, href: `done/index.html`, status: `short`,
+      accent: `done`, href: `/done`, status: `short`,
       media: { type: `shot`, imgs: [`done/assets/v1-01-hero.jpg`], alt: `DONE fitness app` },
       home: {
         title: `A gym app launched when every gym on earth closed.`,
