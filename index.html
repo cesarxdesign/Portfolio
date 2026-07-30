@@ -126,42 +126,83 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
   /* Code screens size themselves. Each one reports its own frame, then scales
      to the box its image predecessor filled: 260px tall for the phones in the
      duo, 354px wide for the full-width shot. */
+  /* Fit every code screen to its card, then reveal the whole set at once.
+     Each is measured, sized and scaled while still at opacity 0, and only after
+     its document has loaded AND its webfonts have settled, because a font swap
+     changes the measured height and would shift it after it was already visible.
+     Nothing fades in until every screen and image is finished, so the cards
+     appear already in place instead of loading and then adjusting. */
   function fitCode(){
-    document.querySelectorAll('.mains .card .media .cs').forEach(function(sp){
-      var f=sp.querySelector('iframe'); if(!f) return;
-      var apply=function(){
-        var d,el,r;
-        try{ d=f.contentDocument; el=d.querySelector('.fr,.scr,.phone')||d.body; }catch(e){ return; }
+    var screens = [].slice.call(document.querySelectorAll('.mains .card .media .cs'));
+    var imgs    = [].slice.call(document.querySelectorAll('.mains .card .media img'));
+    var pending = screens.length + imgs.length;
+    var shown   = false;
+
+    function revealAll(){
+      if(shown) return; shown = true;
+      screens.concat(imgs).forEach(function(e){ e.classList.add('on'); });
+    }
+    function oneDone(){ if(--pending <= 0) revealAll(); }
+
+    screens.forEach(function(sp){
+      var f = sp.querySelector('iframe');
+      if(!f){ oneDone(); return; }
+
+      var apply = function(){
+        var d, el, r;
+        try{ d = f.contentDocument; el = d.querySelector('.fr,.scr,.phone') || d.body; }
+        catch(e){ return; }
         if(!el) return;
-        r=el.getBoundingClientRect();
-        var w=Math.round(r.width), h=Math.round(r.height);
-        if(!w||!h) return;
-        /* Give the document room before measuring the offset. These screens can
-           be WIDER than their own page (402 in a 389 body, centred), which puts
-           them at a negative x. Sizing the frame to scrollWidth clipped 12px off
-           every left edge. Widen first, re-measure, then crop to the screen. */
+        r = el.getBoundingClientRect();
+        var w = Math.round(r.width), h = Math.round(r.height);
+        if(!w || !h) return;
+        /* These screens can be WIDER than their own page (402 in a 389 body,
+           centred), which puts them at a negative x. Widen first, re-measure,
+           then crop to the screen, or every left edge loses 12px. */
         if(el !== d.body){
-          f.style.width=(w+80)+'px';
-          f.style.height=Math.max(h+160, d.documentElement.scrollHeight)+'px';
-          r=el.getBoundingClientRect();
-          w=Math.round(r.width); h=Math.round(r.height);
+          f.style.width  = (w + 80) + 'px';
+          f.style.height = Math.max(h + 160, d.documentElement.scrollHeight) + 'px';
+          r = el.getBoundingClientRect();
+          w = Math.round(r.width); h = Math.round(r.height);
         }else{
-          /* no screen wrapper: the body IS the screen, so it cannot overflow
-             its own page. Resizing here would just stretch it. */
-          f.style.width=w+'px'; f.style.height=h+'px';
-          r=el.getBoundingClientRect();
+          f.style.width = w + 'px'; f.style.height = h + 'px';
+          r = el.getBoundingClientRect();
         }
-        var sc = sp.classList.contains('shot') ? 354/w : 260/h;
-        f.style.transform='scale('+sc+')';
-        f.style.left=(-r.left*sc)+'px';
-        f.style.top =(-r.top *sc)+'px';
-        sp.style.width=Math.round(w*sc)+'px'; sp.style.height=Math.round(h*sc)+'px';
-        /* measured and scaled: safe to show */
-        try{ d.fonts ? d.fonts.ready.then(function(){sp.classList.add('on');}) : sp.classList.add('on'); }
-        catch(e){ sp.classList.add('on'); }
+        var sc = sp.classList.contains('shot') ? 354 / w : 260 / h;
+        f.style.transform = 'scale(' + sc + ')';
+        f.style.left = (-r.left * sc) + 'px';
+        f.style.top  = (-r.top  * sc) + 'px';
+        sp.style.width  = Math.round(w * sc) + 'px';
+        sp.style.height = Math.round(h * sc) + 'px';
       };
-      f.addEventListener('load',apply); apply(); setTimeout(apply,400);
+
+      /* fit, wait for that page's fonts, fit again next frame, then report done */
+      var settle = function(){
+        apply();
+        var after = function(){ requestAnimationFrame(function(){ apply(); oneDone(); }); };
+        try{
+          var d = f.contentDocument;
+          if(d && d.fonts && d.fonts.ready) d.fonts.ready.then(after, after);
+          else after();
+        }catch(e){ after(); }
+      };
+
+      try{
+        if(f.contentDocument && f.contentDocument.readyState === 'complete') settle();
+        else f.addEventListener('load', settle, {once:true});
+      }catch(e){ f.addEventListener('load', settle, {once:true}); }
     });
+
+    imgs.forEach(function(im){
+      if(im.complete && im.naturalWidth) oneDone();
+      else{
+        im.addEventListener('load',  oneDone, {once:true});
+        im.addEventListener('error', oneDone, {once:true});
+      }
+    });
+
+    if(pending <= 0) revealAll();
+    setTimeout(revealAll, 3000);   /* nothing may stay invisible on a missed event */
   }
 
   SPINE.more(function(p){
@@ -176,17 +217,7 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
   });
   fitCode();
 
-  /* plain images fade in when they are actually decoded */
-  document.querySelectorAll('.mains .card .media img').forEach(function(im){
-    if(im.complete && im.naturalWidth) im.classList.add('on');
-    else im.addEventListener('load', function(){ im.classList.add('on'); });
-  });
 
-  /* safety: never leave media invisible because a load event was missed */
-  setTimeout(function(){
-    document.querySelectorAll('.mains .card .media .cs,.mains .card .media img')
-      .forEach(function(el){ el.classList.add('on'); });
-  }, 2500);
 })();
 document.getElementById("yy").textContent=new Date().getFullYear();
 (function(){
