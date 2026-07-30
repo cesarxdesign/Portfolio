@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>penfold · s4 · 1 · onboarding finish (node 10:5229)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Every value here is read from Figma node 10:5229 "onboarding/mobile/finish",
+   not eyeballed.
+
+   NODE ID NOTE. This screen was briefed as node 3:1869, which no longer exists
+   in the document. The document itself is the right one (2:636, 3:1622 and the
+   whole of section 3:4576 "04" still resolve), so this is a stale id, not a
+   switched file. The frame now carrying this screen is 10:5229, named
+   "onboarding/mobile/finish", sitting first in section 04 at x=80 y=80, 375x812,
+   directly ahead of 3:2854, 3:4062, 3:3233 and 3:4241. All geometry below comes
+   from that node.
+
+   Tokens on this node: 123456 Navy #123456, FFFFFF White #FFFFFF,
+   5081FF dolfknip #5081FF, FF5081 Pinkfold #FF5081, 68D422 Green #68D422,
+   E7EBED Light blue #E7EBED, D8D8D8 Grey4 #D8D8D8, F4F4F4 Grey2 (BG) #F4F4F4.
+   Type tokens: N/B 28, N/B 24 (both Bold, letterSpacing -0.8), T/B 20 (Bold,
+   letterSpacing 0), T/R 14, T/R 12 (Regular), N/SB 12 (SemiBold, -0.4).
+   Two values on this screen have no variable behind them: the amber third
+   progression step (#F7B500, read out of its own exported SVG) and the popup
+   card fill #FBFBFB.
+
+   The whole screen is one instance, 10:5230 "onboarding/template.mobile", laid
+   out at 0,0, so its coordinates and the frame's are the same.
+
+   Line-height note, same as the s2 screens. Figma measures Montserrat auto
+   leading off the OS/2 win metrics (1.25em) where Chrome uses hhea (1.219em),
+   so the 3-line 12px stacks are 45px in the file and 43.9px in a browser. The
+   boxes are pinned to the file's heights, which keeps every frame diff at zero
+   without moving a glyph. The 5-line 14px block is 85px in the file and 85.3px
+   in a browser, so it is pinned too.
+
+   The header BG on this node takes a 0.333px #D8D8D8 border. The s2 mobile
+   navbar takes 0.333px #CCCCCC. Different component version, both are read
+   values, so they are left different.
+
+   The progression steps carry a "-rotate-180 -scale-x-100" transform in Figma,
+   which composes to a plain vertical flip. Each step is a single solid fill on
+   a vertically symmetric rounded bar, so the transform is a visual no-op and is
+   not reproduced. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node I10:5230;702:167) ---------- */
+/* Same component as the s2 and s3 screens; the clock on this node reads 8:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/dashboard, 375x72 at y=63 (node 10:5273) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px}
+.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #D8D8D8}
+/* 10:5275 is 135x34 at 120,18, i.e. centred on the frame's 187.5 midline */
+.hdr .title{position:absolute;left:120px;top:18px;width:135px;height:34px;
+            display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+            font:700 28px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+            font-feature-settings:"lnum","tnum"}
+/* 10:5276 is 40x40 at 319,15.999993 (right:16px against the 375 frame) */
+.hdr .menu{position:absolute;left:319px;top:16px;width:40px;height:40px}
+.hdr .menu i{position:absolute;inset:22.5% 20%;display:block}   /* resolves to 24x22 */
+/* 10:5281 clips the 140x44 logo to a 28x44 window, which is why only the P shows */
+.hdr .logo{position:absolute;left:16px;top:16px;width:28px;height:44px;overflow:hidden}
+.hdr .logo .full{position:absolute;inset:0 -400% 0 0}            /* resolves to 140x44 */
+.hdr .logo i{position:absolute;display:block}
+.hdr .logo .a{inset:0 92.14% 0 0}
+.hdr .logo .b{inset:0 80% 56.82% 7.86%}
+.hdr .logo .c{inset:20.45% 80% 36.36% 7.86%}
+
+/* ---------- intro block, 311 wide at x=32 (node 10:5231) ---------- */
+/* 10:5231 is a real frame at 32,135 311x226: 40 padding, the 29px heading,
+   16 gap, the 101px padded copy box, 40 padding. */
+.h-final{position:absolute;left:32px;top:175px;width:311px;height:29px;
+         display:flex;flex-direction:column;justify-content:flex-end;
+         font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+/* Figma marks this node whitespace-pre-wrap because its string carries explicit
+   line breaks. The breaks are reproduced as separate <p> elements instead, so
+   pre-wrap is dropped: it would turn the source indentation into real text. */
+.copy{position:absolute;left:40px;top:228px;width:295px;height:85px;
+      font:400 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- Finish button + progression, group 10:5236 at 96,388 ---------- */
+.btn{position:absolute;width:184px;height:40px;border-radius:8px}
+.btn span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+          font:700 20px/normal 'Montserrat';color:#fff}
+.btn.finish{left:96px;top:388px;background:#5081FF}
+.bars{position:absolute;width:184px;height:4px}
+.bars i{position:absolute;top:0;width:56px;height:4px;display:block}   /* 56 + 8 gap */
+.bars i:nth-child(1){left:0}
+.bars i:nth-child(2){left:64px}
+.bars i:nth-child(3){left:128px}
+.bars.main{left:96px;top:452px}
+
+/* ---------- popUp/Estimated, 346x228 at 15,520 (nodes 10:5247 / 10:5248) ---------- */
+/* Figma names the effect "Shadow/spread 32+4+8" (radius 32, offset 0/4,
+   #00000014); get_design_context resolves that to CSS 0 4px 16px rgba(0,0,0,.08). */
+.pop{position:absolute;left:15px;top:520px;width:346px;height:228px;
+     background:#FBFBFB;border-radius:32px;
+     filter:drop-shadow(0 4px 16px rgba(0,0,0,.08))}
+/* 10:5253 is 202x29 at 32 inside the 266-wide Copy column, so 32 either side */
+.pop .h{position:absolute;left:72px;top:24px;width:202px;height:29px;
+        text-align:center;white-space:nowrap;
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}
+/* 10:5255 sits at x=1 inside its 266 box, so the two columns are 41 and 227 */
+.pop .est-l{position:absolute;left:41px;top:72px;width:112px;height:45px;
+            font:400 12px/normal 'Montserrat';color:#123456}
+.pop .est-r{position:absolute;left:227px;top:72px;width:80px;height:45px;text-align:right;
+            font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:-.4px;
+            font-feature-settings:"lnum","tnum"}
+.btn.change{left:81px;top:152px;background:#FF5081}
+/* 10:5265 is fully transparent in the file but is still laid out, and its last
+   two steps are the OFF variant, so it is kept rather than deleted. */
+.bars.pop-bars{left:81px;top:208px;opacity:0}
+</style>
+</head><body>
+<p class="cap" id="e">penfold · s4 · 1 · onboarding finish (node 10:5229) · 375&times;812</p>
+
+<div class="fr">
+
+  <!-- 10:5231 intro -->
+  <div class="h-final"><p>Final step</p></div>
+  <div class="copy">
+    <p>All that&rsquo;s left to do is start putting some money into your pension.</p>
+    <p>&#8203;</p>
+    <p>You can start with a simple one-off top-up or set a regular recurring contribution.</p>
+  </div>
+
+  <!-- 10:5236 progressButton -->
+  <div class="btn finish"><span>Finish</span></div>
+  <div class="bars main">
+    <i><img src="assets/prog-step-on-green.svg" alt=""></i>
+    <i><img src="assets/prog-step-on-green.svg" alt=""></i>
+    <i><img src="assets/prog-step-on-amber.svg" alt=""></i>
+  </div>
+
+  <!-- 10:5247 popUp/Estimated -->
+  <div class="pop">
+    <p class="h">Current estimate</p>
+    <div class="est-l">
+      <p>Save now:</p>
+      <p>Projected pot:</p>
+      <p>Estimated growth:</p>
+    </div>
+    <div class="est-r">
+      <p>&pound; 250</p>
+      <p>&pound; 241.357,87</p>
+      <p>&pound; 123.478,62</p>
+    </div>
+    <div class="btn change"><span>Change</span></div>
+    <div class="bars pop-bars">
+      <i><img src="assets/prog-step-on-green.svg" alt=""></i>
+      <i><img src="assets/prog-step-off.svg" alt=""></i>
+      <i><img src="assets/prog-step-off.svg" alt=""></i>
+    </div>
+  </div>
+
+  <!-- 10:5273 header/mobile/dashboard -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="logo"><div class="full">
+      <i class="a"><img src="assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="assets/logo-c.svg" alt=""></i>
+    </div></div>
+    <div class="title"><p>Welcome</p></div>
+    <div class="menu"><i><img src="assets/ic-menu-dropdown.svg" alt=""></i></div>
+  </div>
+
+  <!-- I10:5230;702:167 iOS/smallSafariHeader -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div>
+</body></html>

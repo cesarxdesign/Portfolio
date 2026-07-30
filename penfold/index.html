@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en"><head><base href="/penfold/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penfold &middot; Cesar Garcia</title>
+<link rel="stylesheet" href="../case-shared.css">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f2f5f7;--ink:#151515;--body:#5b6470;--mut:#98a0a8;--line:#e7e8ea;--hair:#e7e8ea;--accent:#d63c67;
+ --paperT:rgba(255,255,255,.86);--flagink:#6b737b;--ctl:rgba(20,30,40,.05);--ctlbd:rgba(20,30,40,.18)}
+:root[data-theme="dark"]{--bg:#101519;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--hair:#2a2d33;--accent:#ff5080;
+ --paperT:rgba(18,19,22,.86);--flagink:#8b9198;--ctl:rgba(255,255,255,.06);--ctlbd:rgba(255,255,255,.18)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);transition:background .25s}
+img{display:block;max-width:100%}
+
+/* flag */
+/* column, on the system's measure.
+   These pages hang everything off one .col, so the system's .hd / .sec / .fig
+   values have to be restated on the compound selector, otherwise .col's own
+   margin and padding shorthands win on source order. */
+.col{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad)}
+.col.hd{padding-top:var(--heroTop)}
+.col.sec{margin:var(--secGap) auto 0;padding:var(--secPadT) var(--colPad) 0;position:relative;border-top:0}
+.col.sec::before{content:"";position:absolute;left:var(--colPad);right:var(--colPad);top:0;height:1px;background:linear-gradient(90deg,var(--hair),transparent 80%)}
+.hd+.sec::before{display:none}   /* first section needs no rule, the hero separates it */
+.hd+.sec{margin-top:var(--sec1Gap);padding-top:var(--sec1PadT)}
+.sec i{font-style:italic}
+
+/* screens, on the system's figure spacing */
+.col.shelf{margin:var(--figT) auto var(--figB)}
+.col.shelf+.col.shelf{margin-top:0}
+.shelf .cap{font:500 11px/1 var(--sysMono);letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin:0 0 18px}
+.shelf img{width:100%;border-radius:10px}
+/* ---- screen racks ----
+   Each screen .ui is a standalone artifact: it renders its own caption and grey
+   page chrome above the frame. Measured across all 11, the .fr frame sits at a
+   page chrome above the frame. Loaded at #e the caption hides itself, so the
+   frame sits at exactly the body's 40px top padding, whatever the caption says
+   or how it wraps. x is 0 once the iframe is the frame's own width. translate
+   runs before scale, so the 40 is stated once in unscaled space. */
+.rack{display:flex;justify-content:center;align-items:flex-start;gap:20px}
+.rack+.rack{margin-top:24px}
+/* The screens are light artifacts whatever the page theme, so the stroke is
+   pinned to the light --line value instead of following the theme. */
+.rack .scr{position:relative;flex:0 0 auto;overflow:hidden;background:#fff;
+           border:1px solid #e7e8ea;border-radius:12px;
+           box-shadow:0 12px 28px rgba(0,0,0,.15)}   /* Confirmo 04 at half strength */
+.rack .scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+/* One scale for every screen. Phone and desktop are both 812 tall in the source,
+   so a single factor puts them all on the same height: 812 x .51724138 = 420. */
+.rack .scr iframe{transform:scale(.51724138) translateY(-40px)}
+.rack .scr.ph{width:193.97px;height:420px}                   /* 375 x .51724138 */
+.rack .scr.ph iframe{width:375px;height:852px}
+.rack .scr.dt{width:630px;height:420px}                      /* 1218 x .51724138, exactly 630 */
+.rack .scr.dt iframe{width:1218px;height:852px}
+/* Section 03 overlaps its pair: the left screen sits in front and low, the right
+   one behind it and raised, so it reads from the top and the right edge.
+   Group spans 193.97 + 130 = 323.97 wide and 420 + 44 = 464 tall. */
+/* Section 03 runs its copy and its stacked pair side by side: text left, the
+   323.97 wide group right, together on the 836 column. */
+.side{display:grid;grid-template-columns:1fr 323.97px;gap:52px;align-items:center;margin-top:var(--figT)}
+.side .txt p:first-child{margin-top:0}
+.rack.stack{position:relative;height:464px}
+/* Section 02 pairs a phone over the desktop. Same overlap as 03 (63.97), but the
+   group is 130 + 630 = 760 wide, so it gets its own offsets. Stays in its shelf,
+   at the bottom of the section. */
+.rack.stack .scr{position:absolute;top:0}
+.rack.stack .scr:first-child{left:calc(50% - 161.99px);top:44px;z-index:2}
+.rack.stack .scr:last-child{left:calc(50% - 31.99px);z-index:1}
+.rack.five{gap:20px}                                          /* 5 x 193.97 + 4 x 20 = 1049.83 */
+/* ALIGNMENT RULE: wider than the column, so it centres by BLEEDING past it,
+   never by auto side margins. 5 x 193.97 + 4 x 20 = 1049.83. */
+.col.shelf.wide{max-width:none;width:1049.83px;padding:0;margin-left:0;margin-right:0;
+  position:relative;left:50%;transform:translateX(-50%)}
+/* 02 needs only its 760 group, not the five-up shelf: 760 + 64 padding. */
+/* ALIGNMENT RULE (case-shared.css): fits the column, so it is LEFT aligned
+   flush with the text edge, not centred. */
+/* Box hugs the group (760) and sits ON the text edge, which is
+   (100% - colW)/2 + colPad. Left aligned, no auto margins. */
+.col.shelf.pair{max-width:none;width:760px;padding:0;
+  margin-left:calc((100% - var(--colW))/2 + var(--colPad));margin-right:0}
+.col.shelf.pair .rack{justify-content:flex-start}
+.rack.stack.big .scr:first-child{left:0}
+.rack.stack.big .scr:last-child{left:130px}
+@media(max-width:1000px){.col.shelf.wide{max-width:var(--colW)}
+  .rack{flex-wrap:wrap;gap:24px}}
+.foot{max-width:var(--colW);margin-left:auto;margin-right:auto;margin-bottom:90px;padding-left:var(--colPad);padding-right:var(--colPad)}
+</style>
+</head><body>
+<div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/starcount" title="Starcount" rel="prev">&lsaquo;</a><span class="fv">Penfold</span><a class="step" href="/confirmo" title="Confirmo" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+
+<div class="col hd">
+  <h1>First hire.<br>Award-winning app.</h1>
+  <p class="lede">In 2019, Penfold's co-founders and I set out to build the UK's best digital pension. Their pitch: &ldquo;We want to make pensions sexy.&rdquo; My answer: &ldquo;Impossible. I'm in.&rdquo; I set up the product, the system it shipped on, and made the call that changed who it was for.</p>
+
+  <div class="band">
+    <div class="in">
+      <div class="stat"><b>#1</b><span>first hire</span></div>
+      <div class="stat"><b>1 week</b><span>from concept to live</span></div>
+      <div class="stat"><b>6x</b><span>signups, on refocus</span></div>
+      <div class="stat"><b>&pound;4M</b><span>AUM, first year</span></div>
+    </div>
+    <p class="roleline"><b>Founding Designer, first hire.</b> Mobile and web, from proof of concept to a live pension. Jun 2019 to May 2020, London.</p>
+  </div>
+</div>
+
+<div class="col sec">
+  <p class="lab">context</p>
+  <h2>The setup.</h2>
+  <div class="side">
+    <div class="txt">
+    <p>First week was a speed run: turn the proof of concept into a live app that could onboard real customers, in time to matter for the next funding round. It shipped fast, and it shipped ugly. Seven days and 33 steps of onboarding later, we signed up our first real users. That secured funding, and set a singular focus: growth.</p>
+    <p>To get users in faster, I cut those 33 steps to five, and turned them into independent modules, so users could finish onboarding later without losing progress. A big early friction point. Then I started to lay down the design system every following feature would be built from. This also let our engineering iterate in isolation. An agile company in the making, by design.</p>
+    </div>
+    <div class="rack stack">
+      <div class="scr ph"><iframe src="screens/s1-1-marketing.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Penfold marketing site"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s1-2-eyeball.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Penfold onboarding"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<div class="col sec">
+  <p class="lab">design system</p>
+  <h2>Built for speed.</h2>
+  <p>Building mobile views from desktop parts always felt like wasted energy. The components were nearly identical. So I pushed for a harder setup: one component set feeding every platform, with mobile as the source of truth. Not the standard at the time, and it took some doing, but once it was in place, the payoff was pace.</p>
+  <p>We were shipping daily, and getting signal daily. Mornings opened with session replays. Fridays were a sit-down with Customer Support on the week's tickets, making sure the user's voice was felt on every product decision. We had actual CS tickets raised in the morning, discussed over lunch, and shipped before the end of the day. We optimized speed. Now we needed to optimize targeting.</p>
+</div>
+
+<div class="col shelf pair">
+  <div class="rack stack big">
+      <div class="scr ph"><iframe src="screens/s2-2-dashboard-mobile.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Dashboard on mobile"></iframe></div>
+      <div class="scr dt"><iframe src="screens/s2-1-referral-desktop.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Referrals on desktop"></iframe></div>
+  </div>
+</div>
+
+<div class="col sec">
+  <p class="lab">product strategy</p>
+  <h2>Stop selling pensions.</h2>
+  <div class="side">
+    <div class="txt">
+    <p>Our initial stated goal was to bring pensions to people without one. This required educating our users before we could sign them up. Huge market, but ultimately a tough sell, which meant lagging user acquisition. I argued for the opposite: target people who already had a pension. This changed the battleground. We went from educating, to winning users on product.</p>
+    <p>So the product shifted, optimized for a new audience. Built around combining pots people already had, instead of opening an empty one and waiting on a first contribution. Signups went from around 100 a month to around 600, and each arrived with an existing pot, so the refocus raised what a signup was worth as well as how many there were. We added users and AUM, keeping us on track with the business plan, and making investors happy.</p>
+    </div>
+    <div class="rack stack">
+      <div class="scr ph"><iframe src="screens/s3-1-combine-v2.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Combine, v2"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s3-2-combine-v1.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Combine, v1"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<div class="col sec">
+  <p class="lab">impact</p>
+  <h2>Year one.</h2>
+  <p>We aimed well, executed fast, and iterated with our ears on Customer Support. A dozen users in the first week became around 3,000 savers and &pound;4M in assets under management by the end of year one.</p>
+  <p>A culture that shipped, and a foundation that still serves Penfold today. Now managing over &pound;1B, and voted Best Pension 2026.</p>
+</div>
+
+<div class="col shelf wide">
+  <div class="rack five">
+      <div class="scr ph"><iframe src="screens/s4-1-onboarding-finish.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Onboarding, finish"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s4-2-dashboard.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Dashboard"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s4-3-payin-v3.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Pay in"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s4-4-payment.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Payment"></iframe></div>
+      <div class="scr ph"><iframe src="screens/s4-5-transactions.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Transactions"></iframe></div>
+  </div>
+</div>
+
+<div class="foot">Cesar Garcia &middot; Founding Designer &middot; Penfold</div>
+
+<script>function tt(){var r=document.documentElement,m=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",m);try{localStorage.setItem("folio0",m);}catch(e){}}</script>
+<script>
+(function(){
+  var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
+  var SUN='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4.3\"/><path d=\"M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5\"/></svg>';
+  var MOON='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linejoin=\"round\"><path d=\"M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z\"/></svg>';
+  function get(){try{return localStorage.getItem(KEY)||"auto"}catch(e){return "auto"}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function paint(){
+    var sys=mq.matches?"dark":"light", p=get();
+    if(p!=="auto"&&p===sys){p="auto";set(p);}
+    document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);
+    var opp=sys==="dark"?"light":"dark";
+    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" data-v="'+opp+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
+                 '<button class="'+(p==="auto"?"on":"")+'" data-v="auto" title="Follow system ('+sys+')">Auto</button>';
+  }
+  function flip(){var sys=mq.matches?"dark":"light";set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");paint();}
+  el.addEventListener("click",flip);
+  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
+  mq.addEventListener("change",paint);
+  window.tt=flip;
+  paint();
+})();
+</script>
+
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
+  api_host:'https://eu.i.posthog.com',
+  persistence:'sessionStorage', /* not a cookie, dies with the tab, no banner.
+                                   'memory' loses identity on every navigation, which
+                                   kills every cross-page journey question. */
+  disable_session_recording:true,
+  autocapture:false,
+  capture_pageview:true,
+  capture_pageleave:true       /* gives time-on-page and exit page */
+});
+
+(function(){
+  var PAGE='penfold', seen={}, secs={};
+
+  function depth(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-innerHeight;
+    if(max<=0) return 100;
+    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
+  }
+  function mark(){
+    var d=depth();
+    [25,50,75,100].forEach(function(m){
+      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+    });
+  }
+  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
+
+  /* which sections they actually reached, better than a raw percentage */
+  addEventListener('load',function(){
+    var list=[].slice.call(document.querySelectorAll('section.sec'));
+    if(!list.length||!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i=list.indexOf(e.target);
+        if(secs[i]) return; secs[i]=1;
+        var lab=e.target.querySelector('.lab');
+        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
+      });
+    },{threshold:.4});
+    list.forEach(function(s){io.observe(s);});
+  });
+
+  /* outbound clicks, tagged with the page they left from and how far down */
+  addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
+    var h=a.getAttribute('href')||'', kind=null;
+    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
+    else if(/linkedin\.com/i.test(h)) kind='linkedin';
+    else if(/^mailto:/i.test(h)) kind='email';
+    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
+    else if(/^\/(confirmo|mara|starcount)$/.test(h))
+      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
+  },true);
+})();
+</script>
+</body></html>

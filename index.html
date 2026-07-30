@@ -1,42 +1,60 @@
 <!doctype html>
 <html lang="en"><head><base href="/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",(p==="auto"||p===sys)?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../navbar.css">
 <title>Cesar Garcia · Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <script src="spine.js"></script>
 <style>
 *{box-sizing:border-box}
-:root{--bg:#f3f4f5;--card:#fff;--ink:#1a1c1f;--body:#4a4e54;--mut:#878c93;--line:#e5e7ea;--accent:#5c626a;--sh1:0 1px 2px rgba(18,20,23,.05);--sh2:0 18px 44px -20px rgba(18,20,23,.22)}
-:root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6)}
+:root{--bg:#f3f4f5;--card:#fff;--ink:#1a1c1f;--body:#4a4e54;--mut:#878c93;--line:#e5e7ea;--accent:#5c626a;--sh1:0 1px 2px rgba(18,20,23,.05);--sh2:0 18px 44px -20px rgba(18,20,23,.22);--ok:#16a34a;--wip:#f59e0b;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(243,244,245,.86);--lab:var(--mut)}
+:root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6);--ok:#4ade80;--wip:#fbbf24;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(18,19,22,.86);--lab:var(--mut)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 28px 44px;min-height:100vh;display:flex;flex-direction:column}
+/* the page padding lives here, not on body, so the shared navbar can sit
+   flush to the viewport exactly as it does on the case pages */
 .wrap{max-width:1080px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
 .hrow{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .tops{display:flex;align-items:center;gap:22px}
 .tops a{font-size:11px;line-height:1;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-decoration:none}
 .tops a:hover{color:var(--ink)}
-.thsw{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;position:relative;top:-1px}
-.thsw button{font:600 10px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;color:var(--mut);cursor:pointer;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
-.thsw button.ic{width:32px;padding:0;height:20px;display:inline-flex;align-items:center;justify-content:center}
-.thsw button.ic svg{width:14px;height:14px;display:block}
-.thsw button:hover{color:var(--ink)}
-.thsw button.on{background:var(--line);color:var(--ink)}
 header h1{margin:0;font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.03em}
 header p{margin:10px 0 0;color:var(--body);max-width:62ch;font-size:15.5px}
 header p b{color:var(--ink)}
 .vtag{color:var(--mut);font-size:12px}
 .grid{display:grid;gap:20px}
-.grid.mains{grid-template-columns:repeat(3,1fr);padding-top:44px}
-.gap{min-height:0}.gap.a{flex:2 0 0}.gap.b{flex:3 0 0}
+.grid.mains{grid-template-columns:repeat(3,1fr)}
+.gap{min-height:0}
+/* bio is pinned to the grid: 40px, twice the 20px grid gap, the same
+   distance Worked with sits below it */
+header{margin-bottom:40px}
+
+/* Name, bio, grid and the partner line read as one block, sitting on a 40/60
+   bias rather than dead centre. */
+.gap.a{flex:4 0 0}
+.gap.b{flex:6 0 0}
+
+/* Footer: the year alone, in the navbar's type, bottom left. */
+/* The body carries the page inset, same as live, so the column is a full 1080.
+   The bar cancels it to stay flush: it owns its own 20px, which is what puts the
+   links on the same pixel as every case page. */
+.flag.bare{margin:-64px -28px 0}
+.foot{margin:0 -28px -44px;padding:0 48px 20px 68px;color:var(--mut);font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;text-align:left}   /* nav-link type */
+
 .grid.tail{grid-template-columns:repeat(4,1fr);margin-top:20px}
 a.card{display:flex;flex-direction:column;aspect-ratio:1/1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;color:var(--ink);overflow:hidden;position:relative;transition:transform .16s,box-shadow .16s;box-shadow:var(--sh1)}
 a.card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
-.mains .card::after{content:"";position:absolute;inset:auto 0 0 0;height:49%;transform:translateY(24%);pointer-events:none;z-index:0;background:linear-gradient(to top,var(--pc,transparent),transparent)}
+/* not written yet: no lift, no pointer, no link */
+a.card.wip{cursor:default}
+a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
+/* The wash is positioned, so at z-index 0 it painted OVER the static copy.
+   Lift every card child above it; the wash stays at the very back. */
+.card>*{position:relative;z-index:1}
 .card .media{z-index:1}
-.mains .card.ac-conf{--pc:rgba(112,64,240,.0893)}
-.mains .card.ac-mara{--pc:rgba(255,117,0,.1003)}
-.mains .card.ac-star{--pc:rgba(26,148,192,.16)}          /* light: deeper cyan, same alpha */
-[data-theme="dark"] .mains .card.ac-star{--pc:rgba(32,175,226,.16)}   /* dark keeps the brighter one */
 .card .kick{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+/* readiness: green when the case study is live, amber while it is still being written.
+   Pinned top right so it never shifts the eyebrow. */
+.card .rdy{position:absolute;top:14px;right:14px;z-index:3;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.card.wip .rdy{background:var(--wip)}
 .card h2{margin:8px 0 0;font-weight:800;letter-spacing:-.02em}
 .mains .card h2{font-size:clamp(17px,1.9vw,21px);line-height:1.25}
 .card .claim{margin:8px 0 0;color:var(--body);font-size:13.5px;line-height:1.5}
@@ -50,60 +68,104 @@ a.card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
 .mains .card .media .cs{display:inline-block;position:relative;width:117px;height:260px;margin-top:10px;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 18px 34px -22px rgba(0,0,0,.4),0 2px 46px 4px rgba(0,0,0,.09)}
 .mains .card .media .cs:first-child:not(:only-child){z-index:0}
 .mains .card.ac-mara .media img{position:relative;z-index:10;clip-path:inset(1.1px round 9px)}   /* 15.png ships with a 2px #d1d1d1 stroke baked in; 2 src px = 1.04 css px at this scale */
-.mains .card .media .cs iframe{position:absolute;left:0;top:0;width:288px;height:640px;border:0;transform-origin:0 0;transform:scale(.40625);pointer-events:none}
+.mains .card .media .cs iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+.mains .card .media .cs.shot{display:block;margin-right:-46px;margin-top:8px;border-radius:6px 0 0 6px;border:1px solid var(--line);background:#fff;overflow:hidden;flex:0 0 auto}
 .mains .card .media img:first-child:not(:only-child),.mains .card .media .cs:first-child:not(:only-child){transform:rotate(-8deg);transform-origin:50% 96%;z-index:1;margin-right:-26%}
-.mains .card .media img:last-child:not(:only-child){transform:rotate(6deg);transform-origin:50% 96%;z-index:2}
+/* .cs belongs here too: a card whose second screen is code was getting no
+   counter-rotation and no stacking, so it sat flat while the first fanned. */
+.mains .card .media img:last-child:not(:only-child),
+.mains .card .media .cs:last-child:not(:only-child){transform:rotate(6deg);transform-origin:50% 96%;z-index:2}
 .mains .card .media img.shot{max-width:none;max-height:250px;width:104%;margin-right:-46px;margin-top:8px;object-position:top left;border-radius:6px 0 0 6px;border:1px solid var(--line)}
 .tail .card{padding:18px;aspect-ratio:1/.77}
 .tail .card h2{font-size:15px}
 .tail .card .claim{font-size:12.5px}
 .tail .card .role{margin-top:auto;font-size:11.5px;color:var(--mut)}
-.ptag{margin-top:26px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
+.ptag{margin-top:40px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
 .ptag b{color:var(--body);font-weight:600}
-.foot{padding-top:44px;color:var(--mut);font:500 16px/1.5 Caveat,cursive;letter-spacing:.02em;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;justify-content:center}
-.foot b{color:var(--body);font-weight:600}
 @media(max-width:900px){.grid.mains{grid-template-columns:1fr 1fr}.grid.tail{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.grid.mains,.grid.tail{grid-template-columns:1fr}a.card{aspect-ratio:auto;min-height:220px}}
 </style>
 </head><body>
+<div class="flag bare"><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="wrap">
+  <div class="gap a"></div>
   <header>
-    <div class="hrow"><h1>Cesar Garcia</h1>
-    <nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
-    <p>I solve big problems. <b>First design hire at multiple companies</b>, shipped to 200M+ users worldwide, in payments, pensions, crypto, financial crime, data intelligence. With a background in software engineering, I work through technical constraints rather than around them. Expert in human behaviour.</p>
+    <div class="hrow"><h1>Cesar Garcia</h1></div>
+    <p>I solve big problems. <b>First design hire at multiple companies</b>, shipped to 200M+ users worldwide, in payments, pensions, crypto, financial crime, data intelligence. With a background in software engineering, I work through technical constraints rather than around them. Expert in human behavior.</p>
   </header>
 
-  <div class="gap a"></div>
   <div class="grid mains" id="mains"></div>
   <div class="grid tail" id="tail"></div>
 
   <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
 
   <div class="gap b"></div>
-
-  <div class="foot">Dope footer · <span id="yy"></span></div>
 </div>
+
+<div class="foot"><span id="yy"></span></div>
+
 <script>
 (function(){
   var mains=document.getElementById('mains'), tail=document.getElementById('tail');
   SPINE.lead(function(p){
     mains.insertAdjacentHTML('beforeend',
-      '<a class="card ac-'+p.accent+'" href="'+p.href+'">'+
+      '<a class="card ac-'+p.accent+(p.ready?'':' wip')+'"'+(p.ready?' href="'+p.href+'"':'')+'>'+
+        '<i class="rdy"></i>'+
         '<span class="kick">'+p.meta+'</span>'+
         '<h2>'+p.home.title+'</h2>'+
         '<p class="claim">'+p.home.weave+'</p>'+
         '<div class="media">'+SPINE.media(p.media)+'</div>'+
       '</a>');
   });
+  /* Code screens size themselves. Each one reports its own frame, then scales
+     to the box its image predecessor filled: 260px tall for the phones in the
+     duo, 354px wide for the full-width shot. */
+  function fitCode(){
+    document.querySelectorAll('.mains .card .media .cs').forEach(function(sp){
+      var f=sp.querySelector('iframe'); if(!f) return;
+      var apply=function(){
+        var d,el,r;
+        try{ d=f.contentDocument; el=d.querySelector('.fr,.scr,.phone')||d.body; }catch(e){ return; }
+        if(!el) return;
+        r=el.getBoundingClientRect();
+        var w=Math.round(r.width), h=Math.round(r.height);
+        if(!w||!h) return;
+        /* Give the document room before measuring the offset. These screens can
+           be WIDER than their own page (402 in a 389 body, centred), which puts
+           them at a negative x. Sizing the frame to scrollWidth clipped 12px off
+           every left edge. Widen first, re-measure, then crop to the screen. */
+        if(el !== d.body){
+          f.style.width=(w+80)+'px';
+          f.style.height=Math.max(h+160, d.documentElement.scrollHeight)+'px';
+          r=el.getBoundingClientRect();
+          w=Math.round(r.width); h=Math.round(r.height);
+        }else{
+          /* no screen wrapper: the body IS the screen, so it cannot overflow
+             its own page. Resizing here would just stretch it. */
+          f.style.width=w+'px'; f.style.height=h+'px';
+          r=el.getBoundingClientRect();
+        }
+        var sc = sp.classList.contains('shot') ? 354/w : 260/h;
+        f.style.transform='scale('+sc+')';
+        f.style.left=(-r.left*sc)+'px';
+        f.style.top =(-r.top *sc)+'px';
+        sp.style.width=Math.round(w*sc)+'px'; sp.style.height=Math.round(h*sc)+'px';
+      };
+      f.addEventListener('load',apply); apply(); setTimeout(apply,400);
+    });
+  }
+
   SPINE.more(function(p){
     tail.insertAdjacentHTML('beforeend',
-      '<a class="card ac-'+p.accent+'" href="'+p.href+'">'+
+      '<a class="card ac-'+p.accent+(p.ready?'':' wip')+'"'+(p.ready?' href="'+p.href+'"':'')+'>'+
+        '<i class="rdy"></i>'+
         '<span class="kick">'+p.meta+'</span>'+
         '<h2>'+p.name+'</h2>'+
         '<p class="claim">'+p.home.title+'</p>'+
         '<span class="role">'+p.role+'</span>'+
       '</a>');
   });
+  fitCode();
 })();
 document.getElementById("yy").textContent=new Date().getFullYear();
 (function(){

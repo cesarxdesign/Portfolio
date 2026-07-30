@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>penfold · s3 · 2 · combine v1.2 success (node 2:1223)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Read from Figma node 2:1223. Tokens: Navy #123456, Pinkfold #FF5081,
+   Grey5 #BABABA, Gray1 #FBFBFB, Green #68D422, BG #F4F4F4.
+   Differences from v2.0 that come from the file, not from tidying:
+     - filled fields are #FBFBFB with NO border, and their value is centred
+     - the back label reads "Done", not "Back"
+     - the field stack starts at 247, not 299
+     - the amount label is spelt "approx." here and "aprox." in v2.0 */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+
+/* ---------- iOS small Safari header, 63px (node 2:1040) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/module (node 2:1242) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px;background:#fff;border:.333px solid #D8D8D8}
+.hdr .title{position:absolute;right:32px;top:calc(50% - 1px);transform:translateY(-50%);
+            font:700 28px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;white-space:nowrap;
+            font-feature-settings:"lnum","tnum"}
+.hdr .back{position:absolute;left:0;top:50%;transform:translateY(-50%);display:flex;align-items:flex-start}
+.hdr .chev{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.hdr .chev svg{width:7.421px;height:13.0001px;transform:scaleX(-1)}
+.hdr .blabel{display:flex;align-items:center;padding:4px}
+.hdr .blabel span{font:700 20px/normal 'Montserrat';color:#123456;white-space:nowrap}
+
+/* ---------- success row, top 159 (node 2:1230) ---------- */
+.ok{position:absolute;top:159px;left:calc(50% + .5px);transform:translateX(-50%);
+    display:flex;align-items:center;gap:4px;overflow:hidden}
+.ok b{font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;white-space:nowrap;
+      font-feature-settings:"lnum","tnum"}
+.ok .ico{position:relative;width:40px;height:40px}
+.ok .ico svg{position:absolute;inset:10%;width:80%;height:80%;display:block}
+
+/* ---------- field stack, left 48, top 247, computed gap 32 ---------- */
+.fields{position:absolute;left:48px;top:247px;display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+.tf{position:relative;height:40px;width:279px}
+.tf .box{position:absolute;inset:0;background:#FBFBFB;border-radius:8px}
+.tf .val{position:absolute;left:16px;right:16px;top:50%;transform:translateY(-50%);text-align:center;
+         font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+.tf .lab{position:absolute;left:8px;right:8px;top:-4px;transform:translateY(-100%);
+         font:500 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- body copy, bottom 213 (node 2:1234) ---------- */
+.copy{position:absolute;bottom:213px;left:32px;display:flex;align-items:center;padding:8px}
+.copy p{width:295px;font:400 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- buttons ---------- */
+.btn{position:absolute;left:calc(50% - .5px);transform:translateX(-50%);width:260px;height:40px;border-radius:8px}
+.btn span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+          font:700 20px/normal 'Montserrat';color:#fff}
+.btn.again{bottom:136px;background:#FF5081}
+.btn.dismiss{bottom:80px;background:#BABABA}
+</style>
+</head><body>
+<p class="cap" id="e">penfold · s3 · 2 · combine v1.2 success (node 2:1223) · 375&times;812</p>
+
+<div class="fr">
+
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hdr">
+    <div class="back">
+      <div class="chev"><svg viewBox="0 0 7.42099 13.0001" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.50006 1.50006L5.50006 6.50006L1.50006 11.5001" stroke="#123456" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="blabel"><span>Done</span></div>
+    </div>
+    <div class="title">Combine</div>
+  </div>
+
+  <div class="ok">
+    <b>Success</b>
+    <span class="ico"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8365 32 32 24.8366 32 16C32 7.16341 24.8365 0 16 0C7.16345 0 0 7.16341 0 16C0 24.8366 7.16345 32 16 32ZM22.2761 13.6095C22.7968 13.0888 22.7968 12.2445 22.2761 11.7239C21.7555 11.2031 20.9112 11.2031 20.3905 11.7239L14 18.1144L11.6095 15.7239C11.0888 15.2031 10.2445 15.2031 9.72388 15.7239C9.20317 16.2445 9.20317 17.0888 9.72388 17.6095L13.0572 20.9428C13.3073 21.1929 13.6464 21.3333 14 21.3333C14.3536 21.3333 14.6927 21.1929 14.9428 20.9428L22.2761 13.6095Z" fill="#68D422"/></svg></span>
+  </div>
+
+  <div class="fields">
+    <div class="tf"><div class="lab">Employer</div><div class="box"></div><div class="val">Apple</div></div>
+    <div class="tf"><div class="lab">Pension provider</div><div class="box"></div><div class="val">Aviva</div></div>
+    <div class="tf"><div class="lab">Pension scheme number</div><div class="box"></div><div class="val">PFL2918811</div></div>
+    <div class="tf"><div class="lab">Pension amount (approx.)</div><div class="box"></div><div class="val">&pound;91,299</div></div>
+  </div>
+
+  <div class="copy"><p>Your request has been submitted. We&rsquo;ll notify you once it&rsquo;s processed successfully, and display it on your transactions list.</p></div>
+
+  <div class="btn again"><span>Combine another?</span></div>
+  <div class="btn dismiss"><span>Dismiss</span></div>
+
+</div>
+</body></html>
