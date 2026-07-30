@@ -1,4 +1,3 @@
-@import url("navbar.css");
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;450;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 /* ============================================================
@@ -8,9 +7,9 @@
    components and each page keeps only its palette and its
    bespoke artwork.
 
-   Color comes ONLY from palette slots the page defines:
+   Colour comes ONLY from palette slots the page defines:
      --bg  --ink  --body  --mut  --line  --hair  --accent
-   Never hardcode a color in this file.
+   Never hardcode a colour in this file.
 
    Type pair: Inter everywhere, IBM Plex Mono for eyebrows,
    the footer, and anything that should read as data.
@@ -92,7 +91,7 @@ h2{font-family:var(--sysFont);font-size:clamp(30px,4.2vw,46px);line-height:1.12;
 /* ---- figures · Confirmo spacing ----------------------------
    ALIGNMENT RULE: a figure that fits the column is LEFT aligned,
    flush with the text edge. Only a composition wider than the
-   column is centered, and it centers by bleeding past the column
+   column is centred, and it centres by bleeding past the column
    (left:50% + translateX(-50%)), never by auto side margins.
    ------------------------------------------------------------ */
 .fig{margin:var(--figT) 0 var(--figB)}
@@ -107,4 +106,25 @@ h2{font-family:var(--sysFont);font-size:clamp(30px,4.2vw,46px);line-height:1.12;
   :root{--secGap:110px}
 }
 
+/* ---- global project navbar -------------------------------------
+   [ Home ]            [ Project · Descriptor ]            [ theme ]
+   3-col grid so the middle is truly centred whatever the sides weigh.
+   Pages must NOT redeclare .flag; this layer owns it.
+   ---------------------------------------------------------------- */
+.flag{position:sticky;top:0;z-index:300;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;
+  padding:9px 20px;background:var(--paperT);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);font:11px/1.4 var(--sysMono);letter-spacing:.08em;color:var(--flagink)}
+.flag .navhome{justify-self:start;font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mut);text-decoration:none;transition:color .15s}
+.flag .navhome:hover{color:var(--ink)}
+.flag .fv{justify-self:center;text-align:center;white-space:nowrap;margin:0}
+.flag b{color:var(--lab);font-weight:600}
+.flag .thsw{justify-self:end;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);
+  border-radius:999px;padding:2px;cursor:pointer}
+.flag .thsw button{font:600 10px/1 var(--sysFont);letter-spacing:.1em;text-transform:uppercase;background:none;
+  border:0;color:var(--mut);cursor:pointer;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
+.flag .thsw button.ic{width:32px;padding:0;height:20px;display:inline-flex;align-items:center;justify-content:center}
+.flag .thsw button.ic svg{width:14px;height:14px;display:block}
+.flag .thsw button:hover{color:var(--ink)}
+.flag .thsw button.on{background:var(--line);color:var(--ink)}
 @media(max-width:560px){.flag .fv{font-size:10px}}

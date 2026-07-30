@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cable &middot; Cesar Garcia</title>
+<link rel="stylesheet" href="../case-shared.css">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f2f4f7;--ink:#151515;--body:#5b6470;--mut:#98a0a8;--line:#e7e8ea;--hair:#e7e8ea;--accent:#2b4f8f;
+ --paperT:rgba(255,255,255,.86);--flagink:#6b737b;--ctl:rgba(20,30,40,.05);--ctlbd:rgba(20,30,40,.18)}
+:root[data-theme="dark"]{--bg:#101419;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--hair:#2a2d33;--accent:#6f9ae8;
+ --paperT:rgba(18,19,22,.86);--flagink:#8b9198;--ctl:rgba(255,255,255,.06);--ctlbd:rgba(255,255,255,.18)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);transition:background .25s}
+img{display:block;max-width:100%}
+
+/* flag */
+/* column, on the system's measure.
+   These pages hang everything off one .col, so the system's .hd / .sec / .fig
+   values have to be restated on the compound selector, otherwise .col's own
+   margin and padding shorthands win on source order. */
+.col{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad)}
+.col.hd{padding-top:var(--heroTop)}
+.col.sec{margin:var(--secGap) auto 0;padding:var(--secPadT) var(--colPad) 0;position:relative;border-top:0}
+.col.sec::before{content:"";position:absolute;left:var(--colPad);right:var(--colPad);top:0;height:1px;background:linear-gradient(90deg,var(--hair),transparent 80%)}
+.hd+.sec::before{display:none}   /* first section needs no rule, the hero separates it */
+.hd+.sec{margin-top:var(--sec1Gap);padding-top:var(--sec1PadT)}
+.sec i{font-style:italic}
+
+/* screens, on the system's figure spacing */
+.col.shelf{margin:var(--figT) auto var(--figB)}
+.col.shelf+.col.shelf{margin-top:0}
+.shelf .cap{font:500 11px/1 var(--sysMono);letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin:0 0 18px}
+.shelf img{width:100%;border-radius:10px}
+.foot{max-width:var(--colW);margin-left:auto;margin-right:auto;margin-bottom:90px;padding-left:var(--colPad);padding-right:var(--colPad)}
+</style>
+</head><body>
+<div class="flag"><a class="navhome" href="../home/index.html">Home</a><span class="fvwrap"><a class="step" href="../penfold/index.html" title="Penfold" rel="prev">&lsaquo;</a><span class="fv">Cable</span><a class="step" href="../trustwallet/index.html" title="Trust Wallet" rel="next">&rsaquo;</a></span><nav class="tops"><a href="../Cesar%20Garcia%20CV.pdf" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+
+<div class="col hd">
+  <h1>From one feature, to an acquired platform.</h1>
+  <p class="lede">Cable was the only financial crime startup with a live product, which in that market is harder than it sounds. But the product was one feature, and no bank was paying for it. I joined as the first designer, built it into a suite, and the year I left, a bank bought it.</p>
+
+  <div class="band">
+    <div class="in">
+      <div class="stat"><b>1 feature</b><span>the product, when I joined</span></div>
+      <div class="stat"><b>1st sale</b><span>once it became a suite</span></div>
+      <div class="stat"><b>50+</b><span>banks and fintechs today</span></div>
+      <div class="stat"><b>Acquired</b><span>by Synctera, 2026</span></div>
+    </div>
+    <p class="roleline"><b>Founding Designer.</b> The whole product surface, from a single feature to a compliance suite. Jul 2021 to Oct 2022, remote UK.</p>
+  </div>
+</div>
+
+<div class="col sec">
+  <p class="lab">context</p>
+  <h2>One feature.</h2>
+  <p>Banks have to prove to their regulator that their financial crime controls actually work: that every customer was checked, every alert was looked at, every rule was followed. Cable tested those controls automatically and flagged whatever failed. A Paper Trail was the record of what happened next, the flagged accounts, who reviewed them, what was decided. It is the evidence a bank hands over when someone asks whether it is doing its job.</p>
+  <p>That was the entire product. And it was thin. Paper Trails had no home of its own, and the accounts that needed reviewing lived inside a database file that users uploaded into a chat thread. The most important work in the product was happening inside an attachment.</p>
+  <p>There was a reason for that. A handful of banks had Cable for free in exchange for helping shape it, so the product had been designed by engineers and compliance experts, one request at a time. Excellent way to learn a domain. Poor way to build a product.</p>
+</div>
+
+<div class="col sec">
+  <p class="lab">product strategy</p>
+  <h2>A product around it.</h2>
+  <p>First I gave Paper Trails somewhere to live: a home page, and cards carrying their own state, needs reviewing, in progress, closed. State on the card meant the filter component could go, and the second navigation bar could start coming apart. Then I pulled those account IDs out of the uploaded file and into a real list in the interface, click to copy. That list became the most used thing in the product.</p>
+  <p>Everything moved like Lego. Rearrange the bricks that exist, spend engineering time only where it clearly buys something. Paper Trails touched nearly every feature, so a change rarely stayed put: adding priority to a card meant adding priority to the Paper Trail view too. I mapped the ripple, priced it, then committed. That kind of arithmetic is why a four-person product team could keep shipping.</p>
+  <p>Research had to be improvised. The market was too niche for comparable products to study and too small for a real user pool, so I leaned on the two fincrime experts in house and on the pilot banks, who turned out to be remarkably willing to sit down and explain their work. That is how the suite got built out: Oversight, where a bank supervises the fintechs it sponsors through the same interface with different data, and a full structural rebuild once the old layout ran out of room.</p>
+</div>
+
+<div class="col sec">
+  <p class="lab">impact</p>
+  <h2>The first bank that wanted it.</h2>
+  <p>The pile of client requests had become a coherent product, and the commercial relationship flipped with it. Instead of handing the thing to banks for free in exchange for their help, Cable had something a bank wanted, and sold it. First real sale of the product.</p>
+  <p>It kept that course. Cable now serves over 50 banks and fintechs, calls itself the leading compliance testing platform, and was acquired by Synctera in 2026. I did not close those deals. I built the product that could be sold.</p>
+</div>
+
+<div class="col shelf">
+  <p class="cap">The shipped product</p>
+  <img src="assets/15-final.webp" alt="Cable, the shipped platform">
+</div>
+
+<div class="foot">Cesar Garcia &middot; Founding Designer &middot; Cable</div>
+
+<script>function tt(){var r=document.documentElement,m=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",m);try{localStorage.setItem("folio0",m);}catch(e){}}</script>
+<script>
+(function(){
+  var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
+  var SUN='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4.3\"/><path d=\"M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5\"/></svg>';
+  var MOON='<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linejoin=\"round\"><path d=\"M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z\"/></svg>';
+  function get(){try{return localStorage.getItem(KEY)||"auto"}catch(e){return "auto"}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function paint(){
+    var sys=mq.matches?"dark":"light", p=get();
+    if(p!=="auto"&&p===sys){p="auto";set(p);}
+    document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);
+    var opp=sys==="dark"?"light":"dark";
+    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" data-v="'+opp+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
+                 '<button class="'+(p==="auto"?"on":"")+'" data-v="auto" title="Follow system ('+sys+')">Auto</button>';
+  }
+  function flip(){var sys=mq.matches?"dark":"light";set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");paint();}
+  el.addEventListener("click",flip);
+  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
+  mq.addEventListener("change",paint);
+  window.tt=flip;
+  paint();
+})();
+</script>
+</body></html>

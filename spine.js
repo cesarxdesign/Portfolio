@@ -21,15 +21,15 @@ window.SPINE = {
      are the tail. Move any key anywhere to promote or demote. */
   order: ['confirmo', 'mara', 'starcount', 'penfold', 'cable', 'trustwallet', 'done'],
   featured: 3,
-  cut: [],
+  cut: ['orbis'],   /* kept in the canon index, tagged CUT; never fed to home iterations */
 
   projects: {
 
     confirmo: {
-      name: `Confirmo`, role: `Product Design Lead`, ready: true,
+      name: `Confirmo`, role: `Product Design Lead`,
       meta: `Payments · 2025-26`, note: `Recurring crypto payments`,
       accent: `conf`, href: `/confirmo`, status: `mega`,
-      media: { type: `phones`, imgs: [`confirmo/c2-v4-09.html`, `confirmo/c2-v4-06-fulldock.html`], alt: `Confirmo crypto checkout` },
+      media: { type: `phones`, imgs: [`confirmo/hero/c2-v4-06-fulldock.webp`, `confirmo/hero/c2-v4-09.webp`], alt: `Confirmo crypto checkout` },
       home: {
         title: `Added $135M a year with a superficial change`,
         summary: `Confirmo's first designer. I audited a subscription checkout losing most of its payments, rebuilt the flow, and launched the first recurring crypto payments product of its kind.`,
@@ -43,12 +43,12 @@ window.SPINE = {
     },
 
     mara: {
-      name: `Mara`, role: `Head of Design & Product Owner`, ready: true,
+      name: `Mara`, role: `Head of Design & Product Owner`,
       meta: `Digital wallet · 2022-24`, note: `Crypto & fiat wallet for Africa`,
       accent: `mara`, href: `/mara`, status: `mega`,
       media: { type: `phones`, imgs: [`mara/screens/01-home.html`, `mara/assets/onb/15.png`], alt: `Mara wallet, redesigned` },
       home: {
-        title: `Saving $6.9M a year while improving user experience`,
+        title: `Saving $6.9M a year whilst improving user experience`,
         summary: `A crypto and fiat wallet for Africa, with Coinbase as lead investor. I ran design, engineering, and support, and personally redrew the entire product before handing off the iterations.`,
         body: `Mara's transfer screen looked like six people had designed it. Concurrently. I did not see a redesign, I saw a gift. Within a week I had a full audit and a way to collapse the chaos: one dynamic component that replaced <b>eight</b>, and an onboarding cut from twenty-seven steps to eight, with nothing important lost. Fewer failed identity checks meant real money back, and I ran the design, engineering, and support that shipped it to 40 million users.`,
         weave: `Onboarding an extra 20M users`,
@@ -60,10 +60,10 @@ window.SPINE = {
     },
 
     starcount: {
-      name: `Starcount`, role: `Head of Product Design`, ready: true,
+      name: `Starcount`, role: `Head of Product Design`,
       meta: `Data intelligence · 2017-19`, note: `Audience intelligence`,
       accent: `star`, href: `/starcount`, status: `mega`,
-      media: { type: `shot`, imgs: [`starcount/sc-04.html`], alt: `Starcount Audiences 3D density map` },
+      media: { type: `shot`, imgs: [`home-assets/star-04.webp`], alt: `Starcount Audiences 3D density map` },
       home: {
         title: `A one million pound first-year target. Hit in 91 days.`,
         summary: `Audience intelligence built on the first-ever Twitter data deal. I grew from the only designer into a four-person department, and design drove the revenue.`,
@@ -77,7 +77,7 @@ window.SPINE = {
     },
 
     cable: {
-      name: `Cable`, role: `Founding Designer`, ready: false,
+      name: `Cable`, role: `Founding Designer`,
       meta: `Fincrime · 2021-22`, note: `Fincrime & AML platform`,
       accent: `cable`, href: `/cable`, status: `short`,
       media: { type: `shot`, imgs: [`home-assets/cable.webp`], alt: `Cable Paper Trails platform` },
@@ -94,7 +94,7 @@ window.SPINE = {
     },
 
     penfold: {
-      name: `Penfold`, role: `Founding Designer, first hire`, ready: true,
+      name: `Penfold`, role: `Founding Designer, first hire`,
       meta: `Pensions · 2019-20`, note: `Self-serve pensions`,
       accent: `pen`, href: `/penfold`, status: `short`,
       media: { type: `shot`, imgs: [`home-assets/pen.jpg`], alt: `Penfold self-serve pension app` },
@@ -111,10 +111,10 @@ window.SPINE = {
     },
 
     trustwallet: {
-      name: `Trust Wallet`, role: `Lead Product Designer`, ready: false,
+      name: `Trust Wallet`, role: `Lead Product Designer`,
       meta: `Web3 wallet · 2025`, note: `Wallet onboarding, 200M+`,
       accent: `tw`, href: `/trustwallet`, status: `short`,
-      media: { type: `phones`, imgs: [`trustwallet/assets/s22-01.webp`, `trustwallet/assets/s26-03.webp`], alt: `Trust Wallet onboarding` },
+      media: { type: `phones`, imgs: [`trustwallet/assets/s22-01.png`, `trustwallet/assets/s26-03.png`], alt: `Trust Wallet onboarding` },
       home: {
         title: `Wallet onboarding, rebuilt for 200 million.`,
         summary: `Lead designer on Trust Wallet's Banking and Fiat squad. I rebuilt the new-wallet and import onboarding on Binance's framework, benchmarked against Phantom.`,
@@ -127,11 +127,28 @@ window.SPINE = {
       }
     },
 
+    orbis: {
+      name: `Orbis Pay`, role: `Director of Design`,
+      meta: `Fintech / EWA · 2020-21`, note: `Earned wage access`,
+      accent: `orbis`, href: `/orbis`, status: `cut`,
+      media: { type: `shot`, imgs: [`orbis/assets/01-hero.jpg`], alt: `Orbis Pay earned wage access` },
+      home: {
+        title: `Earned wage access, designed end to end.`,
+        summary: `Director of Design for a U.S. earned-wage-access product. I designed the whole thing, from advance and savings flows to onboarding, and ran a remote team across brand and marketing too.`,
+        body: `At Orbis Pay I started as a consultant and stayed on as Director of Design. I designed the full product end to end, from the core earned-advance and savings flows to a complete onboarding, and aligned Sales, Engineering, Legal, and Customer Success around it. Turning messy payroll integrations into something simple to use.`,
+        weave: `I turn a payroll integration into something a person can actually use.`,
+        tags: [`Director of Design`, `Full product, 0 to 1`, `Advance, savings, onboarding`],
+        voice: `Complex integrations with employer payroll, made to feel like nothing on the surface.`,
+        caption: `Orbis Pay. Earned wage access, designed end to end.`,
+        cta: `See the Orbis Pay case`
+      }
+    },
+
     done: {
-      name: `Done`, role: `Co-founder, still working on it`, ready: false,
+      name: `Done`, role: `Co-founder, still working on it`,
       meta: `Fitness · ongoing`, note: `Fitness app, v1 & v2`,
       accent: `done`, href: `/done`, status: `short`,
-      media: { type: `shot`, imgs: [`done/assets/v1-01-hero.webp`], alt: `DONE fitness app` },
+      media: { type: `shot`, imgs: [`done/assets/v1-01-hero.jpg`], alt: `DONE fitness app` },
       home: {
         title: `A gym app launched when every gym on earth closed.`,
         summary: `Co-founded a consumer fitness app, led product and design, launched it, then years later rebuilt the same idea solo for wearables.`,
@@ -168,7 +185,5 @@ window.SPINE.media = function (m, cls) {
       : '<img src="' + src + '" alt="' + alt + '">';
   };
   if (m.type === 'phones') return '<div class="' + (cls || 'duo') + '">' + one(m.imgs[0], m.alt) + one(m.imgs[1], m.alt) + '</div>';
-  return /\.html$/.test(m.imgs[0])
-    ? '<span class="cs shot"><iframe src="' + m.imgs[0] + '" scrolling="no" loading="lazy" tabindex="-1" title="' + m.alt + '"></iframe></span>'
-    : '<img class="shot" src="' + m.imgs[0] + '" alt="' + m.alt + '">';
+  return '<img class="shot" src="' + m.imgs[0] + '" alt="' + m.alt + '">';
 };
