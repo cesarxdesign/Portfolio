@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><base href="/penfold/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><base href="/penfold/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Penfold &middot; Cesar Garcia</title>
 <link rel="stylesheet" href="../case-shared.css">
 <style>
@@ -44,14 +44,14 @@ img{display:block;max-width:100%}
 .rack .scr{position:relative;flex:0 0 auto;overflow:hidden;background:#fff;
            border:1px solid #e7e8ea;border-radius:12px;
            box-shadow:0 12px 28px rgba(0,0,0,.15)}   /* Confirmo 04 at half strength */
-.rack .scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
 /* One scale for every screen. Phone and desktop are both 812 tall in the source,
    so a single factor puts them all on the same height: 812 x .51724138 = 420. */
-.rack .scr iframe{transform:scale(.51724138) translateY(-40px)}
+/* Screens are inlined into a shadow root at build time, so there is no second
+   document and no crop offset: the frame itself is the only thing placed.
+   --fit inherits through the shadow boundary and scales it. */
+.rack .scr{--fit:.51724138}
 .rack .scr.ph{width:193.97px;height:420px}                   /* 375 x .51724138 */
-.rack .scr.ph iframe{width:375px;height:852px}
 .rack .scr.dt{width:630px;height:420px}                      /* 1218 x .51724138, exactly 630 */
-.rack .scr.dt iframe{width:1218px;height:852px}
 /* Section 03 overlaps its pair: the left screen sits in front and low, the right
    one behind it and raised, so it reads from the top and the right edge.
    Group spans 193.97 + 130 = 323.97 wide and 420 + 44 = 464 tall. */
@@ -112,8 +112,383 @@ img{display:block;max-width:100%}
     <p>To get users in faster, I cut those 33 steps to five, and turned them into independent modules, so users could finish onboarding later without losing progress. A big early friction point. Then I started to lay down the design system every following feature would be built from. This also let our engineering iterate in isolation. An agile company in the making, by design.</p>
     </div>
     <div class="rack stack">
-      <div class="scr ph"><iframe src="screens/s1-1-marketing.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Penfold marketing site"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s1-2-eyeball.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Penfold onboarding"></iframe></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 2:102, not eyeballed.
+   Tokens on this node: Cool blue #123456, White #FFFFFF, Fill with blur #FBFBFB,
+   Grey #CCCCCC, H3.m Bold 24 (Montserrat 700/24, letterSpacing -1).
+   The frame fill is #F5F5F5 here, not the #F4F4F4 of the s2/s3 screens.
+
+   This frame carries no border, so unlike node 2:691 there is no 1px shift:
+   every child sits at its get_metadata coordinate directly.
+
+   Three layers in the file are hidden (2:103, Group 42 2:110, Group 43 2:113,
+   an older pay-in stepper). They are not rendered, which is why nothing here
+   occupies 380-550.
+
+   Figures: this node does specify fontFeatureSettings lnum/tnum on its money
+   and heading text, so it is applied there and only there. The "Top up" pill
+   label 2:149 does not specify it and does not get it. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F5F5F5;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 2:157) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- headings and figure stacks ---------- */
+/* The stacked figure blocks (2:104, 2:106, 2:108) run a 6px line height with a
+   12px paragraph gap, which is why the lines sit so tight under each other.
+   get_design_context rounds that leading to 0.4em (5.6px); 6px is what the
+   file's own box heights require: 2 lines measure 24 and 3 lines measure 42,
+   which is n*6 + (n-1)*12 exactly, and 5.6 fits none of them. */
+.hd{position:absolute;white-space:nowrap;font:700 24px/normal 'Montserrat';
+    color:#123456;letter-spacing:-1px;font-feature-settings:"lnum","tnum"}
+.stack{position:absolute;white-space:nowrap;font:400 14px/6px 'Montserrat';
+       color:#123456;font-feature-settings:"lnum","tnum"}
+.stack p+p{margin-top:12px}
+.stack b{font-weight:700}
+
+.t-track{left:7.47%;right:44%;top:calc(50% - 247px)}                 /* 28,159 182x29 */
+.t-next{left:7.47%;right:68%;top:calc(50% - 205px);letter-spacing:-.8px}  /* 28,201 92x24 */
+.t-yearly{left:40.27%;right:40.53%;top:calc(50% - 96px);text-align:center}/* 151,310 72x29 */
+.t-ytd{left:33.07%;right:33.33%;top:calc(50% - 55px);text-align:center;letter-spacing:-.4px} /* 124,351 126x24 */
+.t-life{left:7.47%;right:66.4%;top:calc(50% + 108px)}                /* 28,514 98x29 */
+.t-lifefig{left:7.47%;right:55.47%;top:calc(50% + 149px);letter-spacing:-.4px} /* 28,555 139x42 */
+
+/* ---------- yearly donut, group 2:129 ---------- */
+/* 240x240 ring with a 24px band, so its 96px hole is what lets the "Yearly"
+   copy and the Top up pill read through it even though the file stacks the
+   ring above them. */
+.ring{position:absolute;left:67px;top:244px;width:240px;height:240px}
+.prog{position:absolute;left:67px;top:244px;width:240px;height:240px;mix-blend-mode:multiply;
+      display:flex;align-items:center;justify-content:center}
+.prog>div{position:relative;flex:none;width:240px;height:240px;transform:rotate(180deg)}
+.prog>div>div{position:absolute;inset:0 .23% 0 0}   /* the PNG is 239.455 wide inside a 240 box */
+
+/* ---------- Top up pill (3:1710 / 3:1711) ---------- */
+/* 3:1710 is a 89x24 frame, but the pill it holds is 113x32 and overhangs it by
+   12 on the left and 4 on the top, which is exactly what get_metadata reports
+   for 3:1711 as -12,-4. */
+.pillslot{position:absolute;left:143px;top:403px;width:89px;height:24px}
+.pill{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:113px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:4px 4px 4px 12px;background:#123456;border-radius:24px}
+.pill span{flex:none;width:58px;height:21px;display:flex;flex-direction:column;justify-content:center;
+           text-align:center;font:700 16px/normal 'Montserrat';color:#fff}
+.pill i{flex:none;display:block;width:24px;height:24px}
+
+/* ---------- gift and share buttons (groups 2:132, 2:141) ---------- */
+/* Both fills are a flat brand color under a 20% white radial sheen; the sheen
+   is the file's own inline SVG gradient, kept verbatim. */
+.cta{position:absolute;left:185px;width:170px;height:52px;border-radius:26px;
+     background-image:url("data:image/svg+xml;utf8,<svg viewBox='0 0 170 52' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%25' width='100%25' fill='url(screens/%23grad)' opacity='0.20000000298023224'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-8.5 5.2 -17 -27.788 170 0.000022762)'><stop stop-color='rgba(255,255,255,1)' offset='0'/><stop stop-color='rgba(255,255,255,0)' offset='1'/></radialGradient></defs></svg>")}
+.cta.gift{top:652px;background-color:#FF5081}
+.cta.share{top:720px;background-color:#5081FF}
+.ctaico{position:absolute;left:305px;width:24px;height:24px}
+.ctalab{position:absolute;left:57.87%;height:29px;display:flex;flex-direction:column;justify-content:center;
+        white-space:nowrap;font:700 24px/normal 'Montserrat';color:#fff;letter-spacing:-1px;
+        font-feature-settings:"lnum","tnum"}
+
+/* ---------- navbar (2:154, 2:155, 2:156) ---------- */
+/* Figma's BACKGROUND_BLUR radius 4 is a 2px CSS backdrop blur. */
+.navbg{position:absolute;left:0;top:63px;width:375px;height:72px;
+       background:rgba(251,251,251,.92);backdrop-filter:blur(2px);border:.333px solid #CCCCCC}
+.logo{position:absolute;left:20px;top:77px;width:140px;height:44px}
+.logo i{position:absolute;inset:21.96% 19.03% 21.96% .71%;display:block}
+.menu{position:absolute;left:255px;top:77px;width:120px;height:44px}
+.menu .disc{position:absolute;left:56px;top:0;width:44px;height:44px}
+.menu .disc i{position:absolute;inset:-4.55% -6.82% -9.09%;display:block}  /* the 50x50 asset carries the drop shadow */
+/* icon/chevronLarge is wrapped in a +90deg and then a -90deg rotation, which
+   cancel, so the exported 19x11.6213 chevron is placed unrotated. Its centre
+   lands 0.31px below the 44x44 icon centre because of the file's own asymmetric
+   -18.75%/-26.52% vertical bleed. */
+/* frame coords 323.5,94.5002, less the .menu origin of 255,77 */
+.menu .chev{position:absolute;left:68.5px;top:17.5002px;width:19px;height:11.6213px}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 2:104 -->
+  <div class="stack t-next"><p>Next payment</p><p><b>&pound;150</b></p></div>
+  <!-- 2:105 -->
+  <p class="hd t-track">You&rsquo;re on track!</p>
+  <!-- 2:106 -->
+  <div class="stack t-ytd"><p>Total paid: &pound;1,350</p><p>Yearly goal: &pound;1,800</p></div>
+  <!-- 2:107 -->
+  <p class="hd t-yearly">Yearly</p>
+  <!-- 2:108 -->
+  <div class="stack t-lifefig"><p>Total paid: &pound; 7,200</p><p>Free money: &pound; 2,191</p><p>Total pot: &pound; 9,391</p></div>
+  <!-- 2:109 -->
+  <p class="hd t-life">Lifetime</p>
+
+  <!-- 2:129 Group 110 -->
+  <div class="ring"><img src="screens/assets/m-donut-track.svg" alt=""></div>
+  <div class="prog"><div><div><img src="screens/assets/m-donut-progress.png" alt=""></div></div></div>
+
+  <!-- 2:132 Gift -->
+  <div class="cta gift"></div>
+  <div class="ctaico" style="top:666px"><img src="screens/assets/ic-gift.svg" alt=""></div>
+  <div class="ctalab" style="right:30.67%;top:664px">Gift</div>
+
+  <!-- 2:141 Share -->
+  <div class="cta share"></div>
+  <div class="ctaico" style="top:734px"><img src="screens/assets/ic-external-link.svg" alt=""></div>
+  <div class="ctalab" style="right:24%;top:732px">Share</div>
+
+  <!-- 3:1710 Top up -->
+  <div class="pillslot">
+    <div class="pill"><span>Top up</span><i><img src="screens/assets/ic-arrow-up-circle.svg" alt=""></i></div>
+  </div>
+
+  <!-- 2:154 / 2:155 / 2:156 -->
+  <div class="navbg"></div>
+  <div class="logo"><i><img src="screens/assets/logo-penfold-full.svg" alt=""></i></div>
+  <div class="menu">
+    <div class="disc"><i><img src="screens/assets/btn-menu-circle.svg" alt=""></i></div>
+    <div class="chev"><img src="screens/assets/ic-chevron-large.svg" alt=""></div>
+  </div>
+
+  <!-- 2:157 iOS Nav Bar (contracted) -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">9:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Figma node 3:1622 "EYEBALL". This screen is a collage: one 781x3272 PNG of the
+   real app, displayed at 390.5x1636 and cropped five different ways, with flat
+   #F6F6F6 rectangles masking parts of it and a few live vector layers on top.
+
+   WHERE EACH VALUE CAME FROM, since this node was expected to resist reading:
+   - geometry: get_metadata, then get_design_context for the crop offsets, which
+     it reports as percentages of each crop box. Those percentages are used
+     verbatim rather than resolved by hand, so the browser does the same
+     arithmetic Figma did. All five crops resolve to the same 390.5 x 1636.05
+     image, which the PNG confirms: it exports at 781x3272, exactly 2x.
+   - color: get_design_context did return real fills here, because the flat
+     layers are vector rectangles rather than raster. They were cross-checked by
+     sampling the PNG with PIL: the app's own background samples #F6F6F6 at
+     display (200,381) and (20,609), which is exactly the #F6F6F6 that the
+     rectangles and the frame are filled with, so the masks blend into the
+     screenshot as intended. The donut ring samples #DE517E and the app's header
+     strip #FFFFFF; both are raster content, not tokens, and are not reproduced
+     as CSS anywhere.
+   - type: also read, not derived. get_design_context gives Montserrat ExtraBold
+     24.25px for the three "Complete" labels and for "Hi Joe", and Montserrat
+     Bold 14px for the three field labels. 24.25 is an odd size and it is the
+     file's own; it is not rounded here. ExtraBold is why this file loads
+     Montserrat 800, which none of the other screens need.
+
+   Tokens: Cool blue #123456, Fill with blur #FBFBFB, Grey #CCCCCC,
+   White #FFFFFF, Pinkfold #FF5081, Light blue #4ECFEF.
+   "mobile blur (92% fill)" is a BACKGROUND_BLUR of radius 4, which is CSS
+   backdrop-filter blur(2px). The pill green #7FD944 and the frame's #F6F6F6
+   have no variable behind them.
+
+   Paint order matters more than usual here, because most of the screen is one
+   layer covering another. Bottom to top: the tall 3:1624 crop, the three green
+   "Complete" rows, the 3:1707 frame, "Hi Joe", the 3:1708 mask that erases the
+   screenshot from y=517 to y=823, the 3:1709 band that paints the icon row back
+   in at y=637 to y=766, the header, the iOS bar, and last of all the 3:1645
+   crop, which sits ON TOP of the header and supplies its Total Pot figures.
+   The green rows and the 3:1707 frame end up completely hidden underneath the
+   masks; they are still built, because they are in the file.
+
+   3:1623, 3:1626, 3:1627 and their siblings are GROUPS, so get_metadata reports
+   their children against the frame and not against the group. 3:1707 and 3:1709
+   are real frames that clip, and their children ARE frame-relative: 3:1689
+   reports y=-325 inside 3:1709, which puts it at 312 on the screen.
+
+   Reused assets, each proved byte-identical to its existing copy: logo-a/b/c
+   and btn-menu-circle. ic-chevron-large is NOT reused: this node's copy is the
+   same path stroked #FF5081 instead of #123456, so it is saved separately. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F6F6F6;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- the five crops of the one screenshot ---------- */
+/* Each .cut is the crop window; the inner img is the full 390.5x1636 screenshot
+   sized and offset by the percentages the file reports for that window. */
+.cut{position:absolute;overflow:hidden;pointer-events:none}
+.cut img{position:absolute;display:block;max-width:none;left:0;width:100%}
+
+/* ---------- flat masks (all #F6F6F6, same as the screenshot's own bg) ------- */
+.mask{position:absolute;background:#F6F6F6}
+
+/* ---------- the three "Complete" rows ---------- */
+/* Every row is a 181x51 #7FD944 pill with a 6px radius, its ExtraBold 24.25px
+   label centred on the pill, and a Bold 14 caption 23px above the pill. */
+.pill{position:absolute;width:181px;height:51px;background:#7FD944;border-radius:6px}
+.pill-t{position:absolute;white-space:nowrap;text-align:center;
+        font:800 24.25px/normal 'Montserrat';color:#fff}
+.row-lab{position:absolute;height:17px;white-space:nowrap;font:700 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- clipping frames 3:1707 and 3:1709 ---------- */
+.clip{position:absolute;overflow:hidden}
+
+/* ---------- Hi Joe, 3:1642 ---------- */
+/* Text boxes are pinned to the widths and heights the file reports, the same
+   convention as the s2 screens. Montserrat renders each of these runs 0.1 to
+   0.9px narrower in a browser than Figma measured it, and 24.25px auto leading
+   is 29.5 here against Figma's 30, so pinning keeps every edge on the Figma
+   number without moving a glyph. */
+.hi{position:absolute;left:28px;top:158px;width:79px;height:30px;white-space:nowrap;
+    font:700 24.25px/normal 'Montserrat';color:#123456}
+
+/* ---------- header/mobile, 375x72 at y=63 (node 3:1643) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px}
+.hdr .bg{position:absolute;inset:0;background:rgba(251,251,251,.92);
+         backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+         border:.333px solid #CCCCCC}
+/* logo/P.beta resolves to 140x44 at 24,16 inside the header */
+.hdr .logo{position:absolute;left:24px;top:16px;width:140px;height:44px}
+.hdr .logo i{position:absolute;display:block}
+.hdr .logo .a{inset:0 92.14% 0 0}
+.hdr .logo .b{inset:0 80% 56.82% 7.86%}
+.hdr .logo .c{inset:20.45% 80% 36.36% 7.86%}
+.hdr .logo .beta{inset:65.91% 62.86% 13.99% 17.14%}   /* resolves to 28 x 8.844 */
+/* button/menuClosed, 120x44 at 251,14. The circle's own box is 44x44 at
+   left 56, but its shadow is baked into the export, which is what the
+   -4.55% / -6.82% / -9.09% wrapper insets grow it to: 50x50 at 53,-2. */
+.menu{position:absolute;left:251px;top:14px;width:120px;height:44px}
+.menu .disc{position:absolute;left:53px;top:-2px;width:50px;height:50px}
+/* the chevron icon is rotated 90deg as a whole, and its artwork is a 16x8
+   rotated -90deg inside an 8x16 slot: the same rotated pair as s4-2 and s4-3 */
+.menu .ico{position:absolute;left:56px;top:1px;width:44px;height:44px;transform:rotate(90deg)}
+.menu .slot{position:absolute;left:18px;top:14px;width:8px;height:16px;
+            display:flex;align-items:center;justify-content:center}
+.menu .slot>i{position:relative;flex:none;width:16px;height:8px;transform:rotate(-90deg)}
+.menu .slot>i>i{position:absolute;inset:-18.75% -9.38% -26.52% -9.38%;display:block}
+
+/* ---------- iOS small Safari header, 63px (node 3:1644) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 3:1623 Group 110 -->
+  <!-- 3:1624 Account – Penfold 3 -->
+  <div class="cut" style="left:-8px;top:201px;width:390.5px;height:1017px">
+    <img src="screens/assets/eyeball-account.webp" alt="" style="top:-20.65%;height:160.87%">
+  </div>
+  <div class="mask" style="left:47px;top:637px;width:296px;height:372px"></div>
+
+  <!-- 3:1626 / 3:1631 / 3:1636, the three Complete rows -->
+  <p class="row-lab" style="left:99px;top:662px;width:155px">Personal information</p>
+  <div class="pill" style="left:96px;top:685px"></div>
+  <p class="pill-t" style="left:124px;top:695px;width:126px;height:30px">Complete</p>
+  <p class="row-lab" style="left:99px;top:760px;width:123px">Investment fund</p>
+  <div class="pill" style="left:96px;top:783px"></div>
+  <p class="pill-t" style="left:124px;top:793px;width:126px;height:30px">Complete</p>
+  <p class="row-lab" style="left:99px;top:858px;width:120px">Payment details</p>
+  <div class="pill" style="left:96px;top:881px"></div>
+  <p class="pill-t" style="left:124px;top:891px;width:126px;height:30px">Complete</p>
+
+  <!-- 3:1641 Account – Penfold 5 -->
+  <div class="cut" style="left:-8px;top:956px;width:390.5px;height:426px">
+    <img src="screens/assets/eyeball-account.webp" alt="" style="top:-284.04%;height:384.04%">
+  </div>
+
+  <!-- 3:1707 Frame 15, clips; everything in it starts at y=792 so it is off-screen -->
+  <div class="clip" style="left:-8px;top:681px;width:390px;height:856px">
+    <div class="mask" style="left:55px;top:111px;width:296px;height:372px"></div>
+    <p class="row-lab" style="left:107px;top:136px;width:155px">Personal information</p>
+    <div class="pill" style="left:104px;top:159px"></div>
+    <p class="pill-t" style="left:133px;top:169px;width:125px;height:30px">Complete</p>
+    <p class="row-lab" style="left:107px;top:234px;width:123px">Investment fund</p>
+    <div class="pill" style="left:104px;top:257px"></div>
+    <p class="pill-t" style="left:133px;top:267px;width:125px;height:30px">Complete</p>
+    <p class="row-lab" style="left:107px;top:332px;width:120px">Payment details</p>
+    <div class="pill" style="left:104px;top:355px"></div>
+    <p class="pill-t" style="left:133px;top:365px;width:125px;height:30px">Complete</p>
+    <div class="cut" style="left:0;top:430px;width:390.5px;height:426px">
+      <img src="screens/assets/eyeball-account.webp" alt="" style="top:-284.04%;height:384.04%">
+    </div>
+  </div>
+
+  <!-- 3:1642 -->
+  <p class="hi">Hi Joe</p>
+
+  <!-- 3:1708, the mask that erases the screenshot from 517 to 823 -->
+  <div class="mask" style="left:21px;top:517px;width:339px;height:306px"></div>
+
+  <!-- 3:1709 Frame 16, clips a 129px band back in over that mask -->
+  <div class="clip" style="left:-8px;top:637px;width:390px;height:129px">
+    <div class="cut" style="left:0;top:-325px;width:390.5px;height:1017px">
+      <img src="screens/assets/eyeball-account.webp" alt="" style="top:-20.65%;height:160.87%">
+    </div>
+  </div>
+
+  <!-- 3:1643 header/mobile -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="logo">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+      <i class="beta"><img src="screens/assets/logo-beta.svg" alt=""></i>
+    </div>
+    <div class="menu">
+      <div class="disc"><img src="screens/assets/btn-menu-circle.svg" alt=""></div>
+      <div class="ico"><div class="slot"><i><i><img src="screens/assets/ic-chevron-large-pink.svg" alt=""></i></i></div></div>
+    </div>
+  </div>
+
+  <!-- 3:1644 iOS Nav Bar (contracted) 1 -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">9:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- 3:1645 Account – Penfold 6, painted last, over the header -->
+  <div class="cut" style="left:107px;top:63px;width:313px;height:87px">
+    <img src="screens/assets/eyeball-account.webp" alt="" style="left:-24.6%;top:0;width:124.76%;height:1880.46%">
+  </div>
+
+</div></template></div>
     </div>
   </div>
 </div>
@@ -127,8 +502,442 @@ img{display:block;max-width:100%}
 
 <div class="col shelf pair">
   <div class="rack stack big">
-      <div class="scr ph"><iframe src="screens/s2-2-dashboard-mobile.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Dashboard on mobile"></iframe></div>
-      <div class="scr dt"><iframe src="screens/s2-1-referral-desktop.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Referrals on desktop"></iframe></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 2:691, not eyeballed.
+   Tokens on this node: Cool blue #123456, Cool grey #FBFBFB, White #FFFFFF,
+   Pinkfold #FF5081, Grey #CCCCCC, Dark #292929, Light blue #4ECFEF, BG #F4F4F4.
+   Two colors on this screen are raw hexes with no variable behind them:
+   the module button fill #6076DD and the gain figure #43A800.
+
+   Coordinate note. The Figma frame carries a 1px #888 border and an 8px radius
+   (a canvas device outline), which is why get_design_context offsets every
+   direct child by -1px. get_metadata reports positions from the frame's outer
+   origin instead. The established template drops that outline, so .fr is a
+   plain 375x812 and every child sits at its get_metadata coordinate. That also
+   makes the browser measurements diff cleanly against the Figma numbers.
+
+   Second coordinate note: get_metadata is relative to the nearest real FRAME,
+   not the nearest layer. Groups (2:694, 2:697, 2:701, 2:705, 2:709, 2:716) are
+   transparent, so their children are still frame-relative, while the children
+   of the real frame 2:728 (navbar) are navbar-relative and are offset by its
+   top of 63 below. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 2:737) ---------- */
+/* Same component as the s3 screens, but the clock on this node reads 9:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- combo/navbar/mobile/dashboard, 375x72 at y=63 (node 2:728) ---------- */
+/* The 0.333px border lives on the inner BG layer (I2:729;19:14), not on the
+   navbar frame, so the percentage insets below resolve against a clean 375x72. */
+.nav{position:absolute;left:0;top:63px;width:375px;height:72px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:.333px solid #CCCCCC}
+.nav .logo{position:absolute;inset:22.22% 56.27% 16.67% 6.4%}   /* resolves to 24,16 140x44 */
+.nav .logo i{position:absolute;display:block}
+.nav .logo .a{inset:0 92.14% 0 0}
+.nav .logo .b{inset:0 80% 56.82% 7.86%}
+.nav .logo .c{inset:20.45% 80% 36.36% 7.86%}
+/* button/hamberder is a 120x44 hit area at 251,14 with the 44x44 icon at its right edge */
+.nav .burger{position:absolute;left:251px;top:14px;width:120px;height:44px}
+.nav .burger .ico{position:absolute;left:66px;top:0;width:44px;height:44px}
+.nav .burger .ico i{position:absolute;inset:25% 22.73%;display:block}
+
+.nav .lbl{position:absolute;font:500 16px/22px 'Montserrat';color:#123456;white-space:nowrap}
+/* No tabular-figure setting on this screen. The s3 templates use lnum/tnum, but
+   measuring the money strings proves this node uses Montserrat's proportional
+   figures: "£24,420.09" is 92px wide in Figma and 91.5px proportional, versus
+   97.5px tabular, and the tabular width collided with the +8.24% that follows. */
+.nav .fig{position:absolute;display:flex;flex-direction:column;justify-content:flex-end;
+          font:700 16px/normal 'Montserrat';color:#123456;white-space:nowrap}
+.nav .pot-l{inset:25% 73.07% 44.44% 18.4%}      /* 69,18 32x22 */
+.nav .pot-v{inset:55.56% 57.07% 16.67% 18.4%}   /* 69,40 92x20 */
+.nav .gl-l{inset:25% 31.73% 44.44% 46.13%}      /* 173,18 83x22 */
+.nav .gl-v{inset:55.56% 32.27% 16.67% 46.13%}   /* 173,40 81x20 */
+.nav .pct{position:absolute;inset:61.11% 19.73% 18.06% 68.8%;display:flex;flex-direction:column;
+          justify-content:flex-end;text-align:right;white-space:nowrap;
+          font:500 12px/normal 'Montserrat';color:#43a800}   /* 258,44 43x15 */
+
+/* ---------- section heading (nodes 2:692, 2:693) ---------- */
+.h-goal{position:absolute;left:28px;top:257px;white-space:nowrap;
+        font:700 21px/normal 'Montserrat';color:#123456;letter-spacing:-.42px}
+.h-range{position:absolute;left:30px;top:287px;white-space:nowrap;
+         font:700 12px/normal 'Montserrat';color:#123456;letter-spacing:-.24px}
+
+/* ---------- button/module.active x2, 140x54.917 at y=161 (nodes 2:695, 2:696) ---------- */
+/* Height is 54.9171257019043 in the file; the fill starts 28.17% down, so it is
+   a 39.45px pill sitting under a caption that overhangs it. */
+.mod{position:absolute;top:161px;width:140px;height:54.9171257019043px}
+/* the pair, 2 x 140 + 20 = 300, centred on the 375 frame */
+.mod.a{left:37.5px}
+.mod.b{left:197.5px}
+.mod .fill{position:absolute;inset:28.17% 0 0 0;background:#6076dd;border-radius:6px}
+/* Figma insets this box to 38.67%/39.23%, so the label centered on a narrow box
+   that is not the button's centre. Spanning the button's full width instead. */
+.mod .cap-t{position:absolute;inset:0 0 71.83% 0;display:flex;flex-direction:column;
+            justify-content:flex-end;align-items:center;text-align:center;white-space:nowrap;
+            font:700 10.83px/1.4 'Montserrat';color:#123456}
+/* Sized to the fill exactly, so the value centres on the button on both axes. */
+.mod .val{position:absolute;inset:28.17% 0 0 0;display:flex;flex-direction:column;
+          justify-content:center;align-items:center;text-align:center;white-space:nowrap;
+          font:700 16.24px/normal 'Montserrat';color:#fff}
+.mod .val sup{font-size:10.4748px;vertical-align:baseline}  /* Figma keeps "st" on the baseline */
+
+/* ---------- yearly goal donut, group 2:709 ---------- */
+/* Percentages here are the file's own and resolve against the 375x812 frame,
+   because 2:709 and 2:716 are groups and so create no coordinate space. */
+.dial{position:absolute;left:88px;top:365px;width:200px;height:200px}
+/* the pinkfold arc is a 200x195.106 art board rotated -90deg inside a 195.106x200 box */
+.arc{position:absolute;left:92.89px;top:365px;width:195.106px;height:200px;
+     display:flex;align-items:center;justify-content:center}
+.arc>div{position:relative;flex:none;width:200px;height:195.106px;transform:rotate(-90deg)}
+.arc>div>div{position:absolute;inset:1.44% 0 0 0}
+.ring-in{position:absolute;left:108px;top:385px;width:160px;height:160px}
+.ring-out{position:absolute;left:87px;top:364px;width:202px;height:202px}
+.axis{position:absolute;left:128px;top:465px;width:120px;height:1px}
+/* 4px dots, screen-blended as in the file. The two horizontal ones are rotated
+   -90deg in Figma, which is why get_metadata reports their y as 467: that is the
+   rotated origin, not the bounding box. The box top is 463, centring them on the
+   465 axis line, and that is what get_design_context reports. */
+.dot{position:absolute;width:4px;height:4px;mix-blend-mode:screen}
+.dot.h{transform:rotate(-90deg)}
+
+.fig-mid{position:absolute;left:38.67%;right:38.13%;top:calc(50% + 59px);transform:translateY(-50%);
+         height:100px;display:flex;flex-direction:column;justify-content:center;text-align:center;
+         white-space:pre;font:700 16px/normal 'Montserrat';color:#123456}
+.fig-mid .reg{font-weight:400}
+.tick{position:absolute;white-space:nowrap;font:700 12px/normal 'Montserrat';color:#123456}
+/* The 15px heights are the file's own box heights. Montserrat at 12px with auto
+   leading measures 14.5px in a browser and 15px in Figma, so pinning the box
+   keeps the frame diff at zero without moving a glyph. */
+.tick.top{left:44.8%;right:45.07%;top:calc(50% - 49px);transform:translateY(-100%);height:15px;
+          display:flex;flex-direction:column;justify-content:flex-end;text-align:center}
+.tick.bot{left:44%;right:44%;top:calc(50% + 167px);height:15px;text-align:center}
+.tick.right{left:78.93%;right:13.6%;top:calc(50% + 59px);transform:translateY(-50%);
+            height:30px;display:flex;flex-direction:column;justify-content:center}
+.tick.left{left:13.07%;right:78.67%;top:calc(50% + 59px);transform:translateY(-50%);
+           height:30px;display:flex;flex-direction:column;justify-content:center;text-align:right}
+
+/* ---------- three action pucks, 88x88 at y=658 (groups 2:697, 2:701, 2:705) ---------- */
+/* The third puck sits at 248 while its group starts at 246, because its caption
+   "Share for £25" is 93px wide and overhangs the puck on both sides. */
+.puck{position:absolute;top:658px;width:88px;height:88px;background:#FBFBFB;
+      border:1px solid #fff;border-radius:61px;box-shadow:0 4px 8px 0 rgba(0,0,0,.08)}
+.pico{position:absolute;top:673px;width:60px;height:60px}
+.pico i{position:absolute;display:block}
+.pico i i{position:absolute;inset:0;display:block}
+.plab{position:absolute;top:758px;height:22px;text-align:center;white-space:nowrap;
+      font:500 14px/22px 'Montserrat';color:#123456}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 2:692 / 2:693 -->
+  <p class="h-goal">Yearly goal</p>
+  <p class="h-range">Jul &lsquo;19 &mdash; Jun &lsquo;20</p>
+
+  <!-- 2:694 Group 147 -->
+  <div class="mod a">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Growth profile</p></div>
+    <div class="val"><p>Basic 1</p></div>
+  </div>
+  <div class="mod b">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Next payment</p></div>
+    <div class="val"><p>&pound;124 on 1<sup>st</sup></p></div>
+  </div>
+
+  <!-- 2:709 Group 122, the yearly goal donut -->
+  <div class="fig-mid">
+    <p class="reg">Paid in</p>
+    <p>&pound;1,350</p>
+    <p>&#8203;</p>
+    <p class="reg">Yearly goal</p>
+    <p>&pound;1,600</p>
+  </div>
+  <div class="tick top"><p>Jul &lsquo;19</p></div>
+  <p class="tick bot">Jan &lsquo;20</p>
+  <div class="tick right"><p>Oct</p><p>2019</p></div>
+  <div class="tick left"><p>Apr</p><p>2020</p></div>
+  <div class="axis"><img src="screens/assets/donut-line.svg" alt=""></div>
+  <div class="dial"><img src="screens/assets/donut-base.svg" alt=""></div>
+  <div class="arc"><div><div><img src="screens/assets/donut-pinkfold.svg" alt=""></div></div></div>
+  <div class="dot" style="left:186px;top:373px"><img src="screens/assets/donut-dot-v.svg" alt=""></div>
+  <div class="dot" style="left:186px;top:553px"><img src="screens/assets/donut-dot-v.svg" alt=""></div>
+  <div class="dot h" style="left:96px;top:463px"><img src="screens/assets/donut-dot-h.svg" alt=""></div>
+  <div class="dot h" style="left:276px;top:463px"><img src="screens/assets/donut-dot-h.svg" alt=""></div>
+  <div class="ring-in"><img src="screens/assets/donut-inner.svg" alt=""></div>
+  <div class="ring-out"><img src="screens/assets/donut-outer.svg" alt=""></div>
+
+  <!-- 2:697 Combine -->
+  <div class="puck" style="left:40px"></div>
+  <div class="pico" style="left:54px">
+    <i style="inset:25%"><i style="inset:-5%"><img src="screens/assets/ic-combine-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-combine-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-combine-3.svg" alt=""></i></i>
+    <i style="inset:68% 18.91% 18.41% 67.5%"><i style="inset:-18.39%"><img src="screens/assets/ic-combine-4.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:51px;width:66px">Combine</p>
+
+  <!-- 2:701 Top up -->
+  <div class="puck" style="left:144px"></div>
+  <div class="pico" style="left:158px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-topup-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-topup-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-topup-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:164px;width:49px">Top up</p>
+
+  <!-- 2:705 Share -->
+  <div class="puck" style="left:248px"></div>
+  <div class="pico" style="left:262px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-share-1.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 63.5% 63.5%"><i style="inset:-13.89%"><img src="screens/assets/ic-share-2.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 48.5% 48.5%"><i style="inset:-7.58%"><img src="screens/assets/ic-share-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:246px;width:93px">Share for &pound;25</p>
+
+  <!-- 2:728 navbar -->
+  <div class="nav">
+    <div class="bg"></div>
+    <div class="logo">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+    </div>
+    <p class="lbl pot-l">Pot:</p>
+    <div class="fig pot-v"><p>&pound;24,420.09</p></div>
+    <p class="lbl gl-l">Gain/Loss:</p>
+    <div class="fig gl-v"><p>+&pound;2,012.21</p></div>
+    <div class="pct"><p>+8.24%</p></div>
+    <div class="burger"><div class="ico"><i><img src="screens/assets/ic-menu.svg" alt=""></i></div></div>
+  </div>
+
+  <!-- 2:737 iOS Nav Bar (contracted) -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">9:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr dt"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 2:636, not eyeballed.
+   Tokens: Cool blue #123456, White #FFFFFF, Grey #CCCCCC, Cool grey #FBFBFB,
+   Pinkfold #FF5081, Light blue #4ECFEF, BG #F4F4F4,
+   T3 Medium 16 (Montserrat 500/16, lineHeight 22),
+   T4 SemiBold 12 (Montserrat 600/12, letterSpacing 2).
+
+   Like node 2:691 this frame carries a 1px #888 canvas outline with an 8px
+   radius, which is dropped so that children sit at their get_metadata
+   coordinates. That matters for one node in particular: the action row 3:1735
+   is anchored with bottom:41px, which against the bordered 810px content box
+   lands at y=648, and against a plain 812px frame would land at 649. 648 is
+   what the file reports, so it is pinned by coordinate rather than by anchor.
+
+   Layer names in the navbar are stale and contradict their own content: 2:646
+   is named "£0.00" but reads £24,420.09, 2:649 is named "+£0.00" but reads
+   +£2,012.21, and 2:650 is named "+0.00%" but reads +8.24%. The computed
+   content wins, and the reported widths (92, 81, 43) confirm it.
+
+   This node specifies no fontFeatureSettings, so no tabular figures, which
+   also matches the 92px the file gives for £24,420.09.
+
+   One layer is hidden (2:653, a "you can change these details" note at
+   838,474) and is not rendered. */
+*{box-sizing:border-box}
+p{margin:0}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:1218px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- combo/navbar/desktop/dashboard, 1218x71 (node 2:641) ---------- */
+/* The desktop bar takes a full 1px #CCCCCC border, where the mobile bar takes 0.333px. */
+.nav{position:absolute;left:0;top:0;width:1218px;height:71px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:1px solid #CCCCCC}
+.nav .logo{position:absolute;left:34px;top:18.31%;bottom:19.72%;width:140px}   /* 34,13 140x44 */
+.nav .logo i{position:absolute;display:block}
+.nav .logo .a{inset:0 92.14% 0 0}
+.nav .logo .b{inset:0 80% 56.82% 7.86%}
+.nav .logo .c{inset:20.45% 80% 36.36% 7.86%}
+.nav .menu{position:absolute;right:39px;top:19.72%;bottom:18.31%;width:120px}  /* 1059,14 120x44 */
+.nav .menu p{position:absolute;inset:31.82% 16.67% 34.09% 45%;text-align:right;white-space:nowrap;
+             font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:2px;text-transform:uppercase}
+
+/* Widths on the text nodes are the file's own measured box widths. Montserrat
+   renders each of these glyph runs 0.3-0.9px narrower in a browser than Figma
+   measured it, so pinning the box keeps every edge on the Figma number without
+   moving a glyph. It matters most for +8.24%, which is anchored by its right
+   edge at 438 and would otherwise start 0.87px late. */
+.nav .lbl{position:absolute;top:21.13%;bottom:47.89%;white-space:nowrap;
+          font:500 16px/22px 'Montserrat';color:#123456}
+.nav .fig{position:absolute;top:52.11%;bottom:19.72%;display:flex;flex-direction:column;
+          justify-content:flex-end;white-space:nowrap;font:700 16px/normal 'Montserrat';color:#123456}
+.nav .pct{position:absolute;left:438px;transform:translateX(-100%);top:57.75%;bottom:21.13%;width:43px;
+          display:flex;flex-direction:column;justify-content:flex-end;text-align:right;white-space:nowrap;
+          font:500 12px/normal 'Montserrat';color:#43a800}
+
+/* ---------- section heading, group 2:638 ---------- */
+/* Both sizes are the file's own odd values, not rounded ones. */
+.h-title{position:absolute;left:139px;top:119px;width:304px;white-space:nowrap;
+         font:700 37.722px/normal 'Montserrat';color:#123456}
+.h-range{position:absolute;left:144px;top:184px;width:175px;white-space:nowrap;
+         font:400 21.778px/1.3 'Montserrat';color:#123456}
+
+/* ---------- button/module.active x2, group 2:670 ---------- */
+.mod{position:absolute;top:110px;width:140px;height:54.9171257019043px}
+.mod .fill{position:absolute;inset:28.17% 0 0 0;background:#6076dd;border-radius:6px}
+/* Figma insets this box to 38.67%/39.23%, so the label centered on a narrow box
+   that is not the button's centre. Spanning the button's full width instead. */
+.mod .cap-t{position:absolute;inset:0 0 71.83% 0;display:flex;flex-direction:column;
+            justify-content:flex-end;align-items:center;text-align:center;white-space:nowrap;
+            font:700 10.83px/1.4 'Montserrat';color:#123456}
+/* Sized to the fill exactly, so the value centres on the button on both axes. */
+.mod .val{position:absolute;inset:28.17% 0 0 0;display:flex;flex-direction:column;
+          justify-content:center;align-items:center;text-align:center;white-space:nowrap;
+          font:700 16.24px/normal 'Montserrat';color:#fff}
+
+/* ---------- yearly donut, Frame 14 (node 3:1618) ---------- */
+/* 3:1618 is a real frame, so everything inside is measured from its own origin.
+   The whole ring, arc and inner circles are one flattened 261px export here,
+   where the mobile screen keeps them as separate layers. */
+.dial{position:absolute;left:434px;top:238px;width:351px;height:317px}
+.dial .ring{position:absolute;left:47px;top:28px;width:261px;height:261px}
+.dial .axis{position:absolute;left:108px;top:157px;width:140px;height:2px}
+/* 5.138px dots, screen-blended. The two horizontal ones are rotated -90deg, so
+   get_metadata reports their y as 161.569, the rotated origin. 156.43 is the
+   box, and the file is self-consistent about it: the horizontal pair and the
+   vertical pair then share a centre of 159.0. */
+.dial .dot{position:absolute;width:5.13821px;height:5.13821px;mix-blend-mode:screen}
+.dial .dot.h{transform:rotate(-90deg)}
+
+.dial .fig{position:absolute;left:122.0021px;top:94px;width:111.756px;height:128.455px;
+           display:flex;flex-direction:column;justify-content:center;text-align:center;
+           white-space:pre-wrap;font:700 20px/normal 'Montserrat';color:#123456}
+.dial .fig .reg{font-weight:400}
+.dial .tick{position:absolute;white-space:nowrap;font:700 16px/normal 'Montserrat';color:#123456}
+.dial .t-top{left:150.8616px;top:0;width:51px;height:20px;display:flex;flex-direction:column;
+             justify-content:flex-end;text-align:center}
+.dial .t-bot{left:147px;top:297px;height:20px;text-align:center;width:59px}
+.dial .t-right{left:314px;top:138px;width:37px;height:40px;display:flex;flex-direction:column;justify-content:center}
+.dial .t-left{left:0;top:138.7317px;height:40px;width:41px;text-align:right;
+              display:flex;flex-direction:column;justify-content:center}
+
+/* ---------- three action pucks, Frame 19 (node 3:1735) ---------- */
+.acts{position:absolute;left:459px;top:648px;width:299px;height:122px}
+.acts .puck{position:absolute;top:0;width:88px;height:88px;background:#FBFBFB;
+            border:1px solid #fff;border-radius:61px;box-shadow:0 4px 8px 0 rgba(0,0,0,.08)}
+.acts .pico{position:absolute;top:15px;width:60px;height:60px}
+.acts .pico i{position:absolute;display:block}
+.acts .pico i i{position:absolute;inset:0;display:block}
+.acts .plab{position:absolute;top:100px;height:22px;text-align:center;white-space:nowrap;
+            font:500 14px/22px 'Montserrat';color:#123456}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 2:638 Group 103 -->
+  <p class="h-title">Yearly progress</p>
+  <p class="h-range">Jul &lsquo;19 &mdash; Jun &lsquo;20</p>
+
+  <!-- 2:641 navbar -->
+  <div class="nav">
+    <div class="bg"></div>
+    <p class="lbl" style="left:140px;width:76px">Total Pot:</p>
+    <div class="fig" style="left:140px;width:92px"><p>&pound;24,420.09</p></div>
+    <p class="lbl" style="left:312px;width:126px">Total Gain/Loss:</p>
+    <div class="fig" style="left:312px;width:81px"><p>+&pound;2,012.21</p></div>
+    <div class="pct"><p>+8.24%</p></div>
+    <div class="logo">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+    </div>
+    <div class="menu"><p>Menu</p></div>
+  </div>
+
+  <!-- 3:1618 Frame 14 -->
+  <div class="dial">
+    <div class="fig">
+      <p class="reg">Paid in</p>
+      <p>&pound;1,350</p>
+      <p>&#8203;</p>
+      <p class="reg">Yearly goal</p>
+      <p>&pound;1,600</p>
+    </div>
+    <div class="tick t-top"><p>Jul &lsquo;19</p></div>
+    <p class="tick t-bot">Jan &lsquo;20</p>
+    <div class="tick t-right"><p>Oct</p><p>2019</p></div>
+    <div class="tick t-left"><p>Apr</p><p>2020</p></div>
+    <div class="axis"><img src="screens/assets/d-donut-line.svg" alt=""></div>
+    <div class="ring"><img src="screens/assets/d-donut-group.svg" alt=""></div>
+    <div class="dot" style="left:174.9838px;top:40.8211px"><img src="screens/assets/d-donut-dot-v.svg" alt=""></div>
+    <div class="dot" style="left:174.9838px;top:272.0406px"><img src="screens/assets/d-donut-dot-v.svg" alt=""></div>
+    <div class="dot h" style="left:60.3737px;top:156.4309px"><img src="screens/assets/d-donut-dot-h.svg" alt=""></div>
+    <div class="dot h" style="left:289.5934px;top:156.4309px"><img src="screens/assets/d-donut-dot-h.svg" alt=""></div>
+  </div>
+
+  <!-- 2:670 Group 147 -->
+  <div class="mod" style="left:857px">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Growth profile</p></div>
+    <div class="val"><p>Basic 1</p></div>
+  </div>
+  <div class="mod" style="left:1015px">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Next payment</p></div>
+    <div class="val"><p>&pound;124 on 1st</p></div>
+  </div>
+
+  <!-- 3:1735 Frame 19 -->
+  <div class="acts">
+    <div class="puck" style="left:0"></div>
+    <div class="pico" style="left:14px">
+      <i style="inset:25%"><i style="inset:-5%"><img src="screens/assets/ic-combine-1.svg" alt=""></i></i>
+      <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-combine-2.svg" alt=""></i></i>
+      <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-combine-3.svg" alt=""></i></i>
+      <i style="inset:68% 18.91% 18.41% 67.5%"><i style="inset:-18.39%"><img src="screens/assets/ic-combine-4.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:11px;width:66px">Combine</p>
+
+    <div class="puck" style="left:103px"></div>
+    <div class="pico" style="left:117px">
+      <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-topup-1.svg" alt=""></i></i>
+      <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-topup-2.svg" alt=""></i></i>
+      <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-topup-3.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:123px;width:49px">Top up</p>
+
+    <div class="puck" style="left:208px"></div>
+    <div class="pico" style="left:222px">
+      <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-share-1.svg" alt=""></i></i>
+      <i style="inset:18.5% 18.5% 63.5% 63.5%"><i style="inset:-13.89%"><img src="screens/assets/ic-share-2.svg" alt=""></i></i>
+      <i style="inset:18.5% 18.5% 48.5% 48.5%"><i style="inset:-7.58%"><img src="screens/assets/ic-share-3.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:206px;width:93px">Share for &pound;25</p>
+  </div>
+
+</div></template></div>
   </div>
 </div>
 
@@ -141,8 +950,249 @@ img{display:block;max-width:100%}
     <p>So the product shifted, optimized for a new audience. Built around combining pots people already had, instead of opening an empty one and waiting on a first contribution. Signups went from around 100 a month to around 600, and each arrived with an existing pot, so the refocus raised what a signup was worth as well as how many there were. We added users and AUM, keeping us on track with the business plan, and making investors happy.</p>
     </div>
     <div class="rack stack">
-      <div class="scr ph"><iframe src="screens/s3-1-combine-v2.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Combine, v2"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s3-2-combine-v1.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Combine, v1"></iframe></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 2:1201, not eyeballed.
+   Tokens: Navy #123456, Pinkfold #FF5081, Grey4 #D8D8D8, Gray1 #FBFBFB, BG #F4F4F4.
+   Type: Montserrat. Note the field stack is NAMED details.spacing(8) but its
+   computed gap is 32px, so 32 is what is used. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+
+/* ---------- iOS small Safari header, 63px (node 2:1040) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/module, 375x72 at y=63 (node 2:1221) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px;background:#fff;border:.333px solid #D8D8D8}
+.hdr .title{position:absolute;right:32px;top:calc(50% - 1px);transform:translateY(-50%);
+            font:700 28px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;white-space:nowrap;
+            font-feature-settings:"lnum","tnum"}
+.hdr .back{position:absolute;left:0;top:50%;transform:translateY(-50%);display:flex;align-items:flex-start}
+.hdr .chev{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.hdr .chev svg{width:7.421px;height:13.0001px;transform:scaleX(-1)}
+.hdr .blabel{display:flex;align-items:center;padding:4px}
+.hdr .blabel span{font:700 20px/normal 'Montserrat';color:#123456;white-space:nowrap}
+
+/* ---------- intro copy, top 135, 40px vertical padding, 16px gap ---------- */
+.intro{position:absolute;left:50%;transform:translateX(-50%);top:135px;
+       display:flex;flex-direction:column;gap:16px;align-items:center;padding:40px 0}
+.intro .pad{display:flex;align-items:center;padding:8px}
+.intro p{margin:0;width:295px;font:400 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- field stack, left 48, top 299, computed gap 32 ---------- */
+.fields{position:absolute;left:48px;top:299px;display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+.row{display:flex;gap:8px;align-items:center}
+.tf{position:relative;height:40px;width:279px}
+.tf.narrow{width:231px}
+.tf .box{position:absolute;inset:0;background:#fff;border:2px solid #D8D8D8;border-radius:8px}
+.tf .val{position:absolute;left:16px;right:16px;top:50%;transform:translateY(-50%);
+         font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+.tf .lab{position:absolute;left:8px;right:8px;top:-4px;transform:translateY(-100%);
+         font:500 14px/normal 'Montserrat';color:#123456}
+.tf .down{position:absolute;right:0;bottom:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.tf .down svg{width:7.421px;height:13.0001px;transform:rotate(90deg)}
+
+/* control/stepper 40x40, platter inset 10% (node 2:1216) */
+.step{position:relative;width:40px;height:40px;flex:0 0 40px}
+.step .platter{position:absolute;inset:10%;background:#FBFBFB;border:1px solid #fff;border-radius:20px;
+               box-shadow:0 2px 2px 0 rgba(0,0,0,.16)}
+.step .q{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+         font:700 20px/normal 'Montserrat';color:#123456;white-space:nowrap}
+
+/* ---------- primary button, bottom 80, 260x40 ---------- */
+.cta{position:absolute;bottom:80px;left:calc(50% - .5px);transform:translateX(-50%);
+     width:260px;height:40px;background:#FF5081;border-radius:8px}
+.cta span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+          font:700 20px/normal 'Montserrat';color:#fff}
+
+/* ---------- footnote (node 2:1206) ---------- */
+.note{position:absolute;left:12.8%;right:12.8%;top:76.85%;bottom:18.72%;
+      display:flex;flex-direction:column;justify-content:flex-end;text-align:center;
+      font:500 10px/normal 'Montserrat';color:#123456}
+.note p{margin:0}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hdr">
+    <div class="back">
+      <div class="chev"><svg viewBox="0 0 7.42099 13.0001" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.50006 1.50006L5.50006 6.50006L1.50006 11.5001" stroke="#123456" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="blabel"><span>Back</span></div>
+    </div>
+    <div class="title">Combine</div>
+  </div>
+
+  <div class="intro">
+    <div class="pad"><p>Please fill in the details regarding any pension you want to combine into your Penfold pot. You can submit as many combine requests as you want.</p></div>
+  </div>
+
+  <div class="fields">
+    <div class="tf">
+      <div class="lab">Employer</div>
+      <div class="box"></div><div class="val">Apple</div>
+    </div>
+
+    <div class="tf">
+      <div class="lab">Pension provider</div>
+      <div class="box"></div><div class="val">Aviva</div>
+      <div class="down"><svg viewBox="0 0 7.42099 13.0001" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.50006 1.50006L5.50006 6.50006L1.50006 11.5001" stroke="#123456" stroke-width="3" stroke-linecap="round"/></svg></div>
+    </div>
+
+    <div class="row">
+      <div class="tf narrow">
+        <div class="lab">Pension scheme number</div>
+        <div class="box"></div><div class="val">PFL2918811</div>
+      </div>
+      <div class="step"><div class="platter"></div><div class="q">?</div></div>
+    </div>
+
+    <div class="row">
+      <div class="tf narrow">
+        <div class="lab">Pension amount (aprox.)</div>
+        <div class="box"></div><div class="val">&pound;91,299</div>
+      </div>
+      <div class="step"><div class="platter"></div><div class="q">?</div></div>
+    </div>
+  </div>
+
+  <div class="cta"><span>Combine</span></div>
+
+  <div class="note"><p>If you are unsure as to any of these fields, please fill in as best as you can, and if there&rsquo;s something you simply can&rsquo;t find, get in touch as we&rsquo;ll try our best to help.</p></div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Read from Figma node 2:1223. Tokens: Navy #123456, Pinkfold #FF5081,
+   Grey5 #BABABA, Gray1 #FBFBFB, Green #68D422, BG #F4F4F4.
+   Differences from v2.0 that come from the file, not from tidying:
+     - filled fields are #FBFBFB with NO border, and their value is centred
+     - the back label reads "Done", not "Back"
+     - the field stack starts at 247, not 299
+     - the amount label is spelt "approx." here and "aprox." in v2.0 */
+*{box-sizing:border-box}
+p{margin:0}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+
+/* ---------- iOS small Safari header, 63px (node 2:1040) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/module (node 2:1242) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px;background:#fff;border:.333px solid #D8D8D8}
+.hdr .title{position:absolute;right:32px;top:calc(50% - 1px);transform:translateY(-50%);
+            font:700 28px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;white-space:nowrap;
+            font-feature-settings:"lnum","tnum"}
+.hdr .back{position:absolute;left:0;top:50%;transform:translateY(-50%);display:flex;align-items:flex-start}
+.hdr .chev{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.hdr .chev svg{width:7.421px;height:13.0001px;transform:scaleX(-1)}
+.hdr .blabel{display:flex;align-items:center;padding:4px}
+.hdr .blabel span{font:700 20px/normal 'Montserrat';color:#123456;white-space:nowrap}
+
+/* ---------- success row, top 159 (node 2:1230) ---------- */
+.ok{position:absolute;top:159px;left:calc(50% + .5px);transform:translateX(-50%);
+    display:flex;align-items:center;gap:4px;overflow:hidden}
+.ok b{font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;white-space:nowrap;
+      font-feature-settings:"lnum","tnum"}
+.ok .ico{position:relative;width:40px;height:40px}
+.ok .ico svg{position:absolute;inset:10%;width:80%;height:80%;display:block}
+
+/* ---------- field stack, left 48, top 247, computed gap 32 ---------- */
+.fields{position:absolute;left:48px;top:247px;display:flex;flex-direction:column;gap:32px;align-items:flex-start}
+.tf{position:relative;height:40px;width:279px}
+.tf .box{position:absolute;inset:0;background:#FBFBFB;border-radius:8px}
+.tf .val{position:absolute;left:16px;right:16px;top:50%;transform:translateY(-50%);text-align:center;
+         font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+.tf .lab{position:absolute;left:8px;right:8px;top:-4px;transform:translateY(-100%);
+         font:500 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- body copy, bottom 213 (node 2:1234) ---------- */
+.copy{position:absolute;bottom:213px;left:32px;display:flex;align-items:center;padding:8px}
+.copy p{width:295px;font:400 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- buttons ---------- */
+.btn{position:absolute;left:calc(50% - .5px);transform:translateX(-50%);width:260px;height:40px;border-radius:8px}
+.btn span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+          font:700 20px/normal 'Montserrat';color:#fff}
+.btn.again{bottom:136px;background:#FF5081}
+.btn.dismiss{bottom:80px;background:#BABABA}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hdr">
+    <div class="back">
+      <div class="chev"><svg viewBox="0 0 7.42099 13.0001" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.50006 1.50006L5.50006 6.50006L1.50006 11.5001" stroke="#123456" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="blabel"><span>Done</span></div>
+    </div>
+    <div class="title">Combine</div>
+  </div>
+
+  <div class="ok">
+    <b>Success</b>
+    <span class="ico"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8365 32 32 24.8366 32 16C32 7.16341 24.8365 0 16 0C7.16345 0 0 7.16341 0 16C0 24.8366 7.16345 32 16 32ZM22.2761 13.6095C22.7968 13.0888 22.7968 12.2445 22.2761 11.7239C21.7555 11.2031 20.9112 11.2031 20.3905 11.7239L14 18.1144L11.6095 15.7239C11.0888 15.2031 10.2445 15.2031 9.72388 15.7239C9.20317 16.2445 9.20317 17.0888 9.72388 17.6095L13.0572 20.9428C13.3073 21.1929 13.6464 21.3333 14 21.3333C14.3536 21.3333 14.6927 21.1929 14.9428 20.9428L22.2761 13.6095Z" fill="#68D422"/></svg></span>
+  </div>
+
+  <div class="fields">
+    <div class="tf"><div class="lab">Employer</div><div class="box"></div><div class="val">Apple</div></div>
+    <div class="tf"><div class="lab">Pension provider</div><div class="box"></div><div class="val">Aviva</div></div>
+    <div class="tf"><div class="lab">Pension scheme number</div><div class="box"></div><div class="val">PFL2918811</div></div>
+    <div class="tf"><div class="lab">Pension amount (approx.)</div><div class="box"></div><div class="val">&pound;91,299</div></div>
+  </div>
+
+  <div class="copy"><p>Your request has been submitted. We&rsquo;ll notify you once it&rsquo;s processed successfully, and display it on your transactions list.</p></div>
+
+  <div class="btn again"><span>Combine another?</span></div>
+  <div class="btn dismiss"><span>Dismiss</span></div>
+
+</div></template></div>
     </div>
   </div>
 </div>
@@ -156,11 +1206,1386 @@ img{display:block;max-width:100%}
 
 <div class="col shelf wide">
   <div class="rack five">
-      <div class="scr ph"><iframe src="screens/s4-1-onboarding-finish.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Onboarding, finish"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s4-2-dashboard.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Dashboard"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s4-3-payin-v3.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Pay in"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s4-4-payment.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Payment"></iframe></div>
-      <div class="scr ph"><iframe src="screens/s4-5-transactions.html#e" scrolling="no" loading="lazy" tabindex="-1" title="Transactions"></iframe></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 10:5229 "onboarding/mobile/finish",
+   not eyeballed.
+
+   NODE ID NOTE. This screen was briefed as node 3:1869, which no longer exists
+   in the document. The document itself is the right one (2:636, 3:1622 and the
+   whole of section 3:4576 "04" still resolve), so this is a stale id, not a
+   switched file. The frame now carrying this screen is 10:5229, named
+   "onboarding/mobile/finish", sitting first in section 04 at x=80 y=80, 375x812,
+   directly ahead of 3:2854, 3:4062, 3:3233 and 3:4241. All geometry below comes
+   from that node.
+
+   Tokens on this node: 123456 Navy #123456, FFFFFF White #FFFFFF,
+   5081FF dolfknip #5081FF, FF5081 Pinkfold #FF5081, 68D422 Green #68D422,
+   E7EBED Light blue #E7EBED, D8D8D8 Grey4 #D8D8D8, F4F4F4 Grey2 (BG) #F4F4F4.
+   Type tokens: N/B 28, N/B 24 (both Bold, letterSpacing -0.8), T/B 20 (Bold,
+   letterSpacing 0), T/R 14, T/R 12 (Regular), N/SB 12 (SemiBold, -0.4).
+   Two values on this screen have no variable behind them: the amber third
+   progression step (#F7B500, read out of its own exported SVG) and the popup
+   card fill #FBFBFB.
+
+   The whole screen is one instance, 10:5230 "onboarding/template.mobile", laid
+   out at 0,0, so its coordinates and the frame's are the same.
+
+   Line-height note, same as the s2 screens. Figma measures Montserrat auto
+   leading off the OS/2 win metrics (1.25em) where Chrome uses hhea (1.219em),
+   so the 3-line 12px stacks are 45px in the file and 43.9px in a browser. The
+   boxes are pinned to the file's heights, which keeps every frame diff at zero
+   without moving a glyph. The 5-line 14px block is 85px in the file and 85.3px
+   in a browser, so it is pinned too.
+
+   The header BG on this node takes a 0.333px #D8D8D8 border. The s2 mobile
+   navbar takes 0.333px #CCCCCC. Different component version, both are read
+   values, so they are left different.
+
+   The progression steps carry a "-rotate-180 -scale-x-100" transform in Figma,
+   which composes to a plain vertical flip. Each step is a single solid fill on
+   a vertically symmetric rounded bar, so the transform is a visual no-op and is
+   not reproduced. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node I10:5230;702:167) ---------- */
+/* Same component as the s2 and s3 screens; the clock on this node reads 8:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/dashboard, 375x72 at y=63 (node 10:5273) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px}
+.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #D8D8D8}
+/* 10:5275 is 135x34 at 120,18, i.e. centred on the frame's 187.5 midline */
+.hdr .title{position:absolute;left:120px;top:18px;width:135px;height:34px;
+            display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+            font:700 28px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+            font-feature-settings:"lnum","tnum"}
+/* 10:5276 is 40x40 at 319,15.999993 (right:16px against the 375 frame) */
+.hdr .menu{position:absolute;left:319px;top:16px;width:40px;height:40px}
+.hdr .menu i{position:absolute;inset:22.5% 20%;display:block}   /* resolves to 24x22 */
+/* 10:5281 clips the 140x44 logo to a 28x44 window, which is why only the P shows */
+.hdr .logo{position:absolute;left:16px;top:16px;width:28px;height:44px;overflow:hidden}
+.hdr .logo .full{position:absolute;inset:0 -400% 0 0}            /* resolves to 140x44 */
+.hdr .logo i{position:absolute;display:block}
+.hdr .logo .a{inset:0 92.14% 0 0}
+.hdr .logo .b{inset:0 80% 56.82% 7.86%}
+.hdr .logo .c{inset:20.45% 80% 36.36% 7.86%}
+
+/* ---------- intro block, 311 wide at x=32 (node 10:5231) ---------- */
+/* 10:5231 is a real frame at 32,135 311x226: 40 padding, the 29px heading,
+   16 gap, the 101px padded copy box, 40 padding. */
+.h-final{position:absolute;left:32px;top:175px;width:311px;height:29px;
+         display:flex;flex-direction:column;justify-content:flex-end;
+         font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+/* Figma marks this node whitespace-pre-wrap because its string carries explicit
+   line breaks. The breaks are reproduced as separate <p> elements instead, so
+   pre-wrap is dropped: it would turn the source indentation into real text. */
+.copy{position:absolute;left:40px;top:228px;width:295px;height:85px;
+      font:400 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- Finish button + progression, group 10:5236 at 96,388 ---------- */
+.btn{position:absolute;width:184px;height:40px;border-radius:8px}
+.btn span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+          font:700 20px/normal 'Montserrat';color:#fff}
+.btn.finish{left:96px;top:388px;background:#5081FF}
+.bars{position:absolute;width:184px;height:4px}
+.bars i{position:absolute;top:0;width:56px;height:4px;display:block}   /* 56 + 8 gap */
+.bars i:nth-child(1){left:0}
+.bars i:nth-child(2){left:64px}
+.bars i:nth-child(3){left:128px}
+.bars.main{left:96px;top:452px}
+
+/* ---------- popUp/Estimated, 346x228 at 15,520 (nodes 10:5247 / 10:5248) ---------- */
+/* Figma names the effect "Shadow/spread 32+4+8" (radius 32, offset 0/4,
+   #00000014); get_design_context resolves that to CSS 0 4px 16px rgba(0,0,0,.08). */
+.pop{position:absolute;left:15px;top:520px;width:346px;height:228px;
+     background:#FBFBFB;border-radius:32px;
+     filter:drop-shadow(0 4px 16px rgba(0,0,0,.08))}
+/* 10:5253 is 202x29 at 32 inside the 266-wide Copy column, so 32 either side */
+.pop .h{position:absolute;left:72px;top:24px;width:202px;height:29px;
+        text-align:center;white-space:nowrap;
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}
+/* 10:5255 sits at x=1 inside its 266 box, so the two columns are 41 and 227 */
+.pop .est-l{position:absolute;left:41px;top:72px;width:112px;height:45px;
+            font:400 12px/normal 'Montserrat';color:#123456}
+.pop .est-r{position:absolute;left:227px;top:72px;width:80px;height:45px;text-align:right;
+            font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:-.4px;
+            font-feature-settings:"lnum","tnum"}
+.btn.change{left:81px;top:152px;background:#FF5081}
+/* 10:5265 is fully transparent in the file but is still laid out, and its last
+   two steps are the OFF variant, so it is kept rather than deleted. */
+.bars.pop-bars{left:81px;top:208px;opacity:0}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 10:5231 intro -->
+  <div class="h-final"><p>Final step</p></div>
+  <div class="copy">
+    <p>All that&rsquo;s left to do is start putting some money into your pension.</p>
+    <p>&#8203;</p>
+    <p>You can start with a simple one-off top-up or set a regular recurring contribution.</p>
+  </div>
+
+  <!-- 10:5236 progressButton -->
+  <div class="btn finish"><span>Finish</span></div>
+  <div class="bars main">
+    <i><img src="screens/assets/prog-step-on-green.svg" alt=""></i>
+    <i><img src="screens/assets/prog-step-on-green.svg" alt=""></i>
+    <i><img src="screens/assets/prog-step-on-amber.svg" alt=""></i>
+  </div>
+
+  <!-- 10:5247 popUp/Estimated -->
+  <div class="pop">
+    <p class="h">Current estimate</p>
+    <div class="est-l">
+      <p>Save now:</p>
+      <p>Projected pot:</p>
+      <p>Estimated growth:</p>
+    </div>
+    <div class="est-r">
+      <p>&pound; 250</p>
+      <p>&pound; 241.357,87</p>
+      <p>&pound; 123.478,62</p>
+    </div>
+    <div class="btn change"><span>Change</span></div>
+    <div class="bars pop-bars">
+      <i><img src="screens/assets/prog-step-on-green.svg" alt=""></i>
+      <i><img src="screens/assets/prog-step-off.svg" alt=""></i>
+      <i><img src="screens/assets/prog-step-off.svg" alt=""></i>
+    </div>
+  </div>
+
+  <!-- 10:5273 header/mobile/dashboard -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="logo"><div class="full">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+    </div></div>
+    <div class="title"><p>Welcome</p></div>
+    <div class="menu"><i><img src="screens/assets/ic-menu-dropdown.svg" alt=""></i></div>
+  </div>
+
+  <!-- I10:5230;702:167 iOS/smallSafariHeader -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 3:2854 "Dashboard/mobile", not eyeballed.
+
+   Tokens: 123456 Navy #123456, 5081FF dolfknip #5081FF, FFA400 Amber #FFA400,
+   FF5081 Pinkfold #FF5081, 68D422 Green #68D422, D8D8D8 Grey4 #D8D8D8,
+   F0F0F0 Gray3 #F0F0F0, F4F4F4 Grey2 (BG) #F4F4F4, FFFFFF White, Pinkfaded #FDD0D0.
+   Type: T/M 12, T/M 14, T/B 16, T/B 20, T/R 16, N/B 16 (-0.8), N/SB 12 (-0.4),
+   T/R 10 (lineHeight 14, the one text style on this screen with a fixed leading).
+   The puck fill #FBFBFB and its 0 4px 8px rgba(0,0,0,.08) shadow are raw values.
+
+   Nesting note. get_metadata is relative to the nearest ancestor frame, and this
+   screen is deeply nested auto-layout, so every coordinate in this file is the
+   absolute frame coordinate resolved down that chain. Two examples that are easy
+   to get wrong: 3:2915 reports y=24 inside 3:2914 inside 3:2913 (y=151), so it
+   lands at 175; and 3:3019's labels report negative offsets (Jul '19 at y=-22,
+   Apr 2020 at x=-40) because they hang outside their own 202x202 frame, which
+   carries no clip.
+
+   Rotation traps on this screen:
+   - the two horizontal donut dots are rotated -90deg, but they are 4x4 squares,
+     so the transform is a visual no-op and get_design_context already reports
+     their unrotated boxes (9,99 and 189,99). No correction needed.
+   - the chevron in 3:4030 IS a real one. get_metadata reports the vector at
+     18,24 4x8; that y is the rotated origin. The artwork is an 8x4 down-chevron
+     rotated -90deg into a 4x8 box whose true top is 16. The exported SVG proves
+     it: 11 x 7.62132 is exactly an 8x4 path grown by the 3px stroke's 1.5px
+     bleed, which is what the -18.75% / -37.5% / -53.03% wrapper insets resolve
+     against.
+
+   Two node sizes come from the exported asset rather than from the rounded
+   percentage in the generated code: "Upcoming/Pending" is inset -5.56%, which
+   would give 200.016, and the export is exactly 200; "Paid" likewise resolves
+   to 194.234 x 200. Intrinsic size wins.
+
+   Version drift against the s2 screens, both read, both left as they are:
+   this navbar takes a 0.333px #D8D8D8 border where s2-2 takes 0.333px #CCCCCC,
+   and this puck seats its 60px icon at 14,14 where the s2-2 group seats it at
+   14,15. The donut divider is byte-identical to the s2-2 donut-line.svg, so
+   that asset is reused. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 3:2942) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/dashboard, 375x72 at y=63 (node 3:2941) ---------- */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px}
+.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #D8D8D8}
+/* 3:2982 clips the 140x44 logo to a 28x44 window, which is why only the P shows */
+.hdr .logo{position:absolute;left:16px;top:16px;width:28px;height:44px;overflow:hidden}
+.hdr .logo .full{position:absolute;inset:0 -400% 0 0}            /* resolves to 140x44 */
+.hdr .logo i{position:absolute;display:block}
+.hdr .logo .a{inset:0 92.14% 0 0}
+.hdr .logo .b{inset:0 80% 56.82% 7.86%}
+.hdr .logo .c{inset:20.45% 80% 36.36% 7.86%}
+/* 3:2977 is fully transparent in the file but still occupies its 40x40 slot */
+.hdr .menu{position:absolute;left:319px;top:16px;width:40px;height:40px;opacity:0}
+.hdr .menu i{position:absolute;inset:22.5% 20%;display:block}
+/* DashInfo 3:2988 sits at 52,1.5 inside 3:2982, hence the half pixel */
+.t{position:absolute;display:flex;flex-direction:column;justify-content:flex-end;white-space:nowrap;color:#123456}
+.hdr .lab{font:500 14px/normal 'Montserrat'}                     /* T/M 14 */
+.hdr .val{font:700 16px/normal 'Montserrat';letter-spacing:-.8px;text-align:right;
+          font-feature-settings:"lnum","tnum"}                   /* N/B 16 */
+.hdr .pct{font:600 12px/normal 'Montserrat';letter-spacing:-.4px;color:#68D422;
+          font-feature-settings:"lnum","tnum"}                   /* N/SB 12 */
+
+/* ---------- notification + chevron, 80x40 at 279.046875,79 (node 3:4023) ---------- */
+.notif{position:absolute;left:279.046875px;top:79px;width:40px;height:40px}
+/* 3:4030: an 8x4 chevron rotated -90deg into the 4x8 box at 18,16 */
+.chev{position:absolute;left:319.046875px;top:79px;width:40px;height:40px}
+.chev .slot{position:absolute;left:18px;top:16px;width:4px;height:8px;
+            display:flex;align-items:center;justify-content:center}
+.chev .slot>i{position:relative;flex:none;width:8px;height:4px;transform:rotate(-90deg)}
+.chev .slot>i>i{position:absolute;inset:-37.5% -18.75% -53.03% -18.75%;display:block}
+
+/* ---------- header/pulldownLip, 375x20 at y=135 (node 3:2943) ---------- */
+.lip{position:absolute;left:0;top:135px;width:375px;height:20px;background:#fff}
+.lip .fillet{position:absolute;left:0;top:0;width:375px;height:.333px;background:#F0F0F0}
+/* the 40x40 icon is centred on the 20px lip, so it overhangs it top and bottom */
+.sq{position:absolute;width:40px;height:40px}
+.sq i{position:absolute;display:block}
+.lip .sq{left:168px;top:-10px}   /* 125 in frame terms; the lip's own top is 135 */
+.lip .sq .vec{inset:47.5% 37.5%}                                  /* 10x2 at 15,19 */
+.sq .vec>i{position:absolute;inset:-50.01% -10% -53.85% -10%}     /* 12.0005 x 4.0773 */
+
+/* ---------- topButtons, group 3:2913 at y=151 ---------- */
+.tcap{position:absolute;top:175px;height:15px;text-align:center;white-space:nowrap;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      font:500 12px/normal 'Montserrat';color:#123456}            /* T/M 12 */
+.pill{position:absolute;top:194px;height:40px;border-radius:8px}
+.pill span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+           text-align:center;font:700 16px/normal 'Montserrat';color:#fff}   /* T/B 16 */
+/* 3:2922 is Bold 10 in Amber and wraps to two lines inside its 311x24 box */
+.warn{position:absolute;left:32px;top:242px;width:311px;height:24px;text-align:center;
+      font:700 10px/normal 'Montserrat';color:#FFA400}
+
+/* ---------- GoalAndCompletion.box, 375x48 at y=290 (node 3:2924) ---------- */
+.g-lab{position:absolute;height:24px;white-space:nowrap;display:flex;flex-direction:column;
+       justify-content:flex-end;font:700 20px/normal 'Montserrat';color:#123456}   /* T/B 20 */
+.g-sub{position:absolute;white-space:nowrap;font:600 12px/normal 'Montserrat';color:#123456;
+       letter-spacing:-.4px;font-feature-settings:"lnum","tnum"}                   /* N/SB 12 */
+/* T/R 10 is the only style on this screen with an explicit lineHeight (14) */
+.g-pct{position:absolute;left:272px;top:319px;width:71px;height:14px;text-align:right;
+       white-space:nowrap;font:400 10px/14px 'Montserrat';color:#123456}
+
+/* ---------- component/Donut.upcoming, 311x250 at 32,362 (node 3:2935) ---------- */
+/* DonutFrame and donut.labels share the same 202x202 box at 87,386. */
+.dframe{position:absolute;left:87px;top:386px;width:202px;height:202px}
+.dframe i{position:absolute;display:block}
+.dframe .bg{left:0;top:0;width:202px;height:202px}
+.dframe .upc{left:1px;top:1px;width:200px;height:200px}
+.dframe .paid{left:6.769px;top:1px;width:194.234px;height:200px}
+.dframe .shade{left:0;top:0;width:202px;height:202px;mix-blend-mode:multiply}
+.dframe .dot{width:4px;height:4px;mix-blend-mode:screen}
+.dlab{position:absolute;white-space:nowrap;font:600 12px/normal 'Montserrat';color:#123456;
+      letter-spacing:-.4px;font-feature-settings:"lnum","tnum"}
+.dlab.two{display:flex;flex-direction:column;justify-content:center}
+/* DonutCopy 3:3027: 40 + 8 + 1 + 8 + 40 = 97 */
+.dcopy{position:absolute;display:flex;flex-direction:column;justify-content:center;
+       text-align:center;white-space:nowrap;height:20px;font-size:16px}
+.dcopy.reg{font-weight:400}
+.dcopy.bold{font-weight:700;letter-spacing:-.8px;font-feature-settings:"lnum","tnum"}
+.dcopy.pink{color:#FF5081}
+.dcopy.navy{color:#123456}
+/* box.pullDown 3:3024 overrides the icon's vector to top:50% bottom:45%,
+   one pixel lower than the standalone icon/chevronSquished used on the lip */
+.sq.pull{left:168px;top:531px}
+.sq.pull .vec{inset:50% 37.5% 45% 37.5%}                          /* 10x2 at 15,20 */
+
+/* ---------- three pucks, 88x88 at y=660 (nodes 3:2938-40) ---------- */
+.puck{position:absolute;top:660px;width:88px;height:88px;background:#FBFBFB;
+      border:1px solid #fff;border-radius:61px;box-shadow:0 4px 8px 0 rgba(0,0,0,.08)}
+.pico{position:absolute;top:674px;width:60px;height:60px}         /* 14,14 inside the puck */
+.pico i{position:absolute;display:block}
+.pico i i{position:absolute;inset:0;display:block}
+/* Labels are centred on the puck's midline + 0.5px, but the file also reports a
+   measured box for each (65, 49, 93 at height 17), and the third one is wider
+   than its own puck: "Share for £25" starts 2px to the LEFT of the 88px puck.
+   Pinning those boxes keeps the edges on the Figma numbers. */
+.plab{position:absolute;top:756px;height:17px;text-align:center;white-space:nowrap;
+      font:500 14px/normal 'Montserrat';color:#123456}            /* T/M 14 */
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 3:2913 topButtons -->
+  <div class="tcap" style="left:60.5px;width:91px"><p>Fund selection</p></div>
+  <div class="pill" style="left:32px;width:148px;background:#5081FF"><span>Level 1</span></div>
+  <div class="tcap" style="left:219.5px;width:100px"><p>Payment details</p></div>
+  <div class="pill" style="left:196px;width:147px;background:#FFA400"><span>Paused</span></div>
+  <p class="warn">Your contributions will be paused after your next payment on dd-mm.</p>
+
+  <!-- 3:2924 GoalAndCompletion.box -->
+  <div class="g-lab" style="left:32px;top:290px;width:115px"><p>Yearly goal</p></div>
+  <p class="g-sub" style="left:36px;top:318px;width:100px;height:15px">Jul &lsquo;19 &mdash; Jun &lsquo;20</p>
+  <div class="g-lab" style="left:272px;top:290px;width:71px;text-align:right"><p>&pound;2,600</p></div>
+  <p class="g-pct">72% complete</p>
+
+  <!-- 3:3019 donut.labels, overflowing its own 202x202 frame -->
+  <div class="dlab" style="left:168px;top:364px;width:39px;height:15px;text-align:center">Jul &lsquo;19</div>
+  <div class="dlab" style="left:166px;top:595px;width:43px;height:15px;text-align:center">Jan &lsquo;20</div>
+  <div class="dlab two" style="left:296px;top:472px;width:33px;height:30px"><p>Oct</p><p>2019</p></div>
+  <div class="dlab two" style="left:47px;top:472px;width:33px;height:30px;text-align:right"><p>Apr</p><p>2020</p></div>
+
+  <!-- 3:3035 DonutFrame -->
+  <div class="dframe">
+    <i class="bg"><img src="screens/assets/dash-donut-bg.svg" alt=""></i>
+    <i class="upc"><img src="screens/assets/dash-donut-upcoming.svg" alt=""></i>
+    <i class="paid"><img src="screens/assets/dash-donut-paid.svg" alt=""></i>
+    <i class="shade"><img src="screens/assets/dash-donut-shadow.svg" alt=""></i>
+    <i class="dot" style="left:99px;top:9px"><img src="screens/assets/donut-dot-v.svg" alt=""></i>
+    <i class="dot" style="left:99px;top:189px"><img src="screens/assets/donut-dot-v.svg" alt=""></i>
+    <i class="dot" style="left:9px;top:99px"><img src="screens/assets/donut-dot-h.svg" alt=""></i>
+    <i class="dot" style="left:189px;top:99px"><img src="screens/assets/donut-dot-h.svg" alt=""></i>
+  </div>
+
+  <!-- 3:3027 DonutCopy -->
+  <div class="dcopy reg pink" style="left:160px;top:438px;width:56px">Paid in</div>
+  <div class="dcopy bold pink" style="left:160px;top:458px;width:56px">&pound;1,350</div>
+  <div style="position:absolute;left:128px;top:486px;width:120px;height:1px">
+    <img src="screens/assets/donut-line.svg" alt=""></div>
+  <div class="dcopy reg navy" style="left:140.5px;top:495px;width:95px">+Upcoming</div>
+  <div class="dcopy bold navy" style="left:160px;top:515px;width:56px">&pound;1,600</div>
+
+  <!-- 3:3024 box.pullDown -->
+  <div class="sq pull"><i class="vec"><i><img src="screens/assets/ic-chevron-squished.svg" alt=""></i></i></div>
+
+  <!-- 3:2938 / 3:2939 / 3:2940 pucks -->
+  <div class="puck" style="left:39.5px"></div>
+  <div class="pico" style="left:53.5px">
+    <i style="inset:25%"><i style="inset:-5%"><img src="screens/assets/ic-combine-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-combine-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-combine-3.svg" alt=""></i></i>
+    <i style="inset:68% 18.91% 18.41% 67.5%"><i style="inset:-18.39%"><img src="screens/assets/ic-combine-4.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:51.5px;width:65px">Combine</p>
+
+  <div class="puck" style="left:143.5px"></div>
+  <div class="pico" style="left:157.5px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-topup-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-topup-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-topup-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:163.5px;width:49px">Top up</p>
+
+  <div class="puck" style="left:247.5px"></div>
+  <div class="pico" style="left:261.5px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-share-1.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 63.5% 63.5%"><i style="inset:-13.89%"><img src="screens/assets/ic-share-2.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 48.5% 48.5%"><i style="inset:-7.58%"><img src="screens/assets/ic-share-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:245.5px;width:93px">Share for &pound;25</p>
+
+  <!-- 3:2943 header/pulldownLip -->
+  <div class="lip">
+    <div class="fillet"></div>
+    <div class="sq"><i class="vec"><i><img src="screens/assets/ic-chevron-squished.svg" alt=""></i></i></div>
+  </div>
+
+  <!-- 3:2941 header/mobile/dashboard -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="logo"><div class="full">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+    </div></div>
+    <div class="t lab" style="left:68px;top:17.5px;width:63px;height:17px"><p>Total pot</p></div>
+    <div class="t val" style="left:68px;top:38.5px;width:56px;height:20px"><p>&pound;5,392</p></div>
+    <div class="t lab" style="left:147px;top:17.5px;width:54px;height:17px"><p>Growth</p></div>
+    <div class="t val" style="left:147px;top:38.5px;width:42px;height:20px"><p>&pound;529</p></div>
+    <div class="t pct" style="left:193px;top:40.5px;width:44px;height:17px"><p>+5.23%</p></div>
+    <div class="menu"><i><img src="screens/assets/ic-menu-dropdown.svg" alt=""></i></div>
+  </div>
+
+  <!-- 3:4023 notification + chevron -->
+  <div class="notif"><img src="screens/assets/ic-notification.svg" alt=""></div>
+  <div class="chev"><div class="slot"><i><i><img src="screens/assets/ic-chevron-small.svg" alt=""></i></i></div></div>
+
+  <!-- 3:2942 iOS/smallSafariHeader -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 3:4062 "v3", not eyeballed.
+
+   Tokens: Cool blue #123456, Pinkfold #FF5081, White #FFFFFF, Grey #CCCCCC,
+   Light Blue #E7EBED, Cool grey #FBFBFB, F0F0F0, Background #F4F4F4.
+   Type: H1.m Bold 28 (lineHeight 1.04, letterSpacing -1), T1 Bold 28 (ls 0),
+   H3.m Bold 24 (ls -1), T2 Bold 20, T3.m Medium 12 (lineHeight 20).
+   Two colors have no variable behind them: the graph's #5C85D6 "Paid in" bars
+   and #20499A "Growth" bars.
+
+   Flip and rotation traps, all cross-checked between get_metadata and
+   get_design_context. get_metadata reports a transformed node's origin AFTER
+   the transform, so the reported x or y is the far edge, not the box:
+   - 3:4170 icon/chevronRight reports 46,44 inside a 120x44 button. It is
+     rotated 180deg, so its true box is 2,0 (46-44, 44-44). That 180 is also
+     why the chevron reads as a left-pointing Back arrow: the artwork is a
+     down-chevron, turned -90deg inside the icon and then 180deg with the icon.
+     The generated code kept only the inner -90 and lost the 180.
+   - 3:4147 the recurring icon reports x=40 in an 82-wide frame. It is flipped
+     horizontally, so its true left is 0.
+   - 3:4072 and 3:4074, the two 8px graph key dots, report y=85. They are
+     flipped vertically, so their true top is 77. Being circles, the flip
+     itself is a visual no-op and is not reproduced.
+
+   One genuine disagreement between the two tools, flagged rather than guessed:
+   for the "Saving" title 3:4174, get_metadata gives 248,21 95x29 while
+   get_design_context computes left 68.8% (258) and width 85. Both put the
+   right edge at 343 and the type is right-aligned, so the glyphs land in the
+   same place either way. get_metadata's box is the one used here.
+
+   3:4053's chevron slot is 4x8 and the artwork inside it is 8x4, i.e. the
+   rotated pair, exactly as on s4-2. The 11 x 7.62132 export is byte-identical
+   to that screen's ic-chevron-small.svg apart from its layer id, so it is
+   reused. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 3:4157) ---------- */
+/* Same component as the other screens; the clock on this node reads 9:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- combo/navbar/mobile/module, 375x72 at y=63 (node 3:4156) ---------- */
+.nav{position:absolute;left:0;top:63px;width:375px;height:72px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:.333px solid #CCCCCC}
+/* button/Back 3:4166: 120x44 at 4,16. Component note in the file reads
+   "padding: 20px before icon 20 px after label". */
+.back{position:absolute;left:4px;top:16px;width:120px;height:44px}
+.back .lbl{position:absolute;left:47px;top:10px;width:53px;height:24px;
+           display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+           font:700 20px/normal 'Montserrat';color:#123456}          /* T2 Bold 20 */
+.back .ico{position:absolute;left:2px;top:0;width:44px;height:44px;transform:rotate(180deg)}
+.back .slot{position:absolute;left:22px;top:18px;width:4px;height:8px;
+            display:flex;align-items:center;justify-content:center}
+.back .slot>i{position:relative;flex:none;width:8px;height:4px;transform:rotate(-90deg)}
+.back .slot>i>i{position:absolute;inset:-37.5% -18.75% -53.03% -18.75%;display:block}
+.nav .title{position:absolute;left:248px;top:21px;width:95px;height:29px;
+            display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+            font:700 28px/1.04 'Montserrat';color:#123456;letter-spacing:-1px}   /* H1.m Bold 28 */
+
+/* ---------- Pay in, 173x81 at 32,155 (node 3:4150) ---------- */
+.payin-lab{position:absolute;left:32px;top:155px;width:173px;height:29px;white-space:nowrap;
+           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1px;
+           font-feature-settings:"lnum","tnum"}                       /* H3.m Bold 24 */
+.payin-box{position:absolute;left:32px;top:196px;width:152px;height:40px;background:#fff;border-radius:20px}
+/* the value overrides H3.m's -1 tracking with its own -1.4 */
+.payin-val{position:absolute;left:74px;top:202px;width:68px;height:29px;
+           display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1.4px;
+           font-feature-settings:"lnum","tnum"}
+/* 3:4147 is flipped horizontally; the artwork is not symmetric, so this one counts */
+.recur{position:absolute;left:187px;top:196px;width:40px;height:40px;transform:scaleX(-1)}
+
+/* ---------- comp/switch, 96x66 (nodes 3:4144 recurring, 3:4067 salary) ---------- */
+.sw-lab{position:absolute;height:20px;display:flex;flex-direction:column;justify-content:center;
+        text-align:center;white-space:nowrap;
+        font:500 12px/20px 'Montserrat';color:#123456}                /* T3.m Medium 12 */
+.sw{position:absolute;width:70px;height:44px}
+.sw .track{position:absolute;left:2px;top:2px;width:66px;height:40px;border-radius:20px;
+           box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.08)}
+.sw .cap-b{position:absolute;top:0;width:44px;height:44px}
+/* the 28x28 knob exports at 32x32 because its drop shadow is baked into the SVG,
+   which is what the 0 / -7.14% / -14.29% / -7.14% wrapper insets resolve to */
+.sw .cap-b i{position:absolute;left:6px;top:8px;width:32px;height:32px;display:block}
+
+/* ---------- graph, 296x101 at 40,473 (node 3:4068) ---------- */
+.g-title{position:absolute;left:58px;top:473px;width:107px;height:12px;white-space:nowrap;
+         font:400 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+.g-bars{position:absolute;left:40px;top:483px;width:296px;height:61px}
+.g-dot{position:absolute;top:550px;width:8px;height:8px;border-radius:4px}
+.g-key{position:absolute;top:549px;height:10px;display:flex;flex-direction:column;justify-content:center;
+       white-space:nowrap;font:400 8px/normal 'Montserrat';color:#123456;
+       font-feature-settings:"lnum","tnum"}
+.g-total{position:absolute;left:212px;top:548px;width:104px;height:12px;text-align:right;white-space:nowrap;
+         font:700 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+
+/* ---------- bottom panel and Save, nodes 3:4063 / 3:4064 ---------- */
+.panel{position:absolute;left:0;top:590px;width:375px;height:222px;background:#F0F0F0}
+.save{position:absolute;left:105px;top:704px;width:164px;height:60px;background:#FF5081;border-radius:30px}
+.save-t{position:absolute;left:152px;top:717px;width:69px;height:34px;
+        display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+        font:700 28px/normal 'Montserrat';color:#fff}                 /* T1 Bold 28, no tracking */
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- 3:4063 bg -->
+  <div class="panel"></div>
+
+  <!-- 3:4064 button/save -->
+  <div class="save"></div>
+  <div class="save-t"><p>Save</p></div>
+
+  <!-- 3:4067 comp/switch/Salary -->
+  <div class="sw-lab" style="left:150px;top:606px;width:77px"><p>Salary based</p></div>
+  <div class="sw" style="left:153px;top:628px">
+    <div class="track" style="background:#E7EBED"></div>
+    <div class="cap-b" style="left:2px"><i><img src="screens/assets/sw-cap.svg" alt=""></i></div>
+  </div>
+
+  <!-- 3:4068 graph -->
+  <p class="g-title">Growth over 37 years</p>
+  <div class="g-bars"><img src="screens/assets/payin-bars.svg" alt=""></div>
+  <div class="g-dot" style="left:58px;background:#5C85D6"></div>
+  <div class="g-key" style="left:70px;width:28px"><p>Paid in</p></div>
+  <div class="g-dot" style="left:108px;background:#20499A"></div>
+  <div class="g-key" style="left:120px;width:31px"><p>Growth</p></div>
+  <p class="g-total">Total pot: &pound;312,281</p>
+
+  <!-- 3:4144 comp/switch/Monthly -->
+  <div class="sw-lab" style="left:280px;top:172px;width:61px"><p>Recurring</p></div>
+  <div class="sw" style="left:275px;top:194px">
+    <div class="track" style="background:#FF5081"></div>
+    <div class="cap-b" style="left:26px"><i><img src="screens/assets/sw-cap.svg" alt=""></i></div>
+  </div>
+
+  <!-- 3:4145 recurring alert -->
+  <div class="recur"><img src="screens/assets/ic-recurring.svg" alt=""></div>
+
+  <!-- 3:4150 Pay in -->
+  <p class="payin-lab">Pay-in amount</p>
+  <div class="payin-box"></div>
+  <div class="payin-val"><p>&pound; 250</p></div>
+
+  <!-- 3:4156 combo/navbar/mobile/module -->
+  <div class="nav">
+    <div class="bg"></div>
+    <div class="back">
+      <div class="ico"><div class="slot"><i><i><img src="screens/assets/ic-chevron-small.svg" alt=""></i></i></div></div>
+      <div class="lbl"><p>Back</p></div>
+    </div>
+    <div class="title"><p>Saving</p></div>
+  </div>
+
+  <!-- 3:4157 iOS Nav Bar (contracted) -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">9:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 3:3233 "Payment/mobile", not eyeballed.
+
+   Tokens: 123456 Navy #123456, FBFBFB Gray1 #FBFBFB, FFFFFF White,
+   5081FF dolfknip #5081FF, FF5081 Pinkfold #FF5081, FFA400 Amber #FFA400,
+   E7EBED Light blue #E7EBED, F0F0F0 Grey3 #F0F0F0, D8D8D8 Grey4 #D8D8D8,
+   F4F4F4 Grey2 (BG) #F4F4F4.
+   Type: N/B 24 (-0.8), N/B 16 (-0.8), N/SB 16 (-0.8), T/B 20, T/M 14, T/M 12,
+   T/R 14, T/R 10 (lineHeight 14).
+   The header title 3:3437 is 32px, which is not one of this file's type tokens.
+   It is a raw size on that node and is used as read.
+   InnerShadow/toggle 3+1+8 resolves to inset 0 1px 3px rgba(0,0,0,.08).
+
+   Layer names that contradict their own computed values, per house rule:
+   - 3:3369 is named "BG.blur(8).background(40% #F4F4F4)". Figma's blur radius
+     8 is CSS backdrop-filter blur(4px), which is what get_design_context
+     resolves it to, so 4px is used. The 40% background is literal.
+   - 3:3264 is named "paid on().padding(.horizontal: 32, .vertical:16)" but its
+     computed vertical padding is 8, not 16: the frame is 75 tall around a
+     59-tall box. 8 is used.
+   - 3:3364 is named "save.padding(vertical: 48)" and computes 32.
+   - 3:3289 is a text layer named "i" whose content is "?".
+
+   Transform traps, cross-checked between get_metadata and get_design_context.
+   get_metadata reports a transformed node's origin after the transform:
+   - 3:3273 field chevron reports x=148 in a 148-wide parent. Rotated 90deg,
+     true left 108.
+   - 3:3276 recurringOFF reports x=53 in a 65-wide box. Flipped horizontally
+     (rotate 180 then scaleY -1), true left 13.
+   - 3:3279 and 3:3291 toggle backgrounds report y=40 in 40-tall pills. Flipped
+     vertically, true top 0.
+   - 3:3439 the header back chevron reports 40,40 in its own 40x40 box. Rotated
+     180deg, true origin 0,0, which is what turns the right-pointing artwork
+     into a Back arrow.
+
+   Two coordinate spaces worth naming. 3:3286 "Adjustment Group" is a GROUP, so
+   its children's get_metadata coordinates are relative to the frame above it
+   (3:3285) and not to the group; that is why 3:3295 reports x=32 while
+   get_design_context gives it ml-0. And the popup frame 3:3368 sits at x=2,
+   not 0, so everything inside it is offset by 2 against the screen.
+
+   3:3276's exported SVG is 32x32 while its node box is 40x40, so the file
+   would stretch it. The whole icon carries opacity 0 in the export, so nothing
+   is visible either way; the 40x40 box is kept and the discrepancy is noted
+   rather than silently corrected. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 3:3444) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9;z-index:4}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- header/mobile/module, 375x72 at y=63 (node 3:3435) ---------- */
+/* Paints above the popup, which is why the blur starts at the header's foot. */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px;z-index:3}
+.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #D8D8D8}
+.hdr .title{position:absolute;left:233px;top:16px;width:110px;height:39px;
+            display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+            font:700 32px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+            font-feature-settings:"lnum","tnum"}
+.hdr .ico{position:absolute;left:0;top:16px;width:40px;height:40px;transform:rotate(180deg)}
+/* 3:3442 nests three deep: 3:3438 at y=16, its label.padding(4) at y=4, then
+   the text at y=4 again, so 24 inside the header and 87 on the frame. */
+.hdr .back{position:absolute;left:44px;top:24px;width:53px;height:24px;
+           display:flex;flex-direction:column;justify-content:center;white-space:nowrap;
+           font:700 20px/normal 'Montserrat';color:#123456}          /* T/B 20 */
+
+/* ---------- shared text-field parts (textField/roundCorners) ---------- */
+/* Every field on this screen is the same 148x40 #FBFBFB box with an 8px radius,
+   its Medium 14 label sitting 3px above it and its Bold 16 value inset 16. */
+.fbox{position:absolute;width:148px;height:40px;background:#FBFBFB;border-radius:8px}
+.flab{position:absolute;width:132px;height:17px;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      font:500 14px/normal 'Montserrat';color:#123456}               /* T/M 14 */
+.fval{position:absolute;width:116px;height:20px;
+      display:flex;flex-direction:column;justify-content:center;
+      font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+      font-feature-settings:"lnum","tnum"}                           /* N/B 16 */
+
+/* ---------- Pay in block, 3:3235 ---------- */
+.h-saving{position:absolute;left:33px;top:151px;width:182px;height:29px;white-space:nowrap;
+          display:flex;flex-direction:column;justify-content:flex-end;
+          font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+          font-feature-settings:"lnum","tnum"}                       /* N/B 24 */
+.amt{position:absolute;left:49px;top:223px;width:116px;height:29px;
+     display:flex;flex-direction:column;justify-content:center;text-align:center;
+     font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+     font-feature-settings:"lnum","tnum"}
+/* 3:3248 textField/pill/vLabel is fully transparent but still occupies its slot */
+.pill-off{position:absolute;left:197px;top:217px;width:64px;height:40px;opacity:0}
+.pill-off .bg{position:absolute;inset:0;background:#fff;border:1px solid #E7EBED;border-radius:20px}
+.pill-off .v{position:absolute;left:16px;top:10px;width:32px;height:20px;
+             display:flex;flex-direction:column;justify-content:center;text-align:center;
+             font:600 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+             font-feature-settings:"lnum","tnum"}                    /* N/SB 16 */
+.minilab{position:absolute;height:15px;display:flex;flex-direction:column;justify-content:flex-end;
+         text-align:center;white-space:nowrap;
+         font:500 12px/normal 'Montserrat';color:#123456}            /* T/M 12 */
+.est{position:absolute;left:290px;top:217px;width:40px;height:40px;background:#5081FF;border-radius:20px}
+.est i{position:absolute;inset:0;display:block}
+
+/* ---------- Paid on block, 3:3264 ---------- */
+.chev90{position:absolute;left:140px;top:300px;width:40px;height:40px;transform:rotate(90deg)}
+.recur-off{position:absolute;left:209px;top:300px;width:40px;height:40px;transform:scaleX(-1)}
+/* control/togglePill: 66x40 track, 28x28 cap that exports at 32x32 with its
+   shadow baked in, hence the 6px/-2px offsets that -7.14%/-14.29% resolve to. */
+.toggle{position:absolute;width:66px;height:40px}
+.toggle .track{position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.08)}
+.toggle .cap{position:absolute;top:6px;width:32px;height:32px;display:block}
+.toggle.off{left:277px;top:300px;opacity:0}
+.toggle.off .track{background:#E7EBED}
+.toggle.off .cap{left:4px}
+.toggle.on{left:309px;top:510px}
+.toggle.on .track{background:#FF5081}
+.toggle.on .cap{left:30px}
+
+/* ---------- Copy helper 3:3284 and popup warning 3:3394 ---------- */
+.helper{position:absolute;text-align:center;
+        font:700 10px/normal 'Montserrat';color:#FF5081}
+
+/* ---------- Debit details, 3:3285 ---------- */
+.h-debit{position:absolute;left:32px;top:412px;width:151px;height:29px;white-space:nowrap;
+         display:flex;flex-direction:column;justify-content:flex-end;
+         font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+         font-feature-settings:"lnum","tnum"}
+.edit{position:absolute;left:289px;top:522px;width:40px;height:40px}
+.edit i{position:absolute;left:8px;top:8px;width:24px;height:24px;display:block}
+.edit p{position:absolute;left:17.5px;top:13px;width:5px;height:17px;
+        display:flex;flex-direction:column;justify-content:center;text-align:center;
+        font:700 16px/normal 'Montserrat';color:#fff;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}
+
+/* ---------- Resume / Confirm buttons ---------- */
+.btn{position:absolute;height:40px;border-radius:8px}
+.btn span{position:absolute;left:32px;top:8px;height:24px;
+          display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+          font:700 20px/normal 'Montserrat';color:#fff}              /* T/B 20 */
+
+/* ---------- popup / confirmChanges, 3:3368 ---------- */
+/* The popup frame itself is 375 wide starting at x=2, so it runs 2px past the
+   screen and is clipped there. */
+.pop{position:absolute;left:2px;top:0;width:375px;height:812px;overflow:hidden;z-index:2}
+.pop .veil{position:absolute;left:0;top:135px;width:375px;height:677px;
+           background:rgba(244,244,244,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+/* The 1px #F0F0F0 border is drawn as an inset ring rather than a real border.
+   A real border moves the padding box, and every child here is positioned by
+   its absolute Figma coordinate, so a border would push all 24 of them 1px
+   down and right. The inset ring paints the identical 1px edge inside the
+   same 32px radius without touching layout. */
+.card{position:absolute;left:40px;top:177px;width:295px;height:490px;
+      background:#fff;box-shadow:inset 0 0 0 1px #F0F0F0;border-radius:32px}
+/* everything below is card-relative: the card's own origin is 42,177 on screen */
+.card .h{position:absolute;left:24px;top:24px;width:247px;height:24px;
+         font:700 20px/normal 'Montserrat';color:#123456}            /* T/B 20 */
+.card .sub{position:absolute;left:24px;top:56px;width:247px;height:28px;
+           font:400 10px/14px 'Montserrat';color:#123456}            /* T/R 10 */
+.pl{position:absolute;height:17px;white-space:nowrap;
+    font:400 14px/normal 'Montserrat';color:#123456}                 /* T/R 14 */
+.pv{position:absolute;height:20px;white-space:nowrap;
+    font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+    font-feature-settings:"lnum","tnum"}                             /* N/B 16 */
+.pv.blue{color:#5081FF}
+.pv.amber{color:#FFA400}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- ========== 3:3234 .all ========== -->
+
+  <!-- 3:3235 Pay in() -->
+  <div class="h-saving"><p>Saving amount</p></div>
+  <div class="flab" style="left:41px;top:196px;width:135px"><p>Recurring monthly</p></div>
+  <div class="fbox" style="left:33px;top:217px"></div>
+  <div class="amt"><p>&pound;250</p></div>
+  <div class="pill-off">
+    <div class="bg"></div>
+    <div class="v"><p>2%</p></div>
+  </div>
+  <div class="minilab" style="left:204px;top:198px;width:51px"><p>Salary %</p></div>
+  <div class="minilab" style="left:283px;top:198px;width:55px;justify-content:center"><p>Estimate</p></div>
+  <div class="est"><i><img src="screens/assets/ic-external-link-40.svg" alt=""></i></div>
+
+  <!-- 3:3264 paid on() -->
+  <div class="flab" style="left:40px;top:279px"><p>Paid on:</p></div>
+  <div class="fbox" style="left:32px;top:300px"></div>
+  <div class="fval" style="left:48px;top:310px"><p>24th</p></div>
+  <div class="chev90"><img src="screens/assets/ic-chevron-40-field.svg" alt=""></div>
+  <div class="recur-off"><img src="screens/assets/ic-recurring-off.svg" alt=""></div>
+  <div class="toggle off">
+    <div class="track"></div>
+    <img class="cap" src="screens/assets/sw-cap.svg" alt="">
+  </div>
+  <div class="minilab" style="left:288px;top:281px;width:45px"><p>One off</p></div>
+
+  <!-- 3:3283 Copy helper -->
+  <div class="helper" style="left:48px;top:352px;width:279px;height:24px">
+    <p>Your next payment will be taken on dd-mm</p>
+    <p>and every 24th after that.</p>
+  </div>
+
+  <!-- 3:3285 Debit Details() -->
+  <div class="h-debit"><p>Debit details</p></div>
+  <div class="flab" style="left:40px;top:457px"><p>Account number</p></div>
+  <div class="fbox" style="left:32px;top:478px"></div>
+  <div class="fval" style="left:48px;top:488px"><p>318237</p></div>
+  <div class="flab" style="left:40px;top:526px"><p>Sort code</p></div>
+  <div class="fbox" style="left:32px;top:547px"></div>
+  <div class="fval" style="left:48px;top:557px"><p>34-63-78</p></div>
+  <div class="flab" style="left:40px;top:595px"><p>Company number</p></div>
+  <div class="fbox" style="left:32px;top:616px"></div>
+  <div class="fval" style="left:48px;top:626px"><p>234546</p></div>
+  <div class="minilab" style="left:315px;top:476px;width:55px;height:30px"><p>Business</p><p>account</p></div>
+  <div class="toggle on">
+    <div class="track"></div>
+    <img class="cap" src="screens/assets/sw-cap.svg" alt="">
+  </div>
+  <div class="edit"><i><img src="screens/assets/ic-edit-dot.svg" alt=""></i><p>?</p></div>
+
+  <!-- 3:3364 save -->
+  <div class="btn" style="left:112.5px;top:720px;width:150px;background:#FF5081"><span style="width:86px">Resume</span></div>
+
+  <!-- ========== 3:3368 popup / confirmChanges ========== -->
+  <div class="pop">
+    <div class="veil"></div>
+    <div class="card">
+      <p class="h">Resume contributions</p>
+      <p class="sub">Please confirm you want to resume contributing into your pension.</p>
+
+      <!-- 3:3375 comparison payment, card-relative x 24 and 144 -->
+      <p class="pl" style="left:24px;top:100px;width:70px">Recurring</p>
+      <p class="pv" style="left:24px;top:117px;width:42px">&pound;250</p>
+      <p class="pl" style="left:24px;top:137px;width:54px">Paid on</p>
+      <p class="pv amber" style="left:24px;top:154px;width:59px">Paused</p>
+      <p class="pl" style="left:144px;top:100px;width:70px">Recurring</p>
+      <p class="pv blue" style="left:144px;top:117px;width:42px">&pound;500</p>
+      <p class="pl" style="left:144px;top:137px;width:54px">Paid on</p>
+      <p class="pv blue" style="left:144px;top:154px;width:39px">24th</p>
+
+      <!-- 3:3394 -->
+      <div class="helper" style="left:24px;top:190px;width:247px;height:24px">
+        <p>Your next payment will be taken on dd-mm and every 24th after that.</p>
+      </div>
+
+      <!-- 3:3395 comparison account -->
+      <p class="pl" style="left:24px;top:230px;width:59px">Account</p>
+      <p class="pv" style="left:24px;top:247px;width:64px">727384</p>
+      <p class="pl" style="left:24px;top:267px;width:68px">Sort code</p>
+      <p class="pv" style="left:24px;top:284px;width:74px">21-45-32</p>
+      <p class="pl" style="left:144px;top:230px;width:59px">Account</p>
+      <p class="pv blue" style="left:144px;top:247px;width:64px">129822</p>
+      <p class="pl" style="left:144px;top:267px;width:68px">Sort code</p>
+      <p class="pv blue" style="left:144px;top:284px;width:74px">08-24-02</p>
+
+      <!-- 3:3414 comparison type. 3:3420, the before-column company number, is
+           fully transparent in the file but still laid out. -->
+      <p class="pl" style="left:24px;top:320px;width:34px">Type</p>
+      <p class="pv" style="left:24px;top:337px;width:68px">Personal</p>
+      <p class="pl" style="left:24px;top:357px;width:93px;opacity:0">Company no.</p>
+      <p class="pv" style="left:24px;top:374px;width:64px;opacity:0">763467</p>
+      <p class="pl" style="left:144px;top:320px;width:34px">Type</p>
+      <p class="pv blue" style="left:144px;top:337px;width:70px">Business</p>
+      <p class="pl" style="left:144px;top:357px;width:93px">Company no.</p>
+      <p class="pv blue" style="left:144px;top:374px;width:64px">763467</p>
+
+      <!-- 3:3433 -->
+      <div class="btn" style="left:72px;top:426px;width:151px;background:#5081FF"><span style="width:87px">Confirm</span></div>
+    </div>
+  </div>
+
+  <!-- ========== 3:3435 header/mobile/module ========== -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="ico"><img src="screens/assets/ic-chevron-40-nav.svg" alt=""></div>
+    <div class="back"><p>Back</p></div>
+    <div class="title"><p>Saving</p></div>
+  </div>
+
+  <!-- ========== 3:3444 iOS/smallSafariHeader ========== -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div></template></div>
+      <div class="scr ph"><template shadowrootmode="open"><style>/* Every value here is read from Figma node 3:4241 "Transactions pulldown",
+   not eyeballed.
+
+   Tokens: 123456 Navy #123456, 5081FF dolfknip #5081FF, FF5081 Pinkfold
+   #FF5081, 68D422 Green #68D422, D8D8D8 Grey4 #D8D8D8, F0F0F0 Grey3 #F0F0F0,
+   FBFBFB Gray1 #FBFBFB, E7EBED Light blue #E7EBED, F4F4F4 Grey2 (BG) #F4F4F4.
+
+   The screen is a pulldown over a dashboard. Paint order, bottom to top:
+   the dashboard (3:4242, blurred out), the 3:4260 BLUR pane, the six
+   transaction lines, the iOS bar, the fullList chrome (filter row and bottom
+   total bar), and the header. That is why the sixth line, Funding Circle, is
+   half covered by the bottom bar: the bar runs 684 to 772 and the list ends
+   at 716.
+
+   Two masked layers. The bottom bar's total row and its pulldown lip are one
+   375x88 silhouette (3:4327) applied as a CSS mask, positioned 0,0 for the
+   64px total row and 0,-64px for the 24px lip, exactly as the file specifies.
+   The view toggle's two options are masked the same way against a 176x32
+   shape.
+
+   Rotation traps, cross-checked between the two tools. get_metadata reports a
+   rotated node's origin after the transform:
+   - 3:4565, the expanded row's chevron, reports 359,88 inside a 375x88 frame.
+     Rotated 180, true box 319,48.
+   - 3:4329, the pulldown lip chevron, reports 208,29 inside a 375x24 lip.
+     Rotated 180, true box 168,-11, so it overhangs the lip top and bottom.
+   - the two horizontal donut dots are rotated -90 but are 4x4 squares, so the
+     transform is a visual no-op.
+
+   One genuine disagreement, flagged rather than guessed: for the "Refer
+   again?" button 3:4570, get_metadata gives 126.5,24 196x40 while
+   get_design_context computes inset 43.73%/24%, which would be 164 wide 121.
+   The Figma render puts the pink button's right edge at 322, which is
+   126.5+196, so get_metadata is the one used.
+
+   Layer names that contradict their content, per house rule: the tax line's
+   amount layer is named "£500" and reads 46; the paid/processing amount layer
+   is named "£2,001" and reads £2,000; the combine line's is named "£55,392"
+   and reads £5,000; several text layers are still called "The pension for the".
+   Content wins, and the reported widths confirm it.
+
+   This donut is component/Donut, not the .upcoming variant s4-2 uses: it has
+   no Upcoming/Pending ring, its own shadow export, and its lower copy reads
+   "Yearly goal" in navy rather than "+Upcoming". Its BG, Paid arc and dots are
+   byte-identical to s4-2's and are reused; the shadow is not. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- 3:4243 topButtons, behind the blur ---------- */
+.tcap{position:absolute;top:175px;height:15px;text-align:center;white-space:nowrap;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      font:500 12px/normal 'Montserrat';color:#123456}
+.pill{position:absolute;top:194px;height:40px;border-radius:8px;background:#5081FF}
+.pill span{position:absolute;inset:8px 16px;display:flex;align-items:center;justify-content:center;
+           text-align:center;font:700 16px/normal 'Montserrat';color:#fff}
+
+/* ---------- 3:4250 Goal ---------- */
+.g-lab{position:absolute;left:32px;top:272px;width:115px;height:24px;white-space:nowrap;
+       display:flex;flex-direction:column;justify-content:flex-end;
+       font:700 20px/normal 'Montserrat';color:#123456}
+.g-sub{position:absolute;left:36px;top:300px;width:100px;height:15px;white-space:nowrap;
+       font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:-.4px;
+       font-feature-settings:"lnum","tnum"}
+
+/* ---------- 3:4255 component/Donut, 311x250 at 32,345 ---------- */
+.dframe{position:absolute;left:87px;top:369px;width:202px;height:202px}
+.dframe i{position:absolute;display:block}
+.dframe .bg{left:0;top:0;width:202px;height:202px}
+.dframe .paid{left:6.769px;top:1px;width:194.234px;height:200px}
+.dframe .shade{left:0;top:0;width:202px;height:202px;mix-blend-mode:multiply}
+.dframe .dot{width:4px;height:4px;mix-blend-mode:screen}
+.dlab{position:absolute;white-space:nowrap;font:600 12px/normal 'Montserrat';color:#123456;
+      letter-spacing:-.4px;font-feature-settings:"lnum","tnum"}
+.dlab.two{display:flex;flex-direction:column;justify-content:center}
+.dcopy{position:absolute;display:flex;flex-direction:column;justify-content:center;
+       text-align:center;white-space:nowrap;height:20px;font-size:16px;color:#123456}
+.dcopy.reg{font-weight:400}
+.dcopy.bold{font-weight:700;letter-spacing:-.8px;font-feature-settings:"lnum","tnum"}
+
+/* ---------- 3:4256 three pucks, 88x88 at y=667 ---------- */
+.puck{position:absolute;top:667px;width:88px;height:88px;background:#FBFBFB;
+      border:1px solid #fff;border-radius:61px;box-shadow:0 4px 8px 0 rgba(0,0,0,.08)}
+.pico{position:absolute;top:681px;width:60px;height:60px}
+.pico i{position:absolute;display:block}
+.pico i i{position:absolute;inset:0;display:block}
+.plab{position:absolute;top:763px;height:17px;text-align:center;white-space:nowrap;
+      font:500 14px/normal 'Montserrat';color:#123456}
+
+/* ---------- 3:4260 BLUR ---------- */
+/* Figma names it BLUR and gives it an 8px backdrop blur over an 8% #E7EBED wash. */
+.blur{position:absolute;left:0;top:63px;width:375px;height:749px;
+      background:rgba(231,235,237,.08);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* ---------- 3:4261 List(items), 375x541 at y=175 ---------- */
+.list{position:absolute;left:0;top:175px;width:375px;height:541px;overflow:hidden}
+.ln{position:absolute;left:0;width:375px;height:64px;background:#FBFBFB}
+.ln.exp{height:221px;background:#F0F0F0}
+/* the fillet is a 0.333px #F0F0F0 hairline across the TOP of every line */
+.fillet{position:absolute;left:0;width:375px;height:.333px;background:#F0F0F0}
+.tico{position:absolute;width:40px;height:40px}
+.tico i{position:absolute;display:block}
+.dot4{position:absolute;left:14px;width:4px;height:4px}
+/* the row's own name, its green status word, its date and its amount */
+.t-name{position:absolute;left:56px;height:20px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:center;
+        font:700 16px/normal 'Montserrat';letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}
+.t-aux{position:absolute;height:15px;white-space:nowrap;
+       display:flex;flex-direction:column;justify-content:center;
+       font:600 12px/normal 'Montserrat';color:#68D422;letter-spacing:-.4px;
+       font-feature-settings:"lnum","tnum"}
+.t-date{position:absolute;left:196px;height:12px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:center;
+        font:600 10px/normal 'Montserrat';color:#D8D8D8;letter-spacing:-.4px;
+        font-feature-settings:"lnum","tnum"}
+.t-amt{position:absolute;height:20px;text-align:right;white-space:nowrap;
+       display:flex;flex-direction:column;justify-content:center;
+       font:700 16px/normal 'Montserrat';letter-spacing:-.8px;
+       font-feature-settings:"lnum","tnum"}
+.grey{color:#D8D8D8}
+.navy{color:#123456}
+.blue{color:#5081FF}
+
+/* expanded row extras */
+.t-expired{position:absolute;left:196px;top:202px;width:68px;height:15px;white-space:nowrap;
+           display:flex;flex-direction:column;justify-content:center;text-transform:uppercase;
+           font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:2px;
+           font-feature-settings:"lnum","tnum"}
+.d-title{position:absolute;left:64px;top:229px;width:106px;height:17px;
+         font:500 14px/normal 'Montserrat';color:#123456}
+.d-col{position:absolute;top:248px;height:60px;font-size:12px;color:#5081FF}
+.d-col.k{left:64px;width:37px;font-weight:400}
+.d-col.v{left:125px;width:123px;font-weight:500}
+.edit{position:absolute;left:16px;top:248px;width:40px;height:40px;overflow:hidden}
+.edit i{position:absolute;display:block}
+/* Figma puts this at left:126.5, which spans 126.5 to 322.5 and leans 37px right
+   on the 375 container. Centred: (375 - 196) / 2 = 89.5. */
+.cta{position:absolute;left:89.5px;top:332px;width:196px;height:40px;background:#FF5081;border-radius:8px}
+.cta span{position:absolute;left:32px;top:8px;width:132px;height:24px;
+          display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+          font:700 20px/normal 'Montserrat';color:#fff}
+/* 3:4565. get_design_context reports the box (right 16, bottom 0 of the 375x88
+   frame, so 319,48) but drops the rotation entirely, and get_metadata's origin
+   359,88 is what a 180deg rotation about that box produces. The chevron artwork
+   is an 8x4 "v" pointing down, so 180 turns it up, and the file's own render of
+   3:4560 confirms an up-pointing chevron. That also settles the vector box:
+   only an 8 wide by 4 tall node grows to the exported 11 x 7.62132 under the
+   -18.75% / -37.5% / -53.03% stroke-bleed insets. The sideways chevrons on
+   s4-2 and s4-3 are the same artwork in a 4 wide by 8 tall slot instead, each
+   checked against its own render. */
+.cta-chev{position:absolute;left:319px;top:356px;width:40px;height:40px;transform:rotate(180deg)}
+.cta-chev i{position:absolute;left:14.5px;top:16.5px;width:11px;height:7.62132px;display:block}
+
+/* ---------- 3:4296 header/filterRow, 375x40 at y=135 ---------- */
+.filters{position:absolute;left:0;top:135px;width:375px;height:40px;background:#fff;
+         filter:drop-shadow(0 4px 16px rgba(0,0,0,.08))}
+.filters .sep{position:absolute;top:4px;width:1px;height:32px;background:#FBFBFB}
+
+/* ---------- 3:4326 transactionLine/bottom, 375x88 at y=684 ---------- */
+/* Both white panels are cut out of one 375x88 silhouette, 3:4327. */
+.bottom{position:absolute;left:0;top:684px;width:375px;height:88px;
+        filter:drop-shadow(0 4px 16px rgba(0,0,0,.08))}
+.masked{-webkit-mask-image:url(screens/assets/tx-pulldown-mask.svg);mask-image:url(screens/assets/tx-pulldown-mask.svg);
+        -webkit-mask-size:375px 88px;mask-size:375px 88px;
+        -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.bottom .total{position:absolute;left:0;top:0;width:375px;height:64px;background:#fff}
+.bottom .lip{position:absolute;left:0;top:64px;width:375px;height:24px;background:#fff;
+             -webkit-mask-position:0 -64px;mask-position:0 -64px}
+.bottom .hair{position:absolute;left:0;top:0;width:375px;height:.333px;background:#F0F0F0}
+.b-amt{position:absolute;left:276px;top:22px;width:67px;height:20px;text-align:right;white-space:nowrap;
+       display:flex;flex-direction:column;justify-content:center;
+       font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+       font-feature-settings:"lnum","tnum"}
+.toggle{position:absolute;left:24px;top:16px;width:176px;height:32px}
+.toggle .bgr{position:absolute;inset:0;background:#F0F0F0;border-radius:8px}
+.toggle .opt{position:absolute;
+             -webkit-mask-image:url(screens/assets/tx-toggle-mask.svg);mask-image:url(screens/assets/tx-toggle-mask.svg);
+             -webkit-mask-size:176px 32px;mask-size:176px 32px;
+             -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.toggle .off{left:92px;top:2px;width:84px;height:28px;-webkit-mask-position:-92px -2px;mask-position:-92px -2px}
+.toggle .on{left:2px;top:2px;width:88px;height:28px;-webkit-mask-position:-2px -2px;mask-position:-2px -2px}
+.toggle .on .sh{position:absolute;left:0;top:0;width:88px;height:28.00235366821289px;
+                background:#fff;border:.5px solid rgba(0,0,0,.08);border-radius:6px;
+                box-shadow:0 3px 8px 0 rgba(0,0,0,.12),0 3px 1px 0 rgba(0,0,0,.04)}
+.toggle .off p{position:absolute;left:16px;top:7px;width:51px;height:15px;
+               display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+               font:500 12px/normal 'Montserrat';color:#D8D8D8}
+.toggle .on p{position:absolute;left:22px;top:5px;width:43px;height:17px;
+              display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+              font:500 14px/normal 'Montserrat';color:#123456}
+.b-count{position:absolute;left:208px;top:710px;width:17px;height:15px;text-align:right;white-space:nowrap;
+         display:flex;flex-direction:column;justify-content:center;
+         font:600 12px/normal 'Montserrat';color:#D8D8D8;letter-spacing:-.4px;
+         font-feature-settings:"lnum","tnum"}
+.b-scroll{position:absolute;left:229px;top:712.5px;width:4px;height:10px}
+/* 3:4329 is rotated 180 and overhangs the 24px lip in both directions */
+.lip-chev{position:absolute;left:168px;top:737px;width:40px;height:40px;transform:rotate(180deg)}
+.lip-chev i{position:absolute;left:13.5px;top:17.4996px;width:13.0008px;height:5.11595px;display:block}
+
+/* ---------- 3:4270 header/mobile/dashboard, 375x72 at y=63 ---------- */
+/* This navbar's border is 0.333px #F0F0F0, where s4-2's is 0.333px #D8D8D8. */
+.hdr{position:absolute;left:0;top:63px;width:375px;height:72px}
+.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #F0F0F0}
+.hdr .logo{position:absolute;left:16px;top:16px;width:28px;height:44px;overflow:hidden}
+.hdr .logo .full{position:absolute;inset:0 -400% 0 0}
+.hdr .logo i{position:absolute;display:block}
+.hdr .logo .a{inset:0 92.14% 0 0}
+.hdr .logo .b{inset:0 80% 56.82% 7.86%}
+.hdr .logo .c{inset:20.45% 80% 36.36% 7.86%}
+.hdr .menu{position:absolute;left:319px;top:16px;width:40px;height:40px}
+.hdr .menu i{position:absolute;inset:22.5% 20%;display:block}
+.t{position:absolute;display:flex;flex-direction:column;justify-content:flex-end;
+   white-space:nowrap;color:#123456}
+.hdr .lab{font:500 14px/normal 'Montserrat'}
+.hdr .val{font:700 16px/normal 'Montserrat';letter-spacing:-.8px;text-align:right;
+          font-feature-settings:"lnum","tnum"}
+.hdr .pct{font:600 12px/normal 'Montserrat';letter-spacing:-.4px;color:#68D422;
+          font-feature-settings:"lnum","tnum"}
+
+/* ---------- iOS small Safari header, 63px (node 3:4268) ---------- */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+.fr{transform-origin:0 0;transform:scale(var(--fit,1))}</style><div class="fr">
+
+  <!-- ===== 3:4242, the dashboard behind the pulldown ===== -->
+  <div class="tcap" style="left:60.5px;width:91px"><p>Fund selection</p></div>
+  <div class="pill" style="left:32px;width:148px"><span>Level 1</span></div>
+  <div class="tcap" style="left:219.5px;width:100px"><p>Payment details</p></div>
+  <div class="pill" style="left:196px;width:147px"><span>&pound;422 on 2nd</span></div>
+
+  <div class="g-lab"><p>Yearly goal</p></div>
+  <p class="g-sub">Jul &lsquo;19 &mdash; Jun &lsquo;20</p>
+
+  <div class="dlab" style="left:168px;top:347px;width:39px;height:15px;text-align:center">Jul &lsquo;19</div>
+  <div class="dlab" style="left:166px;top:578px;width:43px;height:15px;text-align:center">Jan &lsquo;20</div>
+  <div class="dlab two" style="left:296px;top:455px;width:33px;height:30px"><p>Oct</p><p>2019</p></div>
+  <div class="dlab two" style="left:47px;top:455px;width:33px;height:30px;text-align:right"><p>Apr</p><p>2020</p></div>
+
+  <div class="dframe">
+    <i class="bg"><img src="screens/assets/dash-donut-bg.svg" alt=""></i>
+    <i class="paid"><img src="screens/assets/dash-donut-paid.svg" alt=""></i>
+    <i class="shade"><img src="screens/assets/tx-donut-shadow.svg" alt=""></i>
+    <i class="dot" style="left:99px;top:9px"><img src="screens/assets/donut-dot-v.svg" alt=""></i>
+    <i class="dot" style="left:99px;top:189px"><img src="screens/assets/donut-dot-v.svg" alt=""></i>
+    <i class="dot" style="left:9px;top:99px"><img src="screens/assets/donut-dot-h.svg" alt=""></i>
+    <i class="dot" style="left:189px;top:99px"><img src="screens/assets/donut-dot-h.svg" alt=""></i>
+  </div>
+  <div class="dcopy reg" style="left:160px;top:421px;width:56px">Paid in</div>
+  <div class="dcopy bold" style="left:160px;top:441px;width:56px">&pound;1,350</div>
+  <div style="position:absolute;left:128px;top:469px;width:120px;height:1px">
+    <img src="screens/assets/donut-line.svg" alt=""></div>
+  <div class="dcopy reg" style="left:144.5px;top:478px;width:87px">Yearly goal</div>
+  <div class="dcopy bold" style="left:160px;top:498px;width:56px">&pound;1,600</div>
+
+  <div class="puck" style="left:39.5px"></div>
+  <div class="pico" style="left:53.5px">
+    <i style="inset:25%"><i style="inset:-5%"><img src="screens/assets/ic-combine-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-combine-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-combine-3.svg" alt=""></i></i>
+    <i style="inset:68% 18.91% 18.41% 67.5%"><i style="inset:-18.39%"><img src="screens/assets/ic-combine-4.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:51.5px;width:65px">Combine</p>
+  <div class="puck" style="left:143.5px"></div>
+  <div class="pico" style="left:157.5px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-topup-1.svg" alt=""></i></i>
+    <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="screens/assets/ic-topup-2.svg" alt=""></i></i>
+    <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="screens/assets/ic-topup-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:163.5px;width:49px">Top up</p>
+  <div class="puck" style="left:247.5px"></div>
+  <div class="pico" style="left:261.5px">
+    <i style="inset:27.5%"><i style="inset:-5.56%"><img src="screens/assets/ic-share-1.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 63.5% 63.5%"><i style="inset:-13.89%"><img src="screens/assets/ic-share-2.svg" alt=""></i></i>
+    <i style="inset:18.5% 18.5% 48.5% 48.5%"><i style="inset:-7.58%"><img src="screens/assets/ic-share-3.svg" alt=""></i></i>
+  </div>
+  <p class="plab" style="left:245.5px;width:93px">Share for &pound;25</p>
+
+  <!-- ===== 3:4260 BLUR ===== -->
+  <div class="blur"></div>
+
+  <!-- ===== 3:4261 List(items) ===== -->
+  <div class="list">
+
+    <!-- 3:4262 referral/expired.expanded, 375x221 -->
+    <div class="ln exp" style="top:0"></div>
+    <div class="fillet" style="top:0"></div>
+    <div class="dot4" style="top:30px"><img src="screens/assets/tx-status-a.svg" alt=""></div>
+    <div class="tico" style="left:16px;top:12px"><i style="left:10px;top:10px;width:22px;height:20px"><img src="screens/assets/tx-ic-referral-expired.svg" alt=""></i></div>
+    <div class="t-name navy" style="top:22px;width:110px;font-weight:400;letter-spacing:0">Jerry Tubums</div>
+    <div class="t-expired" style="top:27px">expired</div>
+    <div class="t-amt grey" style="left:311px;top:22px;width:32px;font-weight:600">&pound;25</div>
+    <div class="d-title" style="top:54px">Referral details</div>
+    <div class="d-col k" style="top:73px"><p>Name</p><p>email</p><p>Sent</p><p>Via</p></div>
+    <div class="d-col v" style="top:73px"><p>Jerry Tubums</p><p>j2bums@gmail.com</p><p>19-09-19</p><p>Twitter</p></div>
+    <div class="edit" style="top:73px">
+      <i style="left:4px;top:4px;width:32px;height:32px"><img src="screens/assets/tx-edit-bg.svg" alt=""></i>
+      <i style="left:11px;top:10.88px;width:18.5px;height:17.1213px"><img src="screens/assets/tx-edit-vec.svg" alt=""></i>
+    </div>
+    <div class="cta" style="top:157px"><span>Refer again?</span></div>
+    <div class="cta-chev" style="top:181px"><i><img src="screens/assets/ic-chevron-small.svg" alt=""></i></div>
+
+    <!-- 3:4263 paid/processing, 375x64 at 221 -->
+    <div class="ln" style="top:221px"></div>
+    <div class="fillet" style="top:221px"></div>
+    <div class="dot4" style="top:251px"><img src="screens/assets/tx-status-b.svg" alt=""></div>
+    <div class="tico" style="left:16px;top:233px"><i style="left:10px;top:10px;width:20px;height:20px"><img src="screens/assets/tx-ic-paid-grey.svg" alt=""></i></div>
+    <div class="t-name grey" style="top:243px;width:53px">Paid in</div>
+    <div class="t-aux" style="left:125px;top:245.5px;width:131px">expected 01-02-2020</div>
+    <div class="t-amt grey" style="left:287px;top:243px;width:56px">&pound;2,000</div>
+
+    <!-- 3:4264 referral/processing, at 285 -->
+    <div class="ln" style="top:285px"></div>
+    <div class="fillet" style="top:285px"></div>
+    <div class="dot4" style="top:315px"><img src="screens/assets/tx-status-b.svg" alt=""></div>
+    <div class="tico" style="left:16px;top:297px"><i style="left:10px;top:10px;width:22px;height:20px"><img src="screens/assets/tx-ic-referral.svg" alt=""></i></div>
+    <div class="t-name grey" style="top:307px;width:80px">jonhsmith</div>
+    <div class="t-aux" style="left:152px;top:309.5px;width:65px">processing</div>
+    <div class="t-amt grey" style="left:311px;top:307px;width:32px">&pound;25</div>
+
+    <!-- 3:4265 paid/completed, at 349 -->
+    <div class="ln" style="top:349px"></div>
+    <div class="fillet" style="top:349px"></div>
+    <div class="tico" style="left:16px;top:361px"><i style="left:10px;top:10px;width:20px;height:20px"><img src="screens/assets/tx-ic-paid.svg" alt=""></i></div>
+    <div class="t-name blue" style="top:371px;width:53px">Paid in</div>
+    <div class="t-date" style="top:377px;width:61px">01-01-2020</div>
+    <div class="t-amt navy" style="left:287px;top:371px;width:56px">&pound;2,001</div>
+
+    <!-- 3:4266 tax/completed, at 413 -->
+    <div class="ln" style="top:413px"></div>
+    <div class="fillet" style="top:413px"></div>
+    <div class="tico" style="left:16px;top:425px"><i style="left:9px;top:8.9995px;width:22.0001px;height:21.021px"><img src="screens/assets/tx-ic-tax.svg" alt=""></i></div>
+    <div class="t-name blue" style="top:435px;width:80px">Tax bonus</div>
+    <div class="t-date" style="top:441px;width:61px">08-02-2020</div>
+    <div class="t-amt navy" style="left:321px;top:435px;width:22px">46</div>
+
+    <!-- 3:4267 combine/processing, at 477 -->
+    <div class="ln" style="top:477px"></div>
+    <div class="fillet" style="top:477px"></div>
+    <div class="dot4" style="top:507px"><img src="screens/assets/tx-status-b.svg" alt=""></div>
+    <div class="tico" style="left:16px;top:489px"><i style="left:10px;top:10px;width:20px;height:20px"><img src="screens/assets/tx-ic-combine.svg" alt=""></i></div>
+    <div class="t-name grey" style="top:499px;width:112px">Funding Circle</div>
+    <div class="t-aux" style="left:184px;top:501.5px;width:65px">processing</div>
+    <div class="t-amt grey" style="left:287px;top:499px;width:56px">&pound;5,000</div>
+  </div>
+
+  <!-- ===== 3:4268 iOS/smallSafari ===== -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">8:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- ===== 3:4269 list/fullList(empty).yearly ===== -->
+  <div class="filters">
+    <div class="tico" style="left:16px;top:0"><i style="left:10px;top:10px;width:20px;height:20px"><img src="screens/assets/tx-ic-paid-grey.svg" alt=""></i></div>
+    <div class="tico" style="left:64px;top:0"><i style="left:9px;top:8.9995px;width:22.0001px;height:21.021px"><img src="screens/assets/tx-ic-tax-grey.svg" alt=""></i></div>
+    <div class="tico" style="left:112px;top:0"><i style="left:10px;top:10px;width:20px;height:20px"><img src="screens/assets/tx-ic-combine.svg" alt=""></i></div>
+    <div class="tico" style="left:160px;top:0"><i style="left:10px;top:10px;width:22px;height:20px"><img src="screens/assets/tx-ic-referral.svg" alt=""></i></div>
+    <div class="sep" style="left:207px"></div>
+    <!-- 3:4313 icon/showGrowth.enabled carries opacity 0 in the file -->
+    <div class="tico" style="left:215px;top:0;opacity:0"><i style="left:8px;top:13px;width:24px;height:14px"><img src="screens/assets/tx-ic-growth.svg" alt=""></i></div>
+    <!-- inside 3:4315 the notification artwork itself carries opacity 0 -->
+    <div class="tico" style="left:263px;top:0;opacity:0">
+      <i style="left:10px;top:9px;width:20.0002px;height:17px"><img src="screens/assets/tx-ic-notif-a.svg" alt=""></i>
+      <i style="left:17.272px;top:28px;width:5.46033px;height:2.99662px"><img src="screens/assets/tx-ic-notif-b.svg" alt=""></i>
+    </div>
+    <div class="sep" style="left:310px"></div>
+    <div class="tico" style="left:318px;top:0">
+      <i style="left:8.956px;top:9.408px;width:22px;height:22px"><img src="screens/assets/tx-ic-x.svg" alt=""></i>
+      <i style="left:15.956px;top:16.408px;width:8px;height:8px"><img src="screens/assets/tx-ic-x-slash-a.svg" alt=""></i>
+      <i style="left:15.956px;top:16.408px;width:8px;height:8px"><img src="screens/assets/tx-ic-x-slash-b.svg" alt=""></i>
+    </div>
+    <div class="fillet" style="top:40px"></div>
+  </div>
+
+  <div class="bottom">
+    <div class="total masked">
+      <div class="b-amt"><p>&pound;23,392</p></div>
+      <div class="toggle">
+        <div class="bgr"></div>
+        <div class="opt off"><p>Lifetime</p></div>
+        <div class="opt on"><div class="sh"></div><p>Yearly</p></div>
+      </div>
+    </div>
+    <div class="lip masked"></div>
+    <div class="hair masked"></div>
+  </div>
+  <div class="b-count"><p>24</p></div>
+  <div class="b-scroll"><img src="screens/assets/tx-ic-scroll.svg" alt=""></div>
+  <div class="lip-chev"><i><img src="screens/assets/tx-chevron-squished.svg" alt=""></i></div>
+
+  <!-- ===== 3:4270 header/mobile/dashboard ===== -->
+  <div class="hdr">
+    <div class="bg"></div>
+    <div class="logo"><div class="full">
+      <i class="a"><img src="screens/assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="screens/assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="screens/assets/logo-c.svg" alt=""></i>
+    </div></div>
+    <div class="t lab" style="left:68px;top:17.5px;width:63px;height:17px"><p>Total pot</p></div>
+    <div class="t val" style="left:68px;top:38.5px;width:77px;height:20px"><p>&pound;109,456</p></div>
+    <div class="t lab" style="left:161px;top:17.5px;width:54px;height:17px"><p>Growth</p></div>
+    <div class="t val" style="left:161px;top:38.5px;width:56px;height:20px"><p>&pound;5,724</p></div>
+    <div class="t pct" style="left:221px;top:40.5px;width:44px;height:17px"><p>+5.23%</p></div>
+    <div class="menu"><i><img src="screens/assets/ic-menu-dropdown.svg" alt=""></i></div>
+  </div>
+
+</div></template></div>
   </div>
 </div>
 
