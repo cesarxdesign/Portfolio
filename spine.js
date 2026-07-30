@@ -164,11 +164,11 @@ window.SPINE.more = function (fn) { window.SPINE._slice(window.SPINE.featured, u
 window.SPINE.media = function (m, cls) {
   var one = function (src, alt) {
     return /\.html$/.test(src)
-      ? '<span class="cs"><iframe src="' + src + '" scrolling="no" loading="lazy" tabindex="-1" title="' + alt + '"></iframe></span>'
+      ? '<span class="cs"><iframe src="' + src + '" scrolling="no" tabindex="-1" title="' + alt + '"></iframe></span>'
       : '<img src="' + src + '" alt="' + alt + '">';
   };
   if (m.type === 'phones') return '<div class="' + (cls || 'duo') + '">' + one(m.imgs[0], m.alt) + one(m.imgs[1], m.alt) + '</div>';
   return /\.html$/.test(m.imgs[0])
-    ? '<span class="cs shot"><iframe src="' + m.imgs[0] + '" scrolling="no" loading="lazy" tabindex="-1" title="' + m.alt + '"></iframe></span>'
+    ? '<span class="cs shot"><iframe src="' + m.imgs[0] + '" scrolling="no" tabindex="-1" title="' + m.alt + '"></iframe></span>'
     : '<img class="shot" src="' + m.imgs[0] + '" alt="' + m.alt + '">';
 };
