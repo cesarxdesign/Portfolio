@@ -62,6 +62,12 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
 .card .media img{max-height:150px;width:auto;max-width:46%;border-radius:10px;box-shadow:0 14px 26px -16px rgba(20,10,50,.4)}
 .card .media img.shot{max-width:96%;max-height:140px;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--line)}
 /* mains: media grows from the bottom-right corner, bleeds off the edges */
+/* Card media starts hidden. A code screen paints its raw, unstyled document before
+   its CSS and fonts arrive, and fitCode only scales it after that, so showing it
+   from the start flashes unstyled content on every load. .on reveals it once it is
+   measured and its fonts are ready, or the safety timer reveals it regardless. */
+.mains .card .media .cs,.mains .card .media img{opacity:0;transition:opacity .32s ease}
+.mains .card .media .cs.on,.mains .card .media img.on{opacity:1}
 .mains .card .media{position:relative;z-index:2;margin:16px -40px -48px 0;flex:1;min-height:0;justify-content:flex-end;align-items:flex-start;gap:0}
 .mains .card .media img{max-height:260px;margin-top:10px;max-width:58%;border-radius:10px;box-shadow:0 18px 34px -22px rgba(0,0,0,.4),0 2px 46px 4px rgba(0,0,0,.09)}
 .mains .card.ac-mara .media .duo{white-space:nowrap}
@@ -150,6 +156,9 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
         f.style.left=(-r.left*sc)+'px';
         f.style.top =(-r.top *sc)+'px';
         sp.style.width=Math.round(w*sc)+'px'; sp.style.height=Math.round(h*sc)+'px';
+        /* measured and scaled: safe to show */
+        try{ d.fonts ? d.fonts.ready.then(function(){sp.classList.add('on');}) : sp.classList.add('on'); }
+        catch(e){ sp.classList.add('on'); }
       };
       f.addEventListener('load',apply); apply(); setTimeout(apply,400);
     });
@@ -166,6 +175,18 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
       '</a>');
   });
   fitCode();
+
+  /* plain images fade in when they are actually decoded */
+  document.querySelectorAll('.mains .card .media img').forEach(function(im){
+    if(im.complete && im.naturalWidth) im.classList.add('on');
+    else im.addEventListener('load', function(){ im.classList.add('on'); });
+  });
+
+  /* safety: never leave media invisible because a load event was missed */
+  setTimeout(function(){
+    document.querySelectorAll('.mains .card .media .cs,.mains .card .media img')
+      .forEach(function(el){ el.classList.add('on'); });
+  }, 2500);
 })();
 document.getElementById("yy").textContent=new Date().getFullYear();
 (function(){
