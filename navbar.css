@@ -1,0 +1,57 @@
+/* ----------------------------------------------------------------
+   THE navbar. One component, shared by every page including home, so the
+   links land on the same pixel wherever you are. Home wears the .bare
+   modifier at the bottom of this file: no chrome, no title, no Home link.
+   Nothing else may redeclare .flag.
+   ---------------------------------------------------------------- */
+.flag{position:sticky;top:0;z-index:300;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;
+  padding:9px 20px;min-height:40px;   /* fixed, so a bar with steppers and one without still align */
+  background:var(--paperT);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);font:11px/1.4 var(--sysMono);letter-spacing:.08em;color:var(--flagink)}
+.flag .navhome{justify-self:start;font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mut);text-decoration:none;transition:color .15s}
+.flag .navhome:hover{color:var(--ink)}
+/* Same type as Home and the right-hand links, and it reserves the width of the
+   longest project name so the steppers hold their place across projects.
+   "TRUST WALLET" at Inter 700 11px uppercase, 1.32px tracking, measures 100.84.
+   Held as px: Inter is proportional, so there is no ch or em to derive it from,
+   and mara sets its own .fv font-family. Re-measure if a longer name arrives. */
+.flag .fv{justify-self:center;text-align:center;white-space:nowrap;margin:0;
+  font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
+  min-width:100.84px}
+/* Title steppers. The centre cell holds prev, title, next as one group so the
+   title stays optically centred whatever its length. */
+.flag .fvwrap{justify-self:center;display:inline-flex;align-items:center;gap:12px}
+/* Target area is decoupled from the component. The element IS the visual: 20x20
+   on the 5px radius it wore when it had a stroke, and that is all the hover wash
+   ever fills. The ::before is a transparent hit expander, 28x28, twice the area
+   (400 -> 784), painting nothing and shifting nothing. */
+.flag .step{position:relative;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+  border:0;border-radius:5px;background:transparent;color:var(--flagink);
+  font:600 11px/1 var(--sysFont);text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.flag .step::before{content:"";position:absolute;inset:-4px}
+.flag .step:hover{color:var(--ink);
+  background:color-mix(in srgb, currentColor 7%, transparent)}
+
+/* Right nav, matching home's .tops exactly: 22px gap, same type. The theme
+   switch keeps its position and the links append to its left. */
+.flag .tops{justify-self:end;display:flex;align-items:center;gap:22px}
+.flag .tops a{font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--flagink);text-decoration:none;white-space:nowrap}
+.flag .tops a:hover{color:var(--ink)}
+.flag .tops .thsw{justify-self:auto}
+.flag b{color:var(--lab);font-weight:600}
+.flag .thsw{justify-self:end;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);
+  border-radius:999px;padding:2px;cursor:pointer}
+.flag .thsw button{font:600 10px/1 var(--sysFont);letter-spacing:.1em;text-transform:uppercase;background:none;
+  border:0;color:var(--mut);cursor:pointer;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
+.flag .thsw button.ic{width:32px;padding:0;height:20px;display:inline-flex;align-items:center;justify-content:center}
+.flag .thsw button.ic svg{width:14px;height:14px;display:block}
+.flag .thsw button:hover{color:var(--ink)}
+.flag .thsw button.on{background:var(--line);color:var(--ink)}
+
+/* home: same component, chrome removed. The right nav keeps column 3, so it
+   sits exactly where it sits on every other page. */
+.flag.bare{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}   /* home: no veil, no stroke */
+.flag.bare .tops{grid-column:3}
+.flag.bare .navhome,.flag.bare .fv,.flag.bare .fvwrap{display:none}

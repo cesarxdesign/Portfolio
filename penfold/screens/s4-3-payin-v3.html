@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>penfold · s4 · 3 · pay-in v3 (node 3:4062)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Every value here is read from Figma node 3:4062 "v3", not eyeballed.
+
+   Tokens: Cool blue #123456, Pinkfold #FF5081, White #FFFFFF, Grey #CCCCCC,
+   Light Blue #E7EBED, Cool grey #FBFBFB, F0F0F0, Background #F4F4F4.
+   Type: H1.m Bold 28 (lineHeight 1.04, letterSpacing -1), T1 Bold 28 (ls 0),
+   H3.m Bold 24 (ls -1), T2 Bold 20, T3.m Medium 12 (lineHeight 20).
+   Two colors have no variable behind them: the graph's #5C85D6 "Paid in" bars
+   and #20499A "Growth" bars.
+
+   Flip and rotation traps, all cross-checked between get_metadata and
+   get_design_context. get_metadata reports a transformed node's origin AFTER
+   the transform, so the reported x or y is the far edge, not the box:
+   - 3:4170 icon/chevronRight reports 46,44 inside a 120x44 button. It is
+     rotated 180deg, so its true box is 2,0 (46-44, 44-44). That 180 is also
+     why the chevron reads as a left-pointing Back arrow: the artwork is a
+     down-chevron, turned -90deg inside the icon and then 180deg with the icon.
+     The generated code kept only the inner -90 and lost the 180.
+   - 3:4147 the recurring icon reports x=40 in an 82-wide frame. It is flipped
+     horizontally, so its true left is 0.
+   - 3:4072 and 3:4074, the two 8px graph key dots, report y=85. They are
+     flipped vertically, so their true top is 77. Being circles, the flip
+     itself is a visual no-op and is not reproduced.
+
+   One genuine disagreement between the two tools, flagged rather than guessed:
+   for the "Saving" title 3:4174, get_metadata gives 248,21 95x29 while
+   get_design_context computes left 68.8% (258) and width 85. Both put the
+   right edge at 343 and the type is right-aligned, so the glyphs land in the
+   same place either way. get_metadata's box is the one used here.
+
+   3:4053's chevron slot is 4x8 and the artwork inside it is 8x4, i.e. the
+   rotated pair, exactly as on s4-2. The 11 x 7.62132 export is byte-identical
+   to that screen's ic-chevron-small.svg apart from its layer id, so it is
+   reused. */
+*{box-sizing:border-box}
+p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- iOS small Safari header, 63px (node 3:4157) ---------- */
+/* Same component as the other screens; the clock on this node reads 9:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
+.ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
+.ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
+          font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
+.ios .status{position:absolute;left:0;top:0;width:375px;height:44px}
+.ios .time{position:absolute;left:19.89px;width:54px;top:calc(50% - 8px);text-align:center;
+           font:600 15px/18px -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.165px}
+.ios .batt{position:absolute;right:14.5px;top:calc(50% + .91px);transform:translateY(-50%);width:24.5px;height:11.5px}
+.ios .battfill{position:absolute;right:19px;top:calc(50% + .91px);transform:translateY(-50%);
+               width:18px;height:7.667px;border-radius:1.6px;background:#000}
+.ios .cell{position:absolute;right:64.4px;top:calc(50% + .95px);transform:translateY(-50%);width:17.1px;height:10.7px}
+.ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
+.ios svg{display:block;width:100%;height:100%}
+
+/* ---------- combo/navbar/mobile/module, 375x72 at y=63 (node 3:4156) ---------- */
+.nav{position:absolute;left:0;top:63px;width:375px;height:72px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:.333px solid #CCCCCC}
+/* button/Back 3:4166: 120x44 at 4,16. Component note in the file reads
+   "padding: 20px before icon 20 px after label". */
+.back{position:absolute;left:4px;top:16px;width:120px;height:44px}
+.back .lbl{position:absolute;left:47px;top:10px;width:53px;height:24px;
+           display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+           font:700 20px/normal 'Montserrat';color:#123456}          /* T2 Bold 20 */
+.back .ico{position:absolute;left:2px;top:0;width:44px;height:44px;transform:rotate(180deg)}
+.back .slot{position:absolute;left:22px;top:18px;width:4px;height:8px;
+            display:flex;align-items:center;justify-content:center}
+.back .slot>i{position:relative;flex:none;width:8px;height:4px;transform:rotate(-90deg)}
+.back .slot>i>i{position:absolute;inset:-37.5% -18.75% -53.03% -18.75%;display:block}
+.nav .title{position:absolute;left:248px;top:21px;width:95px;height:29px;
+            display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+            font:700 28px/1.04 'Montserrat';color:#123456;letter-spacing:-1px}   /* H1.m Bold 28 */
+
+/* ---------- Pay in, 173x81 at 32,155 (node 3:4150) ---------- */
+.payin-lab{position:absolute;left:32px;top:155px;width:173px;height:29px;white-space:nowrap;
+           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1px;
+           font-feature-settings:"lnum","tnum"}                       /* H3.m Bold 24 */
+.payin-box{position:absolute;left:32px;top:196px;width:152px;height:40px;background:#fff;border-radius:20px}
+/* the value overrides H3.m's -1 tracking with its own -1.4 */
+.payin-val{position:absolute;left:74px;top:202px;width:68px;height:29px;
+           display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1.4px;
+           font-feature-settings:"lnum","tnum"}
+/* 3:4147 is flipped horizontally; the artwork is not symmetric, so this one counts */
+.recur{position:absolute;left:187px;top:196px;width:40px;height:40px;transform:scaleX(-1)}
+
+/* ---------- comp/switch, 96x66 (nodes 3:4144 recurring, 3:4067 salary) ---------- */
+.sw-lab{position:absolute;height:20px;display:flex;flex-direction:column;justify-content:center;
+        text-align:center;white-space:nowrap;
+        font:500 12px/20px 'Montserrat';color:#123456}                /* T3.m Medium 12 */
+.sw{position:absolute;width:70px;height:44px}
+.sw .track{position:absolute;left:2px;top:2px;width:66px;height:40px;border-radius:20px;
+           box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.08)}
+.sw .cap-b{position:absolute;top:0;width:44px;height:44px}
+/* the 28x28 knob exports at 32x32 because its drop shadow is baked into the SVG,
+   which is what the 0 / -7.14% / -14.29% / -7.14% wrapper insets resolve to */
+.sw .cap-b i{position:absolute;left:6px;top:8px;width:32px;height:32px;display:block}
+
+/* ---------- graph, 296x101 at 40,473 (node 3:4068) ---------- */
+.g-title{position:absolute;left:58px;top:473px;width:107px;height:12px;white-space:nowrap;
+         font:400 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+.g-bars{position:absolute;left:40px;top:483px;width:296px;height:61px}
+.g-dot{position:absolute;top:550px;width:8px;height:8px;border-radius:4px}
+.g-key{position:absolute;top:549px;height:10px;display:flex;flex-direction:column;justify-content:center;
+       white-space:nowrap;font:400 8px/normal 'Montserrat';color:#123456;
+       font-feature-settings:"lnum","tnum"}
+.g-total{position:absolute;left:212px;top:548px;width:104px;height:12px;text-align:right;white-space:nowrap;
+         font:700 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+
+/* ---------- bottom panel and Save, nodes 3:4063 / 3:4064 ---------- */
+.panel{position:absolute;left:0;top:590px;width:375px;height:222px;background:#F0F0F0}
+.save{position:absolute;left:105px;top:704px;width:164px;height:60px;background:#FF5081;border-radius:30px}
+.save-t{position:absolute;left:152px;top:717px;width:69px;height:34px;
+        display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+        font:700 28px/normal 'Montserrat';color:#fff}                 /* T1 Bold 28, no tracking */
+</style>
+</head><body>
+<p class="cap" id="e">penfold · s4 · 3 · pay-in v3 (node 3:4062) · 375&times;812</p>
+
+<div class="fr">
+
+  <!-- 3:4063 bg -->
+  <div class="panel"></div>
+
+  <!-- 3:4064 button/save -->
+  <div class="save"></div>
+  <div class="save-t"><p>Save</p></div>
+
+  <!-- 3:4067 comp/switch/Salary -->
+  <div class="sw-lab" style="left:150px;top:606px;width:77px"><p>Salary based</p></div>
+  <div class="sw" style="left:153px;top:628px">
+    <div class="track" style="background:#E7EBED"></div>
+    <div class="cap-b" style="left:2px"><i><img src="assets/sw-cap.svg" alt=""></i></div>
+  </div>
+
+  <!-- 3:4068 graph -->
+  <p class="g-title">Growth over 37 years</p>
+  <div class="g-bars"><img src="assets/payin-bars.svg" alt=""></div>
+  <div class="g-dot" style="left:58px;background:#5C85D6"></div>
+  <div class="g-key" style="left:70px;width:28px"><p>Paid in</p></div>
+  <div class="g-dot" style="left:108px;background:#20499A"></div>
+  <div class="g-key" style="left:120px;width:31px"><p>Growth</p></div>
+  <p class="g-total">Total pot: &pound;312,281</p>
+
+  <!-- 3:4144 comp/switch/Monthly -->
+  <div class="sw-lab" style="left:280px;top:172px;width:61px"><p>Recurring</p></div>
+  <div class="sw" style="left:275px;top:194px">
+    <div class="track" style="background:#FF5081"></div>
+    <div class="cap-b" style="left:26px"><i><img src="assets/sw-cap.svg" alt=""></i></div>
+  </div>
+
+  <!-- 3:4145 recurring alert -->
+  <div class="recur"><img src="assets/ic-recurring.svg" alt=""></div>
+
+  <!-- 3:4150 Pay in -->
+  <p class="payin-lab">Pay-in amount</p>
+  <div class="payin-box"></div>
+  <div class="payin-val"><p>&pound; 250</p></div>
+
+  <!-- 3:4156 combo/navbar/mobile/module -->
+  <div class="nav">
+    <div class="bg"></div>
+    <div class="back">
+      <div class="ico"><div class="slot"><i><i><img src="assets/ic-chevron-small.svg" alt=""></i></i></div></div>
+      <div class="lbl"><p>Back</p></div>
+    </div>
+    <div class="title"><p>Saving</p></div>
+  </div>
+
+  <!-- 3:4157 iOS Nav Bar (contracted) -->
+  <div class="ios">
+    <p class="url">getpenfold.com</p>
+    <div class="status">
+      <p class="time">9:24</p>
+      <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
+      <div class="battfill"></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+</div>
+</body></html>

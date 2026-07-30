@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>penfold · s2 · 1 · referral desktop (node 2:636)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Every value here is read from Figma node 2:636, not eyeballed.
+   Tokens: Cool blue #123456, White #FFFFFF, Grey #CCCCCC, Cool grey #FBFBFB,
+   Pinkfold #FF5081, Light blue #4ECFEF, BG #F4F4F4,
+   T3 Medium 16 (Montserrat 500/16, lineHeight 22),
+   T4 SemiBold 12 (Montserrat 600/12, letterSpacing 2).
+
+   Like node 2:691 this frame carries a 1px #888 canvas outline with an 8px
+   radius, which is dropped so that children sit at their get_metadata
+   coordinates. That matters for one node in particular: the action row 3:1735
+   is anchored with bottom:41px, which against the bordered 810px content box
+   lands at y=648, and against a plain 812px frame would land at 649. 648 is
+   what the file reports, so it is pinned by coordinate rather than by anchor.
+
+   Layer names in the navbar are stale and contradict their own content: 2:646
+   is named "£0.00" but reads £24,420.09, 2:649 is named "+£0.00" but reads
+   +£2,012.21, and 2:650 is named "+0.00%" but reads +8.24%. The computed
+   content wins, and the reported widths (92, 81, 43) confirm it.
+
+   This node specifies no fontFeatureSettings, so no tabular figures, which
+   also matches the 92px the file gives for £24,420.09.
+
+   One layer is hidden (2:653, a "you can change these details" note at
+   838,474) and is not rendered. */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption, so .fr sits at the body padding, 40px */
+
+.fr{position:relative;width:1218px;height:812px;background:#F4F4F4;overflow:hidden}
+.fr img{display:block;width:100%;height:100%}
+
+/* ---------- combo/navbar/desktop/dashboard, 1218x71 (node 2:641) ---------- */
+/* The desktop bar takes a full 1px #CCCCCC border, where the mobile bar takes 0.333px. */
+.nav{position:absolute;left:0;top:0;width:1218px;height:71px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:1px solid #CCCCCC}
+.nav .logo{position:absolute;left:34px;top:18.31%;bottom:19.72%;width:140px}   /* 34,13 140x44 */
+.nav .logo i{position:absolute;display:block}
+.nav .logo .a{inset:0 92.14% 0 0}
+.nav .logo .b{inset:0 80% 56.82% 7.86%}
+.nav .logo .c{inset:20.45% 80% 36.36% 7.86%}
+.nav .menu{position:absolute;right:39px;top:19.72%;bottom:18.31%;width:120px}  /* 1059,14 120x44 */
+.nav .menu p{position:absolute;inset:31.82% 16.67% 34.09% 45%;text-align:right;white-space:nowrap;
+             font:600 12px/normal 'Montserrat';color:#123456;letter-spacing:2px;text-transform:uppercase}
+
+/* Widths on the text nodes are the file's own measured box widths. Montserrat
+   renders each of these glyph runs 0.3-0.9px narrower in a browser than Figma
+   measured it, so pinning the box keeps every edge on the Figma number without
+   moving a glyph. It matters most for +8.24%, which is anchored by its right
+   edge at 438 and would otherwise start 0.87px late. */
+.nav .lbl{position:absolute;top:21.13%;bottom:47.89%;white-space:nowrap;
+          font:500 16px/22px 'Montserrat';color:#123456}
+.nav .fig{position:absolute;top:52.11%;bottom:19.72%;display:flex;flex-direction:column;
+          justify-content:flex-end;white-space:nowrap;font:700 16px/normal 'Montserrat';color:#123456}
+.nav .pct{position:absolute;left:438px;transform:translateX(-100%);top:57.75%;bottom:21.13%;width:43px;
+          display:flex;flex-direction:column;justify-content:flex-end;text-align:right;white-space:nowrap;
+          font:500 12px/normal 'Montserrat';color:#43a800}
+
+/* ---------- section heading, group 2:638 ---------- */
+/* Both sizes are the file's own odd values, not rounded ones. */
+.h-title{position:absolute;left:139px;top:119px;width:304px;white-space:nowrap;
+         font:700 37.722px/normal 'Montserrat';color:#123456}
+.h-range{position:absolute;left:144px;top:184px;width:175px;white-space:nowrap;
+         font:400 21.778px/1.3 'Montserrat';color:#123456}
+
+/* ---------- button/module.active x2, group 2:670 ---------- */
+.mod{position:absolute;top:110px;width:140px;height:54.9171257019043px}
+.mod .fill{position:absolute;inset:28.17% 0 0 0;background:#6076dd;border-radius:6px}
+/* Figma insets this box to 38.67%/39.23%, so the label centered on a narrow box
+   that is not the button's centre. Spanning the button's full width instead. */
+.mod .cap-t{position:absolute;inset:0 0 71.83% 0;display:flex;flex-direction:column;
+            justify-content:flex-end;align-items:center;text-align:center;white-space:nowrap;
+            font:700 10.83px/1.4 'Montserrat';color:#123456}
+/* Sized to the fill exactly, so the value centres on the button on both axes. */
+.mod .val{position:absolute;inset:28.17% 0 0 0;display:flex;flex-direction:column;
+          justify-content:center;align-items:center;text-align:center;white-space:nowrap;
+          font:700 16.24px/normal 'Montserrat';color:#fff}
+
+/* ---------- yearly donut, Frame 14 (node 3:1618) ---------- */
+/* 3:1618 is a real frame, so everything inside is measured from its own origin.
+   The whole ring, arc and inner circles are one flattened 261px export here,
+   where the mobile screen keeps them as separate layers. */
+.dial{position:absolute;left:434px;top:238px;width:351px;height:317px}
+.dial .ring{position:absolute;left:47px;top:28px;width:261px;height:261px}
+.dial .axis{position:absolute;left:108px;top:157px;width:140px;height:2px}
+/* 5.138px dots, screen-blended. The two horizontal ones are rotated -90deg, so
+   get_metadata reports their y as 161.569, the rotated origin. 156.43 is the
+   box, and the file is self-consistent about it: the horizontal pair and the
+   vertical pair then share a centre of 159.0. */
+.dial .dot{position:absolute;width:5.13821px;height:5.13821px;mix-blend-mode:screen}
+.dial .dot.h{transform:rotate(-90deg)}
+
+.dial .fig{position:absolute;left:122.0021px;top:94px;width:111.756px;height:128.455px;
+           display:flex;flex-direction:column;justify-content:center;text-align:center;
+           white-space:pre-wrap;font:700 20px/normal 'Montserrat';color:#123456}
+.dial .fig .reg{font-weight:400}
+.dial .tick{position:absolute;white-space:nowrap;font:700 16px/normal 'Montserrat';color:#123456}
+.dial .t-top{left:150.8616px;top:0;width:51px;height:20px;display:flex;flex-direction:column;
+             justify-content:flex-end;text-align:center}
+.dial .t-bot{left:147px;top:297px;height:20px;text-align:center;width:59px}
+.dial .t-right{left:314px;top:138px;width:37px;height:40px;display:flex;flex-direction:column;justify-content:center}
+.dial .t-left{left:0;top:138.7317px;height:40px;width:41px;text-align:right;
+              display:flex;flex-direction:column;justify-content:center}
+
+/* ---------- three action pucks, Frame 19 (node 3:1735) ---------- */
+.acts{position:absolute;left:459px;top:648px;width:299px;height:122px}
+.acts .puck{position:absolute;top:0;width:88px;height:88px;background:#FBFBFB;
+            border:1px solid #fff;border-radius:61px;box-shadow:0 4px 8px 0 rgba(0,0,0,.08)}
+.acts .pico{position:absolute;top:15px;width:60px;height:60px}
+.acts .pico i{position:absolute;display:block}
+.acts .pico i i{position:absolute;inset:0;display:block}
+.acts .plab{position:absolute;top:100px;height:22px;text-align:center;white-space:nowrap;
+            font:500 14px/22px 'Montserrat';color:#123456}
+</style>
+</head><body>
+<p class="cap" id="e">penfold · s2 · 1 · referral desktop (node 2:636) · 1218&times;812</p>
+
+<div class="fr">
+
+  <!-- 2:638 Group 103 -->
+  <p class="h-title">Yearly progress</p>
+  <p class="h-range">Jul &lsquo;19 &mdash; Jun &lsquo;20</p>
+
+  <!-- 2:641 navbar -->
+  <div class="nav">
+    <div class="bg"></div>
+    <p class="lbl" style="left:140px;width:76px">Total Pot:</p>
+    <div class="fig" style="left:140px;width:92px"><p>&pound;24,420.09</p></div>
+    <p class="lbl" style="left:312px;width:126px">Total Gain/Loss:</p>
+    <div class="fig" style="left:312px;width:81px"><p>+&pound;2,012.21</p></div>
+    <div class="pct"><p>+8.24%</p></div>
+    <div class="logo">
+      <i class="a"><img src="assets/logo-a.svg" alt=""></i>
+      <i class="b"><img src="assets/logo-b.svg" alt=""></i>
+      <i class="c"><img src="assets/logo-c.svg" alt=""></i>
+    </div>
+    <div class="menu"><p>Menu</p></div>
+  </div>
+
+  <!-- 3:1618 Frame 14 -->
+  <div class="dial">
+    <div class="fig">
+      <p class="reg">Paid in</p>
+      <p>&pound;1,350</p>
+      <p>&#8203;</p>
+      <p class="reg">Yearly goal</p>
+      <p>&pound;1,600</p>
+    </div>
+    <div class="tick t-top"><p>Jul &lsquo;19</p></div>
+    <p class="tick t-bot">Jan &lsquo;20</p>
+    <div class="tick t-right"><p>Oct</p><p>2019</p></div>
+    <div class="tick t-left"><p>Apr</p><p>2020</p></div>
+    <div class="axis"><img src="assets/d-donut-line.svg" alt=""></div>
+    <div class="ring"><img src="assets/d-donut-group.svg" alt=""></div>
+    <div class="dot" style="left:174.9838px;top:40.8211px"><img src="assets/d-donut-dot-v.svg" alt=""></div>
+    <div class="dot" style="left:174.9838px;top:272.0406px"><img src="assets/d-donut-dot-v.svg" alt=""></div>
+    <div class="dot h" style="left:60.3737px;top:156.4309px"><img src="assets/d-donut-dot-h.svg" alt=""></div>
+    <div class="dot h" style="left:289.5934px;top:156.4309px"><img src="assets/d-donut-dot-h.svg" alt=""></div>
+  </div>
+
+  <!-- 2:670 Group 147 -->
+  <div class="mod" style="left:857px">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Growth profile</p></div>
+    <div class="val"><p>Basic 1</p></div>
+  </div>
+  <div class="mod" style="left:1015px">
+    <div class="fill"></div>
+    <div class="cap-t"><p>Next payment</p></div>
+    <div class="val"><p>&pound;124 on 1st</p></div>
+  </div>
+
+  <!-- 3:1735 Frame 19 -->
+  <div class="acts">
+    <div class="puck" style="left:0"></div>
+    <div class="pico" style="left:14px">
+      <i style="inset:25%"><i style="inset:-5%"><img src="assets/ic-combine-1.svg" alt=""></i></i>
+      <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="assets/ic-combine-2.svg" alt=""></i></i>
+      <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="assets/ic-combine-3.svg" alt=""></i></i>
+      <i style="inset:68% 18.91% 18.41% 67.5%"><i style="inset:-18.39%"><img src="assets/ic-combine-4.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:11px;width:66px">Combine</p>
+
+    <div class="puck" style="left:103px"></div>
+    <div class="pico" style="left:117px">
+      <i style="inset:27.5%"><i style="inset:-5.56%"><img src="assets/ic-topup-1.svg" alt=""></i></i>
+      <i style="inset:40% 50%"><i style="inset:-12.5% -1.5px"><img src="assets/ic-topup-2.svg" alt=""></i></i>
+      <i style="inset:50% 40%"><i style="inset:-1.5px -12.5%"><img src="assets/ic-topup-3.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:123px;width:49px">Top up</p>
+
+    <div class="puck" style="left:208px"></div>
+    <div class="pico" style="left:222px">
+      <i style="inset:27.5%"><i style="inset:-5.56%"><img src="assets/ic-share-1.svg" alt=""></i></i>
+      <i style="inset:18.5% 18.5% 63.5% 63.5%"><i style="inset:-13.89%"><img src="assets/ic-share-2.svg" alt=""></i></i>
+      <i style="inset:18.5% 18.5% 48.5% 48.5%"><i style="inset:-7.58%"><img src="assets/ic-share-3.svg" alt=""></i></i>
+    </div>
+    <p class="plab" style="left:206px;width:93px">Share for &pound;25</p>
+  </div>
+
+</div>
+</body></html>

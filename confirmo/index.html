@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><base href="/confirmo/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confirmo &middot; Cesar Garcia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -10,9 +10,6 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 Inter,sans-serif;font-weight:450;-webkit-font-smoothing:antialiased}
 body::after{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px;opacity:var(--grain);pointer-events:none;z-index:60}
 ::selection{background:var(--sel)}
-::-webkit-scrollbar{width:12px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--ctlbd);border-radius:8px;border:3px solid var(--bg)}
 .flag .fv b{color:var(--accent);font-weight:600}
 
 .page{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad) 120px;position:relative}
@@ -186,7 +183,7 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
 </style>
 </head><body>
 
-<div class="flag"><a class="navhome" href="/">Home</a><span class="fv">Confirmo</span><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></div>
+<div class="flag"><a class="navhome" href="../home/index.html">Home</a><span class="fvwrap"><a class="step" href="../done/index.html" title="DONE" rel="prev">&lsaquo;</a><span class="fv">Confirmo</span><a class="step" href="../mara/index.html" title="Mara" rel="next">&rsaquo;</a></span><nav class="tops"><a href="../Cesar%20Garcia%20CV.pdf" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 
 <div class="page">
 
@@ -443,7 +440,7 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
       </svg>
     </div>
 
-    <p style="margin-top:26px">Without a single backend change, design alone added <b>135 million dollars</b> a year, raising total converted payments to $202M. This type of validation gave credence to the impact that can be derived from human behaviour analysis, which I followed up with the world&rsquo;s first crypto subscription service. The first Confirmo project built with design and AI right from the start.</p>
+    <p style="margin-top:26px">Without a single backend change, design alone added <b>135 million dollars</b> a year, raising total converted payments to $202M. This type of validation gave credence to the impact that can be derived from human behavior analysis, which I followed up with the world&rsquo;s first crypto subscription service. The first Confirmo project built with design and AI right from the start.</p>
 
   </section>
 
@@ -487,66 +484,6 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
   mq.addEventListener("change",paint);
   window.tt=flip;
   paint();
-})();
-</script>
-
-<script>
-!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
-  api_host:'https://eu.i.posthog.com',
-  persistence:'sessionStorage', /* not a cookie, dies with the tab, no banner.
-                                   'memory' loses identity on every navigation, which
-                                   kills every cross-page journey question. */
-  disable_session_recording:true,
-  autocapture:false,
-  capture_pageview:true,
-  capture_pageleave:true       /* gives time-on-page and exit page */
-});
-
-(function(){
-  var PAGE='confirmo', seen={}, secs={};
-
-  function depth(){
-    var h=document.documentElement;
-    var max=h.scrollHeight-innerHeight;
-    if(max<=0) return 100;
-    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
-  }
-  function mark(){
-    var d=depth();
-    [25,50,75,100].forEach(function(m){
-      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
-    });
-  }
-  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
-
-  /* which sections they actually reached, better than a raw percentage */
-  addEventListener('load',function(){
-    var list=[].slice.call(document.querySelectorAll('section.sec'));
-    if(!list.length||!window.IntersectionObserver) return;
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        var i=list.indexOf(e.target);
-        if(secs[i]) return; secs[i]=1;
-        var lab=e.target.querySelector('.lab');
-        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
-      });
-    },{threshold:.4});
-    list.forEach(function(s){io.observe(s);});
-  });
-
-  /* outbound clicks, tagged with the page they left from and how far down */
-  addEventListener('click',function(ev){
-    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
-    var h=a.getAttribute('href')||'', kind=null;
-    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
-    else if(/linkedin\.com/i.test(h)) kind='linkedin';
-    else if(/^mailto:/i.test(h)) kind='email';
-    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount)$/.test(h))
-      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
-  },true);
 })();
 </script>
 </body></html>
