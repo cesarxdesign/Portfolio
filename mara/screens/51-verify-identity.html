@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mara · verify identity intro (node 4049:13015)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Read from Figma XeCmukfCvVLbaPsBSKo0r8 node 4049:13015 ("20"). Every number below
+   comes out of get_design_context / get_metadata, not off a picture.
+
+   Variables bound on this node (get_variable_defs):
+     neutrals/900   #060610   status bar text, back chevron, punch hole
+     neutrals/800   #25252E   title ink, "How does verification work?" ink
+     neutrals/700   #41414D   body copy ink
+     neutrals/100   #F4F4F5   illustration plate, CTA tray
+     neutrals/white #FFFFFF   frame, CTA label
+     Primary/400    #FF7500   "Identity", CTA fill
+     Ink Dark       #171B1E   bound on the node, not painted on anything visible here
+
+   Untokenized values, recorded because they are surprising:
+     - the frame itself is white with a 25.862px radius (device rounding), while the
+       two plates that cover it are #F4F4F5
+     - the info icon's ring strokes #17243C, but its dot and stem stroke #25252E. That
+       mismatch is in the source component, not a fallback I invented. Both come
+       straight out of the exported vectors.
+     - "Verification steps" sits at x=1.0010170, not 0. That 1px is in the file.
+     - the button inside "Verification steps" reports h=56.011px in design context and
+       h=56.0035706px in metadata. Metadata is the geometry authority, so 56.0035706 wins.
+     - the illustration is a 2400 square PNG image fill, stored thumb-DOWN. The
+       node carries a 180deg rotation, which is what renders it thumb-up.
+
+   Type: Satoshi (local woff2, same files the other mara screens use) and Roboto Medium
+   for the Pixel 5 status bar clock. Figma leading is unitless here: 1.2 on the 33px
+   title, 1.5 on every 18px run. The status bar clock is the one fixed leading, 16.001px. */
+
+@font-face{font-family:'Satoshi';src:url('../assets/s05/font/satoshi-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('../assets/s05/font/satoshi-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('../assets/s05/font/satoshi-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('../assets/s05/font/satoshi-900.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:'Satoshi',ui-sans-serif,system-ui,-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+
+/* ---------- frame 4049:13015 · 375.0239563 x 808.1896362 ---------- */
+.fr{position:relative;width:375.0239563px;height:808.1896362px;background:#FFFFFF;
+    border-radius:25.862px;overflow:hidden;-webkit-font-smoothing:antialiased}
+.fr svg{display:block;width:100%;height:100%}
+
+/* ---------- header navigation 4049:13025 · 0,0 · 375.0239563 x 112.0071564 ----------
+   column: status bar 44.0035706, gap 24.0020447, header row 28.0020447, padding-bottom 16.0010223 */
+.nav{position:absolute;left:0;top:0;width:375.0239563px;height:112.0071564px}
+
+/* Pixel 5 status bar I4049:13025;68:11270 · 375.0239563 x 44.0035706 */
+.sb{position:absolute;left:0;top:0;width:375.0239563px;height:44.0035706px;overflow:hidden}
+.sb .clock{position:absolute;left:70.5px;top:calc(50% + 7px);transform:translate(-50%,-50%);
+           font:500 14px/16.001px 'Roboto',sans-serif;color:#060610;letter-spacing:.42px;
+           text-align:center;white-space:nowrap}
+.sb .wifi{position:absolute;right:71.67px;top:calc(50% + 5.5px);transform:translateY(-50%);
+          width:17.3341px;height:13.0013px}
+.sb .recep{position:absolute;right:47.84px;top:calc(50% + 5.5px);transform:translateY(-50%);
+           width:13.0013px;height:13.0013px}
+.sb .batt{position:absolute;right:24px;top:calc(50% + 5.04px);transform:translateY(-50%);
+          width:8.667px;height:14.0837px}
+.sb .hole{position:absolute;left:24px;top:20px;width:18.0012px;height:18.0012px}
+
+/* back chevron I4049:13025;396:12730;396:12467 · 24.0020447 box, left inset 16.0010223.
+   Row is 28.0020447 tall and centers the icon, so top = 44.0035706 + 24.0020447 + 2 = 70.0056153.
+   The vector lands dead center of the icon box: its container is inset 37.5% x / 25% y,
+   giving 6.0005 x 12.001, so both centers are 12.001,12.001. */
+.back{position:absolute;left:16.0010223px;top:70.0056153px;width:24.0020447px;height:24.0020447px;overflow:hidden}
+.back svg{position:absolute;left:50%;top:50%;width:14.0009px;height:8.00051px;
+          transform:translate(-50%,-50%) rotate(90deg) scaleX(-1)}
+
+/* ---------- full page illustration 4049:13020 · 0,0 · 375.0239563 x 355.0226746 ---------- */
+.plate{position:absolute;left:0;top:0;width:375.0239563px;height:355.0226746px;
+       background:#F4F4F5;overflow:hidden}
+.plate .grad{position:absolute;inset:0}
+/* illustration I4049:13020;42:34601 · 67.9923325,69.9931030 · 240.0153351 square, rotate 180.
+   The image fill is a 2400 square PNG, stored thumb-DOWN; the node's 180deg turn is
+   what makes it read thumb-up. Saved at 720 (3x the 240px box) rather than the full
+   2400. Square image in a square box, so Figma's fill mode and contain agree. */
+.plate .ill{position:absolute;left:67.9923325px;top:69.9931030px;
+            width:240.0153351px;height:240.0153351px;transform:rotate(180deg)}
+.plate .ill img{width:100%;height:100%;display:block;object-fit:contain}
+
+/* ---------- section 4049:13024 · 0,355.0239563 · 375.0239563 x 150.0035706 ----------
+   pt 32.0020447, title box 40, gap 16.0010223, body box 54, pb 8.0010223.
+   Both text blocks are inset 32.0020447 left and right. */
+.title{position:absolute;left:32.0020447px;top:387.0260010px;width:311.0198669px;height:40px;
+       display:flex;align-items:center;
+       font:900 33px/1.2 'Satoshi';color:#25252E;letter-spacing:-.33px}
+.title .hi{color:#FF7500}
+.body{position:absolute;left:32.0020447px;top:443.0270233px;width:311.0198669px;height:54px;
+      display:flex;align-items:center;
+      font:400 18px/1.5 'Satoshi';color:#41414D;letter-spacing:.18px}
+
+/* ---------- verification steps 4049:13016 · 1.0010170,505.0331116 · 375.0239563 x 56.0035706 ----------
+   button 4049:13019 sits 24.0014076 in from that, so 25.0024246 absolute, 254.0015259 wide.
+   Inside: gap 8.0010223, py 12.0010223, centered. */
+.steps{position:absolute;left:1.0010170px;top:505.0331116px;width:375.0239563px;height:56.0035706px;overflow:hidden}
+.steps .btn{position:absolute;left:24.0014076px;top:0;width:254.0015259px;height:56.0035706px;
+            border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8.0010223px}
+.steps .ico{position:relative;width:16.0010223px;height:16.0010223px;flex:0 0 16.0010223px;overflow:hidden}
+.steps .lab{font:500 18px/1.5 'Satoshi';color:#25252E;text-align:center;white-space:nowrap;
+            text-decoration:underline;text-decoration-skip-ink:none;text-underline-position:from-font}
+
+/* ---------- button action input 4049:13026 · 0,701.5807495 · 375.0239563 x 104.0066452 ----------
+   tray is #F4F4F5 with a 16.0010223 top radius, pt 16.0010223, pb 32.0020447.
+   CTA 4049:13026;...;581:17587 · 56.0035706 tall, 50px radius, px 24.0020447, full width
+   inside the tray's own 24.0020447 side padding, so 327.0198669 wide at x 24.0020447. */
+.tray{position:absolute;left:0;top:701.5807495px;width:375.0239563px;height:104.0066452px;
+      background:#F4F4F5;border-radius:16.0010223px 16.0010223px 0 0;overflow:hidden}
+.cta{position:absolute;left:24.0020447px;top:717.5817718px;width:327.0198669px;height:56.0035706px;
+     background:#FF7500;border-radius:50px;display:flex;align-items:center;justify-content:space-between;
+     padding:12.0010223px 24.0020447px}
+.cta .lab{font:700 18px/1.5 'Satoshi';color:#FFFFFF;text-align:center;white-space:nowrap}
+.cta .ico{position:relative;width:16.0010223px;height:16.0010223px;flex:0 0 16.0010223px;overflow:hidden}
+</style>
+</head><body>
+<p class="cap">mara &middot; verify identity intro (node 4049:13015) &middot; 375.02&times;808.19</p>
+
+<div class="fr">
+
+  <!-- illustration plate first: the header navigation overlays its top 112px -->
+  <div class="plate">
+    <div class="grad">
+      <!-- gradient-bg, exact export: two blurred #C0B59E slabs, a 40% #E9944C slab and
+           two white ellipses, all clipped to the 375.024 x 355.023 plate -->
+      <svg viewBox="0 0 375.024 355.023" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <mask id="vi-plate" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="376" height="356">
+          <rect width="375.024" height="355.023" fill="#AC97E1"/>
+        </mask>
+        <g mask="url(#vi-plate)">
+          <rect x="-106.007" y="17.3567" width="484.031" height="362.912" fill="#C0B59E"/>
+          <g filter="url(#vi-f0)"><rect width="714.181" height="285.69" transform="matrix(0.985683 -0.168608 0.369713 0.929146 -311.02 -55.7922)" fill="#C0B59E"/></g>
+          <g opacity="0.4" filter="url(#vi-f1)"><rect width="625.48" height="125.045" transform="matrix(0.939297 -0.343105 0.591183 0.806537 -188.139 195.77)" fill="#E9944C"/></g>
+          <g opacity="0.8" filter="url(#vi-f2)"><ellipse cx="269.986" cy="151.281" rx="269.986" ry="151.281" transform="matrix(0.987477 0.157766 -0.248654 0.968592 51.0296 -242.377)" fill="white"/></g>
+          <g opacity="0.5" filter="url(#vi-f3)"><ellipse cx="114.007" cy="395.259" rx="317.02" ry="150.687" fill="white"/></g>
+        </g>
+        <defs>
+          <filter id="vi-f0" x="-431.028" y="-296.217" width="1049.59" height="625.88" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="60.0038"/></filter>
+          <filter id="vi-f1" x="-308.147" y="-138.842" width="901.451" height="555.474" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="60.0038"/></filter>
+          <filter id="vi-f2" x="-139.271" y="-355.897" width="838.578" height="605.288" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="75.0048"/></filter>
+          <filter id="vi-f3" x="-337.022" y="110.563" width="902.058" height="569.392" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="67.0043"/></filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="ill"><img src="assets/verify-identity-thumb.webp" alt=""></div>
+  </div>
+
+  <div class="nav">
+    <div class="sb">
+      <p class="clock">3:50</p>
+      <div class="hole"><svg viewBox="0 0 18.0012 18.0012" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9.00058" cy="9.00058" r="9.00058" fill="#060610"/></svg></div>
+      <div class="wifi"><svg viewBox="0 0 17.3355 13.0013" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <mask id="vi-wifi" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="14"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 -1.01732e-05L8.66722 13.0008L17.3344 -1.01732e-05H0Z" fill="white"/></mask>
+        <g mask="url(#vi-wifi)">
+          <g opacity="0.3"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.66718 0C1.51672 0 -4.33365 5.85037 -4.33365 13.0008C-4.33365 20.1513 1.51672 26.0017 8.66718 26.0017C15.8176 26.0017 21.668 20.1513 21.668 13.0008C21.668 5.85037 15.8176 0 8.66718 0V0ZM8.66726 22.7515C3.25025 22.7515 -1.08336 18.4179 -1.08336 13.0008C-1.08336 7.58383 3.25025 3.25022 8.66726 3.25022C14.0843 3.25022 18.4179 7.58383 18.4179 13.0008C18.4179 18.4179 14.0843 22.7515 8.66726 22.7515V22.7515Z" fill="#060610"/></g>
+          <g opacity="0.9">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.66726 3.25021C3.25025 3.25021 -1.08336 7.58382 -1.08336 13.0008C-1.08336 18.4178 3.25025 22.7515 8.66726 22.7515C14.0843 22.7515 18.4179 18.4178 18.4179 13.0008C18.4179 7.58382 14.0843 3.25021 8.66726 3.25021V3.25021ZM8.66726 19.5013C5.09203 19.5013 2.16685 16.5761 2.16685 13.0008C2.16685 9.42561 5.09203 6.50043 8.66726 6.50043C12.2425 6.50043 15.1677 9.42561 15.1677 13.0008C15.1677 16.5761 12.2425 19.5013 8.66726 19.5013V19.5013Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.66726 6.50043C5.09203 6.50043 2.16684 9.42561 2.16684 13.0008C2.16684 16.5761 5.09203 19.5013 8.66726 19.5013C12.2425 19.5013 15.1677 16.5761 15.1677 13.0008C15.1677 9.42561 12.2425 6.50043 8.66726 6.50043V6.50043ZM8.6673 16.2511C6.82552 16.2511 5.41709 14.8426 5.41709 13.0009C5.41709 11.1591 6.82552 9.75064 8.6673 9.75064C10.5091 9.75064 11.9175 11.1591 11.9175 13.0009C11.9175 14.8426 10.5091 16.2511 8.6673 16.2511V16.2511Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.66726 16.251C10.4623 16.251 11.9175 14.7959 11.9175 13.0008C11.9175 11.2058 10.4623 9.75063 8.66726 9.75063C6.87222 9.75063 5.41705 11.2058 5.41705 13.0008C5.41705 14.7959 6.87222 16.251 8.66726 16.251Z" fill="#060610"/>
+          </g>
+        </g>
+      </svg></div>
+      <div class="recep"><svg viewBox="0 0 13.0017 13.0013" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <mask id="vi-recep" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="14" height="14"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.0008 13.0008V0L0 13.0008H13.0008Z" fill="white"/></mask>
+        <g mask="url(#vi-recep)">
+          <g opacity="0.3">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.7507 2.03464e-05V13.0009H13.0009V2.03464e-05H9.7507Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.50046 1.01732e-05V13.0008H9.75066V1.01732e-05H6.50046Z" fill="#060610"/>
+          </g>
+          <g opacity="0.9">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.25025 1.01732e-05V13.0008H6.50046V1.01732e-05H3.25025Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0V13.0008H3.25021V0H0Z" fill="#060610"/>
+          </g>
+        </g>
+      </svg></div>
+      <div class="batt"><svg viewBox="0 0 8.6678 14.0847" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <mask id="vi-batt" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="9" height="15"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.58382 1.0834H6.50042V0H2.16681V1.0834H1.0834C0.433361 1.0834 0 1.51676 0 2.16681V13.0008C0 13.6509 0.433361 14.0842 1.0834 14.0842H7.58382C8.23386 14.0842 8.66722 13.6509 8.66722 13.0008V2.16681C8.66722 1.51676 8.23386 1.0834 7.58382 1.0834V1.0834Z" fill="white"/></mask>
+        <g mask="url(#vi-batt)">
+          <g opacity="0.9">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M-8.13854e-05 10.834V14.0842H8.66714V10.834H-8.13854e-05Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M-4.06927e-05 7.58381V10.834H8.66718V7.58381H-4.06927e-05Z" fill="#060610"/>
+          </g>
+          <g opacity="0.3">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M-4.06927e-05 4.3336V7.58381H8.66718V4.3336H-4.06927e-05Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M-4.06927e-05 1.08339V4.3336H8.66718V1.08339H-4.06927e-05Z" fill="#060610"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.16676 -1.01732e-05V1.08339H6.50038V-1.01732e-05H2.16676Z" fill="#060610"/>
+          </g>
+        </g>
+      </svg></div>
+    </div>
+
+    <div class="back"><svg viewBox="0 0 14.0009 8.00051" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.00006 1.00006L7.00045 7.00045L13.0008 1.00006" stroke="#060610" stroke-width="2.00013" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+
+  <p class="title">Verify Your <span class="hi">Identity</span></p>
+  <p class="body">Identity verification helps us keep the Mara Tribe safe.</p>
+
+  <div class="steps">
+    <div class="btn">
+      <!-- info icon I4049:13019;206:11597 · ring #17243C, dot and stem #25252E, all 1.5001 stroke -->
+      <div class="ico"><svg viewBox="0 0 16.0010223 16.0010223" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8.0005" cy="8.0005" r="6.66709" stroke="#17243C" stroke-width="1.5001" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.0005 5.3336H8.00717" stroke="#25252E" stroke-width="1.5001" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.0005 10.6674V8.0005" stroke="#25252E" stroke-width="1.5001" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg></div>
+      <span class="lab">How does verification work?</span>
+    </div>
+  </div>
+
+  <div class="tray"></div>
+  <div class="cta">
+    <span class="lab">Start Verification</span>
+    <!-- arrow right I4049:13026;42:13192;581:17587;42:2231 · shaft and head, 2.00013 stroke, white -->
+    <div class="ico"><svg viewBox="0 0 16.0010223 16.0010223" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.3330 8.0005H12.6675" stroke="white" stroke-width="2.00013" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8.0005 3.3330L12.6675 8.0005L8.0005 12.6675" stroke="white" stroke-width="2.00013" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></div>
+  </div>
+
+</div>
+</body></html>

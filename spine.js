@@ -46,7 +46,7 @@ window.SPINE = {
       name: `Mara`, role: `Head of Design & Product Owner`, ready: true,
       meta: `Digital wallet · 2022-24`, note: `Crypto & fiat wallet for Africa`,
       accent: `mara`, href: `/mara`, status: `mega`,
-      media: { type: `phones`, imgs: [`mara/screens/01-home.html`, `mara/assets/onb/15.png`], alt: `Mara wallet, redesigned` },
+      media: { type: `phones`, imgs: [`mara/screens/01-home.html`, `mara/screens/51-verify-identity.html`], alt: `Mara wallet, redesigned` },
       home: {
         title: `Saving $6.9M a year while improving user experience`,
         summary: `A crypto and fiat wallet for Africa, with Coinbase as lead investor. I ran design, engineering, and support, and personally redrew the entire product before handing off the iterations.`,
