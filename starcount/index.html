@@ -69,8 +69,15 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 .cstack iframe{border:0;width:416px;height:55px;pointer-events:none}
 
 /* screens */
-.scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid var(--line);background:var(--panel)}
-.scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+/* scrfit() used to measure each .scr and scale its iframe. Same arithmetic in
+   CSS: the box is a container, so 100cqw is its content width, and the scale is
+   that over the screen's own width. content-box, so the border sits outside the
+   ratio exactly as scrfit's (width - borders) did. */
+.scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid var(--line);background:var(--panel);
+     box-sizing:content-box;container-type:inline-size;aspect-ratio:var(--iw) / var(--ih)}
+.scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;
+            width:calc(var(--iw) * 1px);height:calc(var(--ih) * 1px);
+            transform:scale(calc(100cqw / (var(--iw) * 1px)))}
 .srow{display:flex;gap:14px;margin:30px 0 6px}
 .srow .scr{flex:1;min-width:0;margin:0}
 .prow4{display:flex;gap:12px;margin:12px 0}
@@ -188,8 +195,8 @@ window.addEventListener("load",function(){document.querySelectorAll(".gpane ifra
     <h1>Hit &pound;1M first-year target, in 91 days</h1>
     <p class="lede">Starcount built a clever dataset of their own, and had rights to data nobody had monetized before, including Twitter's first-ever data deal. But all that data wouldn't become a product, until I made it lie.</p>
     <div class="ghero">
-      <div class="gf l"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
-      <div class="gf r"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
+      <div class="gf l"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026" style="--iw:1824;--ih:1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
+      <div class="gf r"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080" style="--iw:1920;--ih:1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
       <div class="seam" id="seam" title="drag the seam"></div>
     </div>
   </header>
@@ -287,9 +294,9 @@ window.addEventListener("load",function(){document.querySelectorAll(".gpane ifra
     <p>The map could even run the logic in reverse: hand it a market that already worked, and Lookalikes would suggest other areas with similar interests or behaviors.</p>
     <p>Every iteration upgraded the look and feel too. Sales demoed my most up-to-date prototypes, so every pass of polish did double duty, sharpening the tool and keeping the prospect list eager and growing, even before the price was set.</p>
     <div class="srow">
-      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-01.html#embed" scrolling="no" loading="lazy" title="sc-01"></iframe></div></div>
-      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-02.html#embed" scrolling="no" loading="lazy" title="sc-02"></iframe></div></div>
-      <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080"><iframe src="sc-03.html#embed" scrolling="no" loading="lazy" title="sc-03"></iframe></div></div>
+      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080" style="--iw:1560;--ih:1080"><iframe src="sc-01.html#embed" scrolling="no" loading="lazy" title="sc-01"></iframe></div></div>
+      <div class="glassf"><img class="vb" src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080" style="--iw:1560;--ih:1080"><iframe src="sc-02.html#embed" scrolling="no" loading="lazy" title="sc-02"></iframe></div></div>
+      <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1560" data-h="1080" style="--iw:1560;--ih:1080"><iframe src="sc-03.html#embed" scrolling="no" loading="lazy" title="sc-03"></iframe></div></div>
     </div>
   </section>
 
@@ -302,17 +309,17 @@ window.addEventListener("load",function(){document.querySelectorAll(".gpane ifra
     <div class="g05">
     <p class="rowlab">Accurate</p>
     <div class="glassf grow"><div class="gin"><div class="prow4">
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p01a.html#embed" scrolling="no" loading="lazy" title="sc-p01a"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p02a.html#embed" scrolling="no" loading="lazy" title="sc-p02a"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p03a.html#embed" scrolling="no" loading="lazy" title="sc-p03a"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p04a.html#embed" scrolling="no" loading="lazy" title="sc-p04a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p01a.html#embed" scrolling="no" loading="lazy" title="sc-p01a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p02a.html#embed" scrolling="no" loading="lazy" title="sc-p02a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p03a.html#embed" scrolling="no" loading="lazy" title="sc-p03a"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p04a.html#embed" scrolling="no" loading="lazy" title="sc-p04a"></iframe></div>
     </div></div></div>
     <div class="prow4 caps"><span>100%</span><span>top 75%</span><span>top 50%</span><span>top 10%</span></div>
     <div class="glassf grow"><div class="gin"><div class="prow4">
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p01b.html#embed" scrolling="no" loading="lazy" title="sc-p01b"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p02b.html#embed" scrolling="no" loading="lazy" title="sc-p02b"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p03b.html#embed" scrolling="no" loading="lazy" title="sc-p03b"></iframe></div>
-      <div class="scr" data-w="400" data-h="440"><iframe src="sc-p04b.html#embed" scrolling="no" loading="lazy" title="sc-p04b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p01b.html#embed" scrolling="no" loading="lazy" title="sc-p01b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p02b.html#embed" scrolling="no" loading="lazy" title="sc-p02b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p03b.html#embed" scrolling="no" loading="lazy" title="sc-p03b"></iframe></div>
+      <div class="scr" data-w="400" data-h="440" style="--iw:400;--ih:440"><iframe src="sc-p04b.html#embed" scrolling="no" loading="lazy" title="sc-p04b"></iframe></div>
     </div></div></div>
     <p class="rowlab">Useful</p>
     </div>
@@ -325,7 +332,7 @@ window.addEventListener("load",function(){document.querySelectorAll(".gpane ifra
     <h2>Riding the wave.</h2>
     <p>Rebalancing set it up. 3D sealed the deal.</p>
     <p>Heatmaps have a limited set of colors. With the 3D extrusion, height was tied directly to value, and color became a secondary cue. And with the option to animate it, users could create waves, moving as trends: a peak of interest flowing north to south, in or out of London, or spreading out to neighboring areas. It made the map alive.</p>
-    <div class="glassf"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
+    <div class="glassf"><img class="vb" src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" aria-hidden="true"><div class="scr" data-w="1824" data-h="1026" style="--iw:1824;--ih:1026"><iframe src="sc-05.html#embed" scrolling="no" loading="lazy" title="sc-05"></iframe></div></div>
     <p>Our clients were sold on the draft. This was something unique, like nothing the industry had seen before.</p>
   </section>
 
@@ -334,47 +341,13 @@ window.addEventListener("load",function(){document.querySelectorAll(".gpane ifra
     <p class="lab">impact</p>
     <h2>&pound;1M in 91 days.</h2>
     <p>Audiences beat its first-year target of &pound;1M in 91 days. The function I had joined as a solo designer reporting into engineering was now a four-person design department, driving product.</p>
-    <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
+    <div class="glassf"><img class="vb" src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" aria-hidden="true"><div class="scr" data-w="1920" data-h="1080" style="--iw:1920;--ih:1080"><iframe src="sc-04.html#embed" scrolling="no" loading="lazy" title="sc-04"></iframe></div></div>
     <p>Accurate is a property of the data. Helpful is a design decision. That decision is what clients paid for. To others on my team, it looked like I was taking an unnecessary risk. To me, it was clear I was only doing my job. Design is about tradeoffs. It&rsquo;s about creating something that has a place in the world. And that map had its place.</p>
   </section>
 
 </div>
 <div class="foot">Cesar Garcia &middot; Head of Product Design &middot; Starcount</div>
 <script>
-(function(){
-  var T=104.15, O=5.85, KL=28*42.5, KR=15*67.5;
-  if(!/seam/.test(location.hash))return; // seam tool parked: open with #seam
-  var gh=document.querySelector('.ghero'); if(!gh)return;
-  var gl=gh.querySelector('.gf.l'), gr=gh.querySelector('.gf.r'), sm=document.getElementById('seam');
-  var f=0.46;
-  document.getElementById('seam').style.display='block';
-  function apply(){
-    var L=f*T+O/2, R=T+O-L;
-    gl.style.width=L+'%'; gr.style.width=R+'%';
-    gl.style.transform='rotateY('+(KL/L)+'deg)';
-    gr.style.transform='rotateY(-'+(KR/R)+'deg)';
-    requestAnimationFrame(function(){
-      var g=gh.getBoundingClientRect(), a=gl.getBoundingClientRect(), b=gr.getBoundingClientRect();
-      sm.style.left=(((a.right+b.left)/2-g.left)/g.width*100)+'%';
-      sm.setAttribute('data-f',(f*100).toFixed(1)+'%');
-      if(window.scrfit)scrfit();
-    });
-  }
-  sm.addEventListener('pointerdown',function(e){
-    e.preventDefault(); sm.setPointerCapture(e.pointerId);
-    function mv(ev){
-      var g=gh.getBoundingClientRect();
-      f=Math.min(.62,Math.max(.15,(ev.clientX-g.left)/g.width));
-      apply();
-    }
-    function up(){sm.removeEventListener('pointermove',mv);sm.removeEventListener('pointerup',up);}
-    sm.addEventListener('pointermove',mv); sm.addEventListener('pointerup',up);
-  });
-  window.addEventListener('resize',apply); window.addEventListener('load',apply);
-  apply();
-})();
-function scrfit(){document.querySelectorAll('.scr').forEach(function(w){var iw=+w.dataset.w,ih=+w.dataset.h,f=w.querySelector('iframe'),cs=getComputedStyle(w),bw=(parseFloat(cs.borderLeftWidth)||0)+(parseFloat(cs.borderRightWidth)||0),sc=(parseFloat(cs.width)-bw)/iw;f.style.width=iw+'px';f.style.height=ih+'px';f.style.transform='scale('+sc+')';w.style.height=(ih*sc+((parseFloat(cs.borderTopWidth)||0)+(parseFloat(cs.borderBottomWidth)||0)))+'px';});}
-window.addEventListener('resize',scrfit);window.addEventListener('load',scrfit);scrfit();
 </script>
 <script>
 (function(){

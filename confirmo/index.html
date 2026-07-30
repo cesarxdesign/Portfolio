@@ -32,8 +32,12 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
 .ph.small{min-height:150px;max-width:560px}
 
 /* hero: two flows, cash in, two lines out */
-.hero{position:relative;margin:var(--figT1) 0 var(--figB);aspect-ratio:836/470}
-.hstage{position:absolute;left:0;top:0;width:836px;height:470px;transform-origin:0 0;transform:scale(var(--hs,1))}
+/* The hero scales as one fixed 836x470 stage. Both factors fit() used to compute
+   are now CSS: the stage ratio is a container query, and every screen inside it
+   sits at a fixed layout width (.hv0 98px -> scw 91, .hv4 126px -> scw 119) so
+   --s is a constant, not a measurement. No post-load pass, so nothing snaps. */
+.hero{position:relative;margin:var(--figT1) 0 var(--figB);aspect-ratio:836/470;container-type:inline-size}
+.hstage{position:absolute;left:0;top:0;width:836px;height:470px;transform-origin:0 0;transform:scale(calc(100cqw / 836px))}
 .hlines{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
 .hz0{z-index:0;filter:brightness(.87)}
 .hz2{z-index:2}
@@ -130,8 +134,21 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
 /* 06 v4 filmstrip */
 .v4line{display:flex;align-items:flex-start;gap:14px;margin:var(--figT) 0 var(--figB)}
 .v4line .gfx{flex:1 1 0;min-width:0;position:relative}
-.glassf{overflow:hidden;border-radius:calc(27.5px*var(--s,1) + 2.5px);backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.3);padding:2.5px}
-.glassf .scw{filter:none;box-shadow:0 0 8px rgba(255,255,255,.22);border-radius:calc(27.5px*var(--s,1));z-index:1}
+.glassf{container-type:inline-size;overflow:hidden;backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.3);padding:2.5px}
+.glassf .scw{filter:none;box-shadow:0 0 8px rgba(255,255,255,.22);z-index:1}
+/* The screen scale, measured by fit() until now. .scw is 100% of .glassf, so
+   100cqw is the screen's own width and this is the identical ratio, resolved
+   before first paint instead of after load. */
+.scw{--s:calc(100cqw / 402px)}
+/* Radius as a percentage of the element's own box, so it tracks the browser
+   exactly as calc(27.5px * --s) did, with no measuring and no --s on .glassf
+   (which cannot query its own width).
+     27.5 / 402 = 6.8408% across. The screen's aspect is locked at 402/874, so
+     the vertical percentage that keeps the corner circular is 6.8408 / 2.174129
+     = 3.1465%. The glass is 7px larger on the border box: same across, plus the
+     2.158px its extra bezel works out to. */
+.glassf{border-radius:calc(6.8408% + 2.021px) / calc(3.2727% + 2.021px)}
+.glassf .scw{border-radius:6.8408% / 3.1465%}
 .glassf .vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0}
 
 /* states */
@@ -459,8 +476,6 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
   function apply(){var v=TH[mode],r=document.documentElement;for(var k in v)r.style.setProperty(k,v[k]);r.setAttribute('data-theme',mode);try{localStorage.setItem('v44',mode);}catch(e){}}
   window.setTheme=function(m){mode=m;apply();};
   apply();
-  function fit(){var h=document.querySelector('.hero');if(h){var st=h.querySelector('.hstage');if(st)st.style.setProperty('--hs',h.clientWidth/836);}var ws=document.querySelectorAll('.scw');for(var i=0;i<ws.length;i++){var sc=ws[i].clientWidth/402;ws[i].style.setProperty('--s',sc);var g=ws[i].closest('.glassf');if(g)g.style.setProperty('--s',sc);}}
-  window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
 })();
 </script>
 <script>
