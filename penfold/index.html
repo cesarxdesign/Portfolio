@@ -1677,38 +1677,52 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 </div></template></div>
       <div class="scr ph"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 /* Every value here is read from Figma node 3:4062 "v3", not eyeballed.
+   Same node as s4-3-payin-v3, re-read 2026-07-31: the design has moved on
+   since that build, so this is a second catalog entry, not a replacement.
 
-   Tokens: Cool blue #123456, Pinkfold #FF5081, White #FFFFFF, Grey #CCCCCC,
-   Light Blue #E7EBED, Cool grey #FBFBFB, F0F0F0, Background #F4F4F4.
-   Type: H1.m Bold 28 (lineHeight 1.04, letterSpacing -1), T1 Bold 28 (ls 0),
-   H3.m Bold 24 (ls -1), T2 Bold 20, T3.m Medium 12 (lineHeight 20).
-   Two colors have no variable behind them: the graph's #5C85D6 "Paid in" bars
-   and #20499A "Growth" bars.
+   What changed against s4-3:
+   - New SAVING panel 16:2976, 375x138 at 0,139, bg #F4F4F4: "Saving amount",
+     a radius-8 #FBFBFB value field ("Recurring monthly" over £250), its own
+     Recurring switch (16:3018) and recurring alert (16:3007).
+   - The old Pay-in block (3:4150), Recurring switch (3:4144) and alert
+     (3:4145) still exist in the file but sit fully beneath that opaque panel:
+     panel 0,139-375,277 covers 32,155-205,236 / 262,172-358,238 /
+     187,196-269,236. Invisible, so not reproduced; recorded here instead.
+   - New Save button 16:2353, 200x40 at 88,720, radius 8, T/B 20 label —
+     replaces the old 164x60 radius-30 button 3:4064 in the paint order.
+   - 16:2989 textField/pill/vLabel ("Salary %" / 2%) is opacity 0 in Figma:
+     present, invisible. Not reproduced; recorded here.
 
-   Flip and rotation traps, all cross-checked between get_metadata and
-   get_design_context. get_metadata reports a transformed node's origin AFTER
-   the transform, so the reported x or y is the far edge, not the box:
-   - 3:4170 icon/chevronRight reports 46,44 inside a 120x44 button. It is
-     rotated 180deg, so its true box is 2,0 (46-44, 44-44). That 180 is also
-     why the chevron reads as a left-pointing Back arrow: the artwork is a
-     down-chevron, turned -90deg inside the icon and then 180deg with the icon.
-     The generated code kept only the inner -90 and lost the 180.
-   - 3:4147 the recurring icon reports x=40 in an 82-wide frame. It is flipped
-     horizontally, so its true left is 0.
-   - 3:4072 and 3:4074, the two 8px graph key dots, report y=85. They are
-     flipped vertically, so their true top is 77. Being circles, the flip
-     itself is a visual no-op and is not reproduced.
+   Tokens: 123456 Navy, FF5081 Pinkfold, FFFFFF White, CCCCCC Grey,
+   E7EBED Light blue, FBFBFB Gray1, F0F0F0 Grey3, F4F4F4 Background.
+   Type: H1.m Bold 28 (lh 1.04, ls -1), H3.m/N/B 24 (ls -0.8 on the panel,
+   -1 on the old label), T2/T/B 20, T/M 14, T3.m Medium 12 (lh 20),
+   T/R 10, and the graph's raw 8px key text.
+   Graph bar colors have no variable behind them: #5C85D6 paid-in, #20499A growth.
+   InnerShadow 3+1+8 on switch tracks resolves to inset 0 1px 3px rgba(0,0,0,.08).
 
-   One genuine disagreement between the two tools, flagged rather than guessed:
-   for the "Saving" title 3:4174, get_metadata gives 248,21 95x29 while
-   get_design_context computes left 68.8% (258) and width 85. Both put the
-   right edge at 343 and the type is right-aligned, so the glyphs land in the
-   same place either way. get_metadata's box is the one used here.
+   Transform traps carried over from the s4-3 read, still true on this rev:
+   - The Back chevron is a down-chevron rotated -90 inside an icon that is
+     itself rotated 180; get_metadata reports the icon at 46,44 which is the
+     post-transform far edge, true box 2,0.
+   - 16:3009 recurring icon reports x=40 in its 82-wide frame because it is
+     flipped horizontally; true left 0. Same trap as 3:4147.
+   - The 8px graph key dots report y=85, flipped vertically, true top 77;
+     circles, so the flip itself is not reproduced.
+   - "Saving" title: get_metadata 248,21 95x29 vs computed right edge 343
+     either way; metadata box used, as on s4-3.
 
-   3:4053's chevron slot is 4x8 and the artwork inside it is 8x4, i.e. the
-   rotated pair, exactly as on s4-2. The 11 x 7.62132 export is byte-identical
-   to that screen's ic-chevron-small.svg apart from its layer id, so it is
-   reused. */
+   New-node boxes from get_metadata 16:2976 / 16:2353, cross-checked against
+   get_design_context percentages; every pair agreed:
+   - 16:2988 "Saving amount" 182x29 at abs 34,155 (overflows its 148 parent;
+     no clip on the parent, so the overflow is visible and intended).
+   - 16:2983 "Recurring monthly" 135x17 at abs 42,200 (T/M 14).
+   - 16:2980 value box 148x40 at abs 34,221; £250 text 116x29 at abs 50,227.
+   - 16:3019 "Recurring" 61x20 at abs 280,200 (label sits at rel y 3 here,
+     where the old 3:4144 label sat at rel y 0).
+   - 16:3020 switch ON 70x44 at abs 275,219.
+   - 16:3009 icon 40x40 at abs 187,221 after the flip correction.
+   - 16:2354 "Save" 50x24 at abs 163,728. */
 *{box-sizing:border-box}
 p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
 body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
@@ -1752,20 +1766,22 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
             display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
             font:700 28px/1.04 'Montserrat';color:#123456;letter-spacing:-1px}   /* H1.m Bold 28 */
 
-/* ---------- Pay in, 173x81 at 32,155 (node 3:4150) ---------- */
-.payin-lab{position:absolute;left:32px;top:155px;width:173px;height:29px;white-space:nowrap;
-           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1px;
-           font-feature-settings:"lnum","tnum"}                       /* H3.m Bold 24 */
-.payin-box{position:absolute;left:32px;top:196px;width:152px;height:40px;background:#fff;border-radius:20px}
-/* the value overrides H3.m's -1 tracking with its own -1.4 */
-.payin-val{position:absolute;left:74px;top:202px;width:68px;height:29px;
-           display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
-           font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-1.4px;
-           font-feature-settings:"lnum","tnum"}
-/* 3:4147 is flipped horizontally; the artwork is not symmetric, so this one counts */
-.recur{position:absolute;left:187px;top:196px;width:40px;height:40px;transform:scaleX(-1)}
+/* ---------- SAVING panel, 375x138 at 0,139 (node 16:2976) ---------- */
+.panel-top{position:absolute;left:0;top:139px;width:375px;height:138px;background:#F4F4F4}
+.sv-lab{position:absolute;left:34px;top:155px;width:182px;height:29px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:flex-end;
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}                          /* N/B 24 */
+.sv-sub{position:absolute;left:42px;top:200px;width:135px;height:17px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:flex-end;
+        font:500 14px/normal 'Montserrat';color:#123456}              /* T/M 14 */
+.sv-box{position:absolute;left:34px;top:221px;width:148px;height:40px;background:#FBFBFB;border-radius:8px}
+.sv-val{position:absolute;left:50px;top:227px;width:116px;height:29px;
+        display:flex;flex-direction:column;justify-content:center;text-align:center;
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}                          /* N/B 24 */
 
-/* ---------- comp/switch, 96x66 (nodes 3:4144 recurring, 3:4067 salary) ---------- */
+/* ---------- comp/switch, 96x66 (nodes 16:3018 recurring ON, 3:4067 salary OFF) ---------- */
 .sw-lab{position:absolute;height:20px;display:flex;flex-direction:column;justify-content:center;
         text-align:center;white-space:nowrap;
         font:500 12px/20px 'Montserrat';color:#123456}                /* T3.m Medium 12 */
@@ -1776,6 +1792,8 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 /* the 28x28 knob exports at 32x32 because its drop shadow is baked into the SVG,
    which is what the 0 / -7.14% / -14.29% / -7.14% wrapper insets resolve to */
 .sw .cap-b i{position:absolute;left:6px;top:8px;width:32px;height:32px;display:block}
+/* 16:3009 is flipped horizontally; the artwork is not symmetric, so this one counts */
+.recur{position:absolute;left:187px;top:221px;width:40px;height:40px;transform:scaleX(-1)}
 
 /* ---------- graph, 296x101 at 40,473 (node 3:4068) ---------- */
 .g-title{position:absolute;left:58px;top:473px;width:107px;height:12px;white-space:nowrap;
@@ -1788,20 +1806,16 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 .g-total{position:absolute;left:212px;top:548px;width:104px;height:12px;text-align:right;white-space:nowrap;
          font:700 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
 
-/* ---------- bottom panel and Save, nodes 3:4063 / 3:4064 ---------- */
+/* ---------- bottom panel and Save, nodes 3:4063 / 16:2353 ---------- */
 .panel{position:absolute;left:0;top:590px;width:375px;height:222px;background:#F0F0F0}
-.save{position:absolute;left:105px;top:704px;width:164px;height:60px;background:#FF5081;border-radius:30px}
-.save-t{position:absolute;left:152px;top:717px;width:69px;height:34px;
+.save{position:absolute;left:88px;top:720px;width:200px;height:40px;background:#FF5081;border-radius:8px}
+.save-t{position:absolute;left:163px;top:728px;width:50px;height:24px;
         display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
-        font:700 28px/normal 'Montserrat';color:#fff}                 /* T1 Bold 28, no tracking */
+        font:700 20px/normal 'Montserrat';color:#fff}                 /* T/B 20 */
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 375.0000px))}</style><div class="fr">
 
   <!-- 3:4063 bg -->
   <div class="panel"></div>
-
-  <!-- 3:4064 button/save -->
-  <div class="save"></div>
-  <div class="save-t"><p>Save</p></div>
 
   <!-- 3:4067 comp/switch/Salary -->
   <div class="sw-lab" style="left:150px;top:606px;width:77px"><p>Salary based</p></div>
@@ -1819,20 +1833,26 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
   <div class="g-key" style="left:120px;width:31px"><p>Growth</p></div>
   <p class="g-total">Total pot: &pound;312,281</p>
 
-  <!-- 3:4144 comp/switch/Monthly -->
-  <div class="sw-lab" style="left:280px;top:172px;width:61px"><p>Recurring</p></div>
-  <div class="sw" style="left:275px;top:194px">
+  <!-- 16:2353 button/Label -->
+  <div class="save"></div>
+  <div class="save-t"><p>Save</p></div>
+
+  <!-- 16:2976 SAVING (covers the old Pay-in block, see head comment) -->
+  <div class="panel-top"></div>
+  <div class="sv-lab"><p>Saving amount</p></div>
+  <div class="sv-sub"><p>Recurring monthly</p></div>
+  <div class="sv-box"></div>
+  <div class="sv-val"><p>&pound;250</p></div>
+
+  <!-- 16:3018 comp/switch/Monthly, ON -->
+  <div class="sw-lab" style="left:280px;top:200px;width:61px"><p>Recurring</p></div>
+  <div class="sw" style="left:275px;top:219px">
     <div class="track" style="background:#FF5081"></div>
     <div class="cap-b" style="left:26px"><i><img src="screens/assets/sw-cap.svg" alt=""></i></div>
   </div>
 
-  <!-- 3:4145 recurring alert -->
+  <!-- 16:3007 recurring alert -->
   <div class="recur"><img src="screens/assets/ic-recurring.svg" alt=""></div>
-
-  <!-- 3:4150 Pay in -->
-  <p class="payin-lab">Pay-in amount</p>
-  <div class="payin-box"></div>
-  <div class="payin-val"><p>&pound; 250</p></div>
 
   <!-- 3:4156 combo/navbar/mobile/module -->
   <div class="nav">
@@ -1859,50 +1879,57 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 
 </div></template></div>
       <div class="scr ph"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
-/* Every value here is read from Figma node 3:3233 "Payment/mobile", not eyeballed.
+/* Every value here is read from Figma, not eyeballed. Node 16:3027 "v3" is
+   the s4-6 base screen (node 3:4062, same boxes throughout) plus
+   popup/confirmChanges 16:3296 on top. The popup is the same component as
+   s4-4's (node 3:3368) with identical content and card box, so its CSS is
+   carried over verbatim; one difference is real: 3:3368 sat at x=2 in its
+   frame, 16:3296 sits at x=0, so .pop here is left:0 and the card lands at
+   40,177 exactly (s4-4's lands at 42,177).
 
-   Tokens: 123456 Navy #123456, FBFBFB Gray1 #FBFBFB, FFFFFF White,
-   5081FF dolfknip #5081FF, FF5081 Pinkfold #FF5081, FFA400 Amber #FFA400,
-   E7EBED Light blue #E7EBED, F0F0F0 Grey3 #F0F0F0, D8D8D8 Grey4 #D8D8D8,
-   F4F4F4 Grey2 (BG) #F4F4F4.
-   Type: N/B 24 (-0.8), N/B 16 (-0.8), N/SB 16 (-0.8), T/B 20, T/M 14, T/M 12,
-   T/R 14, T/R 10 (lineHeight 14).
-   The header title 3:3437 is 32px, which is not one of this file's type tokens.
-   It is a raw size on that node and is used as read.
-   InnerShadow/toggle 3+1+8 resolves to inset 0 1px 3px rgba(0,0,0,.08).
+   What changed against s4-3:
+   - New SAVING panel 16:2976, 375x138 at 0,139, bg #F4F4F4: "Saving amount",
+     a radius-8 #FBFBFB value field ("Recurring monthly" over £250), its own
+     Recurring switch (16:3018) and recurring alert (16:3007).
+   - The old Pay-in block (3:4150), Recurring switch (3:4144) and alert
+     (3:4145) still exist in the file but sit fully beneath that opaque panel:
+     panel 0,139-375,277 covers 32,155-205,236 / 262,172-358,238 /
+     187,196-269,236. Invisible, so not reproduced; recorded here instead.
+   - New Save button 16:2353, 200x40 at 88,720, radius 8, T/B 20 label —
+     replaces the old 164x60 radius-30 button 3:4064 in the paint order.
+   - 16:2989 textField/pill/vLabel ("Salary %" / 2%) is opacity 0 in Figma:
+     present, invisible. Not reproduced; recorded here.
 
-   Layer names that contradict their own computed values, per house rule:
-   - 3:3369 is named "BG.blur(8).background(40% #F4F4F4)". Figma's blur radius
-     8 is CSS backdrop-filter blur(4px), which is what get_design_context
-     resolves it to, so 4px is used. The 40% background is literal.
-   - 3:3264 is named "paid on().padding(.horizontal: 32, .vertical:16)" but its
-     computed vertical padding is 8, not 16: the frame is 75 tall around a
-     59-tall box. 8 is used.
-   - 3:3364 is named "save.padding(vertical: 48)" and computes 32.
-   - 3:3289 is a text layer named "i" whose content is "?".
+   Tokens: 123456 Navy, FF5081 Pinkfold, FFFFFF White, CCCCCC Grey,
+   E7EBED Light blue, FBFBFB Gray1, F0F0F0 Grey3, F4F4F4 Background.
+   Type: H1.m Bold 28 (lh 1.04, ls -1), H3.m/N/B 24 (ls -0.8 on the panel,
+   -1 on the old label), T2/T/B 20, T/M 14, T3.m Medium 12 (lh 20),
+   T/R 10, and the graph's raw 8px key text.
+   Graph bar colors have no variable behind them: #5C85D6 paid-in, #20499A growth.
+   InnerShadow 3+1+8 on switch tracks resolves to inset 0 1px 3px rgba(0,0,0,.08).
 
-   Transform traps, cross-checked between get_metadata and get_design_context.
-   get_metadata reports a transformed node's origin after the transform:
-   - 3:3273 field chevron reports x=148 in a 148-wide parent. Rotated 90deg,
-     true left 108.
-   - 3:3276 recurringOFF reports x=53 in a 65-wide box. Flipped horizontally
-     (rotate 180 then scaleY -1), true left 13.
-   - 3:3279 and 3:3291 toggle backgrounds report y=40 in 40-tall pills. Flipped
-     vertically, true top 0.
-   - 3:3439 the header back chevron reports 40,40 in its own 40x40 box. Rotated
-     180deg, true origin 0,0, which is what turns the right-pointing artwork
-     into a Back arrow.
+   Transform traps carried over from the s4-3 read, still true on this rev:
+   - The Back chevron is a down-chevron rotated -90 inside an icon that is
+     itself rotated 180; get_metadata reports the icon at 46,44 which is the
+     post-transform far edge, true box 2,0.
+   - 16:3009 recurring icon reports x=40 in its 82-wide frame because it is
+     flipped horizontally; true left 0. Same trap as 3:4147.
+   - The 8px graph key dots report y=85, flipped vertically, true top 77;
+     circles, so the flip itself is not reproduced.
+   - "Saving" title: get_metadata 248,21 95x29 vs computed right edge 343
+     either way; metadata box used, as on s4-3.
 
-   Two coordinate spaces worth naming. 3:3286 "Adjustment Group" is a GROUP, so
-   its children's get_metadata coordinates are relative to the frame above it
-   (3:3285) and not to the group; that is why 3:3295 reports x=32 while
-   get_design_context gives it ml-0. And the popup frame 3:3368 sits at x=2,
-   not 0, so everything inside it is offset by 2 against the screen.
-
-   3:3276's exported SVG is 32x32 while its node box is 40x40, so the file
-   would stretch it. The whole icon carries opacity 0 in the export, so nothing
-   is visible either way; the 40x40 box is kept and the discrepancy is noted
-   rather than silently corrected. */
+   New-node boxes from get_metadata 16:2976 / 16:2353, cross-checked against
+   get_design_context percentages; every pair agreed:
+   - 16:2988 "Saving amount" 182x29 at abs 34,155 (overflows its 148 parent;
+     no clip on the parent, so the overflow is visible and intended).
+   - 16:2983 "Recurring monthly" 135x17 at abs 42,200 (T/M 14).
+   - 16:2980 value box 148x40 at abs 34,221; £250 text 116x29 at abs 50,227.
+   - 16:3019 "Recurring" 61x20 at abs 280,200 (label sits at rel y 3 here,
+     where the old 3:4144 label sat at rel y 0).
+   - 16:3020 switch ON 70x44 at abs 275,219.
+   - 16:3009 icon 40x40 at abs 187,221 after the flip correction.
+   - 16:2354 "Save" 50x24 at abs 163,728. */
 *{box-sizing:border-box}
 p{margin:0}   /* browser default margins were shifting the iOS chrome off its Figma position */
 body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-serif;
@@ -1912,8 +1939,9 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 .fr{position:relative;width:375px;height:812px;background:#F4F4F4;overflow:hidden}
 .fr img{display:block;width:100%;height:100%}
 
-/* ---------- iOS small Safari header, 63px (node 3:3444) ---------- */
-.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9;z-index:4}
+/* ---------- iOS small Safari header, 63px (node 3:4157) ---------- */
+/* Same component as the other screens; the clock on this node reads 9:24. */
+.ios{position:absolute;left:0;top:0;width:375px;height:63px;background:#F9F9F9}
 .ios .divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#000;opacity:.2}
 .ios .url{position:absolute;left:0;right:0;top:40px;height:15px;text-align:center;
           font:400 12px/normal -apple-system,'SF Pro Text',sans-serif;color:#000;letter-spacing:-.35px}
@@ -1927,110 +1955,88 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
 .ios .wifi{position:absolute;right:44px;top:calc(50% + .93px);transform:translateY(-50%);width:15.4px;height:11.057px}
 .ios svg{display:block;width:100%;height:100%}
 
-/* ---------- header/mobile/module, 375x72 at y=63 (node 3:3435) ---------- */
-/* Paints above the popup, which is why the blur starts at the header's foot. */
-.hdr{position:absolute;left:0;top:63px;width:375px;height:72px;z-index:3}
-.hdr .bg{position:absolute;inset:0;background:#fff;border:.333px solid #D8D8D8}
-.hdr .title{position:absolute;left:233px;top:16px;width:110px;height:39px;
+/* ---------- combo/navbar/mobile/module, 375x72 at y=63 (node 3:4156) ---------- */
+.nav{position:absolute;left:0;top:63px;width:375px;height:72px}
+.nav .bg{position:absolute;inset:0;background:#fff;border:.333px solid #CCCCCC}
+/* button/Back 3:4166: 120x44 at 4,16. Component note in the file reads
+   "padding: 20px before icon 20 px after label". */
+.back{position:absolute;left:4px;top:16px;width:120px;height:44px}
+.back .lbl{position:absolute;left:47px;top:10px;width:53px;height:24px;
+           display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
+           font:700 20px/normal 'Montserrat';color:#123456}          /* T2 Bold 20 */
+.back .ico{position:absolute;left:2px;top:0;width:44px;height:44px;transform:rotate(180deg)}
+.back .slot{position:absolute;left:22px;top:18px;width:4px;height:8px;
+            display:flex;align-items:center;justify-content:center}
+.back .slot>i{position:relative;flex:none;width:8px;height:4px;transform:rotate(-90deg)}
+.back .slot>i>i{position:absolute;inset:-37.5% -18.75% -53.03% -18.75%;display:block}
+.nav .title{position:absolute;left:248px;top:21px;width:95px;height:29px;
             display:flex;flex-direction:column;justify-content:center;text-align:right;white-space:nowrap;
-            font:700 32px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-            font-feature-settings:"lnum","tnum"}
-.hdr .ico{position:absolute;left:0;top:16px;width:40px;height:40px;transform:rotate(180deg)}
-/* 3:3442 nests three deep: 3:3438 at y=16, its label.padding(4) at y=4, then
-   the text at y=4 again, so 24 inside the header and 87 on the frame. */
-.hdr .back{position:absolute;left:44px;top:24px;width:53px;height:24px;
-           display:flex;flex-direction:column;justify-content:center;white-space:nowrap;
-           font:700 20px/normal 'Montserrat';color:#123456}          /* T/B 20 */
+            font:700 28px/1.04 'Montserrat';color:#123456;letter-spacing:-1px}   /* H1.m Bold 28 */
 
-/* ---------- shared text-field parts (textField/roundCorners) ---------- */
-/* Every field on this screen is the same 148x40 #FBFBFB box with an 8px radius,
-   its Medium 14 label sitting 3px above it and its Bold 16 value inset 16. */
-.fbox{position:absolute;width:148px;height:40px;background:#FBFBFB;border-radius:8px}
-.flab{position:absolute;width:132px;height:17px;
-      display:flex;flex-direction:column;justify-content:flex-end;
-      font:500 14px/normal 'Montserrat';color:#123456}               /* T/M 14 */
-.fval{position:absolute;width:116px;height:20px;
-      display:flex;flex-direction:column;justify-content:center;
-      font:700 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-      font-feature-settings:"lnum","tnum"}                           /* N/B 16 */
-
-/* ---------- Pay in block, 3:3235 ---------- */
-.h-saving{position:absolute;left:33px;top:151px;width:182px;height:29px;white-space:nowrap;
-          display:flex;flex-direction:column;justify-content:flex-end;
-          font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-          font-feature-settings:"lnum","tnum"}                       /* N/B 24 */
-.amt{position:absolute;left:49px;top:223px;width:116px;height:29px;
-     display:flex;flex-direction:column;justify-content:center;text-align:center;
-     font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-     font-feature-settings:"lnum","tnum"}
-/* 3:3248 textField/pill/vLabel is fully transparent but still occupies its slot */
-.pill-off{position:absolute;left:197px;top:217px;width:64px;height:40px;opacity:0}
-.pill-off .bg{position:absolute;inset:0;background:#fff;border:1px solid #E7EBED;border-radius:20px}
-.pill-off .v{position:absolute;left:16px;top:10px;width:32px;height:20px;
-             display:flex;flex-direction:column;justify-content:center;text-align:center;
-             font:600 16px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-             font-feature-settings:"lnum","tnum"}                    /* N/SB 16 */
-.minilab{position:absolute;height:15px;display:flex;flex-direction:column;justify-content:flex-end;
-         text-align:center;white-space:nowrap;
-         font:500 12px/normal 'Montserrat';color:#123456}            /* T/M 12 */
-.est{position:absolute;left:290px;top:217px;width:40px;height:40px;background:#5081FF;border-radius:20px}
-.est i{position:absolute;inset:0;display:block}
-
-/* ---------- Paid on block, 3:3264 ---------- */
-.chev90{position:absolute;left:140px;top:300px;width:40px;height:40px;transform:rotate(90deg)}
-.recur-off{position:absolute;left:209px;top:300px;width:40px;height:40px;transform:scaleX(-1)}
-/* control/togglePill: 66x40 track, 28x28 cap that exports at 32x32 with its
-   shadow baked in, hence the 6px/-2px offsets that -7.14%/-14.29% resolve to. */
-.toggle{position:absolute;width:66px;height:40px}
-.toggle .track{position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.08)}
-.toggle .cap{position:absolute;top:6px;width:32px;height:32px;display:block}
-.toggle.off{left:277px;top:300px;opacity:0}
-.toggle.off .track{background:#E7EBED}
-.toggle.off .cap{left:4px}
-.toggle.on{left:309px;top:510px}
-.toggle.on .track{background:#FF5081}
-.toggle.on .cap{left:30px}
-
-/* ---------- Copy helper 3:3284 and popup warning 3:3394 ---------- */
-.helper{position:absolute;text-align:center;
-        font:700 10px/normal 'Montserrat';color:#FF5081}
-
-/* ---------- Debit details, 3:3285 ---------- */
-.h-debit{position:absolute;left:32px;top:412px;width:151px;height:29px;white-space:nowrap;
-         display:flex;flex-direction:column;justify-content:flex-end;
-         font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
-         font-feature-settings:"lnum","tnum"}
-.edit{position:absolute;left:289px;top:522px;width:40px;height:40px}
-.edit i{position:absolute;left:8px;top:8px;width:24px;height:24px;display:block}
-.edit p{position:absolute;left:17.5px;top:13px;width:5px;height:17px;
+/* ---------- SAVING panel, 375x138 at 0,139 (node 16:2976) ---------- */
+.panel-top{position:absolute;left:0;top:139px;width:375px;height:138px;background:#F4F4F4}
+.sv-lab{position:absolute;left:34px;top:155px;width:182px;height:29px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:flex-end;
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}                          /* N/B 24 */
+.sv-sub{position:absolute;left:42px;top:200px;width:135px;height:17px;white-space:nowrap;
+        display:flex;flex-direction:column;justify-content:flex-end;
+        font:500 14px/normal 'Montserrat';color:#123456}              /* T/M 14 */
+.sv-box{position:absolute;left:34px;top:221px;width:148px;height:40px;background:#FBFBFB;border-radius:8px}
+.sv-val{position:absolute;left:50px;top:227px;width:116px;height:29px;
         display:flex;flex-direction:column;justify-content:center;text-align:center;
-        font:700 16px/normal 'Montserrat';color:#fff;letter-spacing:-.8px;
-        font-feature-settings:"lnum","tnum"}
+        font:700 24px/normal 'Montserrat';color:#123456;letter-spacing:-.8px;
+        font-feature-settings:"lnum","tnum"}                          /* N/B 24 */
 
-/* ---------- Resume / Confirm buttons ---------- */
-.btn{position:absolute;height:40px;border-radius:8px}
-.btn span{position:absolute;left:32px;top:8px;height:24px;
-          display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
-          font:700 20px/normal 'Montserrat';color:#fff}              /* T/B 20 */
+/* ---------- comp/switch, 96x66 (nodes 16:3018 recurring ON, 3:4067 salary OFF) ---------- */
+.sw-lab{position:absolute;height:20px;display:flex;flex-direction:column;justify-content:center;
+        text-align:center;white-space:nowrap;
+        font:500 12px/20px 'Montserrat';color:#123456}                /* T3.m Medium 12 */
+.sw{position:absolute;width:70px;height:44px}
+.sw .track{position:absolute;left:2px;top:2px;width:66px;height:40px;border-radius:20px;
+           box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.08)}
+.sw .cap-b{position:absolute;top:0;width:44px;height:44px}
+/* the 28x28 knob exports at 32x32 because its drop shadow is baked into the SVG,
+   which is what the 0 / -7.14% / -14.29% / -7.14% wrapper insets resolve to */
+.sw .cap-b i{position:absolute;left:6px;top:8px;width:32px;height:32px;display:block}
+/* 16:3009 is flipped horizontally; the artwork is not symmetric, so this one counts */
+.recur{position:absolute;left:187px;top:221px;width:40px;height:40px;transform:scaleX(-1)}
 
-/* ---------- popup / confirmChanges, 3:3368 ---------- */
-/* The popup frame itself is 375 wide starting at x=2, so it runs 2px past the
-   screen and is clipped there. */
-.pop{position:absolute;left:2px;top:0;width:375px;height:812px;overflow:hidden;z-index:2}
+/* ---------- graph, 296x101 at 40,473 (node 3:4068) ---------- */
+.g-title{position:absolute;left:58px;top:473px;width:107px;height:12px;white-space:nowrap;
+         font:400 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+.g-bars{position:absolute;left:40px;top:483px;width:296px;height:61px}
+.g-dot{position:absolute;top:550px;width:8px;height:8px;border-radius:4px}
+.g-key{position:absolute;top:549px;height:10px;display:flex;flex-direction:column;justify-content:center;
+       white-space:nowrap;font:400 8px/normal 'Montserrat';color:#123456;
+       font-feature-settings:"lnum","tnum"}
+.g-total{position:absolute;left:212px;top:548px;width:104px;height:12px;text-align:right;white-space:nowrap;
+         font:700 10px/normal 'Montserrat';color:#123456;font-feature-settings:"lnum","tnum"}
+
+/* ---------- bottom panel and Save, nodes 3:4063 / 16:2353 ---------- */
+.panel{position:absolute;left:0;top:590px;width:375px;height:222px;background:#F0F0F0}
+.save{position:absolute;left:88px;top:720px;width:200px;height:40px;background:#FF5081;border-radius:8px}
+.save-t{position:absolute;left:163px;top:728px;width:50px;height:24px;
+        display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+        font:700 20px/normal 'Montserrat';color:#fff}                 /* T/B 20 */
+
+/* ---------- popup / confirmChanges, 16:3296 ---------- */
+.pop{position:absolute;left:0;top:0;width:375px;height:812px;overflow:hidden;z-index:2}
 .pop .veil{position:absolute;left:0;top:135px;width:375px;height:677px;
            background:rgba(244,244,244,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 /* The 1px #F0F0F0 border is drawn as an inset ring rather than a real border.
    A real border moves the padding box, and every child here is positioned by
-   its absolute Figma coordinate, so a border would push all 24 of them 1px
-   down and right. The inset ring paints the identical 1px edge inside the
-   same 32px radius without touching layout. */
+   its absolute Figma coordinate, so a border would push all of them 1px down
+   and right. The inset ring paints the identical 1px edge inside the same
+   32px radius without touching layout. */
 .card{position:absolute;left:40px;top:177px;width:295px;height:490px;
       background:#fff;box-shadow:inset 0 0 0 1px #F0F0F0;border-radius:32px}
-/* everything below is card-relative: the card's own origin is 42,177 on screen */
 .card .h{position:absolute;left:24px;top:24px;width:247px;height:24px;
          font:700 20px/normal 'Montserrat';color:#123456}            /* T/B 20 */
 .card .sub{position:absolute;left:24px;top:56px;width:247px;height:28px;
            font:400 10px/14px 'Montserrat';color:#123456}            /* T/R 10 */
+.helper{position:absolute;text-align:center;
+        font:700 10px/normal 'Montserrat';color:#FF5081}
 .pl{position:absolute;height:17px;white-space:nowrap;
     font:400 14px/normal 'Montserrat';color:#123456}                 /* T/R 14 */
 .pv{position:absolute;height:20px;white-space:nowrap;
@@ -2038,70 +2044,61 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
     font-feature-settings:"lnum","tnum"}                             /* N/B 16 */
 .pv.blue{color:#5081FF}
 .pv.amber{color:#FFA400}
+.btn{position:absolute;height:40px;border-radius:8px}
+.btn span{position:absolute;left:32px;top:8px;height:24px;
+          display:flex;flex-direction:column;justify-content:center;text-align:center;white-space:nowrap;
+          font:700 20px/normal 'Montserrat';color:#fff}              /* T/B 20 */
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 375.0000px))}</style><div class="fr">
 
-  <!-- ========== 3:3234 .all ========== -->
+  <!-- 3:4063 bg -->
+  <div class="panel"></div>
 
-  <!-- 3:3235 Pay in() -->
-  <div class="h-saving"><p>Saving amount</p></div>
-  <div class="flab" style="left:41px;top:196px;width:135px"><p>Recurring monthly</p></div>
-  <div class="fbox" style="left:33px;top:217px"></div>
-  <div class="amt"><p>&pound;250</p></div>
-  <div class="pill-off">
-    <div class="bg"></div>
-    <div class="v"><p>2%</p></div>
-  </div>
-  <div class="minilab" style="left:204px;top:198px;width:51px"><p>Salary %</p></div>
-  <div class="minilab" style="left:283px;top:198px;width:55px;justify-content:center"><p>Estimate</p></div>
-  <div class="est"><i><img src="screens/assets/ic-external-link-40.svg" alt=""></i></div>
-
-  <!-- 3:3264 paid on() -->
-  <div class="flab" style="left:40px;top:279px"><p>Paid on:</p></div>
-  <div class="fbox" style="left:32px;top:300px"></div>
-  <div class="fval" style="left:48px;top:310px"><p>24th</p></div>
-  <div class="chev90"><img src="screens/assets/ic-chevron-40-field.svg" alt=""></div>
-  <div class="recur-off"><img src="screens/assets/ic-recurring-off.svg" alt=""></div>
-  <div class="toggle off">
-    <div class="track"></div>
-    <img class="cap" src="screens/assets/sw-cap.svg" alt="">
-  </div>
-  <div class="minilab" style="left:288px;top:281px;width:45px"><p>One off</p></div>
-
-  <!-- 3:3283 Copy helper -->
-  <div class="helper" style="left:48px;top:352px;width:279px;height:24px">
-    <p>Your next payment will be taken on dd-mm</p>
-    <p>and every 24th after that.</p>
+  <!-- 3:4067 comp/switch/Salary -->
+  <div class="sw-lab" style="left:150px;top:606px;width:77px"><p>Salary based</p></div>
+  <div class="sw" style="left:153px;top:628px">
+    <div class="track" style="background:#E7EBED"></div>
+    <div class="cap-b" style="left:2px"><i><img src="screens/assets/sw-cap.svg" alt=""></i></div>
   </div>
 
-  <!-- 3:3285 Debit Details() -->
-  <div class="h-debit"><p>Debit details</p></div>
-  <div class="flab" style="left:40px;top:457px"><p>Account number</p></div>
-  <div class="fbox" style="left:32px;top:478px"></div>
-  <div class="fval" style="left:48px;top:488px"><p>318237</p></div>
-  <div class="flab" style="left:40px;top:526px"><p>Sort code</p></div>
-  <div class="fbox" style="left:32px;top:547px"></div>
-  <div class="fval" style="left:48px;top:557px"><p>34-63-78</p></div>
-  <div class="flab" style="left:40px;top:595px"><p>Company number</p></div>
-  <div class="fbox" style="left:32px;top:616px"></div>
-  <div class="fval" style="left:48px;top:626px"><p>234546</p></div>
-  <div class="minilab" style="left:315px;top:476px;width:55px;height:30px"><p>Business</p><p>account</p></div>
-  <div class="toggle on">
-    <div class="track"></div>
-    <img class="cap" src="screens/assets/sw-cap.svg" alt="">
+  <!-- 3:4068 graph -->
+  <p class="g-title">Growth over 37 years</p>
+  <div class="g-bars"><img src="screens/assets/payin-bars.svg" alt=""></div>
+  <div class="g-dot" style="left:58px;background:#5C85D6"></div>
+  <div class="g-key" style="left:70px;width:28px"><p>Paid in</p></div>
+  <div class="g-dot" style="left:108px;background:#20499A"></div>
+  <div class="g-key" style="left:120px;width:31px"><p>Growth</p></div>
+  <p class="g-total">Total pot: &pound;312,281</p>
+
+  <!-- 16:2353 button/Label -->
+  <div class="save"></div>
+  <div class="save-t"><p>Save</p></div>
+
+  <!-- 16:2976 SAVING (covers the old Pay-in block, see head comment) -->
+  <div class="panel-top"></div>
+  <div class="sv-lab"><p>Saving amount</p></div>
+  <div class="sv-sub"><p>Recurring monthly</p></div>
+  <div class="sv-box"></div>
+  <div class="sv-val"><p>&pound;250</p></div>
+
+  <!-- 16:3018 comp/switch/Monthly, ON -->
+  <div class="sw-lab" style="left:280px;top:200px;width:61px"><p>Recurring</p></div>
+  <div class="sw" style="left:275px;top:219px">
+    <div class="track" style="background:#FF5081"></div>
+    <div class="cap-b" style="left:26px"><i><img src="screens/assets/sw-cap.svg" alt=""></i></div>
   </div>
-  <div class="edit"><i><img src="screens/assets/ic-edit-dot.svg" alt=""></i><p>?</p></div>
 
-  <!-- 3:3364 save -->
-  <div class="btn" style="left:112.5px;top:720px;width:150px;background:#FF5081"><span style="width:86px">Resume</span></div>
+  <!-- 16:3007 recurring alert -->
+  <div class="recur"><img src="screens/assets/ic-recurring.svg" alt=""></div>
 
-  <!-- ========== 3:3368 popup / confirmChanges ========== -->
+
+  <!-- ========== 16:3296 popup / confirmChanges ========== -->
   <div class="pop">
     <div class="veil"></div>
     <div class="card">
       <p class="h">Resume contributions</p>
       <p class="sub">Please confirm you want to resume contributing into your pension.</p>
 
-      <!-- 3:3375 comparison payment, card-relative x 24 and 144 -->
+      <!-- 16:3303 comparison payment, card-relative x 24 and 144 -->
       <p class="pl" style="left:24px;top:100px;width:70px">Recurring</p>
       <p class="pv" style="left:24px;top:117px;width:42px">&pound;250</p>
       <p class="pl" style="left:24px;top:137px;width:54px">Paid on</p>
@@ -2111,12 +2108,12 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
       <p class="pl" style="left:144px;top:137px;width:54px">Paid on</p>
       <p class="pv blue" style="left:144px;top:154px;width:39px">24th</p>
 
-      <!-- 3:3394 -->
+      <!-- 16:3322 -->
       <div class="helper" style="left:24px;top:190px;width:247px;height:24px">
         <p>Your next payment will be taken on dd-mm and every 24th after that.</p>
       </div>
 
-      <!-- 3:3395 comparison account -->
+      <!-- 16:3323 comparison account -->
       <p class="pl" style="left:24px;top:230px;width:59px">Account</p>
       <p class="pv" style="left:24px;top:247px;width:64px">727384</p>
       <p class="pl" style="left:24px;top:267px;width:68px">Sort code</p>
@@ -2126,8 +2123,8 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
       <p class="pl" style="left:144px;top:267px;width:68px">Sort code</p>
       <p class="pv blue" style="left:144px;top:284px;width:74px">08-24-02</p>
 
-      <!-- 3:3414 comparison type. 3:3420, the before-column company number, is
-           fully transparent in the file but still laid out. -->
+      <!-- 16:3342 comparison type. 16:3348, the before-column company number,
+           is fully transparent in the file but still laid out. -->
       <p class="pl" style="left:24px;top:320px;width:34px">Type</p>
       <p class="pv" style="left:24px;top:337px;width:68px">Personal</p>
       <p class="pl" style="left:24px;top:357px;width:93px;opacity:0">Company no.</p>
@@ -2137,24 +2134,26 @@ body{margin:0;background:#dcdce0;font-family:'Montserrat',-apple-system,sans-ser
       <p class="pl" style="left:144px;top:357px;width:93px">Company no.</p>
       <p class="pv blue" style="left:144px;top:374px;width:64px">763467</p>
 
-      <!-- 3:3433 -->
+      <!-- 16:3361 -->
       <div class="btn" style="left:72px;top:426px;width:151px;background:#5081FF"><span style="width:87px">Confirm</span></div>
     </div>
   </div>
 
-  <!-- ========== 3:3435 header/mobile/module ========== -->
-  <div class="hdr">
+  <!-- 3:4156 combo/navbar/mobile/module -->
+  <div class="nav">
     <div class="bg"></div>
-    <div class="ico"><img src="screens/assets/ic-chevron-40-nav.svg" alt=""></div>
-    <div class="back"><p>Back</p></div>
+    <div class="back">
+      <div class="ico"><div class="slot"><i><i><img src="screens/assets/ic-chevron-small.svg" alt=""></i></i></div></div>
+      <div class="lbl"><p>Back</p></div>
+    </div>
     <div class="title"><p>Saving</p></div>
   </div>
 
-  <!-- ========== 3:3444 iOS/smallSafariHeader ========== -->
+  <!-- 3:4157 iOS Nav Bar (contracted) -->
   <div class="ios">
     <p class="url">getpenfold.com</p>
     <div class="status">
-      <p class="time">8:24</p>
+      <p class="time">9:24</p>
       <div class="cell"><svg viewBox="0 0 17.1 10.7" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="7.7" width="3" height="3" rx="1" fill="#000"/><rect x="4.7" y="5.4" width="3" height="5.3" rx="1" fill="#000"/><rect x="9.4" y="2.7" width="3" height="8" rx="1" fill="#000"/><rect x="14.1" y="0" width="3" height="10.7" rx="1" fill="#000"/></svg></div>
       <div class="wifi"><svg viewBox="0 0 15.4 11.057" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.7 10.4 5.6 8.2a3 3 0 0 1 4.2 0z" fill="#000"/><path d="M2.9 5.5a6.8 6.8 0 0 1 9.6 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M.8 3.1a9.8 9.8 0 0 1 13.8 0" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
       <div class="batt"><svg viewBox="0 0 24.5 11.5" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="21" height="10.5" rx="2.7" stroke="#000" stroke-opacity=".35" fill="none"/><path d="M23 4v3.5a2 2 0 0 0 0-3.5z" fill="#000" fill-opacity=".4"/></svg></div>
