@@ -50,10 +50,15 @@ img{display:block;max-width:100%}
 /* Shrunk to 80% of the column; left-aligned flush with the text edge, per the
    system's fits-the-column alignment rule. */
 .pair{position:relative;width:80%;aspect-ratio:10000/6444;margin:16px 0}
-.pair .scr{position:absolute;width:71.4286%;margin:0;
+/* The wrapper does the positioning; the screen stays a plain block. An
+   absolutely positioned element that is ALSO the container-query container
+   collapses in Chrome, so the screens render at native width and escape the
+   group. Grid cells never hit this because they are static. */
+.pair .ph{position:absolute;width:71.4286%}
+.pair .ph:first-child{right:0;bottom:0;z-index:2}
+.pair .ph:last-child{left:0;top:0;z-index:1}
+.pair .scr{position:static;width:100%;margin:0;
            box-shadow:0 12px 28px rgba(0,0,0,.15)}   /* penfold's rack shadow */
-.pair .scr:first-child{right:0;bottom:0;z-index:2}
-.pair .scr:last-child{left:0;top:0;z-index:1}
 /* Section 04's back screen is 952 tall, not 928, so its group needs its own
    height: 40% x (5/7 x 952/1440) + 5/7 x 928/1440 = .6492 of the width. */
 .pair.p4{aspect-ratio:10000/6492}
@@ -65,9 +70,9 @@ img{display:block;max-width:100%}
    gap, so 2 x (1024/1440)X + 16 = 430.98 -> X = 291.78px per screen, and the
    grid spans 4 x 291.78 + 3 x 16 = 1215.11px. ALIGNMENT RULE: wider than the
    column, so it centres by BLEEDING past it, never by auto side margins. */
-.col.shelf.g8{max-width:none;width:1215.11px;padding:0;margin-left:0;margin-right:0;
+.col.shelf.g8{max-width:none;width:min(1215.11px, 100vw - 2 * var(--colPad));padding:0;margin-left:0;margin-right:0;
   position:relative;left:50%;transform:translateX(-50%)}
-.g8k{display:grid;grid-template-columns:repeat(4,291.78px);gap:16px}
+.g8k{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .g8k .scr{margin:0;box-shadow:0 12px 28px rgba(0,0,0,.15)}
 /* Every frame's own corner radius scales with the screen's transform, but the
    clipping box's was a fixed 10px, so every scaled-down screen read fatter.
@@ -79,6 +84,16 @@ img{display:block;max-width:100%}
 .g8k .scr{border-radius:calc(var(--r,8) * .375px)}  /* a touch over true scale (.20263) so tiny cells still read rounded */
 /* sections 03 and 04 take section 01's corner: trail-open renders 17.455 x .33174 = 5.79px */
 .pair.p4 .scr,.g8k .scr{border-radius:5.79px}
+/* Below the column's own measure the overlap and the bleed stop making sense:
+   pairs stack, the grid drops to two up and returns inside the column. */
+@media(max-width:1000px){
+  .pair{width:100%;aspect-ratio:auto}
+  .pair .ph{position:static;width:100%}
+  .pair .ph+.ph{margin-top:16px}
+  .scr.solo{width:100%}
+  .col.shelf.g8{max-width:var(--colW);width:auto;left:auto;transform:none;padding:0 var(--colPad)}
+  .g8k{grid-template-columns:repeat(2,1fr)}
+}
 .foot{max-width:var(--colW);margin-left:auto;margin-right:auto;margin-bottom:90px;padding-left:var(--colPad);padding-right:var(--colPad)}
 </style>
 </head><body>
@@ -472,7 +487,7 @@ i.ic img{width:100%;height:100%}
 
 <div class="col shelf">
   <div class="pair">
-    <div class="scr" style="--iw:1440;--ih:928"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
+    <div class="ph"><div class="scr" style="--iw:1440;--ih:928"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 /* Every value read from Figma node 18:25751 "Paper Trails" (1440x928, inside
    section 18:27750 "v1.0"), not eyeballed.
 
@@ -785,8 +800,8 @@ i.ic img{position:absolute;left:10%;top:10%;width:80%;height:80%;display:block}
     <p class="me">Assigned to me only</p>
   </div>
 
-</div></template></div>
-    <div class="scr" style="--iw:1440;--ih:928"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
+</div></template></div></div>
+    <div class="ph"><div class="scr" style="--iw:1440;--ih:928"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 /* Every value read from Figma node 18:25187 "Paper Trails" (1440x928, inside
    section 18:27750 "v1.0"), not eyeballed.
 
@@ -1077,7 +1092,7 @@ i.ic img{position:absolute;left:10%;top:10%;width:80%;height:80%;display:block}
     </div>
   </div>
 
-</div></template></div>
+</div></template></div></div>
   </div>
 </div>
 
@@ -5019,7 +5034,7 @@ i.ic img{position:absolute}
 
 <div class="col shelf">
   <div class="pair p4">
-    <div class="scr" style="--iw:1440;--ih:952;--r:16"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
+    <div class="ph"><div class="scr" style="--iw:1440;--ih:952;--r:16"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 /* Every value read from Figma node 18:7290 "Paper Trail 3.0" (1440x952),
    not eyeballed. The saved metadata dump was sparse, so the full reference
    code was pulled per sublayer (18:7293 New, 18:7351 InProgress, 18:7462
@@ -5524,8 +5539,8 @@ body:has(.cap:target){padding:0;gap:0;background:transparent}
     </div>
   </div>
 
-</div></template></div>
-    <div class="scr" style="--iw:1440;--ih:928;--r:16"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
+</div></template></div></div>
+    <div class="ph"><div class="scr" style="--iw:1440;--ih:928;--r:16"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 /* Every value read from Figma node 18:3859 "Paper Trail 3.0" (1440x928),
    not eyeballed. The node was too large for one design-context call, so the
    code was pulled per sublayer (18:4806 sidebar, 18:4456 center column,
@@ -6503,7 +6518,7 @@ i.ic img{width:100%;height:100%;display:block}
     </div>
   </div>
 
-</div></template></div>
+</div></template></div></div>
   </div>
 </div>
 
