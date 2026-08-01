@@ -80,10 +80,19 @@ img{display:block;max-width:100%}
    default, overridden inline where the screen file says 16 or 17.455):
    pair/solo render at 477.71px (x .33174), grid cells at 291.78px (x .20263),
    so box and frame corners coincide everywhere. */
-.pair .scr,.scr.solo{border-radius:calc(var(--r,8) * .33174px)}
-.g8k .scr{border-radius:calc(var(--r,8) * .375px)}  /* a touch over true scale (.20263) so tiny cells still read rounded */
-/* sections 03 and 04 take section 01's corner: trail-open renders 17.455 x .33174 = 5.79px */
-.pair.p4 .scr,.g8k .scr{border-radius:5.79px}
+/* One corner for every full-size screen: section 01's, trail-open's 17.455
+   rendered at 477.71px wide (x .33174) = 5.79px. The grid cells take 60% of it. */
+/* The frame's corner is the one that shows, so it is what gets set. 6px at the
+   full-size render (480/1440) and 4px at grid scale (292/1440). The box clips
+   to the same value so border and clip agree. */
+.scr.solo,.pair .scr{border-radius:6px;--frameR:18px}
+.g8k .scr{border-radius:4px;--frameR:19.7px}
+/* Same corner when the page is served as source (iframes): a custom prop cannot
+   cross the document boundary, so round the iframe's own paint. Pre-transform
+   value x render scale = 6px at 477.71 wide, 4px at 291.78. Build strips
+   iframes, so these rules never reach dist. */
+.scr.solo iframe,.pair .scr iframe{border-radius:18.09px}
+.g8k .scr iframe{border-radius:19.74px}
 /* Below the column's own measure the overlap and the bleed stop making sense:
    pairs stack, the grid drops to two up and returns inside the column. */
 @media(max-width:1000px){
@@ -298,7 +307,7 @@ i.ic img{width:100%;height:100%}
          box-shadow:0 1px 2px rgba(0,0,0,.32);font:500 13px/20px 'Inter';color:#fff;text-align:center;padding:4px 12px}
 .av.empty{background:#EBEBEB;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .av.empty img{width:16px;height:16px;border-radius:0}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 17.455px)}</style><div class="fr">
 
   <!-- 18:28672 Sidebar -->
   <div class="sb">
@@ -603,7 +612,7 @@ i.ic img{position:absolute;left:10%;top:10%;width:80%;height:80%;display:block}
 .card .open b{font:600 12px/16px 'Inter';color:#606060}
 .card .go{position:absolute;right:12px;bottom:28px;width:20px;height:20px}
 .card .go img{position:absolute;left:13.33%;top:13.33%;width:73.34%;height:73.34%}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <!-- 18:25879 filter panel, scrolled under the header -->
   <div class="filt">
@@ -972,7 +981,7 @@ i.ic img{position:absolute;left:10%;top:10%;width:80%;height:80%;display:block}
 .own .assign .chk .e{position:absolute;left:15%;top:15%;width:70%;height:70%}
 .own .assign .chk .v{position:absolute;left:30%;top:35%;width:39.75%;height:30.8%}
 .own .assign .chk img{width:100%;height:100%;display:block}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <!-- 18:25196 Sidebar -->
   <div class="sb">
@@ -1337,7 +1346,7 @@ i.ic.chvs{position:absolute;top:50%;transform:translateY(-50%);width:14px;height
 .hdr .graph .chfd img{left:-3.57%;top:-16.67%;width:107.14%;height:133.34%;transform:scaleY(-1)}
 
 /* icon fragment helper spans get inline insets in markup */
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <!-- ================= trail column (painted first, mostly covered) ================= -->
   <div class="devt"><div class="in">
@@ -2015,7 +2024,7 @@ i.ic.chvs{position:absolute;top:50%;transform:translateY(-50%);right:8px;width:1
          border-radius:100px;overflow:hidden}
 .mk .cir s.o{position:absolute;display:block;left:3.75px;top:3.75px;width:16px;height:16px}
 .mk img.av,.evrow img.av{width:24px;height:24px;border-radius:50%}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="nav">
     <span class="glay"></span>
@@ -2472,7 +2481,7 @@ i.ic img{position:absolute}
 .ae{display:flex;align-items:baseline;gap:8px;font-size:9px}
 .ae .ed{color:#0062F5}
 .ae .de{color:#B54040}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="nav">
     <span class="glay"></span>
@@ -2901,7 +2910,7 @@ i.ic img{position:absolute}
 .addr .btn p{flex:1 0 0;min-width:1px;font-size:13px;line-height:20px;font-weight:500;
              color:#fff;text-align:center}
 .addr .note{font-size:14px;color:#A0A0A0;text-align:center;white-space:nowrap}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="nav">
     <span class="glay"></span>
@@ -3549,7 +3558,7 @@ i.ic img{position:absolute}
 .xcard.gf .xhead{border-color:#FDCA24;padding-right:4px}
 .xcard.gf .srow{border:1px solid #EBEBEB}
 .xcard.gf .drow{border:1px solid #EBEBEB}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <!-- ================= 18:27752 Griffin navbar ================= -->
   <div class="nav">
@@ -4043,7 +4052,7 @@ i.ic img{position:absolute}
 .crow{display:flex;gap:16px;align-items:center;flex:none}
 .crow p{font-size:12px;line-height:16px;color:#181818;white-space:nowrap}
 .nsel{font-size:10px;line-height:20px;color:#696969;width:98px}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="nav">
     <span class="glay"></span>
@@ -4369,7 +4378,7 @@ i.ic.chv1{position:absolute;left:1116px;top:56px;width:20.35px;height:20.35px;ov
        justify-content:center;padding:1.9px 7.4px;border-radius:4px;background:#F8F8F8;
        filter:drop-shadow(0 0.8px 0.8px rgba(0,0,0,.12))}
 .upbtn p{font-size:10.2px;font-weight:500;color:#606060;line-height:normal;text-align:center}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="tv">
     <div class="acme2">
@@ -4731,7 +4740,7 @@ i.ic img{position:absolute}
 .tv .chv1{position:absolute;left:1116px;top:36px;width:20.35px;height:20.35px;overflow:hidden}
 .tv .chv1 s{position:absolute;display:block;left:50%;top:50%;width:8.1px;height:4.1px;transform:translate(-50%,-50%)}
 .tv .chv1 img{position:absolute;left:-6.25%;top:-12.5%;width:112.5%;height:125%}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 8px)}</style><div class="fr">
 
   <div class="bv">
     <div class="hd6">
@@ -5184,7 +5193,7 @@ body:has(.cap:target){padding:0;gap:0;background:transparent}
 .card .own .ico.cv{position:relative;width:20px;height:20px;flex:none}
 
 .dim{position:absolute;inset:0;opacity:.72;pointer-events:none}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 16px)}</style><div class="fr">
 
   <!-- ================= sidebar 18:7881 ================= -->
   <div class="sb">
@@ -5785,7 +5794,7 @@ i.ic img{width:100%;height:100%;display:block}
 .bbar .rec span{color:#A0A0A0}
 .bbar .dl{position:absolute;right:0;top:8px;height:20px;display:flex;gap:4px;align-items:flex-end}
 .bbar .dl p{font:500 12px/16px 'Inter';color:#2C60C7;text-align:center;white-space:nowrap}
-:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px))}</style><div class="fr">
+:host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1440.0000px));border-radius:var(--frameR, 16px)}</style><div class="fr">
 
   <!-- ================= 18:4806 Sidebar ================= -->
   <div class="sb">
