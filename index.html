@@ -1788,7 +1788,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
     if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount)$/.test(h))
+    else if(/^\/(confirmo|mara|starcount|penfold|cable)$/.test(h))
       posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
   },true);
 })();
