@@ -200,7 +200,7 @@ h1 em,h2 em{font-style:normal;-webkit-text-fill-color:transparent}
 </style>
 </head><body>
 
-<div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/cable" title="Cable" rel="prev">&lsaquo;</a><span class="fv">Confirmo</span><a class="step" href="/mara" title="Mara" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/done" title="DONE" rel="prev">&lsaquo;</a><span class="fv">Confirmo</span><a class="step" href="/mara" title="Mara" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 
 <div class="page">
 
@@ -4147,6 +4147,7 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent;gap:
 
 <script>
 (function(){
+  /* THEME LAW: every visual variable must exist in BOTH TH.dark and TH.light below (and any :root defaults). A value present in one mode only = broken page in the other. Check light AND dark before shipping. */
   var TH={
     dark:{'--bg':'#12101a','--ink':'#f5f3fb','--body':'#cfc9e2','--mut':'#918aab','--accent':'#c0abf5','--line':'rgba(192,171,245,.15)','--hair':'rgba(192,171,245,.28)','--flagbg':'rgba(18,14,30,.88)','--flagink':'#c9c3de','--ctl':'rgba(255,255,255,.05)','--ctlbd':'rgba(192,171,245,.22)','--ctlon':'rgba(255,255,255,.13)','--phbg':'rgba(192,171,245,.045)','--phbd':'rgba(192,171,245,.35)','--danger':'#e0645a','--ok':'#57b57f','--shA':'drop-shadow(0 12px 26px rgba(0,0,0,.45))','--shB':'drop-shadow(0 18px 38px rgba(0,0,0,.55))','--shH':'drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3))','--shHb':'0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3)','--glow':'rgba(192,171,245,.07)','--accent2':'#e8e0ff','--grain':'.045','--sel':'rgba(192,171,245,.3)','--glass':'rgba(18,16,26,.44)'},
     light:{'--bg':'#f5f3fa','--ink':'#211e30','--body':'#413c58','--mut':'#7d7794','--accent':'#6f45e0','--line':'rgba(70,45,140,.16)','--hair':'rgba(70,45,140,.24)','--flagbg':'rgba(247,244,253,.92)','--flagink':'#4a4460','--ctl':'rgba(88,54,168,.07)','--ctlbd':'rgba(88,54,168,.24)','--ctlon':'rgba(88,54,168,.13)','--phbg':'rgba(70,45,140,.04)','--phbd':'rgba(70,45,140,.3)','--danger':'#cf4f3e','--ok':'#2f8f5a','--shA':'drop-shadow(0 10px 18px rgba(40,28,80,.14))','--shB':'drop-shadow(0 14px 24px rgba(40,28,80,.18))','--shH':'drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13))','--shHb':'0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13)','--glow':'rgba(111,69,224,.05)','--accent2':'#9a6ff0','--grain':'.03','--sel':'rgba(111,69,224,.22)','--glass':'rgba(245,243,250,.44)'}
@@ -4237,7 +4238,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
     if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount|penfold|cable)$/.test(h))
+    else if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(h))
       posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
   },true);
 })();

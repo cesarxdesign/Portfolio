@@ -6,6 +6,7 @@
 *{box-sizing:border-box}
 :root{--bg:#f2f4f7;--ink:#151515;--body:#5b6470;--mut:#98a0a8;--line:#e7e8ea;--hair:#e7e8ea;--accent:#2b4f8f;
  --paperT:rgba(255,255,255,.86);--flagink:#6b737b;--ctl:rgba(20,30,40,.05);--ctlbd:rgba(20,30,40,.18)}
+/* THEME LAW: every visual variable must be defined for BOTH modes — the :root defaults AND each [data-theme] block below. A value present in one mode only = broken page in the other. Check light AND dark before shipping. */
 :root[data-theme="dark"]{--bg:#101419;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--hair:#2a2d33;--accent:#6f9ae8;
  --paperT:rgba(18,19,22,.86);--flagink:#8b9198;--ctl:rgba(255,255,255,.06);--ctlbd:rgba(255,255,255,.18)}
 html{scroll-behavior:smooth}
@@ -106,7 +107,7 @@ img{display:block;max-width:100%}
 .foot{max-width:var(--colW);margin-left:auto;margin-right:auto;margin-bottom:90px;padding-left:var(--colPad);padding-right:var(--colPad)}
 </style>
 </head><body>
-<div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/penfold" title="Penfold" rel="prev">&lsaquo;</a><span class="fv">Cable</span><a class="step" href="/confirmo" title="Confirmo" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/penfold" title="Penfold" rel="prev">&lsaquo;</a><span class="fv">Cable</span><a class="step" href="/done" title="DONE" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 
 <div class="col hd">
   <h1>From one feature, to an acquired platform.</h1>
@@ -6613,7 +6614,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
     if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount|penfold|cable)$/.test(h))
+    else if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(h))
       posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
   },true);
 })();

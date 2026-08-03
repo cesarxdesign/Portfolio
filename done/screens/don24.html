@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DON24</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Every value here is read from Figma node 86:26039 "Workout" (393x852), file
+   1m8o5tnDwNLpNhhcGJafgK, not eyeballed. Third-generation DONE workout screen:
+   the same component set as 71:10967 (don16.ui) with a bench-press photo, a
+   START hexagon instead of the DONE/tumbler pair, and the downsheet parked one
+   sheet-height above the screen instead of hidden.
+
+   Tokens on this node: hexa BG #161719 (baked into the hexagon SVGs),
+   Foreground/primary #FFFFFF, and four styles that resolve EMPTY from
+   get_variable_defs - "linear pink", "hexa stroke", "Angular Gradients/Angular 1",
+   "shadow glass stroke" - all recovered from the frame's own vector export.
+   "drawer shadow" = 0 4 4 #FFFFFF40 + 0 2 80 #FFFFFF29 (the downsheet glow).
+   Literal colors read off the node: frame fill #E0E0E0, clock plate #000 @ .5,
+   #464646 (Bench Press), #3E3E3E (Barbell / Sets block), #ECEDCE (START),
+   #FF8100 (set marker), #E1E1E1 @ .72 (navbar glass), #0C0C0C (downsheet grid),
+   nav pill #81F128 -> #71E517.
+
+   NO DEVICE CHROME: the frame's own 1px #AAAAAA stroke is dropped. Its #E0E0E0
+   fill and its real 32px corner radius are kept. get_design_context reports
+   every child against the BORDER box (left/top 1px short); the coordinates
+   here are the file's own metadata tree.
+
+   TRAP - get_design_context lies about the clock's two rings. It emits
+   `border border-solid border-white` for both 86:26088 and 86:26093. The
+   frame's SVG export paints, in order: r12 rect #000 @ .5; a 1px inside ring
+   white @ .07; a 1px inside ring white a0 -> a1 along (156.403,110.519) ->
+   (160.308,69.163), BM overlay; the three glyph runs; the 349x64 angular Glow
+   (BM screen, opacity .2); a 1px inside ring white a1 -> a.5 along
+   (196.5,80) -> (196.5,124), BM overlay. Both gradient axes are offsets of
+   don16.ui's PURELY PERPENDICULAR to their own direction, so the two ring
+   assets are byte-identical and are reused.
+
+   TRAP - "Bench Press" carries an UNDECLARED OUTSIDE STROKE. codegen renders
+   it as plain #464646 text; the export adds a masked 0.4px outside stroke
+   painted with the "hexa stroke" gradient (#F68B2E -> #F69A3C @.095 ->
+   #F6A94A @.27 -> #F6BB5C @0 @.545, along (115.038,193.467)->(113.876,129.221)).
+   A gradient text-stroke has no CSS equivalent, so it ships as
+   bp-h1-stroke.svg: Figma's own outline plus its outside-mask, at the export's
+   own ink box (41,154,146x20). The FILL stays real text.
+
+   TRAP - get_design_context drops the START hexagon fill's node opacity (0.8)
+   while reporting its blend mode. It is baked inside bp-hexa-fill.svg, so only
+   mix-blend-mode:hard-light is set in CSS - do NOT add opacity on top. The
+   0.5 opacity of the stroke is baked into bp-hexa-stroke.svg the same way.
+
+   THE NAVBAR IS ON SCREEN, 2px of it. 86:26094 sits at y 850 and is 106 tall,
+   so only its top edge is inside the frame: the #E1E1E1 @ .72 glass and its
+   1px stroke, which is a GRADIENT (white a.2 -> white a0 along
+   (33.686,850)->(397.164,938.991)), not the flat rgba(255,255,255,.2) codegen
+   claims. Same axis as don22.ui's navbar, so wp-nav-ring.svg is reused. Its
+   five glyphs sit at y ~872 and are entirely below the cut.
+
+   THE DOWNSHEET IS ON SCREEN, 98px of it, and almost all of that is empty.
+   86:26095 "downsheet final" is at y -754 and is 852 tall, so its bottom 98px
+   overlap the top of the frame. Everything the sheet draws is either above the
+   cut (pull fillet -36, hexa metrics, workout stack, its own status bar) or
+   masked away: BG / shadow / hexa grid are all masked by a 405x889 alpha mask
+   at -6,-2 on layers that start at sheet-y -145, i.e. the mask runs out at
+   sheet-y 742 and the visible band starts at 754. What DOES reach the screen
+   is the "glow mask" group at sheet-y 692: a black plate that ends at frame
+   y -22 with a soft white drop shadow (0 2 80 #FFFFFF29) spilling down to
+   y 60 - the SVG filter region stops there. Byte-identical to don22.ui's
+   wp-glow.svg, which is reused; that file carries the second, tight
+   0 4 4 #FFFFFF40 shadow too, which the frame export drops because it never
+   reaches y 0 (the plate edge is at -22, the shadow dies by -14).
+
+   Hidden in the file, therefore not rendered: 86:26049 "SAVE" (the DONE
+   hexagon at 251,638), 86:26057 "tumblr" (the whole load/reps picker at
+   4,636), 86:26082 "image.scaledToFill()" (the older photo rect inside IMAGE).
+
+   The IMAGE frame (86:26081) does NOT clip: its 482x354.698 multiply-blended
+   child runs from y 177.651 to 532.349 and x -67 to 415 and is cut only by the
+   frame edge, so it sits over the first two "Sets" rows and under the H1.
+   Figma's pattern maps the whole 2870x2112 source onto the rect with no crop
+   (2870/2112 = 482/354.698), so a plain 100%/100% stretch is exact.
+
+   SF Symbols are text glyphs in Figma and render as bar stacks outside
+   SF-aware contexts. Both were already traced for don16.ui and their ink
+   boxes in THIS frame's outlined export match to 4 decimals, so both assets
+   are reused: pause.circle ink 327.430..343.570 x 94.289..110.430 (asset
+   placed at 326.03125,94.2890625) and arrowtriangle.right.fill ink
+   259.121..266.446 x 537.268..544.396 (asset placed at -16.879395,5.267578
+   inside its 81x17 row).
+
+   Text: real text, never outlines. Figma's hug width EXCLUDES the trailing
+   letter-space and is then ceil'd to an integer ("Bench Press" 158.4 - 10 =
+   148.4 -> 149), and a hugging run starts at its node's own x UNLESS the node
+   itself carries an alignment - checked against the export's ink: "Sets" at
+   324.507 for a node at 324 and the four "124.0 x 12" rows at 276.689 for
+   nodes at 276 are all flush left even though their parent is items-end, while
+   "Barbell" is the one node the file marks text-right and it lands 0.6px
+   further right, exactly the 57 - 56.4 its ceil'd box has spare. CSS
+   letter-spacing trails the last glyph where Figma's does not, so right-
+   aligning in CSS only recovers 0.3 of that 0.6; the other 0.3 is its --dx.
+   Only the clock's timer and the hexagon label sit in real fixed boxes and
+   stay centred.
+
+   Line height: Figma's auto for IBM Plex Mono is round(1.3*size) - 24 -> 31,
+   13 -> 17 - pinned here so font metrics cannot drift a baseline. Every run
+   was then measured against the outlined export by 1-D edge-energy cross-
+   correlation at 4x (the fixed images in the same frame calibrate to 0.000)
+   and nudged with --dy, never assumed:
+     START           +0.63   24/31
+     Bench Press     +0.53   24/31  (its stroke SVG stays put)
+     Sets            +0.30   13/24, the one explicit line height
+     124.0 x 12 (x4) -0.22   13/17
+     Barbell         -0.21   13/17
+   The clock's two 16/24 runs measured -0.07 and -0.05 and are left alone.
+   9:41 is SF Pro, which Chrome substitutes: its box is exact and its ink
+   centre lands within 0.23px, but the substituted glyphs are a shade narrower
+   and heavier than Figma's. Not faked.
+
+   NEW ASSETS (bp- prefix): bp-photo.webp (the 2870x2112 bench-press original,
+   untouched), bp-hexa-fill.svg / bp-hexa-stroke.svg (the START hexagon, 168.407
+   and 171.893 wide - wider than every hexagon already in assets/),
+   bp-navpill.svg (the 26x10 green progress pill), bp-h1-stroke.svg.
+
+   ASSETS REUSED BYTE-FOR-BYTE (md5-checked after normalising Figma's
+   per-export gradient/filter id renumbering, which never matches):
+     wh-hexa.svg            the grid hexagon (136.273x119.883)
+     wh-navdot.svg          the two inactive nav dots
+     wh-levels.svg          the status-bar levels group
+     wh-btn-ring1/2.svg     the clock's two gradient rings
+     wh-sf-pausecircle.svg  pause.circle
+     wh-sf-tri-right.svg    arrowtriangle.right.fill, #FF8100
+     wp-glow.svg            the downsheet's bottom glow
+     wp-nav-ring.svg        the navbar's gradient stroke
+   The hexa grid instance is also identical to don19.ui's: same 34 children,
+   same order, same per-child percentage insets, so that block is lifted whole. */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:'IBM Plex Mono',monospace;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption */
+body:has(.cap:target){padding:0;gap:0;background:transparent}
+
+.fr{position:relative;width:393px;height:852px;border-radius:32px;overflow:hidden;
+    isolation:isolate;background:#e0e0e0}
+.fr img{display:block;max-width:none}
+.n{translate:var(--dx,0px) var(--dy,0px)}   /* per-run nudge, measured */
+
+/* ---------- BG shape 86:26040 > hexa grid 86:26041,
+              985.941x909.284 at -102,-29.284 ---------------------------- */
+.hg{position:absolute;left:-102px;top:-29.2841796875px;
+    width:985.9413452148438px;height:909.2838745117188px;
+    opacity:.08;mix-blend-mode:plus-lighter}
+.hg>div{position:absolute}
+.hg>div>i{position:absolute;inset:0 .78%}
+.hg img{position:absolute;inset:0;width:100%;height:100%}
+
+/* ---------- navDots 86:26042, 56x8 at 169,792 ----------------------------- */
+.dots .plate{position:absolute;left:169px;top:792px;width:24px;height:8px;
+             border-radius:48px;background:#fff}
+.dots .prog{position:absolute;left:168px;top:791px;width:26px;height:10px}
+.dots .d{position:absolute;top:792px;width:8px;height:8px}
+
+/* ---------- START/DONE 86:26053, 138.564x120 at 127,638 ------------------
+   Both polygons are 170.564 wide (inset -11.55% each side) and overhang the
+   frame; the fill art is then 168.407 and the stroke art 171.893x123.486. */
+.hx .f{position:absolute;left:112.07852819824219px;top:638px;
+       width:168.407px;height:120px;mix-blend-mode:hard-light}
+.hx .s{position:absolute;left:110.33552819824219px;top:636.257px;
+       width:171.893px;height:123.486px}
+.hx img{width:100%;height:100%}
+.hx p{position:absolute;left:160px;top:681px;width:72px;height:31px;
+      text-align:center;font-weight:600;font-size:24px;line-height:31px;--dy:.63px;
+      letter-spacing:-.1px;text-transform:uppercase;color:#ecedce;white-space:nowrap}
+
+/* ---------- sets 86:26073, 81x100 at 276,487 ------------------------------ */
+.sets p{position:absolute;color:#3e3e3e;letter-spacing:.3px;white-space:nowrap}
+.sets .h{left:324px;top:487px;width:33px;height:24px;
+         font-weight:500;font-size:13px;line-height:24px;--dy:.3px}
+.sets .d{left:276px;width:81px;height:17px;
+         font-weight:400;font-size:13px;line-height:17px;--dy:-.22px}
+.sets .d.b{font-weight:700}
+.sets .d.dim{opacity:.6}
+.sets img{position:absolute;left:259.120605px;top:537.267578px;
+          width:7.325684px;height:7.12793px}
+
+/* ---------- IMAGE 86:26081, 393x343 at 0,188 - does not clip -------------- */
+.ph{position:absolute;left:0;top:188px;width:393px;height:343px}
+.ph .layer{position:absolute;left:-67px;top:-10.3486328125px;
+           width:482px;height:354.6982727050781px;mix-blend-mode:multiply}
+.ph img{width:100%;height:100%}
+
+/* ---------- H1 86:26084, 149x52 at 40,148 -------------------------------- */
+.h1{position:absolute;left:40px;top:148px;width:149px;height:31px;
+    font-weight:500;font-size:24px;line-height:31px;letter-spacing:-1px;--dy:.53px;
+    color:#464646;white-space:nowrap}
+.h1s{position:absolute;left:41px;top:154px;width:146px;height:20px}
+.h2{position:absolute;left:40px;top:183px;width:57px;height:17px;
+    font-weight:400;font-size:13px;line-height:17px;letter-spacing:.3px;
+    text-align:right;--dx:.3px;--dy:-.21px;color:#3e3e3e;white-space:nowrap}
+
+/* ---------- clock 86:26087, 329x44 at 32,80 ------------------------------- */
+.bg{position:absolute;left:32px;top:80px;width:329px;height:44px}
+/* Figma insets the plate by half its 1px stroke: the export writes the fill AND
+   the white a.07 stroke as one r11.5 rect at 32.5,80.5 328x43, so the outer
+   half-pixel of the 329x44 box carries stroke only, no #000 a.5. Painting the
+   fill edge-to-edge instead darkens that half-pixel by up to 27 levels where
+   ring 2's alpha has fallen off (bottom edge 193 vs 243). */
+.bg .fill{position:absolute;left:.5px;top:.5px;width:328px;height:43px;
+          border-radius:11.5px;background:rgba(0,0,0,.5);
+          box-shadow:inset 0 0 0 .5px rgba(255,255,255,.07),
+                           0 0 0 .5px rgba(255,255,255,.07)}
+.bg .ring{position:absolute;left:0;top:0;width:329px;height:44px;mix-blend-mode:overlay}
+.bg p{position:absolute;top:10px;height:24px;font-size:16px;line-height:24px;color:#fff}
+.bg .lbl{left:16px;width:169px;font-weight:600;text-transform:uppercase}
+.bg .clk{left:201px;width:77px;font-weight:500;text-align:center}
+.bg .pz{position:absolute;left:294.03125px;top:14.2890625px;
+        width:17.539063px;height:16.140625px}
+.glow{position:absolute;inset:-10px;border-radius:12px;overflow:hidden;
+      mix-blend-mode:screen;opacity:.2}
+.glow u{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0;
+      transform:matrix(-8.1119,5.2923,-14.648,-2.9307,174.5,32)}
+.glow i{position:absolute;left:-221.905px;top:-221.905px;width:443.81px;height:443.81px;
+      background:conic-gradient(from 90deg,
+        rgb(113,71,255) 0%, rgba(101,111,255,0.75) 6.5978%, rgba(90,152,255,0.5) 13.196%,
+        rgba(78,192,255,0.25) 19.793%, rgba(66,232,255,0) 26.391%,
+        rgba(113,206,234,0.125) 32.682%, rgba(160,179,213,0.25) 38.973%,
+        rgba(208,153,192,0.375) 45.263%, rgba(255,126,171,0.5) 51.554%,
+        rgba(151,128,213,0.75) 63.955%, rgba(100,130,234,0.875) 70.156%,
+        rgb(48,131,255) 76.356%, rgb(81,101,255) 88.178%, rgb(113,71,255) 100%)}
+
+/* ---------- navbar 86:26094, 393x106 at 0,850 (2px on screen) ------------- */
+.nav{position:absolute;left:0;top:850px;width:393px;height:106px;
+     background:rgba(225,225,225,.72);
+     backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.navring{position:absolute;left:0;top:850px;width:393px;height:106px}
+
+/* ---------- downsheet final 86:26095, origin 0,-754 (98px on screen) ------ */
+.dsglow{position:absolute;left:0;top:-62px;width:393px;height:160px}
+
+/* ---------- iOS Home Indicator 86:26096 / iOS Status Bar 86:26097 --------- */
+.home{position:absolute;left:127px;top:839px;width:139px;height:5px;
+      border-radius:100px;background:#000}
+.time{position:absolute;left:51px;top:18.339622497558594px;width:37px;height:22px;
+      text-align:center;color:#000;
+      font:590 17px/22px 'SF Pro',-apple-system,'SF Pro Display',sans-serif;
+      font-variation-settings:'wdth' 100}
+.lv{position:absolute;left:250.00001525878906px;top:0;width:143px;height:54px}
+</style>
+</head><body>
+
+<div class="fr">
+
+  <!-- BG shape 86:26040 > hexa grid 86:26041 -->
+  <div class="hg">
+    <div style="inset:19.96% 85.96% 66.86% 0"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:26.54% 53.79% 60.27% 32.17%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:60.07% 64.34% 26.74% 21.62%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:59.68% 21.45% 27.14% 64.51%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:53.29% 75.06% 33.53% 10.9%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:6.58% 64.69% 80.23% 21.27%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:39.92% 32.35% 46.9% 53.61%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:33.33% 85.96% 53.49% 0"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:13.17% 32.53% 73.64% 53.43%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:46.31% 0.18% 40.51% 85.78%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:39.92% 53.79% 46.9% 32.17%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:73.45% 64.34% 13.37% 21.62%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:13.37% 75.24% 73.45% 10.72%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:46.7% 43.07% 40.11% 42.89%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:19.96% 43.07% 66.86% 42.89%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:53.09% 10.72% 33.72% 75.24%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:46.7% 64.34% 40.11% 21.62%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:80.23% 75.06% 6.58% 10.9%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:0 53.97% 86.82% 31.99%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:33.14% 21.62% 53.68% 64.34%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:6.59% 21.8% 80.23% 64.16%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:33.33% 43.07% 53.48% 42.89%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:19.96% 64.51% 66.86% 21.45%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:53.29% 32.17% 33.53% 53.79%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:46.7% 85.78% 40.12% 0.18%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:26.54% 32.35% 60.27% 53.61%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:59.68% 0 27.14% 85.96%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:53.29% 53.61% 33.53% 32.35%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:86.82% 64.16% 0 21.8%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:6.58% 43.25% 80.23% 42.71%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:39.72% 10.9% 47.1% 75.06%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:33.33% 64.51% 53.49% 21.45%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:66.66% 75.06% 20.15% 10.9%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+    <div style="inset:13.17% 11.08% 73.64% 74.88%"><i><img src="assets/wh-hexa.svg" alt=""></i></div>
+  </div>
+
+  <!-- navDots 86:26042 -->
+  <div class="dots">
+    <div class="plate"></div>
+    <img class="prog" src="assets/bp-navpill.svg" alt="">
+    <img class="d" style="left:201px" src="assets/wh-navdot.svg" alt="">
+    <img class="d" style="left:217px" src="assets/wh-navdot.svg" alt="">
+  </div>
+
+  <!-- START/DONE 86:26053 -->
+  <div class="hx">
+    <div class="f"><img src="assets/bp-hexa-fill.svg" alt=""></div>
+    <div class="s"><img src="assets/bp-hexa-stroke.svg" alt=""></div>
+    <p class="n">Start</p>
+  </div>
+
+  <!-- sets 86:26073 -->
+  <div class="sets">
+    <p class="h n">Sets</p>
+    <p class="d dim n" style="top:513px">124.0 x 12</p>
+    <p class="d b n"   style="top:532px">124.0 x 12</p>
+    <img src="assets/wh-sf-tri-right.svg" alt="">
+    <p class="d n"     style="top:551px">124.0 x 12</p>
+    <p class="d n"     style="top:570px">124.0 x 12</p>
+  </div>
+
+  <!-- IMAGE 86:26081 -->
+  <div class="ph"><div class="layer"><img src="assets/bp-photo.webp" alt=""></div></div>
+
+  <!-- H1 86:26084 + its undeclared outside gradient stroke -->
+  <p class="h1 n">Bench Press</p>
+  <img class="h1s" src="assets/bp-h1-stroke.svg" alt="">
+  <p class="h2 n">Barbell</p>
+
+  <!-- clock 86:26087 -->
+  <div class="bg">
+    <div class="fill"></div>
+    <img class="ring" src="assets/wh-btn-ring1.svg" alt="">
+    <p class="lbl n">Upper body</p>
+    <p class="clk n">06:45:23</p>
+    <img class="pz" src="assets/wh-sf-pausecircle.svg" alt="">
+    <div class="glow"><u><i></i></u></div>
+    <img class="ring" src="assets/wh-btn-ring2.svg" alt="">
+  </div>
+
+  <!-- navbar 86:26094 -->
+  <div class="nav"></div>
+  <img class="navring" src="assets/wp-nav-ring.svg" alt="">
+
+  <!-- downsheet final 86:26095 -->
+  <img class="dsglow" src="assets/wp-glow.svg" alt="">
+
+  <!-- iOS Home Indicator 86:26096 -->
+  <div class="home"></div>
+
+  <!-- iOS Status Bar 86:26097 -->
+  <p class="time">9:41</p>
+  <img class="lv" src="assets/wh-levels.svg" alt="">
+
+</div>
+
+<p class="cap" id="e">DON24</p>
+
+</body></html>

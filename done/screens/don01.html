@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DON03</title>
+<style>
+/* Every value here is read from Figma node 75:13534 (375x812),
+   file 1m8o5tnDwNLpNhhcGJafgK, not eyeballed. get_variable_defs on this node
+   returns {} - the screen is an early Sketch-imported wireframe and binds no
+   tokens at all, so every colour below is a literal read off the node:
+     frame #FFFFFF, placeholder plates #D8D8D8 with #979797 strokes,
+     menu button #F8E71C w/ 8px #979797 stroke r10, nav+tab bars
+     rgba(33,33,33,.72) over a 13.591px backdrop blur, iOS orange #FF9500,
+     the mock type #A46A19, play chip #C82A2A, picker base #5E4848 and its
+     #CDCDCD .5px inner shadows, home indicator white @14%.
+   Bar hairlines are Figma drop shadows with zero blur: nav bar 0 +0.5 0
+   rgba(255,255,255,.16) (read off the exported vector's feDropShadow), tab
+   bar 0 -0.5 0 rgba(255,255,255,.15).
+
+   NO DEVICE CHROME. The frame's own 1px black stroke is chrome and is dropped;
+   its #FFF fill and real 24px radius are kept. 75:13864 "iPhone X/iPhone X
+   Frame" is chrome drawn INSIDE the frame, and it resolves to nothing but the
+   notch: its boolean op paints (a) four corner wedges that are exactly the
+   area outside a 24px radius - i.e. exactly what the frame's own 24px clip
+   already removes, verified by reading the exported path (M0 788 -> arc ->
+   24 812) against the frame's rounded-[24px] overflow-clip - and (b) a
+   #BD10E0 notch silhouette that 75:13869 "Notch Copy" then covers completely
+   in black. So only the black notch survives, and only the black notch ships.
+   Its exported SVG is byte-identical (md5 3509589c316eeae37c5521573032b952)
+   to assets/wo-notch.svg already in this folder, so that file is reused.
+
+   Hidden in the file, therefore not rendered: 75:13546 "IMG_C5636E5E9B2E-1"
+   (375x812 photo, hidden). 75:13872 "Mask" (50x124) exports as an empty <g>
+   and paints nothing; 75:13873 is its twin acting as the Date Picker's mask
+   layer, and that mask is a plain filled 50x124 rect, so it is reproduced as
+   a straight overflow:hidden clip at 171,487 - which is what cuts the picker's
+   Sat 5 / Sun 6 rows off the top and the Sat 12 / Sun 13 rows off the bottom.
+   75:13871 "Base" sits BELOW the mask layer and is deliberately outside the
+   clip (it is 140 tall against the clip's 124).
+
+   Type: SF Pro Text / SF Pro Display throughout, exactly as the file names
+   them. Figma's auto line height for these faces is fontSize x ~1.1933
+   (hhea asc 1950, desc -494, upem 2048), which is what the browser's
+   line-height:normal computes too, so "normal" leadings are left to the
+   browser and only Figma's explicit leadings (22 / 32.304 / 41) are pinned.
+   Tracking is handled by the .tr span below, not by letter-spacing on the
+   block; see the note there.
+
+   Groups (75:13537 film strip, 75:13544 Menu Button, 75:13870 Date Picker
+   Copy) are display:contents in Figma's own output and carry no geometry;
+   their children are positioned directly. Coordinates in Figma's metadata are
+   given in the top-level frame's space except inside real frames (Home
+   Indicator, Nav Bar, Status Bar, Time Style, Date Picker's vector rows),
+   where they are parent-relative and are resolved here.
+
+   Asset inventory: 19 SVGs, e1-* plus the shared wo-notch.svg. The "exercise
+   image" is a vector illustration, not a bitmap (Figma hands it back as SVG
+   despite the .png-looking URL) and is by far the heaviest at 120 kB; the
+   spinner's angular gradient is the next at 8.6 kB. No raster assets on this
+   screen. Three exports were fetched and then dropped because nothing renders
+   them: the nav bar's flat background vector (rebuilt in CSS so the backdrop
+   blur is real), and the two Date Picker mask rects (see above). */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:-apple-system,'SF Pro Text',sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption */
+body:has(.cap:target){padding:0;gap:0;background:transparent}
+
+.fr{position:relative;width:375px;height:812px;border-radius:24px;overflow:hidden;
+    isolation:isolate;background:#fff}
+.fr img{display:block;max-width:none}
+/* Tracking lives on an inline span carrying margin-right:-tracking, never on the
+   block. Figma's letterSpacing sits BETWEEN glyphs, CSS also adds it after the
+   last one, so a centred line lands tracking/2 off - and when the padded line
+   then overflows its box Chrome stops centring altogether and pins it left,
+   which is how a 3.6268px tracking turned into a 4px shift. The negative
+   margin cancels exactly the trailing spacing, so the line width equals
+   Figma's and centring behaves. Verified: "15.0" lands at 240.219 against
+   Figma's 240.22, "DONE" at 119.391, "H" at 291.203. */
+.tr{letter-spacing:var(--t);margin-right:calc(0px - var(--t))}
+
+/* ---------- 75:13535 Rectangle 5 Copy, 78x41 at 234,530 ---------- */
+.r5{position:absolute;left:234px;top:530px;width:78px;height:41px;background:#d8d8d8;
+    box-shadow:inset 0 0 0 1.468px #979797}
+    /* inset ring, not `border`: Chrome snaps used border-widths to whole device
+       pixels and would draw Figma's 1.468px stroke as 1px. */
+
+/* ---------- 75:13536 Background (tab bar), 375x83 at 0,729 ---------- */
+.tabbar{position:absolute;left:0;top:729px;width:375px;height:83px;
+        background:rgba(33,33,33,.72);backdrop-filter:blur(13.591px);
+        box-shadow:0 -.5px 0 0 rgba(255,255,255,.15)}
+
+/* ---------- 75:13537 film strip (group), six 48x48 at y747 ---------- */
+.film i{position:absolute;top:747px;width:48px;height:48px;
+        background:#d8d8d8;border:1px solid #979797}
+
+/* ---------- 75:13544 Menu Button (group) -> 75:13545, 174x89 at 100,640 ---
+   8px stroke, CENTER aligned: the node's render bounds are 182x97 against a
+   174x89 geometry box, so the stroke straddles the edge 4px either side.
+   Box therefore drawn at 96,636 / 182x97 with radius 10+4=14 (Figma's r10 is
+   on the geometry rect; border-box gives the inner 14-8=6 for free). */
+.menubtn{position:absolute;left:96px;top:636px;width:182px;height:97px;
+         background:#f8e71c;border:8px solid #979797;border-radius:14px}
+
+/* ---------- 75:13547 Rectangle 2, 220x250 at 78,206 ---------------------
+   4px stroke, OUTSIDE: render bounds 228x258 against a 220x250 geometry box. */
+.plate{position:absolute;left:74px;top:202px;width:228px;height:258px;
+       border:4px solid #979797}
+
+/* ---------- 75:13548 exercise image, 208x220.502 at 84,218.498 ---------- */
+.eximg{position:absolute;left:84px;top:218.498px;width:208px;height:220.502px}
+
+/* ---------- 75:13798 Home Indicator frame 375x34 at 0,778 -> 75:13799 ----- */
+.home{position:absolute;left:121px;top:798px;width:134px;height:5px;
+      border-radius:100px;background:#fff;opacity:.14}
+
+/* ---------- 75:13800 Nav Bar frame, 375x140 at 0,0 ---------- */
+.navbg{position:absolute;left:0;top:0;width:375px;height:140px;
+       background:rgba(33,33,33,.72);backdrop-filter:blur(13.591px);
+       box-shadow:0 .5px 0 0 rgba(255,255,255,.16)}
+.navback{position:absolute;left:27px;top:54px;width:38px;height:22px;color:#ff9500;
+         font:400 17px/22px 'SF Pro Text',-apple-system,sans-serif;--t:-.408px;
+         white-space:nowrap}
+.navchev{position:absolute;left:8.5px;top:55.5px;width:12px;height:20.5px}
+.navstar{position:absolute;left:336px;top:52px;width:28px;height:28px}
+.navttl{position:absolute;left:16px;top:91px;width:343px;height:41px;color:#fff;
+        font:700 34px/41px 'SF Pro Display',-apple-system,sans-serif;--t:.41px}
+
+/* ---------- 75:13816 Status Bar frame, 375x44 at 0,0 ---------- */
+.sbtime{position:absolute;left:20.944px;top:14px;width:54px;text-align:center;color:#fff;
+        font:600 15px/normal 'SF Pro Text',-apple-system,sans-serif;--t:-.3px}
+.sbcell{position:absolute;left:293.218px;top:17.667px;width:16.955px;height:10.667px}
+.sbwifi{position:absolute;left:315.160px;top:17.331px;width:15.293px;height:11px}
+.sbbatt{position:absolute;left:335.439px;top:17.333px;width:24.263px;height:11.333px}
+
+/* ---------- loose mock labels (75:13832 .. 75:13863) ---------- */
+.t31{position:absolute;left:27px;top:320px;width:28px;height:22px;color:#ff9500;
+     font:400 17px/22px 'SF Pro Text',-apple-system,sans-serif;--t:2px;
+     white-space:nowrap}
+.big{position:absolute;height:33px;color:#a46a19;text-align:center;white-space:nowrap;
+     font:400 30.835px/32.304px 'SF Pro Text',-apple-system,sans-serif;--t:3.6268px}
+.wlabel{position:absolute;left:234px;top:503px;width:46px;height:33px;color:#a46a19;
+        font:400 11.747px/32.304px 'SF Pro Text',-apple-system,sans-serif;--t:1.3803px;
+        white-space:nowrap}
+.addbtn{position:absolute;left:89.987px;top:517.987px;width:22.025px;height:22.025px}
+.play{position:absolute;left:319px;top:323px;width:37px;height:17px}
+.chip{position:absolute;left:287px;width:22px;height:22px;background:#d8d8d8;border:1px solid #979797}
+.spin{position:absolute;left:289px;top:197px;width:18px;height:18px}
+.hlbl{position:absolute;left:291px;top:444px;width:16px;height:25px;color:#a46a19;
+      text-align:center;white-space:nowrap;
+      font:400 21px/normal 'SF Pro Text',-apple-system,sans-serif;--t:2.47px}
+.done{position:absolute;left:119px;top:654px;width:138px;height:60px;color:#a46a19;
+      text-align:center;white-space:nowrap;
+      font:700 50px/normal 'SF Pro Text',-apple-system,sans-serif;--t:-3px}
+.bitch{position:absolute;left:229px;top:702px;width:12px;height:6px;color:#a46a19;
+       text-align:center;white-space:nowrap;
+       font:700 5px/normal 'SF Pro Text',-apple-system,sans-serif;--t:-.3px}
+
+/* ---------- 75:13864 iPhone X Frame -> notch only (see head comment) ------ */
+.notch{position:absolute;left:78px;top:0;width:219px;height:31px}
+
+/* ---------- 75:13870 Date Picker Copy (group) ---------- */
+.dpbase{position:absolute;left:171px;top:479px;width:50px;height:140px}
+.dpclip{position:absolute;left:171px;top:487px;width:50px;height:124px;overflow:hidden}
+.dpclip img{position:absolute}
+.dplines{left:0;top:44px;width:50px;height:35px}
+.dpnow{position:absolute;left:12px;top:48px;width:26px;height:27px;color:#fff;
+       text-align:center;white-space:nowrap;
+       font:400 23px/normal 'SF Pro Text',-apple-system,sans-serif;--t:-.2px}
+</style>
+</head><body>
+
+<div class="fr">
+  <!-- 75:13535 Rectangle 5 Copy -->
+  <div class="r5"></div>
+
+  <!-- 75:13536 Background -->
+  <div class="tabbar"></div>
+
+  <!-- 75:13537 film strip -->
+  <div class="film">
+    <i style="left:19px"></i><i style="left:83px"></i><i style="left:147px"></i>
+    <i style="left:211px"></i><i style="left:275px"></i><i style="left:339px"></i>
+  </div>
+
+  <!-- 75:13544 Menu Button -->
+  <div class="menubtn"></div>
+
+  <!-- 75:13547 Rectangle 2 + 75:13548 exercise image -->
+  <div class="plate"></div>
+  <img class="eximg" src="assets/e1-exercise.svg" alt="">
+
+  <!-- 75:13798 iPhone X/Home Indicator/Home Indicator - On Light -->
+  <div class="home"></div>
+
+  <!-- 75:13800 Bars/Navigation Bar - iPhone X/Dark - Large Navigation Bar -->
+  <div class="navbg"></div>
+  <img class="navstar" src="assets/e1-icon.svg" alt="">
+  <p class="navback"><span class="tr">Main</span></p>
+  <img class="navchev" src="assets/e1-chevron.svg" alt="">
+  <p class="navttl"><span class="tr">Roman Chair</span></p>
+
+  <!-- 75:13816 Bars/Status Bar - iPhone X/On Light -->
+  <img class="sbbatt" src="assets/e1-battery.svg" alt="">
+  <img class="sbwifi" src="assets/e1-wifi.svg" alt="">
+  <img class="sbcell" src="assets/e1-cellular.svg" alt="">
+  <p class="sbtime"><span class="tr">9:41</span></p>
+
+  <!-- 75:13832 -->
+  <p class="t31"><span class="tr">3:1</span></p>
+  <!-- 75:13833 / 75:13835 / 75:13836 -->
+  <p class="big" style="left:41px;top:534px;width:52px"><span class="tr">1/3</span></p>
+  <p class="wlabel"><span class="tr">Weight</span></p>
+  <p class="big" style="left:240px;top:534px;width:71px"><span class="tr">15.0</span></p>
+  <p class="big" style="left:315px;top:534px;width:39px"><span class="tr">kg</span></p>
+
+  <!-- 75:13837 Controls/Buttons/Dark - Add -->
+  <img class="addbtn" src="assets/e1-add.svg" alt="">
+  <!-- 75:13842 Path 2 -->
+  <img class="play" src="assets/e1-path2.svg" alt="">
+  <!-- 75:13845 / 75:13846 Rectangle 3 -->
+  <div class="chip" style="top:195px"></div>
+  <div class="chip" style="top:445px"></div>
+  <!-- 75:13847 Controls/Progress Indicator/Light - Indeterminate Spinner -->
+  <img class="spin" src="assets/e1-spinner.svg" alt="">
+  <!-- 75:13861 / 75:13862 / 75:13863 -->
+  <p class="hlbl"><span class="tr">H</span></p>
+  <p class="done"><span class="tr">DONE</span></p>
+  <p class="bitch"><span class="tr">bitch</span></p>
+
+  <!-- 75:13864 iPhone X/iPhone X Frame -> 75:13869 Notch Copy -->
+  <img class="notch" src="assets/wo-notch.svg" alt="">
+
+  <!-- 75:13870 Date Picker Copy -->
+  <img class="dpbase" src="assets/e1-dp-base.svg" alt="">
+  <div class="dpclip">
+    <img class="dplines" src="assets/e1-dp-lines.svg" alt="">
+    <p class="dpnow"><span class="tr">10</span></p>
+    <img src="assets/e1-dp-t8.svg" alt="" style="left:17.240px;top:-29.884px;width:8.549px;height:6.065px">
+    <img src="assets/e1-dp-t7.svg" alt="" style="left:18.660px;top:-19.808px;width:8.119px;height:7.686px">
+    <img src="assets/e1-dp-t6.svg" alt="" style="left:18.800px;top:-3.245px;width:9.383px;height:12.015px">
+    <img src="assets/e1-dp-t1.svg" alt="" style="left:18.956px;top:22.355px;width:10.517px;height:15.483px">
+    <img src="assets/e1-dp-t2.svg" alt="" style="left:17.151px;top:86.204px;width:15.383px;height:14.796px">
+    <img src="assets/e1-dp-t3.svg" alt="" style="left:16.797px;top:113.665px;width:17.169px;height:11.419px">
+    <img src="assets/e1-dp-t4.svg" alt="" style="left:16.710px;top:134.011px;width:16.771px;height:8.049px">
+    <img src="assets/e1-dp-t5.svg" alt="" style="left:17.429px;top:146.753px;width:16.124px;height:5.796px">
+  </div>
+</div>
+
+<p class="cap" id="e">DON03</p>
+
+</body></html>

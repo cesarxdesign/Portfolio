@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DON01</title>
+<style>
+/* Every value here is read from Figma node 75:13910 (375x812),
+   file 1m8o5tnDwNLpNhhcGJafgK, not eyeballed. get_variable_defs returns {} -
+   another Sketch-imported wireframe with no bound tokens, so every colour is a
+   literal off the node: frame #FFFFFF, left rail #D8D8D8, all body type
+   #4A4A4A, header/footer bars #000000, timer #F1F1F2, DONE #FFFFFF, hamburger
+   #9B9B9B, the orange corner tab #F5A623, the green corner tab #7ED321,
+   pagination dot #000000 (dots 2 and 3 at 30%). Card shadows are 0 0
+   rgba(0,0,0,.3) at two different radii, and they are NOT interchangeable:
+   75:13919 and the 75:14844 stack export with feGaussianBlur stdDeviation 10,
+   i.e. Figma radius 20, and ship inside their SVGs; 75:14171 and 75:14423 are
+   reported by get_design_context as 0 0 14px, i.e. Figma radius 14, and are
+   drawn in CSS at 14px. Figma's radius and the CSS blur-radius agree 1:1 (both
+   are 2x sigma), which the two shadows' measured decay confirms.
+
+   KNOWN RESIDUAL, not a value error: Figma's canvas renders these shadows with
+   a tighter tail than a true Gaussian (measured sigma ~8 where the file says
+   10), because Figma approximates the blur with box passes. Chrome renders the
+   declared sigma. Same declared value, different rasteriser; correcting it
+   would mean hand-fitting a radius the file does not contain, so it is left
+   alone and flagged. It is worth a few levels of grey over ~15px around the
+   four cards.
+
+   NO DEVICE CHROME. The frame's own 1px black stroke is dropped; its #FFF fill
+   and real 24px radius are kept. 75:14693 "iPhone X/iPhone X Frame" is a
+   219x31 frame containing only the notch silhouette, so it survives as the
+   notch (assets/h8-notch.svg). It is NOT byte-identical to the wo-notch.svg
+   already in this folder - same path, but Figma re-exports it wrapped in an
+   extra <g> - so it ships as its own file rather than silently reusing one
+   that differs. Same for the three status-bar glyphs: identical shapes to
+   e1-*.svg but re-exported at different float precision, so h8-* copies.
+
+   Hidden in the file, therefore not rendered: 75:13912 "Rectangle 6",
+   75:13913 "Rectangle 6 Copy", 75:14678 the iMessage layout guide, and the
+   whole 75:14700 "Group 4" (5 nodes).
+
+   The two black bars (75:14685 at y0 and 75:14686 at y708) are painted OVER
+   75:14679 / 75:14682, a pair of "Combined Shape" fillets - one path, the
+   second rotated 180deg - that carry 38px concave corners. Bars first in the
+   file, fillets under them, so the visible black runs 0-144 and 668-812 with
+   the fillet curves showing outside the bars' 104px.
+
+   Type is SF Pro Display Bold everywhere except "(kg)" (SF Pro Text Light) and
+   the status-bar clock (SF Pro Text Semibold). line-height:normal is left to
+   the browser: SF Pro's auto leading is fontSize x ~1.1933, which is exactly
+   what Figma reports (40 -> 48, 15 -> 18, 14.651 -> 17). Tracking rides on the
+   .tr span, never on the block - see the note there.
+
+   Groups (75:13918, 75:14170, 75:14422, 75:14843) are display:contents in
+   Figma's own output and carry no geometry of their own. Figma's metadata
+   coordinates are in the top-level frame's space except inside real frames,
+   where they are parent-relative and resolved here.
+
+   Asset inventory: 15 SVGs, h8-*. The two exercise illustrations are vector,
+   not bitmap, and are the weight of this screen at 118 kB and 123 kB; both are
+   shipped untouched. h8-ex-small.svg is drawn twice at the same size, so it is
+   one file used by both card stacks. Nothing else is over 3 kB. */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:-apple-system,'SF Pro Text',sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption */
+body:has(.cap:target){padding:0;gap:0;background:transparent}
+
+.fr{position:relative;width:375px;height:812px;border-radius:24px;overflow:hidden;
+    isolation:isolate;background:#fff}
+.fr img{display:block;max-width:none}
+/* Tracking rides on an inline span carrying margin-right:-tracking. Figma's
+   letterSpacing sits BETWEEN glyphs; CSS also adds it after the last one, which
+   drags a centred line tracking/2 left, pulls a right-aligned line a full
+   tracking left, and - once the padded line overflows its box - makes Chrome
+   drop centring entirely and pin the line left. The negative margin cancels
+   exactly the trailing spacing, so the line width equals Figma's. */
+.tr{letter-spacing:var(--t);margin-right:calc(0px - var(--t))}
+.d{position:absolute;color:#4a4a4a;white-space:nowrap;
+   font-family:'SF Pro Display',-apple-system,sans-serif;font-weight:700}
+.n40{font-size:40px;line-height:normal;--t:-2.4px;height:48px}
+.n15{font-size:15px;line-height:normal;--t:-.9px;height:18px}
+.rt{text-align:right}
+
+/* ---------- 75:13911 Rectangle 11, 153x633 at -2,86 ---------- */
+.rail{position:absolute;left:-2px;top:86px;width:153px;height:633px;background:#d8d8d8}
+
+/* ---------- 75:13918 Active exercise (group) ---------------------------
+   75:13919 is a 210x330 white plate at 159,216 whose shadow makes the export
+   250x370, hence the -20,-20 offset. */
+.card1{position:absolute;left:139px;top:196px;width:250px;height:370px}
+.exttl{position:absolute;left:169px;top:226px;width:67px;height:34px;color:#4a4a4a;
+       font:700 16px/16.65px 'SF Pro Display',-apple-system,sans-serif;--t:-.96px}
+.chip{position:absolute;left:332px;top:509px;width:37px;height:37px}
+.dot{position:absolute;top:519px;width:7px;height:7px}
+.exh{position:absolute;left:333px;top:232px;width:11px;height:17px;color:#4a4a4a;
+     white-space:nowrap;font:700 14.651px/normal 'SF Pro Display',-apple-system,sans-serif;
+     --t:-.8791px}
+.exmain{position:absolute;left:167px;top:267.732px;width:194.218px;height:239px}
+
+/* ---------- 75:14170 / 75:14422 card stacks ---------------------------
+   Same 150x206 white plate twice, 566px apart (and 4px across); the small
+   illustration is one asset drawn at 145.125x154.524 in both. */
+.card{position:absolute;width:150px;height:206px;background:#fff;
+      box-shadow:0 0 14px rgba(0,0,0,.3)}
+.exsm{position:absolute;width:145.125px;height:154.524px}
+
+/* ---------- loose vectors ---------- */
+.btn{position:absolute;left:283px;top:125px;width:36px;height:36px}
+.arrow{position:absolute;left:298px;top:143px;width:17px;height:14px}
+.filt{position:absolute;left:0;width:375px;height:76px}
+.filb{position:absolute;left:0;top:668px;width:375px;height:76px;transform:rotate(180deg)}
+.bar{position:absolute;left:0;width:375px;height:104px;background:#000}
+.logo{position:absolute;left:32px;top:60px;width:37px;height:24px}
+.done{position:absolute;left:137px;top:734px;width:103px;height:48px;color:#fff;
+      text-align:center;white-space:nowrap;
+      font:700 40px/normal 'SF Pro Display',-apple-system,sans-serif;--t:-2.4px}
+.timer{position:absolute;left:188px;top:47px;width:155px;height:48px;color:#f1f1f2;
+       text-align:right;white-space:nowrap;
+       font:700 40px/normal 'SF Pro Display',-apple-system,sans-serif;--t:-2.4px}
+
+/* ---------- 75:14693 notch + 75:14699 status bar ---------- */
+.notch{position:absolute;left:78px;top:0;width:219px;height:31px}
+.sbtime{position:absolute;left:20.944px;top:14px;width:53.856px;text-align:center;color:#fff;
+        font:600 15px/normal 'SF Pro Text',-apple-system,sans-serif;--t:-.3px}
+.sbcell{position:absolute;left:293.218px;top:17.667px;width:16.955px;height:10.667px}
+.sbwifi{position:absolute;left:315.160px;top:17.331px;width:15.293px;height:11px}
+.sbbatt{position:absolute;left:335.439px;top:17.333px;width:24.263px;height:11.333px}
+
+/* ---------- 75:14843 Group 18 --------------------------------------------
+   75:14844 is three 123x80 white plates in one 123x290 group at 14,237; the
+   export carries their shadows, so it is 163x330 at -6,217. */
+.stack{position:absolute;left:-6px;top:217px;width:163px;height:330px}
+.n16{font-size:15px;line-height:16px;--t:-.9px;height:16px}
+</style>
+</head><body>
+
+<div class="fr">
+  <!-- 75:13911 Rectangle 11 -->
+  <div class="rail"></div>
+
+  <!-- 75:13914 / 75:13915 / 75:13916 / 75:13917 -->
+  <p class="d n40" style="left:23px;top:597px;width:53px"><span class="tr">1/4</span></p>
+  <p class="d n40" style="left:16px;top:143px;width:110px"><span class="tr">325kg</span></p>
+  <p class="d n15" style="left:28px;top:587px;width:52px"><span class="tr">exercise</span></p>
+  <p class="d n15" style="left:21px;top:133px;width:46px"><span class="tr">volume</span></p>
+
+  <!-- 75:13918 Active exercise -->
+  <img class="card1" src="assets/h8-card.svg" alt="">
+  <p class="exttl"><span class="tr">Romanian</span><br><span class="tr">Chair</span></p>
+  <img class="chip" src="assets/h8-chip.svg" alt="">
+  <img class="dot" style="left:243.5px" src="assets/h8-dot.svg" alt="">
+  <img class="dot" style="left:259.5px;opacity:.3" src="assets/h8-dot.svg" alt="">
+  <img class="dot" style="left:275.5px;opacity:.3" src="assets/h8-dot.svg" alt="">
+  <p class="exh"><span class="tr">H</span></p>
+  <img class="exmain" src="assets/h8-ex-main.svg" alt="">
+
+  <!-- 75:14170 Group 5 Copy 2 -->
+  <div class="card" style="left:189px;top:562px"></div>
+  <img class="exsm" style="left:191.775px;top:586.832px" src="assets/h8-ex-small.svg" alt="">
+
+  <!-- 75:14422 Group 5 Copy -->
+  <div class="card" style="left:193px;top:-4px"></div>
+  <img class="exsm" style="left:195.775px;top:20.832px" src="assets/h8-ex-small.svg" alt="">
+
+  <!-- 75:14674 Rectangle 3 + 75:14675 Combined Shape -->
+  <img class="btn" src="assets/h8-btn.svg" alt="">
+  <img class="arrow" src="assets/h8-arrow.svg" alt="">
+
+  <!-- 75:14679 / 75:14682 Combined Shape Copy 2 + 3 -->
+  <img class="filt" style="top:68px" src="assets/h8-fillet-t.svg" alt="">
+  <img class="filb" src="assets/h8-fillet-b.svg" alt="">
+
+  <!-- 75:14685 / 75:14686 Rectangle 4 -->
+  <div class="bar" style="top:0"></div>
+  <div class="bar" style="top:708px"></div>
+
+  <!-- 75:14687 Combined Shape -->
+  <img class="logo" src="assets/h8-logo.svg" alt="">
+
+  <!-- 75:14691 DONE Copy + 75:14692 timer -->
+  <p class="done"><span class="tr">DONE</span></p>
+  <p class="timer"><span class="tr">1:05:33&rsquo;4</span></p>
+
+  <!-- 75:14693 iPhone X/iPhone X Frame -->
+  <img class="notch" src="assets/h8-notch.svg" alt="">
+
+  <!-- 75:14699 Bars/Status Bar - iPhone X/On Light Copy -->
+  <img class="sbbatt" src="assets/h8-battery.svg" alt="">
+  <img class="sbwifi" src="assets/h8-wifi.svg" alt="">
+  <img class="sbcell" src="assets/h8-cellular.svg" alt="">
+  <p class="sbtime"><span class="tr">9:41</span></p>
+
+  <!-- 75:14843 Group 18 -->
+  <img class="stack" src="assets/h8-stack.svg" alt="">
+  <p class="d n40 rt" style="left:68px;top:263px;width:52px"><span class="tr">1/3</span></p>
+  <p class="d n15" style="left:28px;top:242px;width:22px"><span class="tr">Set</span></p>
+  <p class="d n40 rt" style="left:73px;top:368px;width:47px"><span class="tr">70</span></p>
+  <p class="d n16" style="left:28px;top:348px;width:45px"><span class="tr">Weight</span></p>
+  <p class="d n16" style="left:28px;top:364px;width:26px;font-family:'SF Pro Text',-apple-system,sans-serif;font-weight:300"><span class="tr">(kg)</span></p>
+  <p class="d n40 rt" style="left:78px;top:473px;width:42px"><span class="tr">15</span></p>
+  <p class="d n15" style="left:28px;top:452px;width:32px"><span class="tr">Reps</span></p>
+</div>
+
+<p class="cap" id="e">DON01</p>
+
+</body></html>

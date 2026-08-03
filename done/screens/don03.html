@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DON02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Every value here is read from Figma node 75:14855
+   (375x812), file 1m8o5tnDwNLpNhhcGJafgK, not eyeballed. get_variable_defs on
+   this node returns {} - like the other Sketch-imported screens in this file it
+   binds no tokens at all, so every colour below is a literal read off the node
+   or out of its own exported vector:
+     frame #FFFFFF r24, DONE plate #000000 @70% over a 2.718px backdrop blur,
+     ruler plate #F8F8F8, ruler stripes #CBCBCB, ruler dots + values #4A4A4A,
+     bead ovals #D8D8D8 with the active one #50E3C2, button/Set plate white @80%
+     with a 0.976744px #50E3C2 stroke, button/currentExercise plate white @90%
+     with a 0.976744px #9B9B9B stroke, TopBar block #000000 with a 2px #9B9B9B
+     stroke, its clock #F1F1F2, burger #F5A623, shuffle + calendar #4D4D4D,
+     "3" #9B9B9B against "/4" #4A4A4A, status bar white.
+
+   NO DEVICE CHROME. The frame's own 1px black stroke is chrome and is dropped;
+   its #FFF fill and real 24px radius are kept. Inside 75:14894 "iPhone
+   foundation" the boolean-operation "iPhone X Frame" is hidden="true" in the
+   file and is not rendered at all, so the only survivor is "Notch Copy"
+   (219x31 at 78,0). Its export is byte-identical (md5
+   3509589c316eeae37c5521573032b952) to assets/wo-notch.svg already in this
+   folder, so that file is reused rather than duplicated.
+
+   Paints nothing, therefore not rendered: 75:14858 "item/progressBar"
+   (375x4 at 0,652) - an empty instance, no fill, no children, verified by an
+   isolated get_design_context. Hidden in the file: 75:14864 "button/Reps" and
+   75:14865 "button/Weight" (both 100x60, hidden="true"); only 75:17427
+   "button/Set" survives inside 75:14863 "bottom Buttons Copy".
+
+   Paint order is Figma's child order (bottom-to-top). That order puts
+   75:14861 "item/progressBeeds" (50x8 at 163,554, inside the "bg (image)"
+   group) BELOW 75:14862 "item/ruler.Sets", whose opaque #F8F8F8 plate spans
+   0,552 -> 375,652 and covers the beads completely. The beads are built here
+   anyway, at their real coordinates, so the layering is the file's and not a
+   deletion; the button/Set plate in the same situation is above the photo and
+   does show. Groups (75:14856, 75:14859, 75:14863, 75:14873) are display:
+   contents in Figma's own output and carry no geometry; their children are
+   positioned directly in frame space.
+
+   module/exerciseImage 75:14860: the photo rect is 752x359 at -396,20 in
+   module space (module at 0,170) and its "Mask" vector exports as a plain
+   375x400 rect (path M0 0H375V400H0V0Z), i.e. a straight rectangular clip, so
+   it ships as overflow:hidden at 0,170 rather than as a CSS mask image.
+
+   Type: SF Pro Display Bold / SF Pro Text Semibold as the file names them,
+   plus IBM Plex Sans Bold 36 for the title (loaded from Google Fonts). Figma's
+   auto line height for the SF faces is fontSize x ~1.1933 (hhea asc 1950,
+   desc -494, upem 2048) which is what the browser's line-height:normal
+   computes too, so "normal" leadings are left to the browser; the title's
+   explicit 30px leading is pinned. Tracking is handled by the .tr span, not by
+   letter-spacing on the block; see the note there.
+
+   Note on the numbers: Figma's metadata boxes for text nodes are integer-
+   rounded, and get_design_context's percentage insets disagree with them by up
+   to 3.5px on the WIDTH of centre-aligned lines (DONE: 103 vs 110, "3/4": 44
+   vs 49). The alignment-relevant edge always agrees (left edge for the
+   left-aligned title, right edge for the right-aligned "exercise"), and for
+   centred lines the two boxes share a centre to within 0.5px, so the glyphs
+   land in the same place either way. Metadata boxes are what ship.
+
+   Asset inventory: 13 SVGs (as-*) plus the shared wo-notch.svg, and one raster:
+   as-photo.webp, the original 7250x3458 RGBA export at 9.4 MB drawn at 752x359.
+   That is a 9.6x downscale and is by far the biggest optimisation opportunity
+   on this screen - not performed. as-calendar.svg (7.7 kB) and as-stripes.svg
+   (4.8 kB) are the next heaviest. The "Mask" export was fetched and dropped
+   (see above). */
+*{box-sizing:border-box}
+p{margin:0}
+body{margin:0;background:#dcdce0;font-family:'SF Pro Text',-apple-system,sans-serif;
+     display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 0 80px}
+.cap{font:12px/1.4 ui-monospace,monospace;color:#6a6a72;letter-spacing:.03em}
+.cap:target{display:none}   /* embedded at #e: no caption */
+body:has(.cap:target){padding:0;gap:0;background:transparent}
+
+.fr{position:relative;width:375px;height:812px;border-radius:24px;overflow:hidden;
+    isolation:isolate;background:#fff}
+.fr img{display:block;max-width:none}
+/* Tracking lives on an inline span carrying margin-right:-tracking, never on the
+   block. Figma's letterSpacing sits BETWEEN glyphs, CSS also adds it after the
+   last one, so a centred line lands tracking/2 off - and a right-aligned line
+   lands a full tracking off. The negative margin cancels exactly the trailing
+   spacing, so the line width equals Figma's and centring behaves. */
+.tr{letter-spacing:var(--t);margin-right:calc(0px - var(--t))}
+.sfd{font-family:'SF Pro Display',-apple-system,sans-serif}
+
+/* ---------- 75:14856 button/done (group) ---------------------------------
+   75:14857 button/Done, 375x160 at 0,652; 75:14858 item/progressBar paints
+   nothing (see head comment). */
+.doneplate{position:absolute;left:0;top:652px;width:375px;height:160px;
+           background:#000;opacity:.7;backdrop-filter:blur(2.718px)}
+.donetxt{position:absolute;left:137px;top:708px;width:103px;height:48px;color:#fff;
+         text-align:center;text-transform:uppercase;white-space:nowrap;--t:-2.4px;
+         font:700 40px/normal 'SF Pro Display',-apple-system,sans-serif}
+
+/* ---------- 75:14859 bg (image) (group) ----------------------------------
+   75:14860 module/exerciseImage 376x400 at 0,170; its Mask is a plain
+   375x400 rect at 0,0 -> a rectangular clip. Photo rect 752x359 at -396,20. */
+.photoclip{position:absolute;left:0;top:170px;width:375px;height:400px;overflow:hidden}
+.photoclip img{position:absolute;left:-396px;top:20px;width:752px;height:359px}
+/* 75:14861 item/progressBeeds, 50x8 at 163,554 */
+.beads{position:absolute;left:163px;top:554px;width:50px;height:8px}
+.beads img{position:absolute}
+
+/* ---------- 75:14862 item/ruler.Sets, 375x100 at 0,552 ---------- */
+.ruler{position:absolute;left:0;top:552px;width:375px;height:100px;background:#f8f8f8}
+.stripes{position:absolute;left:3px;top:577px;width:369px;height:70px}
+.rdots{position:absolute;left:66px;top:565px;width:243px;height:3px}
+.rval{position:absolute;top:556px;height:19px;color:#4a4a4a;text-align:center;
+      white-space:nowrap;font:700 16px/19px 'SF Pro Display',-apple-system,sans-serif}
+
+/* ---------- 75:14863 bottom Buttons Copy -> 75:17427 button/Set, 100x60 at
+   193,479. Its plate vector is 100x68 (the 8px pointer tail overflows the
+   frame downwards) and is drawn from the frame's own origin. ---------- */
+.setplate{position:absolute;left:193px;top:479px;width:100px;height:68px}
+.setval{position:absolute;left:221.5px;top:499px;width:42px;height:36px;color:#000;
+        text-align:center;white-space:nowrap;--t:-1.8px;
+        font:700 30px/normal 'SF Pro Display',-apple-system,sans-serif}
+.setlbl{position:absolute;left:227px;top:484px;width:32px;height:18px;color:#4a4a4a;
+        text-align:center;white-space:nowrap;--t:-.9px;
+        font:700 15px/normal 'SF Pro Display',-apple-system,sans-serif}
+
+/* ---------- 75:14873 Header (group) ---------- */
+/* 75:14874 button/currentExercise, 70x60 at 289,100 */
+.exbtn{position:absolute;left:289px;top:100px;width:70px;height:60px}
+.exval{position:absolute;left:301px;top:118px;width:44px;height:36px;color:#9b9b9b;
+       text-align:center;white-space:nowrap;--t:-1.8px;
+       font:700 30px/normal 'SF Pro Display',-apple-system,sans-serif}
+.exval i{font-style:normal;color:#4a4a4a}
+.exlbl{position:absolute;left:299px;top:104px;width:52px;height:18px;color:#4a4a4a;
+       text-align:right;white-space:nowrap;--t:-.9px;
+       font:700 15px/normal 'SF Pro Display',-apple-system,sans-serif}
+.shuffle{position:absolute;left:76px;top:183px;width:29.993px;height:20px}
+.calendar{position:absolute;left:31px;top:180px;width:25px;height:24.999px}
+/* 75:14892 Weighted Crunch, 179x60 at 27,100 - two 30px lines */
+.title{position:absolute;left:27px;top:100px;width:179px;height:60px;color:#4a4a4a;
+       text-transform:uppercase;letter-spacing:-2px;white-space:nowrap;
+       font:700 36px/30px 'IBM Plex Sans',sans-serif}
+.title p{position:relative;top:2px}
+    /* Figma's box is 27,100 / 179x60 with a 30px leading and that is what is
+       built; the +2px is a pure baseline compensation. Chrome's half-leading
+       for Google's IBM Plex Sans (hhea asc 1025 / desc -275, upem 1000) puts
+       the cap-top of line 1 at y102 where Figma's own render puts it at y104,
+       and line 2 shifts by exactly the same 2px, so it is a constant metrics
+       offset between the two builds of the face, not a layout error. Measured
+       against the reference render, not eyeballed. */
+/* 75:14893 module/TopBar, 375x80 at 0,0 */
+.topbar{position:absolute;left:-2px;top:-2px;width:379px;height:84px;background:#000;
+        background-clip:padding-box;border:2px solid #9b9b9b}
+    /* 2px stroke, OUTSIDE aligned. Figma's codegen boxes it at inset-0 of the
+       375x80 node, which would be an inside stroke; the file disagrees - the
+       node's black fill runs to y80 and the grey stroke sits on y80..82, so the
+       stroke straddles nothing and lies wholly outside. Box therefore drawn at
+       -2,-2 / 379x84 with border-box sizing, so the padding box is exactly the
+       node's 375x80 and the black fill is clipped to it. */
+.clock{position:absolute;left:243px;top:41px;width:116px;height:36px;color:#f1f1f2;
+       text-align:right;white-space:nowrap;
+       font:700 30px/normal 'SF Pro Display',-apple-system,sans-serif}
+.burger{position:absolute;left:30px;top:45px;width:30px;height:24px}
+
+/* ---------- 75:14894 iPhone foundation ----------------------------------
+   "iPhone X Frame" is hidden in the file; only Notch Copy + Status Bar ship. */
+.notch{position:absolute;left:78px;top:0;width:219px;height:31px}
+.sbtime{position:absolute;left:20.944px;top:14px;width:54px;text-align:center;color:#fff;
+        white-space:nowrap;--t:-.3px;
+        font:600 15px/normal 'SF Pro Text',-apple-system,sans-serif}
+.sbcell{position:absolute;left:293.218px;top:17.667px;width:16.955px;height:10.667px}
+.sbwifi{position:absolute;left:315.160px;top:17.331px;width:15.293px;height:11px}
+.sbbatt{position:absolute;left:335.439px;top:17.333px;width:24.263px;height:11.333px}
+</style>
+</head><body>
+
+<div class="fr">
+  <!-- 75:14856 button/done -> 75:14857 button/Done -->
+  <div class="doneplate"></div>
+  <p class="donetxt"><span class="tr">DONE</span></p>
+
+  <!-- 75:14859 bg (image) -> 75:14860 module/exerciseImage -->
+  <div class="photoclip"><img src="assets/as-photo.webp" alt=""></div>
+  <!-- 75:14861 item/progressBeeds -->
+  <div class="beads">
+    <img src="assets/as-oval.svg"  alt="" style="left:0;top:1px;width:6px;height:6px">
+    <img src="assets/as-oval.svg"  alt="" style="left:14px;top:1px;width:6px;height:6px">
+    <img src="assets/as-oval2.svg" alt="" style="left:28px;top:0;width:8px;height:8px">
+    <img src="assets/as-oval.svg"  alt="" style="left:44px;top:1px;width:6px;height:6px">
+  </div>
+
+  <!-- 75:14862 item/ruler.Sets -->
+  <div class="ruler"></div>
+  <img class="stripes" src="assets/as-stripes.svg" alt="">
+  <p class="rval" style="left:22.5px;width:11px">4</p>
+  <p class="rval" style="left:102px;width:11px">6</p>
+  <p class="rval" style="left:182px;width:11px">8</p>
+  <p class="rval" style="left:258px;width:19px">10</p>
+  <p class="rval" style="left:337.5px;width:18px">12</p>
+  <img class="rdots" src="assets/as-dots.svg" alt="">
+
+  <!-- 75:14863 bottom Buttons Copy -> 75:17427 button/Set -->
+  <img class="setplate" src="assets/as-setplate.svg" alt="">
+  <p class="setlbl"><span class="tr">Load</span></p>
+  <p class="setval"><span class="tr">9.5</span></p>
+
+  <!-- 75:14873 Header -->
+  <img class="exbtn" src="assets/as-exbtn.svg" alt="">
+  <p class="exlbl"><span class="tr">exercise</span></p>
+  <p class="exval"><span class="tr">3<i>/4</i></span></p>
+  <img class="shuffle" src="assets/as-shuffle.svg" alt="">
+  <img class="calendar" src="assets/as-calendar.svg" alt="">
+  <div class="title"><p>Weighted</p><p>Crunch</p></div>
+  <div class="topbar"></div>
+  <p class="clock">00:13:11</p>
+  <img class="burger" src="assets/as-burger.svg" alt="">
+
+  <!-- 75:14894 iPhone foundation -->
+  <img class="notch" src="assets/wo-notch.svg" alt="">
+  <img class="sbbatt" src="assets/as-battery.svg" alt="">
+  <img class="sbwifi" src="assets/as-wifi.svg" alt="">
+  <img class="sbcell" src="assets/as-cellular.svg" alt="">
+  <p class="sbtime"><span class="tr">9:41</span></p>
+</div>
+
+<p class="cap" id="e">DON02</p>
+
+</body></html>

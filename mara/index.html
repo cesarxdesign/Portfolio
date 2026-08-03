@@ -9,6 +9,7 @@
 --orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#4b4b51;--hair:#e6e2d8;--accent:#ef6a1e}
+/* THEME LAW: every visual variable must be defined for BOTH modes — the :root defaults AND each [data-theme] block below. A value present in one mode only = broken page in the other. Check light AND dark before shipping. */
 :root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e}
@@ -6895,7 +6896,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
     if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount|penfold|cable)$/.test(h))
+    else if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(h))
       posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
   },true);
 })();

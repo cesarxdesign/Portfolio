@@ -7,6 +7,7 @@
 <style>
 *{box-sizing:border-box}
 :root{--bg:#f3f4f5;--card:#fff;--ink:#1a1c1f;--body:#4a4e54;--mut:#878c93;--line:#e5e7ea;--accent:#5c626a;--sh1:0 1px 2px rgba(18,20,23,.05);--sh2:0 18px 44px -20px rgba(18,20,23,.22);--ok:#16a34a;--wip:#f59e0b;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(243,244,245,.86);--lab:var(--mut)}
+/* THEME LAW: every visual variable must be defined for BOTH modes — the :root defaults AND each [data-theme] block below. A value present in one mode only = broken page in the other. Check light AND dark before shipping. */
 :root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6);--ok:#4ade80;--wip:#fbbf24;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(18,19,22,.86);--lab:var(--mut)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 28px 44px;min-height:100vh;display:flex;flex-direction:column}
 /* the page padding lives here, not on body, so the shared navbar can sit
@@ -1695,7 +1696,7 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 <path id="Oval_u304" d="M3 0.299805C4.49117 0.299805 5.7002 1.50883 5.7002 3C5.7002 4.49117 4.49117 5.7002 3 5.7002C1.50883 5.7002 0.299805 4.49117 0.299805 3C0.299805 1.50883 1.50883 0.299805 3 0.299805Z" fill="#52CCC6" stroke="#26ACA5" stroke-width="0.6"/>
 </svg></div></div></div>
 </div></template></span></div></a></div>
-  <div class="grid tail"><a class="card wip"><i class="rdy"></i><span class="kick">Fitness · ongoing</span><h2>Done</h2><p class="claim">A gym app launched when every gym on earth closed.</p><span class="role">Co-founder, still working on it</span></a><a class="card" href="penfold/index.html"><i class="rdy"></i><span class="kick">Pensions · 2019-20</span><h2>Penfold</h2><p class="claim">From first hire, to an award winning pension</p><span class="role">Founding Designer, first hire</span></a><a class="card" href="cable/index.html"><i class="rdy"></i><span class="kick">Fincrime · 2021-22</span><h2>Cable</h2><p class="claim">A one trick pony, turned full-fledged banking suite</p><span class="role">Founding Designer</span></a><a class="card wip"><i class="rdy"></i><span class="kick">Web3 wallet · 2025</span><h2>Trust Wallet</h2><p class="claim">Wallet onboarding, rebuilt for 200 million.</p><span class="role">Lead Product Designer</span></a></div>
+  <div class="grid tail"><a class="card" href="penfold/index.html"><i class="rdy"></i><span class="kick">Pensions · 2019-20</span><h2>Penfold</h2><p class="claim">From first hire, to an award winning pension</p><span class="role">Founding Designer, first hire</span></a><a class="card" href="cable/index.html"><i class="rdy"></i><span class="kick">Fincrime · 2021-22</span><h2>Cable</h2><p class="claim">A one trick pony, turned full-fledged banking suite</p><span class="role">Founding Designer</span></a><a class="card wip"><i class="rdy"></i><span class="kick">Web3 wallet · 2025</span><h2>Trust Wallet</h2><p class="claim">Wallet onboarding, rebuilt for 200 million.</p><span class="role">Lead Product Designer</span></a><a class="card" href="done/index.html"><i class="rdy"></i><span class="kick">Fitness · ongoing</span><h2>Done</h2><p class="claim">A gym app launched when every gym on earth closed.</p><span class="role">Co-founder, still working on it</span></a></div>
 
   <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
 
@@ -1788,7 +1789,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
     if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
-    else if(/^\/(confirmo|mara|starcount|penfold|cable)$/.test(h))
+    else if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(h))
       posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
   },true);
 })();
