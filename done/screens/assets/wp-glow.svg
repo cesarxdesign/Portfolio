@@ -1,11 +1,11 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="393" height="160" viewBox="0 0 393 160" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="glow mask">
 <mask id="mask0_0_400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="393" height="160">
-<path id="mask" d="M0 160H393V0L331.73 37.63C329.21 39.18 326.31 40 323.35 40H69.65C66.69 40 63.79 39.18 61.27 37.63L0 0V160Z" fill="#D9D9D9"/>
+<path id="mask" d="M0 160H393V0L331.728 37.6337C329.209 39.1809 326.31 40 323.354 40H69.6463C66.69 40 63.7915 39.1809 61.2724 37.6337L0 0V160Z" fill="#D9D9D9"/>
 </mask>
 <g mask="url(#mask0_0_400)">
 <g id="glow" filter="url(#filter0_dd_0_400)">
-<path d="M0-692H393V0L331.73 37.63C329.21 39.18 326.31 40 323.35 40H69.65C66.69 40 63.79 39.18 61.27 37.63L0 0V-692Z" fill="black"/>
+<path d="M0 -692H393V0L331.728 37.6337C329.209 39.1809 326.31 40 323.354 40H69.6463C66.69 40 63.7915 39.1809 61.2724 37.6337L0 0V-692Z" fill="black"/>
 </g>
 </g>
 </g>

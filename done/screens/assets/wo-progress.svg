@@ -3,7 +3,7 @@
 <g id="mask" filter="url(#filter0_d_0_244)">
 <path d="M150 12H225" stroke="#14EBEB" stroke-width="8"/>
 </g>
-<path id="Ellipse 4" d="M228 12C240.64 12 253.06 15.33 264 21.65C274.94 27.97 284.04 37.05 290.35 48L228 84L228 12Z" stroke="#14EBEB" stroke-width="8"/>
+<path id="Ellipse 4" d="M228 12C240.639 12 253.055 15.3268 264 21.6462C274.945 27.9655 284.035 37.0546 290.354 48L228 84L228 12Z" stroke="#14EBEB" stroke-width="8"/>
 </g>
 <defs>
 <filter id="filter0_d_0_244" x="134" y="0" width="107" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
