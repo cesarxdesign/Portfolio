@@ -34,7 +34,7 @@ img{display:block;max-width:100%}
 
 /* screens: the box is a container, the iframe scales to its width.
    Inlined as shadow roots at build, exactly like penfold. */
-.scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid var(--line);background:#F8F8F8;
+.scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid #e7e8ea;background:#F8F8F8;
      box-sizing:content-box;container-type:inline-size;aspect-ratio:var(--iw) / var(--ih)}
 .scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;
             width:calc(var(--iw) * 1px);height:calc(var(--ih) * 1px);
@@ -86,14 +86,14 @@ img{display:block;max-width:100%}
 /* The frame's corner is the one that shows, so it is what gets set. 6px at the
    full-size render (480/1440) and 4px at grid scale (292/1440). The box clips
    to the same value so border and clip agree. */
-.scr.solo,.pair .scr{border-radius:6px;--frameR:18px}
-.g8k .scr{border-radius:4px;--frameR:19.7px}
+.scr.solo,.pair .scr{border-radius:6px;--frameR:15.07px}
+.g8k .scr{border-radius:4px;--frameR:14.81px}
 /* Same corner when the page is served as source (iframes): a custom prop cannot
    cross the document boundary, so round the iframe's own paint. Pre-transform
    value x render scale = 6px at 477.71 wide, 4px at 291.78. Build strips
    iframes, so these rules never reach dist. */
-.scr.solo iframe,.pair .scr iframe{border-radius:18.09px}
-.g8k .scr iframe{border-radius:19.74px}
+.scr.solo iframe,.pair .scr iframe{border-radius:15.07px}
+.g8k .scr iframe{border-radius:14.81px}
 /* Below the column's own measure the overlap and the bleed stop making sense:
    pairs stack, the grid drops to two up and returns inside the column. */
 @media(max-width:1000px){
