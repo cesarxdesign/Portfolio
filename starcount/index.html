@@ -1,7 +1,5 @@
 <!doctype html>
-<html lang="en"><head><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><base href="/starcount/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+<html lang="en"><head><style>@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/starcount/fonts/IBMPlexMono-400.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/starcount/fonts/IBMPlexMono-500.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/starcount/fonts/IBMPlexMono-600.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/starcount/fonts/IBMPlexMono-700.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/starcount/fonts/IBMPlexSans-100.woff2) format('woff2')}@font-face{font-family:'IBM Plex Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/starcount/fonts/IBMPlexSerif-400.woff2) format('woff2')}@font-face{font-family:'IBM Plex Serif';font-style:normal;font-weight:500;font-display:swap;src:url(/starcount/fonts/IBMPlexSerif-500.woff2) format('woff2')}@font-face{font-family:'IBM Plex Serif';font-style:normal;font-weight:600;font-display:swap;src:url(/starcount/fonts/IBMPlexSerif-600.woff2) format('woff2')}</style><base href="/starcount/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Starcount &middot; Cesar Garcia</title>
 <link rel="stylesheet" href="../case-shared.css">
 <style>
@@ -13,7 +11,6 @@
  --hair:rgba(30,60,80,.15);--accent:#0b968d;
  --tw:#1DA1F2;--rm:#DA291C;--cbg:#f0f4f7;--cbd:rgba(30,60,80,.10);--cav1:#e3eaef;--cav2:#ccd7df;--cgly:#8a9ba7;--cbar:#dde4ea;--cnam:#c6d0d8
 }
-/* THEME LAW: every visual variable must be defined for BOTH modes — the :root defaults AND each [data-theme] block below. A value present in one mode only = broken page in the other. Check light AND dark before shipping. */
 :root[data-theme="dark"]{
  --bg:#0e141a;--ink:#f2f6f8;--body:#c3ced6;--lede:#dae3e9;--mut:#7f8f9b;--metab:#dbe4ea;
  --lab:#66fff7;--line:rgba(140,170,190,.16);--hot:#16444a;--phbd:#33505f;--pht:#7f8f9b;--phtb:#c3ced6;
@@ -24,15 +21,8 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:antialiased;padding:0 0 120px;transition:background .25s}
 ::selection{background:var(--lab);color:var(--bg)}
-
-/* flag */
-/* structure */
 .page{max-width:var(--colW);margin:0 auto;padding:0 var(--colPad)}
 .sec p:last-child{margin-bottom:0}
-
-/* receipts */
-
-/* venn */
 .venn .vsvg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 .s2g{display:flex;gap:46px;align-items:center;margin-top:8px}
 .s2t{flex:1;min-width:0}
@@ -48,7 +38,6 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 .vc.rm,.vo.rm{left:20.6966%;top:31.8116%}
 .vo.rm{border-color:var(--rm)}
 .vo{position:absolute;width:59.6782%;aspect-ratio:1;border-radius:50%;border:1px solid}
-/* blur lives only in the overlaps: outer circle clips, inner circle carries the filter */
 .vx{position:absolute;width:59.6782%;aspect-ratio:1;border-radius:50%;overflow:hidden;pointer-events:none}
 .vx>i{position:absolute;display:block;width:100%;aspect-ratio:1;border-radius:50%;backdrop-filter:blur(2.5px) saturate(1.75) brightness(1.03);-webkit-backdrop-filter:blur(2.5px) saturate(1.75) brightness(1.03)}
 .vx.a,.vx.b{left:2.448%;top:2.5014%}
@@ -63,22 +52,10 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 .vl.b{left:50%;bottom:-4%;transform:translateX(-50%);text-align:center}
 .vfc{position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);margin:0;font:700 13px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:var(--ink);white-space:nowrap}
 @media(max-width:700px){.vl.l,.vl.r{transform:none}}
-
-/* catchment stack */
 .cstack{display:flex;flex-direction:column;gap:12px;margin:30px 0 6px}
 .cstack .ci{position:relative;width:440px;max-width:100%;height:71px;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
-.cstack iframe{border:0;width:416px;height:55px;pointer-events:none}
-
-/* screens */
-/* scrfit() used to measure each .scr and scale its iframe. Same arithmetic in
-   CSS: the box is a container, so 100cqw is its content width, and the scale is
-   that over the screen's own width. content-box, so the border sits outside the
-   ratio exactly as scrfit's (width - borders) did. */
 .scr{position:relative;overflow:hidden;border-radius:10px;margin:16px 0;border:1px solid var(--line);background:var(--panel);
      box-sizing:content-box;container-type:inline-size;aspect-ratio:var(--iw) / var(--ih)}
-.scr iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;
-            width:calc(var(--iw) * 1px);height:calc(var(--ih) * 1px);
-            transform:scale(calc(100cqw / (var(--iw) * 1px)))}
 .srow{display:flex;gap:14px;margin:30px 0 6px}
 .srow .scr{flex:1;min-width:0;margin:0}
 .prow4{display:flex;gap:12px;margin:12px 0}
@@ -86,54 +63,37 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 .prow4.caps{margin:14px 0}
 .prow4.caps span{flex:1;text-align:center;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--lab)}
 .rowlab{margin:26px 0 10px;padding-left:9px;text-align:left;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--pht)}
-
-/* lightbox */
-
-/* hero glass pair (canonical recipe) */
 .ghero{display:flex;justify-content:center;align-items:center;position:relative;perspective:1300px}
 .ghero .gf{position:relative;overflow:hidden;border-radius:10.5px;backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.3);padding:2.5px}
 .ghero .gf.l{transform:rotateY(23.41deg);z-index:2;width:50.83%}
 .ghero .gf.r{transform:rotateY(-17.11deg);margin-left:-5.85%;z-index:1;width:59.17%}
 .ghero .gf .vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;border-radius:0;box-shadow:none}
 .ghero .gf{border-radius:5.5px}
-.ghero .gf .scr{margin:0;border:0;border-radius:3px;box-shadow:none;position:relative;z-index:1;background:none;clip-path:inset(1px round 2px)}   /* same as 04: tighter corners, no halo, 1px eaten all sides */
+.ghero .gf .scr{margin:0;border:0;border-radius:3px;box-shadow:none;position:relative;z-index:1;background:none;clip-path:inset(1px round 2px)}
 .ghero .seam{display:none;position:absolute;top:-16px;bottom:-16px;width:2px;background:var(--lab);cursor:ew-resize;z-index:6;touch-action:none}
 .ghero .seam::after{content:"";position:absolute;left:50%;top:-7px;width:11px;height:11px;border-radius:50%;background:var(--lab);transform:translateX(-50%)}
 .ghero .seam::before{content:attr(data-f);position:absolute;left:50%;top:-30px;transform:translateX(-50%);font:700 11px/1 'IBM Plex Mono',monospace;color:var(--lab);white-space:nowrap}
-
-/* canonical glass */
 .glassf{position:relative;overflow:hidden;border-radius:10.5px;backdrop-filter:blur(7px) saturate(1.2);-webkit-backdrop-filter:blur(7px) saturate(1.2);background:linear-gradient(125deg,rgba(255,255,255,.05),rgba(255,255,255,.015) 50%,rgba(160,150,220,.04));border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 28px rgba(0,0,0,.15);padding:2.5px}
 .glassf>.vb{position:absolute;left:-2px;top:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;border-radius:0;box-shadow:none}
 .glassf>.scr,.glassf>.gin,.glassf>.pane{position:relative;z-index:1}
 .glassf>.scr{margin:0;border:0;border-radius:8px;box-shadow:0 0 8px rgba(255,255,255,.22);background:var(--panel)}
 .srow>.glassf{flex:1;min-width:0}
-/* 04: desktop captures, not mobile views, so the corners run tighter.
-   Kept concentric: child 4 + the glass 2.5px padding = 6.5 outer. */
 .srow>.glassf{border-radius:5.5px}
 .srow>.glassf>.scr{border-radius:3px;border:0;box-shadow:none;clip-path:inset(1px round 2px)}
-/* 06 and 07: same treatment as 04 */
 .sec>.glassf:not(.grow){border-radius:9.5px}
-.sec>.glassf:not(.grow)>.scr{border-radius:7px;border:0;box-shadow:none;clip-path:inset(1px round 6px)}   /* eat 1px each way, glass frames what is left */
+.sec>.glassf:not(.grow)>.scr{border-radius:7px;border:0;box-shadow:none;clip-path:inset(1px round 6px)}
 .srow .scr{margin:0}
-
-/* 05 split: text + glass pane */
 .s5g{display:flex;gap:46px;align-items:center;margin-top:8px}
 .s5t{flex:1;min-width:0}
 .gpane{display:flex;flex-direction:column;gap:50px}
-/* canon glass: 2.5px bezel, radius = 12px .ci + bezel, plus the multiply bleed copy */
 .gwrap{flex:0 0 auto;border-radius:14.5px;--gp:24px;padding:var(--gp)}
 .gwrap>.gpane{position:relative;z-index:1}
-.gwrap>.gpane.vb{position:absolute;inset:calc(var(--gp) - 2px);filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;pointer-events:none}   /* 12px .ci + 36px pad = 48px pane, + 3.5px frame */
+.gwrap>.gpane.vb{position:absolute;inset:calc(var(--gp) - 2px);filter:blur(6px) saturate(1.7);mix-blend-mode:multiply;opacity:.3;z-index:0;pointer-events:none}
 .gpane .ci{width:146.7px;height:22px;padding:0;overflow:hidden}
-.gpane iframe{border:0;width:416px;height:55px;pointer-events:none;display:block;transform:scale(.4);transform-origin:0 0;margin-left:-8.76px}
 @media(max-width:900px){.s5g{flex-direction:column;align-items:flex-start}.gwrap,.gpane{max-width:100%}.gpane .ci{max-width:100%}}
-
-/* 07 glass rows */
 .grow{margin:26px 0 0}
 .grow>.gin{border-radius:8px;padding:14px 14px 14px;background:var(--ctl)}
 .gin .rowlab{margin:2px 0 12px}
-
-/* 03 inference triangle */
 .tri{position:relative;margin:46px 0 10px;display:flex;gap:80px;align-items:flex-start;width:max-content;--ph:66px;padding-bottom:calc(var(--ph)*2 - 41px)}
 .tri svg.lines{position:absolute;left:0;top:0;width:100%;height:106px;z-index:5;pointer-events:none;overflow:visible}
 .ucard{position:relative;width:183px;flex:0 0 auto}
@@ -155,19 +115,14 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 .ub i.n{height:10px;width:62%;background:var(--cnam);margin-top:0}
 .ub i.post{height:200px;width:88%;border-radius:5px;position:relative}
 .ub i.pdot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;margin:0;background:var(--pd)}
-
-/* foot */
 .foot{max-width:var(--colW);margin-left:auto;margin-right:auto;padding-left:var(--colPad);padding-right:var(--colPad)}
-
 @media(max-width:700px){
   .srow{flex-direction:column}
   .prow4{flex-wrap:wrap}
   .prow4 .scr{flex:1 1 44%}
   .prow4.caps{display:none}
 }
-/* figure spacing, from the system (Confirmo's 48 above / 56 below) */
 .sec>.tri,.sec>.srow,.sec>.glassf:not(.grow){margin-top:var(--figT);margin-bottom:var(--figB)}
-/* g05 - film strip: label outside the glass, frames butted, glass hugs the strip */
 .g05{margin:var(--figT) 0 var(--figB)}
 .g05>.rowlab{margin:0 0 10px}
 .g05>.glassf.grow{margin:0}
@@ -184,10 +139,7 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 </style>
 </head><body>
 <div class="flag"><a class="navhome" href="/">Home</a><span class="fvwrap"><a class="step" href="/mara" title="Mara" rel="prev">&lsaquo;</a><span class="fv">Starcount</span><a class="step" href="/penfold" title="Penfold" rel="next">&rsaquo;</a></span><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank">LinkedIn</a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
-
 <div class="page">
-
-  <!-- 01 · hero -->
   <header class="hd">
     <h1>Hit &pound;1M first-year target, in 91 days</h1>
     <p class="lede">Starcount built a clever dataset of their own, and had rights to data nobody had monetized before, including Twitter's first-ever data deal. But all that data wouldn't become a product, until I made it lie.</p>
@@ -197,10 +149,9 @@ body{margin:0;background:var(--bg);color:var(--body);-webkit-font-smoothing:anti
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1824px;height:1026px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1824.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
-<div style="background-color:#212d38;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:3584" data-name="05"><div style="position:absolute;display:contents;left:-905px;top:-322px" data-node-id="1:3585" data-name="screen shot BG"><div style="position:absolute;height:1095.35px;left:-123.5px;top:0;width:1947.5px" data-node-id="1:3586" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1710px;left:-905px;top:-322px;width:3040px" data-node-id="1:3588" data-name="Screenshot 2019-04-04 at 15.25.14"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div></div><div style="position:absolute;height:1026px;left:1507.65px;overflow:clip;top:0;width:316.35px" data-node-id="1:3590" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.95px;border-style:solid;border-color:#12181f" data-node-id="1:3591" data-name="bg"></div><div style="position:absolute;display:contents;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3592" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3593" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
+<div style="background-color:#212d38;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:3584" data-name="05"><div style="position:absolute;display:contents;left:-905px;top:-322px" data-node-id="1:3585" data-name="screen shot BG"><div style="position:absolute;height:1095.35px;left:-123.5px;top:0;width:1947.5px" data-node-id="1:3586" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"></div></div><div style="position:absolute;height:1710px;left:-905px;top:-322px;width:3040px" data-node-id="1:3588" data-name="Screenshot 2019-04-04 at 15.25.14"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div></div><div style="position:absolute;height:1026px;left:1507.65px;overflow:clip;top:0;width:316.35px" data-node-id="1:3590" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.95px;border-style:solid;border-color:#12181f" data-node-id="1:3591" data-name="bg"></div><div style="position:absolute;display:contents;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3592" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3593" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <g id="Mask_u305" opacity="0.5">
 </g>
 </svg></div><div style="position:absolute;top:45.74%;right:4.8%;bottom:-22.04%;left:5.11%;border-width:0.95px;border-style:solid;border-color:#9d9d9e;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:-4.75px -412.301px;mask-size:293.55px 912.95px;mask-image:url(&quot;data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI5My41NSIgaGVpZ2h0PSI5MTIuOTUiIHZpZXdCb3g9IjAgMCAyOTMuNTUgOTEyLjk1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBpZD0iTWFzayIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDBIMjkzLjU1VjkxMi45NUgwVjBaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K&quot;);-webkit-mask-image:url(&quot;data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI5My41NSIgaGVpZ2h0PSI5MTIuOTUiIHZpZXdCb3g9IjAgMCAyOTMuNTUgOTEyLjk1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBpZD0iTWFzayIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDBIMjkzLjU1VjkxMi45NUgwVjBaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K&quot;);-webkit-mask-position:-4.75px -412.301px;-webkit-mask-size:293.55px 912.95px;-webkit-mask-repeat:no-repeat;-webkit-mask-composite:source-in" data-node-id="1:3595" data-name="widget/Demographics"><div style="position:absolute;inset:0;overflow:clip" data-node-id="I1:3595;0:12350"><div style="position:absolute;top:-0.12%;right:-0.33%;bottom:-0.12%;left:-0.33%"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 286.9 784.7" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;display:block;max-width:none;width:100%;height:100%">
@@ -556,7 +507,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1920px;height:1080px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1920.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
 <div style="background-color:#ffffff;position:relative;width:100%;height:100%" data-node-id="1:1775" data-name="04"><div style="position:absolute;height:1413px;left:-420.46px;top:0;width:2511.674px" data-node-id="1:1776" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1080px;left:1722px;overflow:clip;top:0;width:199.8px" data-node-id="1:2262" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.6px;border-style:solid;border-color:#12181f" data-node-id="1:2263" data-name="bg"></div><div style="position:absolute;display:contents;top:3.33%;right:3.6%;bottom:3.28%;left:3.6%" data-node-id="1:2264" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:3.33%;right:3.6%;bottom:3.28%;left:3.6%" data-node-id="1:2265" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
@@ -1134,8 +1084,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
       <div class="seam" id="seam" title="drag the seam"></div>
     </div>
   </header>
-
-  <!-- 02 · the receipts -->
   <div class="band">
     <div class="in">
       <div class="stat"><b>&pound;1M</b><span>first-year target</span></div>
@@ -1145,8 +1093,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
     </div>
     <p class="roleline"><b>Head of Product Design, the company&rsquo;s first designer.</b> Audience intelligence, desktop web, sold into enterprise. I ran discovery across data, engineering, sales and client interviews, and grew the team from one to four within months. 2017-19.</p>
   </div>
-
-  <!-- 03 · the company -->
   <section class="sec">
     <p class="lab">context</p>
     <h2>Social listening 2.0.</h2>
@@ -1164,8 +1110,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
       <p class="tricap">If A follows B,<br>and B follows C,<br>A <b>might</b> have an interest in C too.</p>
     </div>
   </section>
-
-  <!-- 04 · the crossing -->
   <section class="sec">
     <p class="lab">product strategy</p>
     <h2>Three datasets, one vision.</h2>
@@ -1193,8 +1137,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
       </div>
     </div>
   </section>
-
-  <!-- 05 · the product -->
   <section class="sec">
     <p class="lab">iteration</p>
     <h2>A starved audience.</h2>
@@ -1208,7 +1150,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1225,9 +1166,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1241,17 +1182,17 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-off {
     position: absolute;
     inset: 0;
-    opacity: 0.6;               /* disabled state */
+    opacity: 0.6;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #ffffff;
     border: 2px solid #445565;
     border-radius: 100px;
@@ -1264,19 +1205,11 @@ html, body { margin: 0; padding: 0; }
   .dot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4103" data-name="component/switch/catchment.DIS">
@@ -1300,7 +1233,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1317,9 +1249,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1333,13 +1265,13 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .ldn-mask {
     position: absolute;
-    left: 2px; right: 2px;      /* 5.56% of 36 */
-    top: 5px; bottom: 5px;      /* 25% of 20 */
+    left: 2px; right: 2px;
+    top: 5px; bottom: 5px;
     background: #9d9d9e;
     border-radius: 92.857px;
     box-shadow: 0px 0px 4px 0px rgba(102, 255, 247, 0.7);
@@ -1352,17 +1284,10 @@ html, body { margin: 0; padding: 0; }
   .ldn-group svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-  /* Alt variant: component/switch/catchment.ON (KJTugZADZaNmBEGrnYE6yQ 7:2166).
-     Full row authored natively at 416 x 54.73684 px (NOT a scaled instance:
-     no scale wrapper, all values are the frame's own px). */
-  
-  
-  
-
   .label2 {
     position: absolute;
     left: 136.842102050781px;
@@ -1412,15 +1337,7 @@ html, body { margin: 0; padding: 0; }
     width: 43.7894744873047px; height: 43.7894744873047px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4104" data-name="component/switch/catchment.LDN">
@@ -1450,7 +1367,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1467,9 +1383,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1483,12 +1399,12 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #66fff7;
     border-radius: 100px;
   }
@@ -1499,7 +1415,6 @@ html, body { margin: 0; padding: 0; }
     width: 12px; height: 12px;
     transform: translate(-50%, -50%);
   }
-  /* SVG bleeds for drop shadow: inset -8.33% -16.67% -25% -16.67% of 12px = -1 -2 -3 -2 */
   .dot svg {
     position: absolute;
     left: -2px; top: -1px;
@@ -1508,19 +1423,11 @@ html, body { margin: 0; padding: 0; }
   }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4105" data-name="component/switch/catchment.ON">
@@ -1555,7 +1462,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1572,9 +1478,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1588,12 +1494,12 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #ffffff;
     border: 2px solid #383838;
     border-radius: 100px;
@@ -1606,19 +1512,11 @@ html, body { margin: 0; padding: 0; }
   .dot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4106" data-name="component/switch/catchment.OFF">
@@ -1642,7 +1540,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1659,9 +1556,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1675,17 +1572,17 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-off {
     position: absolute;
     inset: 0;
-    opacity: 0.6;               /* disabled state */
+    opacity: 0.6;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #ffffff;
     border: 2px solid #445565;
     border-radius: 100px;
@@ -1698,19 +1595,11 @@ html, body { margin: 0; padding: 0; }
   .dot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4103" data-name="component/switch/catchment.DIS">
@@ -1734,7 +1623,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1751,9 +1639,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1767,13 +1655,13 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .ldn-mask {
     position: absolute;
-    left: 2px; right: 2px;      /* 5.56% of 36 */
-    top: 5px; bottom: 5px;      /* 25% of 20 */
+    left: 2px; right: 2px;
+    top: 5px; bottom: 5px;
     background: #9d9d9e;
     border-radius: 92.857px;
     box-shadow: 0px 0px 4px 0px rgba(102, 255, 247, 0.7);
@@ -1786,17 +1674,10 @@ html, body { margin: 0; padding: 0; }
   .ldn-group svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-  /* Alt variant: component/switch/catchment.ON (KJTugZADZaNmBEGrnYE6yQ 7:2166).
-     Full row authored natively at 416 x 54.73684 px (NOT a scaled instance:
-     no scale wrapper, all values are the frame's own px). */
-  
-  
-  
-
   .label2 {
     position: absolute;
     left: 136.842102050781px;
@@ -1846,15 +1727,7 @@ html, body { margin: 0; padding: 0; }
     width: 43.7894744873047px; height: 43.7894744873047px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4104" data-name="component/switch/catchment.LDN">
@@ -1884,7 +1757,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -1901,9 +1773,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -1917,12 +1789,12 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #66fff7;
     border-radius: 100px;
   }
@@ -1933,7 +1805,6 @@ html, body { margin: 0; padding: 0; }
     width: 12px; height: 12px;
     transform: translate(-50%, -50%);
   }
-  /* SVG bleeds for drop shadow: inset -8.33% -16.67% -25% -16.67% of 12px = -1 -2 -3 -2 */
   .dot svg {
     position: absolute;
     left: -2px; top: -1px;
@@ -1942,19 +1813,11 @@ html, body { margin: 0; padding: 0; }
   }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4105" data-name="component/switch/catchment.ON">
@@ -1989,7 +1852,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     <div class="ci"><template shadowrootmode="open"><style>:host{white-space:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;text-indent:0;text-align:start;font-style:normal;font-variant:normal;line-height:normal;font-weight:400}
 html, body { margin: 0; padding: 0; }
   * { box-sizing: border-box; }
-  /* Stage: instance renders at 416 x 54.7368421 px (source component 152 x 20 scaled by 416/152) */
   .fr {
     position: relative;
     width: 416px;
@@ -2006,9 +1868,9 @@ html, body { margin: 0; padding: 0; }
   }
   .label {
     position: absolute;
-    left: 50px;                 /* 32.89% of 152 */
-    top: calc(50% - 7px);       /* = 3px */
-    width: 70px;                /* right edge 21.05% of 152 */
+    left: 50px;
+    top: calc(50% - 7px);
+    width: 70px;
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
@@ -2022,12 +1884,12 @@ html, body { margin: 0; padding: 0; }
   }
   .switch {
     position: absolute;
-    left: 8px; top: 0;          /* 5.26% / 71.05% of 152 */
+    left: 8px; top: 0;
     width: 36px; height: 20px;
   }
   .switch-bg {
     position: absolute;
-    inset: 2px;                 /* 10% of 20 / 5.56% of 36 */
+    inset: 2px;
     background: #ffffff;
     border: 2px solid #383838;
     border-radius: 100px;
@@ -2040,19 +1902,11 @@ html, body { margin: 0; padding: 0; }
   .dot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .icon {
     position: absolute;
-    left: 126px; top: 2px;      /* 82.89% / 10% */
-    width: 16px; height: 16px;  /* right edge 6.58% of 152 */
+    left: 126px; top: 2px;
+    width: 16px; height: 16px;
     display: block;
   }
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
-/* Theme, from the page. These used to key off `html.dark`, a class the
-   parent set by reaching into this iframe's document. Inlined into a shadow
-   root there is no iframe and no outer `html` a shadow-scoped selector can
-   reach, so the rule silently stopped matching and the labels stayed #525252
-   on the dark panel, 2.37:1. A custom property inherits across the shadow
-   boundary, so the page just sets --chipink. The fallback is the light value,
-   which is what this screen shows on its own. */
 .label,.label2{color:var(--chipink,#525252)}
 .icon path,.icon2 path{fill:var(--chipink,#525252)}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 416.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="46:4106" data-name="component/switch/catchment.OFF">
@@ -2075,8 +1929,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
       </div>
     </div>
   </section>
-
-  <!-- 06 · features, mapped -->
   <section class="sec">
     <p class="lab">feature design</p>
     <h2>Features, mapped.</h2>
@@ -2089,10 +1941,9 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1560px;height:1080px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1560.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
-<div style="background-color:#ffffff;border-width:1.083px;border-style:solid;border-color:#ffffff;overflow:clip;position:relative;border-radius:8.667px;box-shadow:0px 4.333px 86.667px 0px rgba(0,0,0,0.16);width:100%;height:100%" data-node-id="1:71" data-name="01"><div style="position:absolute;display:contents;left:-840.67px;top:-267.81px" data-node-id="1:72" data-name="BG"><div style="position:absolute;height:1295.667px;left:-836.33px;top:-214.5px;width:2845.917px" data-node-id="1:73" data-name="Screen Shot 2017-11-16 at 16.15.06"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-01-imgscreenshot20171116at161506-939aad10.webp" alt="" style="position:absolute;height:107.69%;left:0;max-width:none;top:0;width:100%"></div></div><div style="position:absolute;height:1116.917px;left:-489.67px;top:0;width:1948.917px" data-node-id="1:74" data-name="Screen Shot 2017-11-16 at 16.13.54"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1395.394px;right:-50.92px;top:calc(50% - 110.12px);width:2451.583px;translate:0 -50%" data-node-id="1:75" data-name="Screen Shot 2017-11-16 at 16.13.54"><img src="assets/sc/sc-01-imgscreenshot20171116at161355-f49b2f69.webp" alt="" style="position:absolute;inset:0;max-width:none;object-position:bottom;pointer-events:none;width:100%;height:100%"></div></div><div style="position:absolute;height:1164.81px;right:-28.17px;top:calc(50% - 9px);width:422.167px;translate:0 -50%" data-node-id="1:76"><div style="position:absolute;display:contents;left:0;top:0" data-node-id="1:77" data-name="LEFT bookmark"><div style="position:absolute;background-color:rgba(70,80,90,0.7);border-color:#979797;border-width:1.027px;border-style:solid;height:1164.81px;left:0;mix-blend-mode:multiply;border-radius:8.217px;top:0;width:422.167px" data-node-id="1:78" data-name="Rectangle 16 Copy"></div><div style="word-break:break-word;position:absolute;height:63.685px;left:34.92px;overflow:clip;color:#ffffff;top:213.65px;text-transform:uppercase;width:318.423px;white-space:nowrap;font-style:normal" data-node-id="1:79"><div style="font-family:'IBM Plex Sans', sans-serif;font-weight:450;font-style:normal;position:absolute;line-height:0;left:19.35%;right:57.74%;font-size:14.38px;top:calc(50% - 17.46px)" data-node-id="1:80"><p style="line-height:normal;margin-bottom:0">Postcode</p><p style="line-height:normal">Sectors</p></div><div style="font-family:'IBM Plex Sans', sans-serif;font-weight:450;font-style:normal;position:absolute;line-height:0;left:82.9%;right:0;font-size:14.38px;top:calc(50% - 17.46px)" data-node-id="1:81"><p style="line-height:normal;margin-bottom:0">heads</p><p style="line-height:normal">on map</p></div><p style="font-family:'IBM Plex Mono', monospace;font-weight:450;font-style:normal;position:absolute;line-height:normal;left:0;right:81.29%;font-size:49.304px;text-align:right;top:calc(50% - 31.84px)" data-node-id="1:82">45</p><p style="font-family:'IBM Plex Mono', monospace;font-weight:450;font-style:normal;position:absolute;line-height:normal;left:54.19%;right:17.74%;font-size:49.304px;text-align:right;top:calc(50% - 31.84px)" data-node-id="1:83">982</p></div><div style="position:absolute;height:205.434px;left:39.03px;overflow:clip;top:309.18px;width:317.395px" data-node-id="1:84"><div style="position:absolute;inset:-17% 0 -14% 0" data-node-id="1:85" data-name="Insight tile/Passions"><div style="position:absolute;inset:0;opacity:0.7" data-node-id="I1:85;0:12778" data-name="bg"></div><div style="position:absolute;inset:0.38% 0.32% 87.02% 0.32%;opacity:0.9;background-image:linear-gradient(to top, rgba(33,45,56,0), #12181f)" data-node-id="I1:85;0:12779" data-name="bg copy 5"></div><div style="position:absolute;bottom:10.27px;height:5.136px;left:9.24px;width:10.272px" data-node-id="I1:85;0:12780" data-name="UI Icon/Icon/caret--down/$ui-05"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
+<div style="background-color:#ffffff;border-width:1.083px;border-style:solid;border-color:#ffffff;overflow:clip;position:relative;border-radius:8.667px;box-shadow:0px 4.333px 86.667px 0px rgba(0,0,0,0.16);width:100%;height:100%" data-node-id="1:71" data-name="01"><div style="position:absolute;display:contents;left:-840.67px;top:-267.81px" data-node-id="1:72" data-name="BG"><div style="position:absolute;height:1295.667px;left:-836.33px;top:-214.5px;width:2845.917px" data-node-id="1:73" data-name="Screen Shot 2017-11-16 at 16.15.06"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"></div></div><div style="position:absolute;height:1116.917px;left:-489.67px;top:0;width:1948.917px" data-node-id="1:74" data-name="Screen Shot 2017-11-16 at 16.13.54"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1395.394px;right:-50.92px;top:calc(50% - 110.12px);width:2451.583px;translate:0 -50%" data-node-id="1:75" data-name="Screen Shot 2017-11-16 at 16.13.54"><img src="assets/sc/sc-01-imgscreenshot20171116at161355-f49b2f69.webp" alt="" style="position:absolute;inset:0;max-width:none;object-position:bottom;pointer-events:none;width:100%;height:100%"></div></div><div style="position:absolute;height:1164.81px;right:-28.17px;top:calc(50% - 9px);width:422.167px;translate:0 -50%" data-node-id="1:76"><div style="position:absolute;display:contents;left:0;top:0" data-node-id="1:77" data-name="LEFT bookmark"><div style="position:absolute;background-color:rgba(70,80,90,0.7);border-color:#979797;border-width:1.027px;border-style:solid;height:1164.81px;left:0;mix-blend-mode:multiply;border-radius:8.217px;top:0;width:422.167px" data-node-id="1:78" data-name="Rectangle 16 Copy"></div><div style="word-break:break-word;position:absolute;height:63.685px;left:34.92px;overflow:clip;color:#ffffff;top:213.65px;text-transform:uppercase;width:318.423px;white-space:nowrap;font-style:normal" data-node-id="1:79"><div style="font-family:'IBM Plex Sans', sans-serif;font-weight:450;font-style:normal;position:absolute;line-height:0;left:19.35%;right:57.74%;font-size:14.38px;top:calc(50% - 17.46px)" data-node-id="1:80"><p style="line-height:normal;margin-bottom:0">Postcode</p><p style="line-height:normal">Sectors</p></div><div style="font-family:'IBM Plex Sans', sans-serif;font-weight:450;font-style:normal;position:absolute;line-height:0;left:82.9%;right:0;font-size:14.38px;top:calc(50% - 17.46px)" data-node-id="1:81"><p style="line-height:normal;margin-bottom:0">heads</p><p style="line-height:normal">on map</p></div><p style="font-family:'IBM Plex Mono', monospace;font-weight:450;font-style:normal;position:absolute;line-height:normal;left:0;right:81.29%;font-size:49.304px;text-align:right;top:calc(50% - 31.84px)" data-node-id="1:82">45</p><p style="font-family:'IBM Plex Mono', monospace;font-weight:450;font-style:normal;position:absolute;line-height:normal;left:54.19%;right:17.74%;font-size:49.304px;text-align:right;top:calc(50% - 31.84px)" data-node-id="1:83">982</p></div><div style="position:absolute;height:205.434px;left:39.03px;overflow:clip;top:309.18px;width:317.395px" data-node-id="1:84"><div style="position:absolute;inset:-17% 0 -14% 0" data-node-id="1:85" data-name="Insight tile/Passions"><div style="position:absolute;inset:0;opacity:0.7" data-node-id="I1:85;0:12778" data-name="bg"></div><div style="position:absolute;inset:0.38% 0.32% 87.02% 0.32%;opacity:0.9;background-image:linear-gradient(to top, rgba(33,45,56,0), #12181f)" data-node-id="I1:85;0:12779" data-name="bg copy 5"></div><div style="position:absolute;bottom:10.27px;height:5.136px;left:9.24px;width:10.272px" data-node-id="I1:85;0:12780" data-name="UI Icon/Icon/caret--down/$ui-05"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <g id="UI Icon/Icon/caret--down/$ui-05_u1" clip-path="url(#clip0_0_192_u1)">
 <path id="caret-down copy_u1" fill-rule="evenodd" clip-rule="evenodd" d="M10 0L5 5L0 0H10Z" fill="white"/>
 </g>
@@ -2346,7 +2197,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1560px;height:1080px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1560.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
 <div style="background-color:#ffffff;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:373" data-name="02"><div style="position:absolute;display:contents;left:calc(50% + 16.53px);top:calc(50% + 0.38px);translate:-50% -50%" data-node-id="1:375" data-name="screen shot"><div style="position:absolute;height:1370.71px;left:calc(50% + 16.53px);top:calc(50% + 0.38px);width:2392.415px;translate:-50% -50%" data-node-id="1:376" data-name="Screen Shot 2017-11-16 at 16.13.54"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-01-imgscreenshot20171116at161354-6c8dfc66.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div></div><div style="position:absolute;background-color:rgba(0,0,0,0.4);height:1080px;left:0;top:0;width:1560px" data-node-id="1:378" data-name="filter shade"></div><div style="position:absolute;height:463.295px;left:calc(50% + 0.04px);overflow:clip;top:calc(50% - 9.2px);width:559.943px;translate:-50% -50%" data-node-id="1:379" data-name="radius"><div style="position:absolute;top:0;right:0;bottom:0.17%;left:0" data-node-id="1:380" data-name="Path 2"><div style="position:absolute;top:-0.17%;right:-0.14%;bottom:-0.17%;left:-0.14%"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 561.477 464.063" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;display:block;max-width:none;width:100%;height:100%">
@@ -2377,7 +2227,7 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 <path id="logo_STARCOUNT_u67" fill-rule="evenodd" clip-rule="evenodd" d="M4.153 13.7385C2.51903 13.7385 1.90629 12.9183 1.22547 12.9183C0.612737 12.9183 0.408491 13.3284 0.408491 13.6701H0V9.56909H0.340409C0.340409 11.1411 1.77013 13.3967 4.153 13.3967C6.19545 13.3967 7.21668 12.0981 7.21668 10.8677C7.21668 8.74888 5.10614 8.47548 3.26793 7.72362C1.56588 7.04011 0.340409 6.08321 0.340409 3.96434C0.340409 1.77712 1.77013 0.136705 3.67642 0.136705C4.83381 0.136705 5.17422 0.546808 5.85504 0.546808C6.05929 0.546808 6.3997 0.410107 6.46778 0.205055H6.80819V3.28083H6.46778C6.46778 1.50372 5.17422 0.478458 3.67642 0.478458C2.17862 0.478458 1.22547 1.57207 1.22547 2.93908C1.22547 4.30609 2.2467 4.92125 4.49341 5.74145C6.80819 6.56166 8.23791 7.45022 8.23791 9.70579C8.23791 11.4146 6.94435 13.7385 4.153 13.7385M18.246 4.7162C18.246 2.52898 17.2928 0.751868 14.7057 0.751868H14.4334V13.1233H16.1354V13.4651H10.6889V13.1233H12.3909V0.751868H12.1186C9.46339 0.751868 8.57833 2.52898 8.57833 4.7162H8.23792V0.410115H18.7225V4.7162H18.246V4.7162ZM41.598 12.9183C41.3938 13.1233 41.1896 13.26 40.713 13.26C40.1002 13.26 39.6237 12.7816 39.6237 11.8247V9.91084C39.6237 8.20207 38.0578 6.63001 35.8111 6.63001C37.1727 6.63001 39.2152 5.3997 39.2152 3.48588C39.2152 1.43536 37.1727 0.341755 34.926 0.341755H29.5476V0.751858H31.2496V13.1233H29.5476V13.1233H28.1178L23.4202 0.0683524H23.1479L18.4502 13.1233H16.8843V13.4651H20.6288V13.1233H18.8587L20.2203 9.29568H24.5095L25.8711 13.1233H24.1691V13.4651H29.5476V13.4651H34.9941V13.1233H33.2921V6.90341H34.926C36.4238 6.90341 37.5812 7.45022 37.5812 8.95393V10.731C37.5812 11.9614 38.262 13.8068 40.2364 13.8068C41.1215 13.8068 41.6661 13.4651 41.8023 13.26L41.598 12.9183V12.9183ZM20.3565 8.95428L22.399 3.28118L24.4414 8.95428H20.3565V8.95428ZM33.292 6.56168V0.751877H34.7218C36.2196 0.751877 37.1727 1.43538 37.1727 3.55425C37.1727 5.87817 36.4919 6.56168 35.0622 6.56168H33.292V6.56168ZM51.0614 13.6701C50.9933 13.3967 50.6529 13.055 50.1763 13.055C49.5636 13.055 48.6105 13.6701 47.0446 13.6701C43.7086 13.6701 41.3257 10.526 41.3257 6.83506C41.3257 3.14413 43.7086 0 47.0446 0C48.2701 0 49.019 0.546805 49.9721 0.546805C50.3125 0.546805 50.6529 0.341753 50.721 0.0683506H51.0614V4.16939H50.721C50.721 1.64041 48.6105 0.341753 47.0446 0.341753C46.2276 0.341753 45.4787 0.478454 44.866 1.09361C44.049 1.91382 43.5043 3.75928 43.5043 6.83506C43.5043 9.91084 44.049 11.7563 44.866 12.5765C45.4787 13.1917 46.2276 13.3284 47.0446 13.3284C49.4274 13.3284 51.0614 11.6196 51.0614 9.15898H51.4018V13.6018H51.0614V13.6701ZM60.0482 1.16197C59.4355 0.546816 58.6866 0.410115 57.8696 0.410115C57.0526 0.410115 56.3037 0.546816 55.691 1.16197C54.874 1.98218 54.3293 3.82764 54.3293 6.90342C54.3293 9.9792 54.874 11.8247 55.691 12.6449C56.3037 13.26 57.0526 13.3967 57.8696 13.3967C58.6866 13.3967 59.4355 13.26 60.0482 12.6449C60.8652 11.8247 61.4098 9.9792 61.4098 6.90342C61.4098 3.82764 60.8652 1.98218 60.0482 1.16197M57.8696 13.7385C54.5336 13.7385 52.1508 10.5943 52.1508 6.90341C52.1508 3.21248 54.5336 0.0683524 57.8696 0.0683524C61.2056 0.0683524 63.5885 3.21248 63.5885 6.90341C63.5885 10.5943 61.2737 13.7385 57.8696 13.7385M84.1492 0.341762V0.683515H85.8513V9.77414L79.8601 0.341762H75.7071V0.341762H72.0987V0.683515H73.8008V9.70579C73.8008 11.688 72.6434 13.1917 70.5328 13.1917C68.3542 13.1917 67.4691 12.1664 67.4691 9.70579V0.683515H69.1712V0.341762H63.7927V0.683515H65.3586V9.70579C65.3586 12.3031 67.1287 13.6701 69.852 13.6701C72.9157 13.6701 74.0731 12.0981 74.0731 9.70579V0.683515H75.7071V0.683515H77.341V13.055H75.7071V13.3967H79.4516V13.055H77.6133V0.751866L85.7832 13.6018H86.1236V0.683515H87.7576V0.341762H84.1492V0.341762ZM98.3783 4.64785C98.3783 2.46063 97.4252 0.683515 94.8381 0.683515H94.5657V13.055H96.2678V13.3967H90.8212V13.055H92.5233V0.683515H92.251C89.5958 0.683515 88.7107 2.46063 88.7107 4.64785H88.3703V0.341762H98.7187V4.64785H98.3783V4.64785Z" fill="white"/>
 </svg></div><p style="word-break:break-word;position:absolute;font-family:&#x27;IBM Plex Sans&#x27;, sans-serif;font-weight:500;font-style:normal;height:17.642px;line-height:normal;left:138.05px;font-size:13.807px;color:#ffffff;top:calc(50% - 9.3px);text-transform:uppercase;width:144.205px;font-variation-settings:&quot;wdth&quot; 100" data-node-id="1:406">Audiences</p></div><div style="position:absolute;bottom:17.08%;overflow:clip;right:-34.59px;top:16.59%;width:172.585px" data-node-id="1:407" data-name="user ID"><div style="position:absolute;top:0;right:85.78%;bottom:0;left:0" data-node-id="1:408" data-name="Oval Copy"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 24.5455 24.5455" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <path id="Oval Copy_u68" d="M12.2727 24.5455C5.49469 24.5455 0 19.0508 0 12.2727C0 5.49469 5.49469 0 12.2727 0C19.0508 0 24.5455 5.49469 24.5455 12.2727C24.5455 19.0508 19.0508 24.5455 12.2727 24.5455Z" fill="#C8C8C8"/>
-</svg></div><div style="position:absolute;top:3.33%;right:86.25%;bottom:3.33%;left:0.47%" data-node-id="1:409" data-name="Oval"><img src="assets/sc/sc-02-imgoval-858f8ee2.png" alt="" style="position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%"></div><div style="position:absolute;display:contents;top:21.87%;right:0;bottom:21.88%;left:92%" data-node-id="1:410" data-name="Group"><div style="position:absolute;top:43.75%;right:2.22%;bottom:40.63%;left:94.22%" data-node-id="1:411" data-name="Path 2"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 6.13636 3.83523" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
+</svg></div><div style="position:absolute;top:3.33%;right:86.25%;bottom:3.33%;left:0.47%" data-node-id="1:409" data-name="Oval"></div><div style="position:absolute;display:contents;top:21.87%;right:0;bottom:21.88%;left:92%" data-node-id="1:410" data-name="Group"><div style="position:absolute;top:43.75%;right:2.22%;bottom:40.63%;left:94.22%" data-node-id="1:411" data-name="Path 2"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 6.13636 3.83523" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <path id="Path 2_u69" d="M3.06818 2.30114L0.767045 0L0 0.767045L3.06818 3.83523L6.13636 0.767045L5.36932 0L3.06818 2.30114Z" fill="#CDCDCD"/>
 </svg></div><div style="position:absolute;top:21.87%;right:0;bottom:21.88%;left:92%" data-node-id="1:412" data-name="Combined Shape"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 13.8066 13.8066" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <path id="Combined Shape_u70" d="M6.90332 0C10.7159 0 13.8066 3.09071 13.8066 6.90332C13.8066 10.716 10.716 13.8066 6.90332 13.8066C3.09071 13.8066 0 10.7159 0 6.90332C4.78995e-05 3.09074 3.09074 4.7901e-05 6.90332 0ZM6.90332 0.767578C3.51436 0.76765 0.767578 3.51532 0.767578 6.9043C0.76777 10.2931 3.51448 13.04 6.90332 13.04C10.2922 13.04 13.0398 10.2932 13.04 6.9043C13.04 3.51528 10.2923 0.767578 6.90332 0.767578Z" fill="#CDCDCD"/>
@@ -2570,7 +2420,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1560px;height:1080px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1560.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
 <div style="background-color:#ffffff;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:765" data-name="03"><div style="position:absolute;height:1253.114px;right:0;top:calc(50% - 0.44px);width:2228px;translate:0 -50%" data-node-id="1:769" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:100px;left:0;mix-blend-mode:multiply;opacity:0.8;right:0;top:0;background-image:linear-gradient(to top, #ffffff, #000000 98.388%)" data-node-id="1:770" data-name="shadow on top"></div><div style="position:absolute;height:1082px;right:0;top:50%;width:335px;translate:0 -50%" data-node-id="1:771" data-name="module/INSIGHT"><div style="position:absolute;background-color:#212d38;top:0.09%;right:0;bottom:0.09%;left:0.3%;opacity:0.8;border-width:1px;border-style:solid;border-color:#12181f" data-node-id="1:772" data-name="bg"></div><div style="position:absolute;top:90.94%;right:4.78%;bottom:5.36%;left:53.43%;overflow:clip" data-node-id="1:773" data-name="export button"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
@@ -2786,8 +2635,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 </div></template></div></div>
     </div>
   </section>
-
-  <!-- 07 · the lie · climax -->
   <section class="sec">
     <p class="lab">data visualisation</p>
     <h2>I made the map lie, correctly.</h2>
@@ -2801,7 +2648,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1609" data-name="UNbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p01a-bg.png" alt="" data-node-id="5:1610" data-name="000">
@@ -2880,7 +2726,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1682" data-name="UNbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p02a-bg.webp" alt="" data-node-id="5:1683" data-name="030">
@@ -2959,7 +2804,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1755" data-name="UNbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p03a-bg.webp" alt="" data-node-id="5:1756" data-name="050">
@@ -3038,7 +2882,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1828" data-name="UNbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p04a-bg.webp" alt="" data-node-id="5:1829" data-name="090">
@@ -3120,7 +2963,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1644" data-name="REbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p01b-bg.png" alt="" data-node-id="5:1645" data-name="000">
@@ -3199,7 +3041,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1717" data-name="REbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p02b-bg.webp" alt="" data-node-id="5:1718" data-name="025">
@@ -3278,7 +3119,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1790" data-name="REbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p03b-bg.webp" alt="" data-node-id="5:1791" data-name="075">
@@ -3357,7 +3197,6 @@ html,body{margin:0;padding:0}
 .fr{position:relative;width:400px;height:440px;overflow:hidden;background:transparent}
 .abs{position:absolute}
 .abs svg{display:block}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 400.0000px));border-radius:var(--frameR, 0)}</style><div class="fr" data-node-id="5:1863" data-name="REbalanced">
   <img class="abs" style="left:0;top:0;width:400px;height:440px" src="assets/sc/sc-p04b-bg.webp" alt="" data-node-id="5:1864" data-name="095">
@@ -3436,8 +3275,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
     </div>
     <p style="margin-top:18px">So I worked with the Data team to rebalance it. Technically, that made the map wrong, the way a subway map is wrong: a projection chosen for the decision it serves.</p>
   </section>
-
-  <!-- 08 · 3d -->
   <section class="sec">
     <p class="lab">prototyping</p>
     <h2>Riding the wave.</h2>
@@ -3448,10 +3285,9 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1824px;height:1026px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1824.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
-<div style="background-color:#212d38;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:3584" data-name="05"><div style="position:absolute;display:contents;left:-905px;top:-322px" data-node-id="1:3585" data-name="screen shot BG"><div style="position:absolute;height:1095.35px;left:-123.5px;top:0;width:1947.5px" data-node-id="1:3586" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1710px;left:-905px;top:-322px;width:3040px" data-node-id="1:3588" data-name="Screenshot 2019-04-04 at 15.25.14"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div></div><div style="position:absolute;height:1026px;left:1507.65px;overflow:clip;top:0;width:316.35px" data-node-id="1:3590" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.95px;border-style:solid;border-color:#12181f" data-node-id="1:3591" data-name="bg"></div><div style="position:absolute;display:contents;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3592" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3593" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
+<div style="background-color:#212d38;overflow:clip;position:relative;border-radius:8px;box-shadow:0px 4px 80px 0px rgba(0,0,0,0.16);width:100%;height:100%;border-width:1px;border-style:solid;border-color:#ffffff" data-node-id="1:3584" data-name="05"><div style="position:absolute;display:contents;left:-905px;top:-322px" data-node-id="1:3585" data-name="screen shot BG"><div style="position:absolute;height:1095.35px;left:-123.5px;top:0;width:1947.5px" data-node-id="1:3586" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"></div></div><div style="position:absolute;height:1710px;left:-905px;top:-322px;width:3040px" data-node-id="1:3588" data-name="Screenshot 2019-04-04 at 15.25.14"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-05-imgscreenshot20190404at152514-178df3f2.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div></div><div style="position:absolute;height:1026px;left:1507.65px;overflow:clip;top:0;width:316.35px" data-node-id="1:3590" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.95px;border-style:solid;border-color:#12181f" data-node-id="1:3591" data-name="bg"></div><div style="position:absolute;display:contents;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3592" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:5.56%;right:3.6%;bottom:5.46%;left:3.6%" data-node-id="1:3593" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
 <g id="Mask_u305" opacity="0.5">
 </g>
 </svg></div><div style="position:absolute;top:45.74%;right:4.8%;bottom:-22.04%;left:5.11%;border-width:0.95px;border-style:solid;border-color:#9d9d9e;mask-mode:alpha;mask-composite:intersect;mask-clip:no-clip;mask-repeat:no-repeat;mask-position:-4.75px -412.301px;mask-size:293.55px 912.95px;mask-image:url(&quot;data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI5My41NSIgaGVpZ2h0PSI5MTIuOTUiIHZpZXdCb3g9IjAgMCAyOTMuNTUgOTEyLjk1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBpZD0iTWFzayIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDBIMjkzLjU1VjkxMi45NUgwVjBaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K&quot;);-webkit-mask-image:url(&quot;data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI5My41NSIgaGVpZ2h0PSI5MTIuOTUiIHZpZXdCb3g9IjAgMCAyOTMuNTUgOTEyLjk1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBpZD0iTWFzayIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDBIMjkzLjU1VjkxMi45NUgwVjBaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K&quot;);-webkit-mask-position:-4.75px -412.301px;-webkit-mask-size:293.55px 912.95px;-webkit-mask-repeat:no-repeat;-webkit-mask-composite:source-in" data-node-id="1:3595" data-name="widget/Demographics"><div style="position:absolute;inset:0;overflow:clip" data-node-id="I1:3595;0:12350"><div style="position:absolute;top:-0.12%;right:-0.33%;bottom:-0.12%;left:-0.33%"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 286.9 784.7" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;display:block;max-width:none;width:100%;height:100%">
@@ -3804,8 +3640,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 </div></template></div></div>
     <p>Our clients were sold on the draft. This was something unique, like nothing the industry had seen before.</p>
   </section>
-
-  <!-- 09 · the money -->
   <section class="sec">
     <p class="lab">impact</p>
     <h2>&pound;1M in 91 days.</h2>
@@ -3815,7 +3649,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 html{line-height:1.5}
 img,svg{display:block;vertical-align:middle}
 .fr{position:relative;width:1920px;height:1080px;overflow:hidden}
-
 html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html.embed .fr,html.embed .fr>div{border:none!important;border-radius:0!important;box-shadow:none!important}
 :host{display:block;container-type:inline-size}.fr{transform-origin:0 0;transform:scale(calc(100cqw / 1920.0000px));border-radius:var(--frameR, 0)}</style><div class="fr">
 <div style="background-color:#ffffff;position:relative;width:100%;height:100%" data-node-id="1:1775" data-name="04"><div style="position:absolute;height:1413px;left:-420.46px;top:0;width:2511.674px" data-node-id="1:1776" data-name="Screenshot 2018-09-28 at 11.37.18"><div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><img src="assets/sc/sc-03-imgscreenshot20180928at113718-a6230c46.webp" alt="" style="position:absolute;left:0;max-width:none;width:100%;height:100%;top:0"></div></div><div style="position:absolute;height:1080px;left:1722px;overflow:clip;top:0;width:199.8px" data-node-id="1:2262" data-name="zcombo/InsightPane"><div style="position:absolute;background-color:rgba(33,45,56,0.9);inset:0;border-width:0.6px;border-style:solid;border-color:#12181f" data-node-id="1:2263" data-name="bg"></div><div style="position:absolute;display:contents;top:3.33%;right:3.6%;bottom:3.28%;left:3.6%" data-node-id="1:2264" data-name="Top Passions + Top Passions Copy + Top Passions Copy 2 + Top Passions Copy 3 Mask"><div style="position:absolute;top:3.33%;right:3.6%;bottom:3.28%;left:3.6%" data-node-id="1:2265" data-name="Mask"><svg preserveAspectRatio="none" overflow="visible" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;position:absolute;display:block;inset:0;max-width:none;width:100%;height:100%">
@@ -4392,7 +4225,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
 </div></template></div></div>
     <p>Accurate is a property of the data. Helpful is a design decision. That decision is what clients paid for. To others on my team, it looked like I was taking an unnecessary risk. To me, it was clear I was only doing my job. Design is about tradeoffs. It&rsquo;s about creating something that has a place in the world. And that map had its place.</p>
   </section>
-
 </div>
 <div class="foot">Cesar Garcia &middot; Head of Product Design &middot; Starcount</div>
 <script>
@@ -4418,7 +4250,6 @@ html.embed{overflow:hidden}html.embed body{padding:0;background:transparent}html
   paint();
 })();
 </script>
-
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
@@ -4431,10 +4262,8 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
   capture_pageview:true,
   capture_pageleave:true       /* gives time-on-page and exit page */
 });
-
 (function(){
   var PAGE='starcount', seen={}, secs={};
-
   function depth(){
     var h=document.documentElement;
     var max=h.scrollHeight-innerHeight;
@@ -4448,7 +4277,6 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     });
   }
   addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
-
   /* which sections they actually reached, better than a raw percentage */
   addEventListener('load',function(){
     var list=[].slice.call(document.querySelectorAll('section.sec'));
@@ -4464,7 +4292,6 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     },{threshold:.4});
     list.forEach(function(s){io.observe(s);});
   });
-
   /* outbound clicks, tagged with the page they left from and how far down */
   addEventListener('click',function(ev){
     var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;

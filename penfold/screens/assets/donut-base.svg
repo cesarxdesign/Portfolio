@@ -1,6 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Ellipse 2" filter="url(#filter0_i_7_5188)">
-<path d="M200 100C200 155.228 155.228 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0C155.228 0 200 44.7715 200 100ZM20 100C20 144.183 55.8172 180 100 180C144.183 180 180 144.183 180 100C180 55.8172 144.183 20 100 20C55.8172 20 20 55.8172 20 100Z" fill="var(--fill-0, white)"/>
+<path d="M200 100C200 155.23 155.23 200 100 200C44.77 200 0 155.23 0 100C0 44.77 44.77 0 100 0C155.23 0 200 44.77 200 100ZM20 100C20 144.18 55.82 180 100 180C144.18 180 180 144.18 180 100C180 55.82 144.18 20 100 20C55.82 20 20 55.82 20 100Z" fill="var(--fill-0, white)"/>
 </g>
 <defs>
 <filter id="filter0_i_7_5188" x="0" y="0" width="200" height="200.896" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

@@ -5,7 +5,7 @@
 <rect x="0.644034" y="0.38642" width="3.8642" height="3.8642" rx="0.901647" stroke="#2A64C9" stroke-width="0.257613"/>
 </g>
 <g id="Checkmark" filter="url(#filter1_d_0_749)">
-<path d="M1.74239 2.51523L2.32202 3.15926L3.41687 1.48477" stroke="white" stroke-width="0.38642" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1.74 2.52L2.32 3.16L3.42 1.48" stroke="white" stroke-width="0.38642" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
 <defs>
