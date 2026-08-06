@@ -30,7 +30,7 @@
 
 :root{
   --sysFont:Helvetica,'Helvetica Neue',Arial,sans-serif;
-  --sysMono:ui-monospace,Menlo,Monaco,'Courier New',monospace;
+  --sysMono:Helvetica,'Helvetica Neue',Arial,sans-serif;
   --figT:48px;      /* air above a graphic  · Confirmo */
   --figB:56px;      /* air below a graphic  · Confirmo */
   --figT1:72px;     /* air above the HERO graphic, more than a section figure */
