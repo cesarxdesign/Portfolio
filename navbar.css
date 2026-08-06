@@ -7,7 +7,7 @@
 .flag{position:sticky;top:0;z-index:300;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;
   padding:9px 20px;min-height:40px;   /* fixed, so a bar with steppers and one without still align */
   background:var(--paperT);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);font:11px/1.4 var(--sysMono);letter-spacing:.08em;color:var(--flagink)}
+  border-bottom:1px solid var(--line);font:11px/1.4 var(--uiMono);letter-spacing:.08em;color:var(--flagink)}
 .flag .navhome{justify-self:start;font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
   color:var(--mut);text-decoration:none;transition:color .15s}
 .flag .navhome:hover{color:var(--ink)}

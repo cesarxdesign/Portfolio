@@ -30,7 +30,8 @@
 
 :root{
   --sysFont:Helvetica,'Helvetica Neue',Arial,sans-serif;
-  --sysMono:Helvetica,'Helvetica Neue',Arial,sans-serif;
+  --sysMono:'IBM Plex Mono',ui-monospace,monospace;
+  --uiMono:Helvetica,'Helvetica Neue',Arial,sans-serif;
   --figT:48px;      /* air above a graphic  · Confirmo */
   --figB:56px;      /* air below a graphic  · Confirmo */
   --figT1:72px;     /* air above the HERO graphic, more than a section figure */
@@ -70,7 +71,7 @@ h2{font-family:var(--sysFont);font-size:clamp(30px,4.2vw,46px);line-height:1.12;
 
 /* ---- section eyebrow · Starcount, self-numbering ------------ */
 .sec{counter-increment:sec}
-.lab{font:600 11px/1 var(--sysMono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.lab{font:600 11px/1 var(--uiMono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
 .lab::before{content:counter(sec,decimal-leading-zero) " \00b7  "}
 
 /* ---- section rhythm ---------------------------------------- */
@@ -100,7 +101,7 @@ h2{font-family:var(--sysFont);font-size:clamp(30px,4.2vw,46px);line-height:1.12;
 /* ---- footer · Confirmo -------------------------------------
    Contract: Cesar Garcia · <role, exactly as spine.js> · <Company>
    ------------------------------------------------------------ */
-.foot{margin-top:120px;border-top:1px solid var(--hair);padding:22px 0;font:400 12px/1.5 var(--sysMono);color:var(--mut);text-align:center;max-width:none}
+.foot{margin-top:120px;border-top:1px solid var(--hair);padding:22px 0;font:400 12px/1.5 var(--uiMono);color:var(--mut);text-align:center;max-width:none}
 
 @media(max-width:760px){
   .band .in{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
