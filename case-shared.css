@@ -29,8 +29,8 @@
    ============================================================ */
 
 :root{
-  --sysFont:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  --sysMono:'IBM Plex Mono',ui-monospace,monospace;
+  --sysFont:Helvetica,'Helvetica Neue',Arial,sans-serif;
+  --sysMono:ui-monospace,Menlo,Monaco,'Courier New',monospace;
   --figT:48px;      /* air above a graphic  · Confirmo */
   --figB:56px;      /* air below a graphic  · Confirmo */
   --figT1:72px;     /* air above the HERO graphic, more than a section figure */
