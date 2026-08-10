@@ -142,7 +142,7 @@ html,body{overflow-x:clip}
      (line spans their box); col-feet carry their own padding (line
      insets by it). The !importants kill the page/body bottom paddings
      that double-stacked under confirmo's and starcount's feet. */
-  .foot{position:relative;border-top:0;margin-top:120px;margin-bottom:60px;padding-top:22px;padding-bottom:22px}   /* Z above, Z/2 below the closer */
+  .foot{position:relative;border-top:0;margin-top:120px;margin-bottom:60px!important;padding-top:22px;padding-bottom:22px}   /* Z above, Z/2 below; important: five pages carry local 120 foot margins that load later */
   .foot::before{content:"";position:absolute;top:0;left:var(--colPad);right:var(--colPad);height:1px;background:var(--hair)}
   .page .foot::before{left:0;right:0}
   .page{padding-bottom:0!important}
