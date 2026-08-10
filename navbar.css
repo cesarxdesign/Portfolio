@@ -90,7 +90,7 @@
     border-bottom:1px solid var(--line)}
   .flag:has(.pjx) .fvwrap{display:none}
   .flag:has(.pjx) .tops{grid-column:3}   /* fvwrap gone; without the pin, auto-placement slides the right nav out of the last column */
-  .flag:has(.pjx) .navhome,.flag:has(.pjx) .tops a{padding:13px 0}   /* bar items breathe like the dropdown rows */
+  .flag:has(.pjx) .navhome,.flag:has(.pjx) .tops a{padding:13px 0;margin-block:-13px}   /* breathe like the dropdown rows, but the hit padding must not inflate the grid row: it anchored the whole bar low */
   /* trigger on the content column's left line: max(32px, 50% - 418px),
      the page column being 900 with 32 padding */
   .flag .pjx{display:block;position:absolute;left:max(32px,calc(50% - 418px));top:0;bottom:0}
@@ -171,6 +171,10 @@
   .flag .bgr summary svg{color:var(--mut);transition:transform .2s ease}
   .flag .bgr[open] summary svg{transform:rotate(180deg)}
   .flag:has(.bgr) .tops{display:none}
+  /* home only, drawer state: an explicit grid-column would make the grid
+     AREA the abspos panel's containing block and crush it into the right
+     track. Mobile-scoped: on desktop the pin must stand. */
+  .flag.bare:has(.bgr) .tops{grid-column:auto}
   /* the drawer: bare content, the surface behind it is the ::before above.
      justify-self:stretch undoes the bar state's justify-self:end, which
      would otherwise shrink-wrap the abspos .tops against the right edge. */
@@ -208,8 +212,4 @@
    sits exactly where it sits on every other page. */
 .flag.bare{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}   /* home: no veil, no stroke */
 .flag.bare .tops{grid-column:3}
-/* in the drawer state the panel is abspos, and an explicit grid-column
-   would make ITS GRID AREA the containing block, crushing the panel into
-   the right track: home's drawer columns collided exactly so */
-.flag.bare:has(.bgr) .tops{grid-column:auto}
 .flag.bare .navhome,.flag.bare .fv,.flag.bare .fvwrap{display:none}
