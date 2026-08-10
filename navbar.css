@@ -72,7 +72,7 @@
    inside; the only line is the surface's own lip. Scoped to :has(.bgr):
    pages not yet carrying the markup keep the desktop bar until they are
    retrofitted. */
-.flag .bgr,.flag .pjd,.flag .tops .mhome,.flag .pjx{display:none}   /* .mhome: the drawer's Home; desktop keeps .navhome */
+.flag .bgr,.flag .pjd,.flag .pjx{display:none}
 
 /* DESKTOP experiment, pages carrying .pjx (Confirmo for now): the bar's
    left reads HOME | PROJECT-NAME-with-chevron as one group, divider
@@ -156,18 +156,22 @@
     background:var(--paperT);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);transition:height .28s ease}
   .flag:has(.bgr[open])::before{height:calc(var(--mnavH) + var(--sat))}
-  .flag:has(.bgr) .navhome{display:none}
+  /* HOME rides the bar, left, in line with the trigger: a plain link to
+     home; the project name keeps the drawer. Full-height target, hit
+     padding refunded. */
+  .flag:has(.bgr) .navhome{grid-column:1;grid-row:1;justify-self:start;display:inline-flex;align-items:center;
+    height:44px;padding:0 12px;margin-left:-12px}
   /* the project name IS the trigger: chevron left of it, right corner of
      the bar, full-height target. fvwrap and its steppers rest on mobile. */
   .flag:has(.bgr) .fvwrap{display:none}
   .flag .bgr{display:block;grid-column:3;grid-row:1;justify-self:end}
-  /* home: same nav, but the trigger reads Home and sits LEFT */
-  .flag.bare .bgr{grid-column:1;justify-self:start}
-  .flag.bare .bgr summary{margin-right:0;margin-left:-12px}
   .flag .bgr summary{list-style:none;cursor:pointer;color:var(--flagink);
     display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 12px;margin-right:-12px;
     font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase}
   .flag .bgr summary::-webkit-details-marker{display:none}
+  /* home: trigger LEFT, and its chevron rides RIGHT of the word */
+  .flag.bare .bgr{grid-column:1;justify-self:start}
+  .flag.bare .bgr summary{margin-right:0;margin-left:-12px}
   .flag .bgr summary svg{color:var(--mut);transition:transform .2s ease}
   .flag .bgr[open] summary svg{transform:rotate(180deg)}
   .flag:has(.bgr) .tops{display:none}
@@ -191,14 +195,12 @@
   .flag .pjd a.on{color:var(--accent);display:flex;align-items:center;justify-content:flex-end;gap:8px}
   .flag .pjd a.on::before{content:"";width:9px;height:5px;margin-top:-3px;   /* the tick: you are here, left of the name */
     border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
-  .flag:has(.bgr[open]) .tops .mhome{display:block}
-  .flag:has(.bgr[open]) .tops a:first-of-type{margin-top:auto}   /* Home, then the meta links, stacked from the floor */
-  .flag:has(.bgr[open]) .tops .thsw{order:-1;align-self:start}   /* toggle up top */
-  /* the selected page ticks in the LEFT column too (home): right-adjacent,
-     mirroring the project tick */
-  .flag:has(.bgr[open]) .tops a.on{color:var(--accent);display:flex;align-items:center;gap:8px}
-  .flag:has(.bgr[open]) .tops a.on::after{content:"";width:9px;height:5px;margin-top:-3px;
-    border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+  /* left list top-aligned like the projects, reversed: Contact, LinkedIn,
+     CV (cv last) */
+  .flag:has(.bgr[open]) .tops a:nth-of-type(1){order:3}
+  .flag:has(.bgr[open]) .tops a:nth-of-type(2){order:2}
+  .flag:has(.bgr[open]) .tops a:nth-of-type(3){order:1}
+  .flag:has(.bgr[open]) .tops .thsw{order:4;align-self:start;margin-top:82px}   /* bottom of the pill on the bottom of the last project row (measured) */
   .flag:has(.bgr[open]) .tops .thsw button{font-size:11px;padding:14px 16px}   /* 44pt with the pill's own chrome */
   .flag:has(.bgr[open]) .tops .thsw button.ic{width:48px;height:auto}
   .flag:has(.bgr[open]) .tops .thsw button.ic svg{width:16px;height:16px}
