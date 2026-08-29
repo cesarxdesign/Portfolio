@@ -1584,9 +1584,9 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
     else if(/linkedin\.com/i.test(h)) kind='linkedin';
     else if(/^mailto:/i.test(h)) kind='email';
-    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()});
+    if(kind) posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()},{transport:'sendBeacon'});
     else if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(h))
-      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()});
+      posthog.capture('project_open',{from:PAGE,to:h.slice(1),scroll_at:depth()},{transport:'sendBeacon'});
   },true);
 })();
 </script>
