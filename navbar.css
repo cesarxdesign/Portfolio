@@ -44,6 +44,14 @@
 .flag .tops a{font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;
   color:var(--flagink);text-decoration:none;white-space:nowrap}
 .flag .tops a:hover{color:var(--ink)}
+/* the bar's narrow tier (481-560): with four links the right nav no longer
+   clears the project name at the 22 rhythm, so the two long names shed their
+   second half and read IN and GIT. The word is whole in the markup, the half
+   is a span: nothing is renamed, only hidden. Above 560 the bar has the room
+   and the names return; below 481 the drawer owns them and never crops. */
+@media(min-width:481px) and (max-width:560px){
+  .flag .tops a .hlf{display:none}
+}
 .flag .tops .thsw{justify-self:auto}
 .flag b{color:var(--lab);font-weight:600}
 .flag .thsw{justify-self:end;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);
@@ -195,12 +203,13 @@
   .flag .pjd a.on{color:var(--accent);display:flex;align-items:center;justify-content:flex-end;gap:8px}
   .flag .pjd a.on::before{content:"";width:9px;height:5px;margin-top:-3px;   /* the tick: you are here, left of the name */
     border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
-  /* left list top-aligned like the projects, reversed: Contact, LinkedIn,
-     CV (cv last) */
-  .flag:has(.bgr[open]) .tops a:nth-of-type(1){order:3}
-  .flag:has(.bgr[open]) .tops a:nth-of-type(2){order:2}
-  .flag:has(.bgr[open]) .tops a:nth-of-type(3){order:1}
-  .flag:has(.bgr[open]) .tops .thsw{order:4;align-self:start;margin-top:82px}   /* bottom of the pill on the bottom of the last project row (measured) */
+  /* left list top-aligned like the projects, reversed: Contact, GitHub,
+     LinkedIn, CV (cv last) */
+  .flag:has(.bgr[open]) .tops a:nth-of-type(1){order:4}
+  .flag:has(.bgr[open]) .tops a:nth-of-type(2){order:3}
+  .flag:has(.bgr[open]) .tops a:nth-of-type(3){order:2}
+  .flag:has(.bgr[open]) .tops a:nth-of-type(4){order:1}
+  .flag:has(.bgr[open]) .tops .thsw{order:5;align-self:start;margin-top:38px}   /* bottom of the pill on the bottom of the last project row (measured); the gap pays for the rows above it, so a link added or removed moves it by one 44pt row */
   .flag:has(.bgr[open]) .tops .thsw button{font-size:11px;padding:14px 16px}   /* 44pt with the pill's own chrome */
   .flag:has(.bgr[open]) .tops .thsw button.ic{width:48px;height:auto}
   .flag:has(.bgr[open]) .tops .thsw button.ic svg{width:16px;height:16px}
