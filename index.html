@@ -23,17 +23,16 @@ header{margin-bottom:40px}
 .gap.b{flex:6 0 0}
 .flag.bare{margin:-64px -28px 0}
 
-.grid.tail{grid-template-columns:repeat(4,1fr);margin-top:20px}
 a.card{display:flex;flex-direction:column;aspect-ratio:1/1;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;text-decoration:none;color:var(--ink);overflow:hidden;position:relative;transition:transform .16s,box-shadow .16s;box-shadow:var(--sh1)}
 a.card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
-a.card.wip{cursor:default}
-a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
+
+
 .card>*{position:relative;z-index:1}
 .card .media{z-index:1}
 .card .kick{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 .mains .card .co{position:absolute;left:22px;bottom:18px;z-index:3;font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
 .card .rdy{position:absolute;top:14px;right:14px;z-index:3;width:8px;height:8px;border-radius:50%;background:var(--ok)}
-.card.wip .rdy{background:var(--wip)}
+
 .card h2{margin:8px 0 0;font-weight:800;letter-spacing:-.02em}
 .mains .card h2{font-size:clamp(17px,1.9vw,21px);line-height:1.25}
 .card .claim{margin:8px 0 0;color:var(--body);font-size:13.5px;line-height:1.5}
@@ -56,25 +55,25 @@ a.card.wip:hover{transform:none;box-shadow:var(--sh1)}
 .mains .card .media img:last-child:not(:only-child),
 .mains .card .media .cs:last-child:not(:only-child){transform:rotate(6deg);transform-origin:50% 96%;z-index:2}
 .mains .card .media img.shot{max-width:none;max-height:250px;width:104%;margin-right:-46px;margin-top:8px;object-position:top left;border-radius:6px 0 0 6px;border:1px solid var(--line)}
-.tail .card{padding:18px;aspect-ratio:1/.77}
-.tail .card h2{font-size:15px}
-.tail .card .claim{font-size:12.5px}
-.tail .card .role{margin-top:auto;font-size:11.5px;color:var(--mut)}
+.grid.tail{display:block;margin-top:32px;border-bottom:1px solid var(--line)}
+.tail .card,.tail .card:hover{background:none;border:0;border-radius:0;box-shadow:none;transform:none}
+.tail .card{aspect-ratio:auto;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"co role kick" "claim claim claim";column-gap:10px;align-items:baseline;border-top:1px solid var(--line);padding:16px 0}
+.tail .card h2{grid-area:co;margin:0;font-size:15px}
+.tail .card .role{grid-area:role;margin:0;font-size:13.5px;color:var(--mut)}
+.tail .card .kick{grid-area:kick}
+.tail .card .claim{grid-area:claim;margin:6px 0 0;color:var(--ink);font-size:17px;font-weight:800;line-height:1.25;letter-spacing:-.02em}
+.tail .card:hover .claim{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .ptag{margin-top:40px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
 .ptag b{color:var(--body);font-weight:600}
-@media(max-width:900px){.grid.mains{grid-template-columns:1fr 1fr}.grid.tail{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.grid.mains{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){
   .gap.a{min-height:56px}
   .ptag{display:none}
 }
-@media(max-width:560px){.grid.mains,.grid.tail{grid-template-columns:1fr}
-  .grid.tail a.card{aspect-ratio:auto;min-height:200px}
-  .grid.tail .card .kick{order:-3}
-  .grid.tail .card .role{order:-2;margin:8px 0 0;font:800 17px/1.25 var(--sysFont);letter-spacing:-.02em;color:var(--ink)}
-  .grid.tail .card .claim{order:-1}
-  .grid.tail .card h2{order:10;margin-top:auto;font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-  .mains .card .co{font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-  .grid.tail{margin-top:32px}   }
+@media(max-width:560px){.grid.mains{grid-template-columns:1fr}
+  .tail .card{grid-template-columns:auto 1fr;grid-template-areas:"kick kick" "co role" "claim claim"}
+  .tail .card .kick{margin-bottom:6px}
+  .mains .card .co{font:700 11px/1 var(--sysFont);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}}
 </style>
 </head><body>
 <div class="flag bare"><details class="bgr"><summary aria-label="Menu"><span class="bn">Home</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../confirmo/index.html">Confirmo</a><a href="../starcount/index.html">Starcount</a><a href="../mara/index.html">Mara</a><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../done/index.html">Done</a></nav><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
@@ -1476,7 +1475,7 @@ p{margin:0}:host{font-family:'Satoshi',ui-sans-serif,system-ui,-apple-system,san
     </svg></div>
   </div>
 </div></template></span></div></div><span class="co">Mara</span></a></div>
-  <div class="grid tail"><a class="card" href="penfold/index.html"><i class="rdy"></i><span class="kick">Pensions · 2019-20</span><h2>Penfold</h2><p class="claim">From first hire, to an award winning pension</p><span class="role">Founding Designer, first hire</span></a><a class="card" href="cable/index.html"><i class="rdy"></i><span class="kick">Fincrime · 2020-22</span><h2>Cable</h2><p class="claim">A one trick pony, turned full-fledged banking suite</p><span class="role">Founding Designer</span></a><a class="card" href="done/index.html"><i class="rdy"></i><span class="kick">Fitness · ongoing</span><h2>Done</h2><p class="claim">A gym app launched when every gym on earth closed.</p><span class="role">Co-founder, still working on it</span></a><a class="card wip"><i class="rdy"></i><span class="kick">Web3 wallet · 2025</span><h2>Trust Wallet</h2><p class="claim">Wallet onboarding, rebuilt for 200 million.</p><span class="role">Lead Product Designer</span></a></div>
+  <div class="grid tail"><a class="card" href="penfold/index.html"><span class="kick">Pensions · 2019-20</span><h2>Penfold</h2><p class="claim">From first hire, to an award winning pension</p><span class="role">Founding Designer, first hire</span></a><a class="card" href="cable/index.html"><span class="kick">Fincrime · 2020-22</span><h2>Cable</h2><p class="claim">A one trick pony, turned full-fledged banking suite</p><span class="role">Founding Designer</span></a></div>
   <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
   <div class="gap b"></div>
 </div>
