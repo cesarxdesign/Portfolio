@@ -38,6 +38,8 @@ a.pj:hover .stage .set{transform:scale(1.025)}
 .stage img{display:block}
 .stage.phones img.ph{height:276px;width:auto;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
 .stage.desk img.dt{width:420px;max-width:100%;height:auto;border-radius:6px;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
+.stage img.ph,.stage img.dt{transition:filter .3s}
+a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.ph,a.pj:focus-visible .stage img.dt{filter:drop-shadow(0 18px 26px var(--hsh)) drop-shadow(0 2px 4px var(--dsh2))}
 
 /* the text half: top line, story in the middle, facts on the floor; edges line up with the screens */
 .txt{padding:var(--in) 44px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
@@ -55,7 +57,7 @@ a.pj:hover .stage .set{transform:scale(1.025)}
 .txt .tech{margin:0;justify-self:end;text-align:right;font:500 11px/1.5 var(--sysMono);color:var(--mut);white-space:nowrap}
 
 /* project hues */
-.pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.08);--dsh2:rgba(22,28,60,.07)}
+.pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.08);--dsh2:rgba(22,28,60,.07);--hsh:rgba(22,28,60,.24)}
 .pj-cable{--ac:#2459d1}.pj-confirmo{--ac:#6f45e0}.pj-mara{--ac:#e3601a}.pj-starcount{--ac:#0b968d}.pj-penfold{--ac:#6076dd}
 :root[data-theme="dark"] .pj-cable{--ac:#6f9ae8}
 :root[data-theme="dark"] .pj-confirmo{--ac:#c0abf5}
@@ -67,7 +69,7 @@ a.pj:hover .stage .set{transform:scale(1.025)}
 .pj-mara{--t1:#fdf3ea;--t2:#f8dfc9}
 .pj-starcount{--t1:#e9f3f3;--t2:#d2e5e5}
 .pj-penfold{--t1:#eff1fb;--t2:#dce1f6}
-:root[data-theme="dark"] .pj{--hi:rgba(255,255,255,.04);--dsh:rgba(0,0,0,.28);--dsh2:rgba(0,0,0,.2)}
+:root[data-theme="dark"] .pj{--hi:rgba(255,255,255,.04);--dsh:rgba(0,0,0,.28);--dsh2:rgba(0,0,0,.2);--hsh:rgba(0,0,0,.55)}
 :root[data-theme="dark"] .pj-cable{--t1:#161c2a;--t2:#1b253a}
 :root[data-theme="dark"] .pj-confirmo{--t1:#1b1826;--t2:#251e3a}
 :root[data-theme="dark"] .pj-mara{--t1:#1f1914;--t2:#2d2017}
