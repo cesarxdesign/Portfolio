@@ -42,7 +42,7 @@ a.pj:hover .stage .set{transform:scale(1.025)}
 /* the text half: top line, story in the middle, facts on the floor; edges line up with the screens */
 .txt{padding:var(--in) 44px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
 .txt .meta{margin:0;display:flex;align-items:baseline;gap:10px;line-height:1}
-.txt .meta b{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.txt .meta b{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--ac)}
 .txt .meta span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 .txt h2{margin:0;font-size:24px;line-height:1.2;font-weight:800;letter-spacing:-.028em;text-wrap:balance}
 .txt .sum{margin:10px 0 0;font-size:14.5px;line-height:1.6;color:var(--body);text-wrap:pretty}
@@ -56,6 +56,12 @@ a.pj:hover .stage .set{transform:scale(1.025)}
 
 /* project hues */
 .pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.26)}
+.pj-cable{--ac:#2459d1}.pj-confirmo{--ac:#6f45e0}.pj-mara{--ac:#e3601a}.pj-starcount{--ac:#0b968d}.pj-penfold{--ac:#6076dd}
+:root[data-theme="dark"] .pj-cable{--ac:#6f9ae8}
+:root[data-theme="dark"] .pj-confirmo{--ac:#c0abf5}
+:root[data-theme="dark"] .pj-mara{--ac:#f28a4c}
+:root[data-theme="dark"] .pj-starcount{--ac:#66e6de}
+:root[data-theme="dark"] .pj-penfold{--ac:#98a6e9}
 .pj-cable{--t1:#ebf0fb;--t2:#d7e1f6}
 .pj-confirmo{--t1:#f2eefe;--t2:#e3dafc}
 .pj-mara{--t1:#fdf3ea;--t2:#f8dfc9}
