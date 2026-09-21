@@ -32,17 +32,6 @@ figure{margin:0}
 /* Cable only: the bar's left reads HOME | CABLE v as one group. --pjxL is the trigger's left edge,
    set from the real width of Home by the script at the bottom; everything the dropdown hangs off
    (panel, veil outline) follows it */
-.flag,.flag *,.flag *::before,.flag *::after{box-sizing:border-box}   /* the shared navbar is drawn for case-shared's border-box */
-@media(min-width:481px){
- .flag{--pjxL:96px}
- .flag .navhome::after{content:"";display:inline-block;width:1px;height:12px;margin-left:16px;vertical-align:-2px;background:var(--line2)}
- .flag .pjx{left:var(--pjxL)}
- .flag:has(.pjx[open]) .pjd{left:calc(var(--pjxL) - 28px)}
- .flag:has(.pjx[open])::before{clip-path:polygon(0 0,100% 0,100% 44px,calc(var(--pjxL) + 188px) 44px,calc(var(--pjxL) + 188px) 258px,calc(var(--pjxL) - 28px) 258px,calc(var(--pjxL) - 28px) 44px,0 44px)}
- @supports (clip-path: shape(from 0 0, close)) {
-  .flag:has(.pjx[open])::before{clip-path:shape(from 0 0,hline to 100%,vline to 44px,hline to calc(var(--pjxL) + 188px),vline to 250px,arc to calc(var(--pjxL) + 180px) 258px of 8px cw,hline to calc(var(--pjxL) - 20px),arc to calc(var(--pjxL) - 28px) 250px of 8px cw,vline to 44px,hline to 0,close)}
- }
-}
 /* the site footer, as case-shared.css draws it */
 .foot{margin:120px auto 0;max-width:1200px;border-top:1px solid var(--hair);padding:22px 0;font:400 12px/1.5 var(--sysMono);color:var(--mut);text-align:center}
 @media (max-width:760px){.foot{margin:96px 16px 60px} .foot .fnm{display:none}}

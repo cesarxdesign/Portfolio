@@ -169,7 +169,7 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 }
 </style>
 </head><body>
-<div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Starcount <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../confirmo/index.html">Confirmo</a><a class="on" href="index.html">Starcount</a><a href="../mara/index.html">Mara</a><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a></nav><span class="fvwrap"><a class="step" href="/confirmo" title="Confirmo" rel="prev">&lsaquo;</a><span class="fv">Starcount</span><a class="step" href="/mara" title="Mara" rel="next">&rsaquo;</a></span><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Starcount</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Starcount <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../confirmo/index.html">Confirmo</a><a class="on" href="index.html">Starcount</a><a href="../mara/index.html">Mara</a><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Starcount</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="page">
   <header class="hd">
     <h1>Hit &pound;1M first-year target, in 91 days.</h1>
@@ -1928,5 +1928,10 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
       posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth()},{transport:'sendBeacon'});
   },true);
 })();
+</script>
+<script>/* navbar: HOME | PROJECT v, the trigger sits right after Home and its divider */
+(function(){var f=document.querySelector(".flag"),h=f&&f.querySelector(".navhome");if(!h||!f.querySelector(".pjx"))return;
+ function s(){var r=h.getBoundingClientRect(),b=f.getBoundingClientRect();if(r.width)f.style.setProperty("--pjxL",Math.round(r.right-b.left+16)+"px");}
+ s();addEventListener("resize",s);if(document.fonts)document.fonts.ready.then(s);})();
 </script>
 </body></html>

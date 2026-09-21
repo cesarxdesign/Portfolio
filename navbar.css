@@ -224,3 +224,23 @@
 .flag.bare{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}   /* home: no veil, no stroke */
 .flag.bare .tops{grid-column:3}
 .flag.bare .navhome,.flag.bare .fv,.flag.bare .fvwrap{display:none}
+
+/* ----------------------------------------------------------------
+   HOME | PROJECT v  (2026-09-21, every case page)
+   Home and the project dropdown read as one group on the left, a thin
+   divider between them; the steppers are gone and the right-hand links
+   stay. --pjxL is the trigger's left edge: the page script sets it from
+   Home's real width, 96px until it runs. The panel and the veil's outline
+   hang off it, so they move with it (panel = trigger - 28 pad, 216 wide).
+   ---------------------------------------------------------------- */
+.flag,.flag *,.flag *::before,.flag *::after{box-sizing:border-box}
+@media(min-width:481px){
+  .flag:has(.pjx){--pjxL:96px}
+  .flag:has(.pjx) .navhome::after{content:"";display:inline-block;width:1px;height:12px;margin-left:16px;vertical-align:-2px;background:var(--ctlbd,var(--line))}
+  .flag .pjx{left:var(--pjxL)}
+  .flag:has(.pjx[open]) .pjd{left:calc(var(--pjxL) - 28px)}
+  .flag:has(.pjx[open])::before{clip-path:polygon(0 0,100% 0,100% 44px,calc(var(--pjxL) + 188px) 44px,calc(var(--pjxL) + 188px) 258px,calc(var(--pjxL) - 28px) 258px,calc(var(--pjxL) - 28px) 44px,0 44px)}
+  @supports (clip-path: shape(from 0 0, close)) {
+    .flag:has(.pjx[open])::before{clip-path:shape(from 0 0,hline to 100%,vline to 44px,hline to calc(var(--pjxL) + 188px),vline to 250px,arc to calc(var(--pjxL) + 180px) 258px of 8px cw,hline to calc(var(--pjxL) - 20px),arc to calc(var(--pjxL) - 28px) 250px of 8px cw,vline to 44px,hline to 0,close)}
+  }
+}
