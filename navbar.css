@@ -114,7 +114,7 @@
   /* panel left = the trigger's column line minus its own 28 pad: the names
      inside sit flush under the bar's project name */
   .flag:has(.pjx[open]) .pjd{display:flex;position:absolute;left:max(4px,calc(50% - 446px));top:100%;z-index:1;
-    flex-direction:column;width:216px;height:251px;padding:11.2px 28px 16.8px;
+    flex-direction:column;width:216px;height:214px;padding:11.2px 28px 16.8px;
     border:1px solid var(--line);border-top:0;
     transition:opacity .16s ease,transform .2s ease}
   /* the lip contours the dropdown: while open the bar's own hairline goes
@@ -126,21 +126,21 @@
      ONE veil: two abutting backdrop-filters always seam (each blurs its own
      clamped backdrop), so the bar's ::before grows over bar AND panel and a
      polygon clips the combined outline: one continuous blur. Constants:
-     bar 44; panel w 216, h 251 = 11.2 + 6 rows x 37 + 16.8 + 1px border
+     bar 44; panel w 216, h 214 = 11.2 + 5 rows x 37 + 16.8 + 1px border
      (content known, nothing measured); panel x rides the column line, so
      the clip's x pair is the trigger's max() minus the panel's 28 pad,
      plus 216. Where shape() exists the same outline gets 8px arcs on the
      panel's bottom corners; elsewhere the polygon keeps them square. */
-  .flag:has(.pjx[open])::before{border-bottom-color:transparent;height:295px;
-    clip-path:polygon(0 0,100% 0,100% 44px,max(220px,50% - 230px) 44px,max(220px,50% - 230px) 295px,max(4px,50% - 446px) 295px,max(4px,50% - 446px) 44px,0 44px)}
+  .flag:has(.pjx[open])::before{border-bottom-color:transparent;height:258px;
+    clip-path:polygon(0 0,100% 0,100% 44px,max(220px,50% - 230px) 44px,max(220px,50% - 230px) 258px,max(4px,50% - 446px) 258px,max(4px,50% - 446px) 44px,0 44px)}
   @supports (clip-path: shape(from 0 0, close)) {
     .flag:has(.pjx[open])::before{clip-path:shape(from 0 0,
       hline to 100%, vline to 44px,
       hline to max(220px, 50% - 230px),
-      vline to 287px,
-      arc to max(212px, 50% - 238px) 295px of 8px cw,
+      vline to 250px,
+      arc to max(212px, 50% - 238px) 258px of 8px cw,
       hline to max(12px, 50% - 438px),
-      arc to max(4px, 50% - 446px) 287px of 8px cw,
+      arc to max(4px, 50% - 446px) 250px of 8px cw,
       vline to 44px, hline to 0, close)}
     .flag:has(.pjx[open]) .pjd{border-radius:0 0 8px 8px}
   }
