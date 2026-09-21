@@ -24,73 +24,64 @@ header{margin-bottom:40px}
 .flag.bare{margin:-64px -28px 0}
 
 
+/* one system: every card is two equal halves, same height, same 36px inset on both sides */
 .work{display:flex;flex-direction:column;gap:16px}
-a.pj{display:grid;grid-template-columns:560px minmax(0,1fr);align-items:stretch;padding:8px;background:var(--card);border:1px solid var(--line);border-radius:24px;text-decoration:none;color:var(--ink);box-shadow:var(--sh1);transition:box-shadow .25s,transform .25s}
+a.pj{--in:36px;display:grid;grid-template-columns:1fr 1fr;height:348px;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:var(--sh1);transition:box-shadow .25s,transform .25s}
 a.pj:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
-a.pj.flip{grid-template-columns:minmax(0,1fr) 560px}
 a.pj.flip .stage{order:2}
 
-/* stage: screens rise from the floor, the stat line floats over them */
-.stage{position:relative;height:308px;border-radius:17px;overflow:hidden;
-  background:radial-gradient(90% 80% at 50% 0%,var(--hi),transparent 70%),linear-gradient(180deg,var(--t1),var(--t2))}
-.stage .set{position:absolute;left:50%;top:30px;display:flex;gap:22px;align-items:flex-start;transform:translateX(-50%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-a.pj:hover .stage .set{transform:translate(-50%,-6px)}
-.stage img{display:block;max-width:none}
-.stage.phones img.ph{width:196px;height:auto;filter:drop-shadow(0 24px 30px var(--dsh)) drop-shadow(0 1px 3px rgba(10,14,30,.08))}
-.stage.phones img.ph:nth-child(even){margin-top:22px}
-.pj-penfold .stage.phones .set{gap:16px}
-.pj-penfold .stage.phones img.ph{width:164px}
-.pj-penfold .stage.phones img.ph:nth-child(even){margin-top:-8px}
-.pj-penfold .stage.phones img.ph:nth-child(odd){margin-top:14px}
-.stage.desk .set{left:44px;top:34px;transform:none}
-a.pj:hover .stage.desk .set{transform:translateY(-6px)}
-.stage.desk img.dt{width:640px;height:auto;border-radius:9px;filter:drop-shadow(0 24px 40px var(--dsh)) drop-shadow(0 1px 3px rgba(10,14,30,.08))}
+/* the image half: whole screens, never cut, sitting inside the same inset */
+.stage{position:relative;padding:var(--in);display:flex;align-items:center;justify-content:center;min-width:0;
+  background:radial-gradient(100% 90% at 50% 0%,var(--hi),transparent 70%),linear-gradient(180deg,var(--t1),var(--t2))}
+.stage .set{display:flex;align-items:center;justify-content:center;gap:20px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+a.pj:hover .stage .set{transform:scale(1.025)}
+.stage img{display:block}
+.stage.phones img.ph{height:276px;width:auto;filter:drop-shadow(0 16px 22px var(--dsh)) drop-shadow(0 1px 2px rgba(10,14,30,.1))}
+.stage.desk img.dt{width:420px;max-width:100%;height:auto;border-radius:6px;filter:drop-shadow(0 16px 26px var(--dsh)) drop-shadow(0 1px 2px rgba(10,14,30,.1))}
 
-/* the stat line, on the text side */
-.txt .spec{list-style:none;margin:16px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;gap:0}
-.txt .spec li{display:flex;flex-direction:column;gap:2px;min-width:0}
-.txt .spec li+li{margin-left:20px;padding-left:20px;border-left:1px solid var(--line)}
-.txt .spec b{white-space:nowrap;font-size:19px;line-height:1.2;font-weight:800;letter-spacing:-.025em;color:var(--ink)}
-.txt .spec span{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-
-/* text: who and when, then the headline, then the story */
-.txt{display:flex;flex-direction:column;justify-content:center;padding:26px 36px 26px 40px;min-width:0}
-a.pj.flip .txt{padding:26px 40px 26px 36px}
-.txt .meta{margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+/* the text half: top line, story in the middle, facts on the floor; edges line up with the screens */
+.txt{padding:var(--in) 44px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.txt .meta{margin:0;display:flex;align-items:baseline;gap:10px;line-height:1}
 .txt .meta b{font-size:15px;font-weight:800;letter-spacing:-.02em}
 .txt .meta span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
-.txt h2{margin:12px 0 0;font-size:25px;line-height:1.18;font-weight:800;letter-spacing:-.028em;text-wrap:balance}
-.txt .sum{margin:10px 0 0;font-size:14.5px;line-height:1.6;color:var(--body)}
-.txt .role{margin:12px 0 0;font-size:12.5px;font-weight:600;color:var(--body);display:flex;flex-wrap:wrap;column-gap:10px;row-gap:2px}
-.txt .role span{font:500 11.5px/1.7 var(--sysMono);color:var(--mut)}
+.txt h2{margin:0;font-size:24px;line-height:1.2;font-weight:800;letter-spacing:-.028em;text-wrap:balance}
+.txt .sum{margin:10px 0 0;font-size:14.5px;line-height:1.6;color:var(--body);text-wrap:pretty}
+.txt .foot{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:end;column-gap:28px}
+.txt .spec{display:contents;list-style:none;margin:0;padding:0}
+.txt .spec li{display:flex;flex-direction:column;gap:3px}
+.txt .spec b{font-size:20px;line-height:1.1;font-weight:800;letter-spacing:-.025em;white-space:nowrap}
+.txt .spec span{font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.txt .role{margin:8px 0 0;font-size:13px;line-height:1.4;font-weight:600;color:var(--body)}
+.txt .tech{margin:0;justify-self:end;text-align:right;font:500 11px/1.5 var(--sysMono);color:var(--mut);white-space:nowrap}
 a.pj:hover .txt h2{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
 
 /* project hues */
-.pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.3);--glass:rgba(255,255,255,.72);--glassrim:rgba(20,24,40,.08)}
-.pj-cable{--t1:#e9eefa;--t2:#d3def5}
-.pj-confirmo{--t1:#f1edfe;--t2:#e0d6fb}
-.pj-mara{--t1:#fdf2e8;--t2:#f7dcc4}
-.pj-starcount{--t1:#e8f2f2;--t2:#cfe3e3}
-.pj-penfold{--t1:#eef0fb;--t2:#d9dff6}
-:root[data-theme="dark"] .pj{--hi:rgba(255,255,255,.05);--dsh:rgba(0,0,0,.55);--glass:rgba(22,24,30,.66);--glassrim:rgba(255,255,255,.09)}
-:root[data-theme="dark"] .pj-cable{--t1:#171d2b;--t2:#1c263b}
-:root[data-theme="dark"] .pj-confirmo{--t1:#1c1927;--t2:#261f3b}
-:root[data-theme="dark"] .pj-mara{--t1:#201a15;--t2:#2e2118}
-:root[data-theme="dark"] .pj-starcount{--t1:#151f1f;--t2:#182b2c}
-:root[data-theme="dark"] .pj-penfold{--t1:#181b27;--t2:#1e2338}
+.pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.26)}
+.pj-cable{--t1:#ebf0fb;--t2:#d7e1f6}
+.pj-confirmo{--t1:#f2eefe;--t2:#e3dafc}
+.pj-mara{--t1:#fdf3ea;--t2:#f8dfc9}
+.pj-starcount{--t1:#e9f3f3;--t2:#d2e5e5}
+.pj-penfold{--t1:#eff1fb;--t2:#dce1f6}
+:root[data-theme="dark"] .pj{--hi:rgba(255,255,255,.04);--dsh:rgba(0,0,0,.55)}
+:root[data-theme="dark"] .pj-cable{--t1:#161c2a;--t2:#1b253a}
+:root[data-theme="dark"] .pj-confirmo{--t1:#1b1826;--t2:#251e3a}
+:root[data-theme="dark"] .pj-mara{--t1:#1f1914;--t2:#2d2017}
+:root[data-theme="dark"] .pj-starcount{--t1:#141e1e;--t2:#172a2b}
+:root[data-theme="dark"] .pj-penfold{--t1:#171a26;--t2:#1d2237}
 
 .ptag{margin-top:40px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
 .ptag b{color:var(--body);font-weight:600}
 
-@media(max-width:960px){
-  a.pj,a.pj.flip{grid-template-columns:1fr}
+@media(max-width:900px){
+  a.pj{--in:24px;grid-template-columns:1fr;height:auto}
   a.pj.flip .stage{order:0}
-  .txt,a.pj.flip .txt{padding:22px 18px 18px}
-}
-@media(max-width:640px){
-  .stage{height:270px}
-  .stage.phones .set{zoom:.8}
-  .stage.desk .set{zoom:.7;left:28px}
+  .stage{height:300px}
+  .txt{padding:24px 22px;gap:18px}
+  .txt .foot{grid-template-columns:auto auto;row-gap:14px}
+  .txt .tech{grid-column:1/-1;justify-self:start;text-align:left}
+  .stage.phones img.ph{height:240px}
+  .stage.desk img.dt{width:auto;max-height:240px}
+  .pj-penfold .stage.phones img.ph{height:200px}
   .txt h2{font-size:21px}
 }
 
@@ -109,7 +100,7 @@ a.pj:hover .txt h2{text-decoration:underline;text-decoration-thickness:1.5px;tex
     <div class="hrow"><h1>Cesar Garcia</h1></div>
     <p><b>Twice a founding designer</b>, an engineer by training, AI-native end to end: design, building, shipping. I turn high-stakes technical constraints into proven, unique, simple solutions, tuned to human behavior. Tripled a crypto checkout from 9% to 27%, adding $135M a year in converted payments. Raised wallet signup completion from 12% to 88%, adding 20M users and saving $6.9M a year. 200M+ users across payments, pensions, crypto, financial crime, consumer and SaaS.</p>
   </header>
-  <div class="work"><a class="pj pj-cable flip" href="cable/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/cable/img/paper-trail-3-d.webp" alt="Cable, Paper Trails" loading="lazy"></div></div><div class="txt"><p class="meta"><b>Cable</b><span>Fincrime SaaS · 2020-22</span></p><h2>A single-feature product that didn’t sell, turned fincrime SaaS that did.</h2><p class="sum">Cable had one screen, a free pilot and no sales. I gave the flagship room, grew the product with its users, then rebuilt it into one suite banks paid for.</p><ul class="spec"><li><b>1 → 10+</b> <span>features</span></li><li><b>2</b> <span>flagships</span></li></ul><p class="role">Founding Designer, the only designer<span>B2B SaaS · AML · Desktop web</span></p></div></a><a class="pj pj-confirmo" href="confirmo/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/confirmo-1.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/confirmo-2.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"></div></div><div class="txt"><p class="meta"><b>Confirmo</b><span>Payments · 2025-26</span></p><h2>Tripled conversion. $135M a year added.</h2><p class="sum">A checkout moving $750M a year at a 9% success rate, on a backend nobody could touch. I tuned the flow without touching it, into an extra $135M a year.</p><ul class="spec"><li><b>43%</b> <span>success, key markets</span></li><li><b>0</b> <span>backend changes</span></li></ul><p class="role">Product Design Lead, first designer<span>Crypto checkout · Buyer and merchant · Web</span></p></div></a><a class="pj pj-mara flip" href="mara/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/mara-1.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/mara-2.webp" alt="Mara wallet" width="222" height="481" loading="lazy"></div></div><div class="txt"><p class="meta"><b>Mara</b><span>Digital wallet · 2022-24</span></p><h2>20M users added. $6.9M a year saved.</h2><p class="sum">A 27-step signup was losing almost 90% of 50,000 people a day, and paying for half of them. I cut the steps by 70%, and success went from 12% to 88%.</p><ul class="spec"><li><b>12% → 88%</b> <span>signup success</span></li><li><b>−70%</b> <span>onboarding steps</span></li></ul><p class="role">Head of Design and Product Owner<span>Crypto wallet · Mobile · Africa</span></p></div></a><a class="pj pj-starcount" href="starcount/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/img/home/starcount.webp" alt="Starcount, UK demand map" loading="lazy"></div></div><div class="txt"><p class="meta"><b>Starcount</b><span>Data intelligence · 2015-19</span></p><h2>Hit £1M first-year target, in 91 days.</h2><p class="sum">Starcount had data nobody had monetized, sold only as consultancy reports. I turned it into a product clients drove themselves, by making the map lie, correctly.</p><ul class="spec"><li><b>1st ever</b> <span>Twitter data deal</span></li><li><b>1</b> <span>lie to make it work</span></li></ul><p class="role">Head of Product Design, first designer<span>Audience intelligence · Enterprise · Desktop web</span></p></div></a><a class="pj pj-penfold flip" href="penfold/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/penfold-1.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/penfold-2.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/penfold-3.webp" alt="Penfold app" width="222" height="481" loading="lazy"></div></div><div class="txt"><p class="meta"><b>Penfold</b><span>Pensions · 2019-20</span></p><h2>First hire. Award-winning app.</h2><p class="sum">Penfold set out to build the UK’s best digital pension. I had it live in a week, cut onboarding from 33 steps to 5, and made the call on who it was for.</p><ul class="spec"><li><b>1 week</b> <span>to live</span></li><li><b>6x</b> <span>signups</span></li></ul><p class="role">Founding Designer, first hire<span>Pensions · Mobile and web · UK</span></p></div></a></div>
+  <div class="work"><a class="pj pj-cable flip" href="cable/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/cable/img/paper-trail-3-d.webp" alt="Cable, Paper Trails" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Cable</b><span>Fincrime SaaS · 2020-22</span></p><p class="role">Founding Designer, the only designer</p></div><div class="mid"><h2>A single-feature product that didn’t sell, turned fincrime SaaS that did.</h2><p class="sum">Cable had one screen, a free pilot and no sales. I gave the flagship room, grew the product with its users, then rebuilt it into one suite banks paid for.</p></div><div class="foot"><ul class="spec"><li><b>1 → 10+</b><span>features</span></li><li><b>2</b><span>flagships</span></li></ul><p class="tech">B2B SaaS · AML · Desktop</p></div></div></a><a class="pj pj-confirmo" href="confirmo/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/confirmo-1.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/confirmo-2.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Confirmo</b><span>Payments · 2025-26</span></p><p class="role">Product Design Lead, first designer</p></div><div class="mid"><h2>Tripled conversion. $135M a year added.</h2><p class="sum">A checkout moving $750M a year at a 9% success rate, on a backend nobody could touch. I tuned the flow without touching it, into an extra $135M a year.</p></div><div class="foot"><ul class="spec"><li><b>43%</b><span>success, key markets</span></li><li><b>0</b><span>backend changes</span></li></ul><p class="tech">Checkout · Web</p></div></div></a><a class="pj pj-mara flip" href="mara/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/mara-1.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/mara-2.webp" alt="Mara wallet" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Mara</b><span>Digital wallet · 2022-24</span></p><p class="role">Head of Design and Product Owner</p></div><div class="mid"><h2>20M users added. $6.9M a year saved.</h2><p class="sum">A 27-step signup was losing almost 90% of 50,000 people a day, and paying for half of them. I cut the steps by 70%, and success went from 12% to 88%.</p></div><div class="foot"><ul class="spec"><li><b>12% → 88%</b><span>signup success</span></li><li><b>−70%</b><span>onboarding steps</span></li></ul><p class="tech">Crypto wallet · Mobile</p></div></div></a><a class="pj pj-starcount" href="starcount/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/img/home/starcount.webp" alt="Starcount, UK demand map" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Starcount</b><span>Data intelligence · 2015-19</span></p><p class="role">Head of Product Design, first designer</p></div><div class="mid"><h2>Hit £1M first-year target, in 91 days.</h2><p class="sum">Starcount had data nobody had monetized, sold only as consultancy reports. I turned it into a product clients drove themselves, by making the map lie, correctly.</p></div><div class="foot"><ul class="spec"><li><b>1st ever</b><span>Twitter data deal</span></li><li><b>1</b><span>lie to make it work</span></li></ul><p class="tech">Enterprise · Desktop</p></div></div></a><a class="pj pj-penfold flip" href="penfold/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/img/home/penfold-1.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/penfold-2.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/img/home/penfold-3.webp" alt="Penfold app" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Penfold</b><span>Pensions · 2019-20</span></p><p class="role">Founding Designer, first hire</p></div><div class="mid"><h2>First hire. Award-winning app.</h2><p class="sum">Penfold set out to build the UK’s best digital pension. I had it live in a week, cut onboarding from 33 steps to 5, and made the call on who it was for.</p></div><div class="foot"><ul class="spec"><li><b>1 week</b><span>to live</span></li><li><b>6x</b><span>signups</span></li></ul><p class="tech">Consumer fintech · Mobile</p></div></div></a></div>
   <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
   <div class="gap b"></div>
 </div>
