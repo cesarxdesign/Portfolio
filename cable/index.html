@@ -29,6 +29,9 @@ figure{margin:0}
 /* the case study is a fixed 1440 layout: centred, and scaled down to fit narrower windows */
 .case{width:1440px;margin:0 auto;display:flex;flex-direction:column;font-family:'Roboto','Helvetica Neue',sans-serif;background:var(--bg)}
 .case > .sec{display:flex;flex-direction:column}
+/* the site footer, as case-shared.css draws it */
+.foot{margin:120px auto 0;max-width:1200px;border-top:1px solid var(--hair);padding:22px 0;font:400 12px/1.5 var(--sysMono);color:var(--mut);text-align:center}
+@media (max-width:760px){.foot{margin:96px 16px 60px} .foot .fnm{display:none}}
 </style>
 </head>
 <body>
@@ -138,12 +141,10 @@ figure{margin:0}
 <div style="grid-column: span 3;"><div style="font-family: 'Roboto Mono', ui-monospace, monospace; font-size: 13px; line-height: 16px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--mut);">How it’s going now</div></div>
 <div style="grid-column: span 7;"><p style="margin: 0; font-family: 'Roboto', 'Helvetica Neue', sans-serif; font-size: 18px; line-height: 30px; color: var(--mut);">A few years after I left, Cable was acquired as a whole, by Synctera, in 2026. The deal came long after me; the road there was one I helped lay.</p></div>
 </div>
-<footer style="display: flex; justify-content: space-between; align-items: center; margin: 160px 120px 0; padding: 40px 0 64px; border-top: 1px solid var(--ink);">
-<div style="font-family: 'Roboto', 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink);">Cesar Garcia</div>
-<div style="display: flex; gap: 40px;"><a href="https://cesarxdesign.com" style="font-family: 'Roboto', 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 24px; text-decoration: none;">All work</a><a href="mailto:cesarxdesign@gmail.com" style="font-family: 'Roboto', 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 24px; text-decoration: none;">Get in touch</a></div>
-</footer>
+
 </section>
 </main>
+<div class="foot"><span class="fnm">Cesar Garcia &middot; </span>Founding Designer &middot; Cable</div>
 <script>
 (function(){
   var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
