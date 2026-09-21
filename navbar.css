@@ -158,7 +158,7 @@
   }
 }
 @media(max-width:480px){
-  .flag:has(.bgr){height:calc(44px + var(--sat));padding:var(--sat) 16px 0;--mnavH:340px;   /* the design constant: bar 44 + air 16 + 6 borderless rows at 44pt + floor 16. ONE edge inset for bar and drawer: 16, sitting a touch inside the body's 22 by intent. --sat rides on top everywhere, so the glass owns the status area */
+  .flag:has(.bgr){height:calc(44px + var(--sat));padding:var(--sat) 16px 0;--mnavH:296px;   /* the design constant: bar 44 + air 16 + 5 borderless rows at 44pt + floor 16. ONE edge inset for bar and drawer: 16, sitting a touch inside the body's 22 by intent. --sat rides on top everywhere, so the glass owns the status area */
     background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent}
   .flag:has(.bgr)::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(44px + var(--sat));z-index:-2;
     background:var(--paperT);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -209,7 +209,7 @@
   .flag:has(.bgr[open]) .tops a:nth-of-type(2){order:3}
   .flag:has(.bgr[open]) .tops a:nth-of-type(3){order:2}
   .flag:has(.bgr[open]) .tops a:nth-of-type(4){order:1}
-  .flag:has(.bgr[open]) .tops .thsw{order:5;align-self:start;margin-top:38px}   /* bottom of the pill on the bottom of the last project row (measured); the gap pays for the rows above it, so a link added or removed moves it by one 44pt row */
+  .flag:has(.bgr[open]) .tops .thsw{order:5;align-self:start;margin-top:-6px}   /* bottom of the pill on the bottom of the last project row (measured); the gap pays for the rows above it, so a link added or removed moves it by one 44pt row */
   .flag:has(.bgr[open]) .tops .thsw button{font-size:11px;padding:14px 16px}   /* 44pt with the pill's own chrome */
   .flag:has(.bgr[open]) .tops .thsw button.ic{width:48px;height:auto}
   .flag:has(.bgr[open]) .tops .thsw button.ic svg{width:16px;height:16px}
