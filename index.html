@@ -26,8 +26,8 @@ header{margin-bottom:40px}
 
 /* one system: every card is two equal halves, same height, same 36px inset on both sides */
 .work{display:flex;flex-direction:column;gap:16px}
-a.pj{--in:36px;display:grid;grid-template-columns:1fr 1fr;height:348px;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:var(--sh1);transition:box-shadow .25s,transform .25s}
-a.pj:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+a.pj{--in:36px;display:grid;grid-template-columns:1fr 1fr;height:348px;background:transparent;border:1px solid transparent;border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:none;transition:background-color .25s,border-color .25s,box-shadow .25s,transform .25s}
+a.pj:hover,a.pj:focus-visible{background:var(--card);border-color:var(--line);box-shadow:var(--sh2);transform:translateY(-2px);outline:none}
 a.pj.flip .stage{order:2}
 
 /* the image half: whole screens, never cut, sitting inside the same inset */
