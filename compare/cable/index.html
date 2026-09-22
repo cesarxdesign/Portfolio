@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cable, Three Versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<style>
+body{margin:0}
+:root{
+  --bg:#EEF0F3;--panel:#FFFFFF;--ink:#0E1B33;--mut:#5A6478;--line:#D6DBE3;--accent:#2459D1;--accentInk:#FFFFFF;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;padding-inline:16px;box-sizing:border-box}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:14px}
+h1{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+h1 span{color:var(--mut);font-weight:400}
+.tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sync{display:flex;align-items:center;gap:8px;font:500 12px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mut);cursor:pointer}
+.sync input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.seg{display:none;gap:4px;padding:3px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.seg button{font:500 12px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;border:0;background:transparent;color:var(--mut);padding:9px 12px;border-radius:5px;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accentInk)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-block:0 16px;align-items:start}
+.col{display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.cap{position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:1;background:var(--panel);border-radius:10px 10px 0 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 14px;min-height:96px;box-sizing:border-box;border-bottom:1px solid var(--line)}
+.cap .k{font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.cap .t{font-size:14px;line-height:1.35;margin-top:3px;text-wrap:balance}
+.cap .m{font:400 11px/1.4 var(--mono);letter-spacing:.04em;color:var(--mut);margin-top:6px}
+.cap a{flex-shrink:0;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);text-decoration:none;padding:2px 0}
+.cap a:hover{color:var(--accent)}
+.view{position:relative;overflow:hidden;height:800px;border-radius:0 0 10px 10px}
+.view iframe{position:absolute;left:0;top:0;width:1440px;border:0;transform-origin:0 0;background:#fff}
+@media (max-width:900px){
+  .seg{display:flex}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .col{display:none}
+  .col.on{display:flex}
+}
+</style>
+
+<header>
+  <h1>Cable <span>· three versions of the case study</span></h1>
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Version">
+      <button type="button" id="s0" data-i="0" aria-pressed="true">Figma</button>
+      <button type="button" id="s1" data-i="1" aria-pressed="false">Aug</button>
+      <button type="button" id="s2" data-i="2" aria-pressed="false">Live</button>
+    </div>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="col on">
+    <div class="cap"><div><div class="k">Figma · Cable _air</div><div class="t">The Figma case study, built as one page. What fed the current live one.</div><div class="m">1,583 words · 30,434 px tall at 1920 wide</div></div><a href="v3.html" target="_blank" rel="noopener">Open ↗</a></div>
+    <div class="view"><iframe src="v3.html" scrolling="no" title="Cable case study, the Figma page" data-w="1920" loading="eager"></iframe></div>
+  </section>
+  <section class="col">
+    <div class="cap"><div><div class="k">Aug 2026 · live until 21 Sep</div><div class="t">From one feature, to an acquired platform.</div><div class="m">380 words · 5,011 px tall at 1440 wide</div></div><a href="v1.html" target="_blank" rel="noopener">Open ↗</a></div>
+    <div class="view"><iframe src="v1.html" scrolling="no" title="Cable case study, August 2026 version" loading="eager"></iframe></div>
+  </section>
+  <section class="col">
+    <div class="cap"><div><div class="k">21 Sep 2026 · live now</div><div class="t">A single-feature product that didn’t sell, turned fincrime SaaS that did.</div><div class="m">1,182 words · 17,696 px tall at 1440 wide</div></div><a href="v2.html" target="_blank" rel="noopener">Open ↗</a></div>
+    <div class="view"><iframe src="v2.html" scrolling="no" title="Cable case study, 21 September rebuild" loading="eager"></iframe></div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var frames=views.map(function(v){return v.querySelector('iframe')});
+  var cols=[].slice.call(document.querySelectorAll('.col'));
+  function fit(){
+    views.forEach(function(v,i){
+      var f=frames[i],w=v.clientWidth;if(!w)return;
+      var W=+(f.dataset.w||1440),s=Math.min(1,w/W);
+      f.style.width=W+'px';f.style.transform='scale('+s+')';
+      var h=W*0.6;
+      try{var d=f.contentDocument;if(d&&d.body){d.documentElement.style.overflow='hidden';h=d.documentElement.scrollHeight}}catch(e){}
+      f.style.height=h+'px';v.style.height=Math.ceil(h*s)+'px';
+    });
+  }
+  window.addEventListener('resize',fit);fit();
+  frames.forEach(function(f){f.addEventListener('load',function(){fit();setTimeout(fit,1500);setTimeout(fit,5000)})});
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i=+b.dataset.i;
+      document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      cols.forEach(function(c,j){c.classList.toggle('on',j===i)});
+      fit();
+    });
+  });
+})();
+</script>
+</body>
+</html>
