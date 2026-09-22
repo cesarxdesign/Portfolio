@@ -1,202 +1,102 @@
 <!doctype html>
-<html lang="en"><head><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexMono-400.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexMono-500.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexMono-600.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexMono-700.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-100Italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-400Italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-600Italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-700Italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/IBMPlexSans-100.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/fonts/Inter-400.woff2" crossorigin><style>@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:block;src:url(/fonts/IBMPlexMono-400.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:block;src:url(/fonts/IBMPlexMono-500.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:block;src:url(/fonts/IBMPlexMono-600.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:700;font-display:block;src:url(/fonts/IBMPlexMono-700.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:italic;font-weight:100;font-display:block;src:url(/fonts/IBMPlexSans-100Italic.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:italic;font-weight:400;font-display:block;src:url(/fonts/IBMPlexSans-400Italic.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:italic;font-weight:600;font-display:block;src:url(/fonts/IBMPlexSans-600Italic.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:italic;font-weight:700;font-display:block;src:url(/fonts/IBMPlexSans-700Italic.woff2) format('woff2')}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:block;src:url(/fonts/IBMPlexSans-100.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:block;src:url(/fonts/Inter-400.woff2) format('woff2')}</style><base href="/"><script>(function(){try{var p=localStorage.getItem("folio0")||"auto";var sys=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",(p==="auto"||p===sys)?sys:p);}catch(e){}})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="stylesheet" href="../navbar.css">
-<title>Cesar Garcia · Product Designer</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cable, Three Versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
 <style>
-*{box-sizing:border-box}
-:root{--bg:#f3f4f5;--card:#fff;--ink:#1a1c1f;--body:#4a4e54;--mut:#878c93;--line:#e5e7ea;--accent:#5c626a;--sh1:0 1px 2px rgba(18,20,23,.05);--sh2:0 18px 44px -20px rgba(18,20,23,.22);--ok:#16a34a;--wip:#f59e0b;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(243,244,245,.86);--lab:var(--mut)}
-:root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6);--ok:#4ade80;--wip:#fbbf24;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(18,19,22,.86);--lab:var(--mut)}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 28px 44px;min-height:100vh;display:flex;flex-direction:column}
-.wrap{max-width:1080px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
-.hrow{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.tops{display:flex;align-items:center;gap:22px}
-.tops a{font-size:11px;line-height:1;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-decoration:none}
-.tops a:hover{color:var(--ink)}
-header h1{margin:0;font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.03em}
-header p{margin:10px 0 0;color:var(--body);max-width:606.256px;font-size:15.5px}
-header p b{color:var(--ink)}
-header p+p{margin-top:8px}
-.grid{display:grid;gap:20px}
-.grid.mains{grid-template-columns:repeat(3,1fr)}
-.gap{min-height:0}
-header{margin-bottom:40px}
-.gap.a{flex:4 0 0}
-.gap.b{flex:6 0 0}
-.flag.bare{margin:-64px -28px 0}
-
-
-/* one system: every card is two equal halves, same height, same 36px inset on both sides */
-.work{display:flex;flex-direction:column;gap:16px}
-a.pj{--in:36px;display:grid;grid-template-columns:1fr 1fr;height:348px;background:transparent;border:1px solid transparent;border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:none;transition:background-color .25s,border-color .25s,box-shadow .25s,transform .25s}
-a.pj:hover,a.pj:focus-visible{background:var(--card);border-color:var(--line);box-shadow:var(--sh2);transform:translateY(-2px);outline:none}
-a.pj.flip .stage{order:2}
-
-/* the image half: whole screens, never cut, sitting inside the same inset */
-.stage{position:relative;padding:var(--in);display:flex;align-items:center;justify-content:center;min-width:0;
+body{margin:0}
+:root{
+  --bg:#EEF0F3;--panel:#FFFFFF;--ink:#0E1B33;--mut:#5A6478;--line:#D6DBE3;--accent:#2459D1;--accentInk:#FFFFFF;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
 }
-.stage .set{display:flex;align-items:center;justify-content:center;gap:20px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-a.pj:hover .stage .set{transform:scale(1.025)}
-.stage img{display:block}
-.stage.phones img.ph{height:276px;width:auto;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
-.stage.desk img.dt{width:420px;max-width:100%;height:auto;border-radius:6px;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
-.stage img.ph,.stage img.dt{transition:filter .3s}
-a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.ph,a.pj:focus-visible .stage img.dt{filter:drop-shadow(0 18px 26px var(--hsh)) drop-shadow(0 2px 4px var(--dsh2))}
-
-/* the text half: top line, story in the middle, facts on the floor; edges line up with the screens */
-.txt{padding:var(--in) 44px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
-.txt .meta{margin:0;display:flex;align-items:baseline;gap:10px;line-height:1}
-.txt .meta b{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--ac)}
-.txt .meta span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
-.txt h2{margin:0;font-size:24px;line-height:1.2;font-weight:800;letter-spacing:-.028em;text-wrap:balance}
-.txt .sum{margin:10px 0 0;font-size:14.5px;line-height:1.6;color:var(--body);text-wrap:pretty}
-.txt .foot{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:end;column-gap:28px}
-.txt .spec{display:contents;list-style:none;margin:0;padding:0}
-.txt .spec li{display:flex;flex-direction:column;gap:3px}
-.txt .spec b{font-size:20px;line-height:1.1;font-weight:800;letter-spacing:-.025em;white-space:nowrap}
-.txt .spec span{font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
-.txt .role{margin:8px 0 0;font-size:13px;line-height:1.4;font-weight:600;color:var(--body)}
-.txt .tech{margin:0;justify-self:end;text-align:right;font:500 11px/1.5 var(--sysMono);color:var(--mut);white-space:nowrap}
-
-/* project hues */
-.pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.08);--dsh2:rgba(22,28,60,.07);--hsh:rgba(22,28,60,.24)}
-.pj-cable{--ac:#2459d1}.pj-confirmo{--ac:#6f45e0}.pj-mara{--ac:#e3601a}.pj-starcount{--ac:#0b968d}.pj-penfold{--ac:#6076dd}
-:root[data-theme="dark"] .pj-cable{--ac:#6f9ae8}
-:root[data-theme="dark"] .pj-confirmo{--ac:#c0abf5}
-:root[data-theme="dark"] .pj-mara{--ac:#f28a4c}
-:root[data-theme="dark"] .pj-starcount{--ac:#66e6de}
-:root[data-theme="dark"] .pj-penfold{--ac:#98a6e9}
-.pj-cable{--t1:#ebf0fb;--t2:#d7e1f6}
-.pj-confirmo{--t1:#f2eefe;--t2:#e3dafc}
-.pj-mara{--t1:#fdf3ea;--t2:#f8dfc9}
-.pj-starcount{--t1:#e9f3f3;--t2:#d2e5e5}
-.pj-penfold{--t1:#eff1fb;--t2:#dce1f6}
-:root[data-theme="dark"] .pj{--hi:rgba(255,255,255,.04);--dsh:rgba(0,0,0,.28);--dsh2:rgba(0,0,0,.2);--hsh:rgba(0,0,0,.55)}
-:root[data-theme="dark"] .pj-cable{--t1:#161c2a;--t2:#1b253a}
-:root[data-theme="dark"] .pj-confirmo{--t1:#1b1826;--t2:#251e3a}
-:root[data-theme="dark"] .pj-mara{--t1:#1f1914;--t2:#2d2017}
-:root[data-theme="dark"] .pj-starcount{--t1:#141e1e;--t2:#172a2b}
-:root[data-theme="dark"] .pj-penfold{--t1:#171a26;--t2:#1d2237}
-
-.ptag{margin-top:40px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
-.ptag b{color:var(--body);font-weight:600}
-
-@media(max-width:900px){
-  a.pj{--in:24px;grid-template-columns:1fr;height:auto}
-  a.pj.flip .stage{order:0}
-  .stage{height:300px}
-  .txt{padding:24px 22px;gap:18px}
-  .txt .foot{grid-template-columns:auto auto;row-gap:14px}
-  .txt .tech{grid-column:1/-1;justify-self:start;text-align:left}
-  .stage.phones img.ph{height:190px}
-  .stage .set{gap:12px}
-  .stage.desk img.dt{width:auto;max-height:240px}
-  .txt h2{font-size:21px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;padding-inline:16px;box-sizing:border-box}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:14px}
+h1{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+h1 span{color:var(--mut);font-weight:400}
+.tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sync{display:flex;align-items:center;gap:8px;font:500 12px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mut);cursor:pointer}
+.sync input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.seg{display:none;gap:4px;padding:3px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.seg button{font:500 12px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;border:0;background:transparent;color:var(--mut);padding:9px 12px;border-radius:5px;cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accentInk)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-block:0 16px;align-items:start}
+.col{display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.cap{position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:1;background:var(--panel);border-radius:10px 10px 0 0;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.cap .k{font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.cap .t{font-size:15px;font-weight:600;line-height:1.3;text-transform:uppercase;letter-spacing:.04em}
+.cap .m{font:400 11px/1.4 var(--mono);letter-spacing:.04em;color:var(--mut)}
+.cap a{flex-shrink:0;font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);text-decoration:none;padding:2px 0}
+.cap a:hover{color:var(--accent)}
+.view{position:relative;overflow:hidden;height:800px;border-radius:0 0 10px 10px}
+.view iframe{position:absolute;left:0;top:0;width:1440px;border:0;transform-origin:0 0;background:#fff}
+@media (max-width:900px){
+  .seg{display:flex}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .col{display:none}
+  .col.on{display:flex}
 }
-
-
-@media(max-width:480px){
-  .gap.a{min-height:56px}
-  .ptag{display:none}
-}
-
 </style>
-</head><body>
-<div class="flag bare"><details class="bgr"><summary aria-label="Menu"><span class="bn">Home</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a><a href="../penfold/index.html">Penfold</a></nav><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
-<div class="wrap">
-  <div class="gap a"></div>
-  <header>
-    <div class="hrow"><h1>Cesar Garcia</h1></div>
-    <p><b>Founding designer, twice.</b> Engineer first. I&rsquo;ve designed experiences for humans for a decade, and now building and shipping leveraging AI and my technical background.</p>
-    <p>200M+ people use my work. Give me the messy problems: hard tech limits, fuzzy data, fixes that don&rsquo;t work. I don&rsquo;t design around constraints. I break them down.</p>
-  </header>
-  <div class="work"><a class="pj pj-cable" href="cable/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/cable/img/paper-trail-3-d.webp" alt="Cable, Paper Trails" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Cable</b><span>Fincrime SaaS · 2020-22</span></p><p class="role">Founding Designer</p></div><div class="mid"><h2>A single-feature product that didn’t sell, turned fincrime SaaS that did.</h2><p class="sum">Cable had one screen, a free pilot and no sales. I gave the flagship room, grew the product with its users, then rebuilt it into one suite banks paid for.</p></div><div class="foot"><ul class="spec"><li><b>1 → 10+</b><span>features</span></li><li><b>2</b><span>flagships</span></li></ul><p class="tech">B2B SaaS · AML · Desktop</p></div></div></a><a class="pj pj-confirmo flip" href="confirmo/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/confirmo-1.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-2.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-3.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Confirmo</b><span>Payments · 2025-26</span></p><p class="role">Product Design Lead, first designer</p></div><div class="mid"><h2>Tripled conversion. $135M a year added.</h2><p class="sum">A checkout moving $750M a year at a 9% success rate, on a backend nobody could touch. I tuned the flow without touching it, into an extra $135M a year.</p></div><div class="foot"><ul class="spec"><li><b>43%</b><span>success, key markets</span></li><li><b>0</b><span>backend changes</span></li></ul><p class="tech">Checkout · Web</p></div></div></a><a class="pj pj-mara" href="mara/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/mara-1.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-2.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-3.webp" alt="Mara wallet" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Mara</b><span>Digital wallet · 2022-24</span></p><p class="role">Head of Design and Product Owner</p></div><div class="mid"><h2>20M users added. $6.9M a year saved.</h2><p class="sum">A 27-step signup was losing almost 90% of 50,000 people a day, and paying for half of them. I cut the steps by 70%, and success went from 12% to 88%.</p></div><div class="foot"><ul class="spec"><li><b>12% → 88%</b><span>signup success</span></li><li><b>−70%</b><span>onboarding steps</span></li></ul><p class="tech">Crypto wallet · Mobile</p></div></div></a><a class="pj pj-starcount flip" href="starcount/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/home/img/starcount.webp" alt="Starcount, UK demand map" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Starcount</b><span>Data intelligence · 2015-19</span></p><p class="role">Head of Product Design, first designer</p></div><div class="mid"><h2>Hit £1M first-year target, in 91 days.</h2><p class="sum">Starcount had data nobody had monetized, sold only as consultancy reports. I turned it into a product clients drove themselves, by making the map lie, correctly.</p></div><div class="foot"><ul class="spec"><li><b>1st ever</b><span>Twitter data deal</span></li><li><b>1</b><span>lie to make it work</span></li></ul><p class="tech">Enterprise · Desktop</p></div></div></a><a class="pj pj-penfold" href="penfold/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/penfold-1.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-2.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-3.webp" alt="Penfold app" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Penfold</b><span>Pensions · 2019-20</span></p><p class="role">Founding Designer, first hire</p></div><div class="mid"><h2>First hire. Award-winning app.</h2><p class="sum">Penfold set out to build the UK’s best digital pension. I had it live in a week, cut onboarding from 33 steps to 5, and made the call on who it was for.</p></div><div class="foot"><ul class="spec"><li><b>1 week</b><span>to live</span></li><li><b>6x</b><span>signups</span></li></ul><p class="tech">Consumer fintech · Mobile</p></div></div></a></div>
-  <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
-  <div class="gap b"></div>
-</div>
+
+<header>
+  <h1>Cable <span>· three versions of the case study</span></h1>
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Version">
+      <button type="button" id="s0" data-i="0" aria-pressed="true">Max</button>
+      <button type="button" id="s1" data-i="1" aria-pressed="false">Skimmer</button>
+      <button type="button" id="s2" data-i="2" aria-pressed="false">Middle</button>
+    </div>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="col on">
+    <div class="cap"><div class="t">Mega Long Verbose Max</div><div class="m">1,583 words · 30,434 px</div></div>
+    <div class="view"><iframe src="/compare/cable/v3.html" scrolling="no" title="Cable case study, the Figma page" data-w="1920" loading="eager"></iframe></div>
+  </section>
+  <section class="col">
+    <div class="cap"><div class="t">Mega Trim Super Skimmer</div><div class="m">380 words · 5,011 px</div></div>
+    <div class="view"><iframe src="/compare/cable/v1.html" scrolling="no" title="Cable case study, August 2026 version" loading="eager"></iframe></div>
+  </section>
+  <section class="col">
+    <div class="cap"><div class="t">Fucking In The Middle</div><div class="m">1,182 words · 17,696 px</div></div>
+    <div class="view"><iframe src="/compare/cable/v2.html" scrolling="no" title="Cable case study, 21 September rebuild" loading="eager"></iframe></div>
+  </section>
+</main>
+
 <script>
 (function(){
-  var mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
-  var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.7v2.1M12 19.2v2.1M4.5 12H2.4M21.6 12h-2.1M6.7 6.7 5.2 5.2M18.8 18.8l-1.5-1.5M17.3 6.7l1.5-1.5M5.2 18.8l1.5-1.5"/></svg>';
-  var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.4 15.3A9.3 9.3 0 0 1 8.7 3.6 9.3 9.3 0 1 0 20.4 15.3z"/></svg>';
-  function get(){try{return localStorage.getItem("folio0")||"auto"}catch(e){return "auto"}}
-  function set(v){try{localStorage.setItem("folio0",v)}catch(e){}}
-  function paint(){
-    var sys=mq.matches?"dark":"light", p=get();
-    /* an explicit pick that matches the system IS auto: keeps it a clean 2-state */
-    if(p!=="auto"&&p===sys){p="auto";set(p);}
-    document.documentElement.setAttribute("data-theme",p==="auto"?sys:p);
-    var opp=sys==="dark"?"light":"dark";
-    el.innerHTML='<button class="ic'+(p==="auto"?"":" on")+'" title="Always '+opp+'">'+(opp==="light"?SUN:MOON)+'</button>'+
-                 '<button class="'+(p==="auto"?"on":"")+'" title="Follow system ('+sys+')">Auto</button>';
-  }
-  /* a click anywhere INSIDE the toggle flips it, whichever way: the two buttons are a readout, not two targets */
-  el.addEventListener("click",function(){
-    var sys=mq.matches?"dark":"light";
-    set(get()==="auto"?(sys==="dark"?"light":"dark"):"auto");
-    paint();
-  });
-  el.style.cursor="pointer";
-  addEventListener("storage",function(e){if(e.key==="folio0")paint();});   /* other tabs follow live */
-  mq.addEventListener("change",paint);
-  paint();
-})();
-</script>
-<script>
-!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
-  api_host:'https://eu.i.posthog.com',
-  persistence:'sessionStorage', /* not a cookie, dies with the tab, no banner.
-                                   'memory' loses identity on every navigation, which
-                                   kills every cross-page journey question. */
-  disable_session_recording:true,
-  autocapture:false,
-  capture_pageview:true,
-  capture_pageleave:true       /* gives time-on-page and exit page */
-});
-(function(){
-  var PAGE='home', seen={}, secs={};
-  function depth(){
-    var h=document.documentElement;
-    var max=h.scrollHeight-innerHeight;
-    if(max<=0) return 100;
-    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
-  }
-  function mark(){
-    var d=depth();
-    [25,50,75,100].forEach(function(m){
-      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var frames=views.map(function(v){return v.querySelector('iframe')});
+  var cols=[].slice.call(document.querySelectorAll('.col'));
+  function fit(){
+    views.forEach(function(v,i){
+      var f=frames[i],w=v.clientWidth;if(!w)return;
+      var W=+(f.dataset.w||1440),s=Math.min(1,w/W);
+      f.style.width=W+'px';f.style.transform='scale('+s+')';
+      var h=W*0.6;
+      try{var d=f.contentDocument;if(d&&d.body){d.documentElement.style.overflow='hidden';h=d.documentElement.scrollHeight}}catch(e){}
+      f.style.height=h+'px';v.style.height=Math.ceil(h*s)+'px';
     });
   }
-  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
-  /* which sections they actually reached, better than a raw percentage */
-  addEventListener('load',function(){
-    var list=[].slice.call(document.querySelectorAll('section.sec'));
-    if(!list.length||!window.IntersectionObserver) return;
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        var i=list.indexOf(e.target);
-        if(secs[i]) return; secs[i]=1;
-        var lab=e.target.querySelector('.lab');
-        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
-      });
-    },{threshold:.4});
-    list.forEach(function(s){io.observe(s);});
+  window.addEventListener('resize',fit);fit();
+  frames.forEach(function(f){f.addEventListener('load',function(){fit();setTimeout(fit,1500);setTimeout(fit,5000)})});
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i=+b.dataset.i;
+      document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      cols.forEach(function(c,j){c.classList.toggle('on',j===i)});
+      fit();
+    });
   });
-  /* outbound clicks, tagged with the page they left from and how far down */
-  addEventListener('click',function(ev){
-    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
-    var h=a.getAttribute('href')||'', kind=null;
-    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
-    else if(/linkedin\.com/i.test(h)) kind='linkedin';
-    else if(/github\.com/i.test(h)) kind='github';
-    else if(/^mailto:/i.test(h)) kind='email';
-    if(kind){posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()},{transport:'sendBeacon'});return;}
-    if(a.host!==location.host) return;
-    var p=(a.pathname||'').replace(/\/index\.html$/,'').replace(/\/$/,'');
-    if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(p) && p.slice(1)!==PAGE)
-      posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth()},{transport:'sendBeacon'});
-  },true);
 })();
 </script>
-</body></html>
+</body>
+</html>
