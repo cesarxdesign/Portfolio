@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
 <link rel="stylesheet" href="/navbar.css">
+<link rel="stylesheet" href="/footer.css">
 <style>
 /* site palette: the navbar reads these, keep them as every page has them */
 :root{--sysFont:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;
@@ -22,6 +23,7 @@
 :root{--c-bg:#FFFFFF;--c-ink:#181818;--c-body:#606060;--c-mut:#696969;--c-line:#EBEBEB;--c-acc:#2C60C7;--c-acc2:#629AFA;--c-glow:rgba(44,96,199,.07);--c-halo:rgba(0,98,245,.12)}
 :root[data-theme="dark"]{--c-bg:#0B111C;--c-ink:#F8F8F8;--c-body:#C0C0C0;--c-mut:#9A9A9A;--c-line:#1E2A40;--c-acc:#629AFA;--c-acc2:#D1E0FF;--c-glow:rgba(98,154,250,.10);--c-halo:rgba(0,98,245,.30)}
 html,body{margin:0;background:var(--c-bg);overflow-x:clip}
+.sfoot{--sfootW:1200px}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--c-ink)}
 .case{width:1440px;box-sizing:border-box;margin:0 auto;padding:0 120px;font-family:'Geist',-apple-system,'Helvetica Neue',sans-serif;color:var(--c-ink);background:var(--c-bg)}
 .case p,.case h1,.case h2,.case h3,.case figure,.case blockquote{margin:0}
@@ -100,13 +102,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:
 .quote .q{font-size:56px;line-height:1.08;letter-spacing:-.035em;font-weight:500}
 .quote .who{font-size:16px;line-height:1.5;color:var(--c-body)}
 .quote .src{font-size:12px;letter-spacing:.04em;color:var(--c-mut)}
-.closer{padding:200px 0 180px;border-top:1px solid var(--c-line)}
+.closer{padding:200px 0 60px;border-top:1px solid var(--c-line)}
 .closer p{font-size:120px;line-height:.98;letter-spacing:-.055em;font-weight:600}
-.cfoot{padding:56px 0 64px;display:flex;justify-content:space-between;align-items:flex-end}
-.cfoot .l{display:flex;flex-direction:column;gap:8px}
-.cfoot .k{font-size:12px;letter-spacing:.08em;color:var(--c-mut)}
-.cfoot .next{font-size:48px;letter-spacing:-.035em;font-weight:600}
-.cfoot .mail{font-size:14px}
 
 /* phones: one column, annotations become numbered captions under their screen */
 @media (max-width:760px){
@@ -145,10 +142,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:
  .feat{gap:8px}.feat .shot{margin-bottom:10px}.feat h3{font-size:20px}.feat p{font-size:16px}
  .pair .shot{width:84%}.pair .front{margin-top:20%}
  .quote{padding:4px 0 4px 20px;gap:14px}.quote .q{font-size:32px;line-height:1.1}.quote .who{font-size:15px}.quote .src{font-size:11px}
- .closer{padding:88px 0 80px}.closer p{font-size:44px;line-height:1.02;letter-spacing:-.05em}
- .cfoot{flex-direction:column;align-items:flex-start;gap:28px;padding:32px 0 48px;border-top:1px solid var(--c-line)}
- .cfoot .k{font-size:11px}.cfoot .next{font-size:34px}
-}
+ .closer{padding:88px 0 0}.closer p{font-size:44px;line-height:1.02;letter-spacing:-.05em}
+  }
 </style>
 </head>
 <body>
@@ -204,8 +199,9 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:
 <div class="group" style="gap:20px"><p class="body">Banks buy slowly, on trust, and on a return that outweighs the disruption of changing how people work. After launching our third major version, we cleared that bar. Tide, our pilot partner, converted first. Quaint Oak Bank, Griffin and Ramp followed, and in the years after, more than 50 banks and fintechs.</p><p class="body">Cable was acquired in 2026.</p></div>
 </div></section>
 <section class="sec closer" data-label="Closer"><p>Design unlocked the value.<br><span class="acc">Value made it sell.</span></p></section>
-<footer class="cfoot"><div class="l"><span class="k mono">Next</span><a class="next" href="/penfold">Penfold <span class="acc">&rarr;</span></a></div><a class="mail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
+
 </main>
+<footer class="sfoot"><div class="snx"><span class="slab">Next</span><a class="snext" href="/confirmo">Confirmo <span>&rarr;</span></a></div><a class="smail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
 <script>
 (function(){
   var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
