@@ -8,18 +8,25 @@
 :root[data-theme="dark"]{--bg:#121316;--card:#1a1c20;--ink:#eef0f2;--body:#b3b7bd;--mut:#7c8188;--line:#2a2d33;--accent:#8f96a3;--sh1:0 1px 2px rgba(0,0,0,.3);--sh2:0 18px 44px -20px rgba(0,0,0,.6);--ok:#4ade80;--wip:#fbbf24;--sysFont:Inter,sans-serif;--sysMono:'IBM Plex Mono',ui-monospace,monospace;--flagink:var(--mut);--paperT:rgba(18,19,22,.86);--lab:var(--mut)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,sans-serif;-webkit-font-smoothing:antialiased;padding:64px 28px 44px;min-height:100vh;display:flex;flex-direction:column}
 .wrap{max-width:1080px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
-.hrow{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hrow{display:flex;align-items:center;justify-content:flex-start;gap:18px;flex-wrap:wrap}
+.hrow .me{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}   /* the LinkedIn photo, black and white */
+/* the name and the intro start on the images' left edge; the photo hangs to the left of the name (full-width screens) */
+@media(min-width:1136px){header{padding-left:58.5px}.hrow{margin-left:-90px}}
+/* home: CXD where the case studies say Home; air above the header */
+.flag.bare .navhome{display:block}
+@media(max-width:480px){.flag.bare .navhome{display:none}}
+@media(min-width:481px){header{margin-top:56px}}
 .tops{display:flex;align-items:center;gap:22px}
 .tops a{font-size:11px;line-height:1;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-decoration:none}
 .tops a:hover{color:var(--ink)}
 header h1{margin:0;font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.03em}
-header p{margin:10px 0 0;color:var(--body);max-width:606.256px;font-size:15.5px}
+header p{margin:10px 0 0;color:var(--body);max-width:680px;font-size:15.5px;text-wrap:pretty}   /* wider, and no one-word last line */
 header p b{color:var(--ink)}
 header p+p{margin-top:8px}
 .grid{display:grid;gap:20px}
 .grid.mains{grid-template-columns:repeat(3,1fr)}
 .gap{min-height:0}
-header{margin-bottom:40px}
+header{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--line)}   /* a divider after the intro */
 .gap.a{flex:4 0 0}
 .gap.b{flex:6 0 0}
 .flag.bare{margin:-64px -28px 0}
@@ -28,8 +35,8 @@ header{margin-bottom:40px}
 /* one system: every card is two equal halves, same height, same 36px inset on both sides */
 .work{display:flex;flex-direction:column;gap:16px}
 a.pj{--in:36px;display:grid;grid-template-columns:1fr 1fr;height:348px;background:transparent;border:1px solid transparent;border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:none;transition:background-color .25s,border-color .25s,box-shadow .25s,transform .25s}
-a.pj:hover,a.pj:focus-visible{background:var(--card);border-color:var(--line);box-shadow:var(--sh2);transform:translateY(-2px);outline:none}
-a.pj.flip .stage{order:2}
+a.pj:hover,a.pj:focus-visible{background:color-mix(in srgb,var(--ac) var(--hv,4%),var(--card));border-color:var(--line);box-shadow:var(--sh2);transform:translateY(-2px);outline:none}
+a.pj .stage{order:0}   /* every image on the left (2026-09-30) */
 
 /* the image half: whole screens, never cut, sitting inside the same inset */
 .stage{position:relative;padding:var(--in);display:flex;align-items:center;justify-content:center;min-width:0;
@@ -38,12 +45,13 @@ a.pj.flip .stage{order:2}
 a.pj:hover .stage .set{transform:scale(1.025)}
 .stage img{display:block}
 .stage.phones img.ph{height:276px;width:auto;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
-.stage.desk img.dt{width:420px;max-width:100%;height:auto;border-radius:6px;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
+.stage.desk img.dt{width:424px;height:auto;max-width:100%;border-radius:6px;filter:drop-shadow(0 6px 14px var(--dsh)) drop-shadow(0 1px 2px var(--dsh2))}
 .stage img.ph,.stage img.dt{transition:filter .3s}
-a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.ph,a.pj:focus-visible .stage img.dt{filter:drop-shadow(0 18px 26px var(--hsh)) drop-shadow(0 2px 4px var(--dsh2))}
+.stage img.ph{border-radius:6.6% / 3.07%;box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 10%,transparent)}   /* a very gentle accent stroke on the phones; the radius follows the screens' own corners (27px of 408 x 880) */
+a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.ph,a.pj:focus-visible .stage img.dt{filter:drop-shadow(0 3px 8px var(--dsh2)) drop-shadow(0 1px 1px var(--dsh2))}   /* on hover the screens settle: a weaker shadow (2026-09-30) */
 
 /* the text half: top line, story in the middle, facts on the floor; edges line up with the screens */
-.txt{padding:var(--in) 44px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.txt{padding:calc(var(--in) + 32px) 44px calc(var(--in) + 64px);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
 .txt .meta{margin:0;display:flex;align-items:baseline;gap:10px;line-height:1}
 .txt .meta b{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--ac)}
 .txt .meta span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
@@ -54,17 +62,20 @@ a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.
 .txt .spec li{display:flex;flex-direction:column;gap:3px}
 .txt .spec b{font-size:20px;line-height:1.1;font-weight:800;letter-spacing:-.025em;white-space:nowrap}
 .txt .spec span{font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
-.txt .role{margin:8px 0 0;font-size:13px;line-height:1.4;font-weight:600;color:var(--body)}
+.txt .role{margin:0;display:flex;align-items:baseline;gap:10px;font-size:13px;line-height:1.4;font-weight:600;color:var(--body)}
+.txt .role .yr{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.txt .co{margin:0 0 8px;font-size:15px;line-height:1;font-weight:800;letter-spacing:-.02em;color:var(--ac)}   /* the company, as an eyebrow on the title */
 .txt .tech{margin:0;justify-self:end;text-align:right;font:500 11px/1.5 var(--sysMono);color:var(--mut);white-space:nowrap}
 
 /* project hues */
 .pj{--hi:rgba(255,255,255,.7);--dsh:rgba(22,28,60,.08);--dsh2:rgba(22,28,60,.07);--hsh:rgba(22,28,60,.24)}
-.pj-cable{--ac:#2459d1}.pj-confirmo{--ac:#6f45e0}.pj-mara{--ac:#e3601a}.pj-starcount{--ac:#0b968d}.pj-penfold{--ac:#6076dd}
+.pj-mara,.pj-penfold{--hv:2%}.pj-starcount{--hv:3%}.pj-cable{--hv:6%}   /* hover tint: 2% on the warm accents, 4% on the rest */
+.pj-cable{--ac:#2459d1}.pj-confirmo{--ac:#6f45e0}.pj-mara{--ac:#e3601a}.pj-starcount{--ac:#0b968d}.pj-penfold{--ac:#FF5081}
 :root[data-theme="dark"] .pj-cable{--ac:#6f9ae8}
 :root[data-theme="dark"] .pj-confirmo{--ac:#c0abf5}
 :root[data-theme="dark"] .pj-mara{--ac:#f28a4c}
 :root[data-theme="dark"] .pj-starcount{--ac:#66e6de}
-:root[data-theme="dark"] .pj-penfold{--ac:#98a6e9}
+:root[data-theme="dark"] .pj-penfold{--ac:#FF5081}
 .pj-cable{--t1:#ebf0fb;--t2:#d7e1f6}
 .pj-confirmo{--t1:#f2eefe;--t2:#e3dafc}
 .pj-mara{--t1:#fdf3ea;--t2:#f8dfc9}
@@ -80,16 +91,67 @@ a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.
 .ptag{margin-top:40px;text-align:left;padding-left:6px;color:var(--mut);font-size:12.5px}
 .ptag b{color:var(--body);font-weight:600}
 
+
+/* card structure options (review, 2026-09-30): A stat-led on Penfold, B masthead on Cable, C ledger on Confirmo */
+.txt.oa,.txt.ob,.txt.oc,.txt.od{justify-content:space-between}
+.txt.od .foot{margin-top:22px}
+.txt.oh{justify-content:space-between}   /* H: company small, role; big stats in the middle; copy at the foot */
+.txt.oh .mast{display:flex;flex-direction:column;gap:6px}
+.txt.oh .mast .co{margin:0}
+.txt.oi{justify-content:space-between}   /* I: company and copy on top; role and stats at the foot */
+.txt.oi .low{display:flex;flex-direction:column;gap:14px}
+/* J: company tag and role, copy, years; stats at the foot */
+.txt.oj{justify-content:space-between}
+.txt .who{margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.txt .ctag{font:500 11px/1 var(--sysMono);letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:4px;color:#FFFFFF;background:var(--ac)}   /* as the chip at the top of the Cable case study */
+.txt .rr{font-size:13px;line-height:1.3;font-weight:600;color:var(--body)}
+.txt .yr2{margin:8px 0 0;font-size:11px;line-height:1.2;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+/* options E, F, G (2026-09-30): role and stats lead; company quiet */
+.txt.oe,.txt.of,.txt.og{justify-content:space-between}
+.txt .eb{margin:0;font-size:11px;line-height:1.2;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.txt .rh{margin:6px 0 0;font-size:22px;line-height:1.15;font-weight:800;letter-spacing:-.025em;color:var(--ink)}
+.txt.oe h2,.txt.of h2,.txt.og h2{font-size:17px;line-height:1.3;font-weight:700;letter-spacing:-.015em;white-space:nowrap}
+.txt.oe .sum,.txt.of .sum,.txt.og .sum{margin-top:6px}
+.txt .big.hero{gap:36px}
+.txt .big.hero b{font-size:40px}
+.txt .rh2{margin:14px 0 0;font-size:15px;line-height:1.35;font-weight:700;color:var(--ink)}
+.txt .rh2 span{font-weight:500;color:var(--mut)}
+.txt.og .split{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}
+.txt.og .who .rh{margin:0 0 8px}
+.txt .big.stack{flex-direction:column;gap:14px;text-align:right}
+.txt .big.stack li{align-items:flex-end}
+.txt .big.stack b{font-size:24px}
+
+.txt .rl.tag{align-self:flex-start;font-size:12.5px;line-height:1;padding:8px 12px;border-radius:999px;background:color-mix(in srgb,var(--ac) 5%,transparent)}   /* role and years as a tag, as the Cable pills */   /* D on Mara: company, copy, stats; role and years at the foot */
+
+.txt .big{list-style:none;margin:0;padding:0;display:flex;gap:32px}
+.txt .big li{display:flex;flex-direction:column;gap:4px}
+.txt .big b{font-size:30px;line-height:1;font-weight:800;letter-spacing:-.03em;color:var(--ac);white-space:nowrap}
+.txt .big span{font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.txt .rl{margin:0;font-size:13px;line-height:1.4;font-weight:600;color:var(--body)}
+.txt .rl span{font-weight:500;color:var(--mut)}
+.txt.ob .mast{display:flex;flex-direction:column;gap:6px}
+.txt.ob .mast .co{margin:0;font-size:28px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.txt.ob h2{font-size:21px}
+.txt .pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.txt .pills li{font-size:12.5px;line-height:1;padding:8px 12px;border-radius:999px;color:var(--body);background:color-mix(in srgb,var(--ac) 5%,transparent)}
+.txt .pills b{font-weight:800;color:var(--ink);margin-right:2px}
+.txt .ledger{margin:0;display:grid;grid-template-columns:1.7fr .8fr 1fr 1fr;gap:16px;padding-top:16px;border-top:1px solid var(--line)}
+.txt .ledger div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.txt .ledger dt{font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.txt .ledger dd{margin:0;font-size:13px;line-height:1.35;font-weight:600;color:var(--ink)}
+.txt .ledger div:nth-child(n+3) dd{font-size:18px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+
 @media(max-width:900px){
   a.pj{--in:24px;grid-template-columns:1fr;height:auto}
-  a.pj.flip .stage{order:0}
+  a.pj .stage{order:0}
   .stage{height:300px}
   .txt{padding:24px 22px;gap:18px}
   .txt .foot{grid-template-columns:auto auto;row-gap:14px}
   .txt .tech{grid-column:1/-1;justify-self:start;text-align:left}
   .stage.phones img.ph{height:190px}
   .stage .set{gap:12px}
-  .stage.desk img.dt{width:auto;max-height:240px}
+  .stage.desk img.dt{height:auto;max-height:190px;width:auto;max-width:100%}   /* same height as the phones (190) */
   .txt h2{font-size:21px}
 }
 
@@ -101,15 +163,15 @@ a.pj:hover .stage img.ph,a.pj:hover .stage img.dt,a.pj:focus-visible .stage img.
 
 </style>
 </head><body>
-<div class="flag bare"><details class="bgr"><summary aria-label="Menu"><span class="bn">Home</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a></nav><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<div class="flag bare"><a class="navhome" href="/">CXD</a><details class="bgr"><summary aria-label="Menu"><span class="bn">CXD</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a></nav><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="wrap">
   <div class="gap a"></div>
   <header>
-    <div class="hrow"><h1>Cesar Garcia</h1></div>
+    <div class="hrow"><img class="me" src="/home/img/cesar.webp" alt="Cesar Garcia" width="72" height="72"><h1>Cesar Garcia</h1></div>
     <p><b>Founding designer, twice.</b> Engineer first. I&rsquo;ve designed experiences for humans for a decade, and now building and shipping leveraging AI and my technical background.</p>
     <p>200M+ people use my work. Give me the messy problems: hard tech limits, fuzzy data, fixes that don&rsquo;t work. I don&rsquo;t design around constraints. I break them down.</p>
   </header>
-  <div class="work"><a class="pj pj-penfold" href="penfold/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/penfold-1.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-2.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-3.webp" alt="Penfold app" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Penfold</b><span>Pensions · 2019-20</span></p><p class="role">Founding Designer, first hire</p></div><div class="mid"><h2>Pensions took days. Ours took minutes.</h2><p class="sum">Penfold’s first hire, with a mandate to make pensions sexy. I shipped a live product in 7 days, then iterated it into 3,000 savers and £4M under management in a year.</p></div><div class="foot"><ul class="spec"><li><b>0 &rarr; 1</b><span>in 7 days</span></li><li><b>£4M</b><span>under management</span></li></ul><p class="tech">Consumer fintech · Mobile + Web</p></div></div></a><a class="pj pj-cable flip" href="cable/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/cable/img/paper-trail-3-d.webp" alt="Cable, Paper Trails" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Cable</b><span>Fincrime SaaS · 2020-22</span></p><p class="role">Founding Designer</p></div><div class="mid"><h2>A single-feature product that didn’t sell, turned fincrime SaaS that did.</h2><p class="sum">Cable had one screen, a free pilot and no sales. I gave the flagship room, grew the product with its users, then rebuilt it into one suite banks paid for.</p></div><div class="foot"><ul class="spec"><li><b>10x</b><span>feature set</span></li><li><b>Free → Paid</b><span>pilot to paying clients</span></li></ul><p class="tech">B2B SaaS · AML · Desktop</p></div></div></a><a class="pj pj-confirmo" href="confirmo/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/confirmo-1.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-2.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-3.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Confirmo</b><span>Payments · 2025-26</span></p><p class="role">Product Design Lead, first designer</p></div><div class="mid"><h2>Tripled conversion. $135M a year added.</h2><p class="sum">A checkout moving $750M a year at a 9% success rate, on a backend nobody could touch. I tuned the flow without touching it, into an extra $135M a year.</p></div><div class="foot"><ul class="spec"><li><b>43%</b><span>success, key markets</span></li><li><b>0</b><span>backend changes</span></li></ul><p class="tech">Checkout · Web</p></div></div></a><a class="pj pj-mara flip" href="mara/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/mara-1.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-2.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-3.webp" alt="Mara wallet" width="222" height="481" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Mara</b><span>Digital wallet · 2022-24</span></p><p class="role">Head of Design and Product Owner</p></div><div class="mid"><h2>20M users added. $6.9M a year saved.</h2><p class="sum">A 27-step signup was losing almost 90% of 50,000 people a day, and paying for half of them. I cut the steps by 70%, and success went from 12% to 88%.</p></div><div class="foot"><ul class="spec"><li><b>12% → 88%</b><span>signup success</span></li><li><b>−70%</b><span>onboarding steps</span></li></ul><p class="tech">Crypto wallet · Mobile</p></div></div></a><a class="pj pj-starcount" href="starcount/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/home/img/starcount.webp" alt="Starcount, UK demand map" loading="lazy"></div></div><div class="txt"><div class="top"><p class="meta"><b>Starcount</b><span>Data intelligence · 2015-19</span></p><p class="role">Head of Product Design, first designer</p></div><div class="mid"><h2>Hit £1M first-year target, in 91 days.</h2><p class="sum">Starcount had data nobody had monetized, sold only as consultancy reports. I turned it into a product clients drove themselves, by making the map lie, correctly.</p></div><div class="foot"><ul class="spec"><li><b>1st ever</b><span>Twitter data deal</span></li><li><b>1</b><span>lie to make it work</span></li></ul><p class="tech">Enterprise · Desktop</p></div></div></a></div>
+  <div class="work"><a class="pj pj-penfold" href="penfold/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/penfold-1.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-2.webp" alt="Penfold app" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/penfold-3.webp" alt="Penfold app" width="222" height="481" loading="lazy"></div></div><div class="txt oj"><div class="mid"><p class="who"><span class="ctag">Penfold</span><span class="rr">Founding Designer, first hire</span></p><h2>Pensions took days. Ours took minutes.</h2><p class="sum">First hire at a pension startup. I shipped it fast and ugly, then iterated our way to 3,000 savers.</p></div><ul class="big"><li><b>0 &rarr; 1</b><span>in 7 days</span></li><li><b>£4M</b><span>under management</span></li></ul></div></a><a class="pj pj-cable flip" href="cable/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/cable/img/paper-trail-3-d.webp" alt="Cable, Paper Trails" loading="lazy"></div></div><div class="txt oj"><div class="mid"><p class="who"><span class="ctag">Cable</span><span class="rr">Founding Designer</span></p><h2>It worked. Nobody used it.</h2><p class="sum">Cable had one screen, a free pilot and no sales. I grew it with its users into a full fincrime suite.</p></div><ul class="big"><li><b>90%</b><span>engagement</span></li><li><b>Free &rarr; Paid</b><span>pilot to paying clients</span></li></ul></div></a><a class="pj pj-confirmo" href="confirmo/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/confirmo-1.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-2.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/confirmo-3.webp" alt="Confirmo checkout" width="222" height="481" loading="lazy"></div></div><div class="txt oj"><div class="mid"><p class="who"><span class="ctag">Confirmo</span><span class="rr">Product Design Lead, first designer</span></p><h2>$135M a year added.</h2><p class="sum">A $750M-a-year checkout at 9% success, on a backend nobody could touch. I redesigned the flow on top of it.</p></div><ul class="big"><li><b>3x</b><span>checkout success</span></li><li><b>43%</b><span>success, key markets</span></li></ul></div></a><a class="pj pj-mara flip" href="mara/index.html"><div class="stage phones"><div class="set"><img class="ph" src="/home/img/mara-1.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-2.webp" alt="Mara wallet" width="222" height="481" loading="lazy"><img class="ph" src="/home/img/mara-3.webp" alt="Mara wallet" width="222" height="481" loading="lazy"></div></div><div class="txt oj"><div class="mid"><p class="who"><span class="ctag">Mara</span><span class="rr">Head of Design and Product Owner</span></p><h2>20M users added. $6.9M a year saved.</h2><p class="sum">50,000 people a day tried to open an account. A 27-step signup lost most of them, and Mara paid for half.</p></div><ul class="big"><li><b>7x</b><span>signup success</span></li><li><b>−70%</b><span>onboarding steps</span></li></ul></div></a><a class="pj pj-starcount" href="starcount/index.html"><div class="stage desk"><div class="set"><img class="dt" src="/home/img/starcount.webp" alt="Starcount, UK demand map" loading="lazy"></div></div><div class="txt oj"><div class="mid"><p class="who"><span class="ctag">Starcount</span><span class="rr">Head of Product Design, first designer</span></p><h2>I sold a lie.</h2><p class="sum">Data nobody had monetized, sold only as consultancy reports. I turned it into a product clients drove themselves.</p></div><ul class="big"><li><b>£1M</b><span>in 91 days</span></li><li><b>4</b><span>direct reports</span></li></ul></div></a></div>
   <div class="ptag"><b>Worked with:</b> NFL · Binance · Coinbase · Circle · Solana · Twitter · Royal Mail</div>
   <div class="gap b"></div>
 </div>
