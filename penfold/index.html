@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 <link rel="stylesheet" href="/penfold/vendor/25028d0170-css2.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="/navbar.css">
 <link rel="stylesheet" href="/footer.css">
 <style>
@@ -56,6 +57,46 @@ h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
 .txt{max-width:820px;font-size:19px;line-height:1.6;color:var(--body)}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
 .two .txt{max-width:none}
+/* the day-by-day list in Shipping, after the Confirmo bullets */
+.ans{list-style:none;margin:0;padding:0;max-width:820px}
+.ans li{position:relative;padding-left:24px;margin:0 0 12px;font-size:19px;line-height:1.6;color:var(--body)}
+.ans li:last-child{margin-bottom:0}
+.ans li::before{content:"";position:absolute;left:4px;top:.66em;width:6px;height:6px;background:var(--accent);border-radius:50%}
+.ans b{color:var(--ink);font-weight:600;font-family:'Geist Mono',ui-monospace,monospace;font-size:.9em}   /* "Day 1:" in mono (on request, 2026-09-30) */
+/* the ID relay in Cracking: numbered as the Combine stepper, without the interaction */
+.relay{list-style:none;margin:0;padding:32px 49px 32px 36px;display:flex;flex-direction:column;gap:18px;border:1px solid var(--line);border-radius:16px;width:100%;box-sizing:border-box}   /* both cards the full column (894), as every image and strip */   /* the box ends at its longest step; right padding 74 = left edge to text (36 + 26 ring + 12 gap), on request (2026-09-30) */
+/* set as a graphic: a light card on the page (on request, 2026-09-30) */
+.page[data-theme="light"] .relay{background:rgba(255,255,255,.40)}   /* thin: white at 40% (on request, 2026-09-30) */
+.page[data-theme="dark"] .relay{background:rgba(255,255,255,.05)}
+.relay li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;align-items:start}
+.relay .rl-t{padding-top:1px;font-size:16px;line-height:1.5;color:var(--body)}
+.relay b{color:var(--ink);font-weight:600}
+.relay code.pn{background:#FF5081}   /* the pension tags in Penfold pink (on request, 2026-09-30) */
+/* the relay's numbers: accent rings joined by a thread, the last one filled (the pension exists) */
+.relay li{position:relative}
+.relay li:not(:last-child)::before{content:"";position:absolute;left:12.5px;top:29px;bottom:-15px;width:1px;
+  background:linear-gradient(color-mix(in srgb,var(--chip) 55%,transparent),color-mix(in srgb,var(--chip) 15%,transparent))}
+.relay .st-n{border-color:color-mix(in srgb,var(--chip) 45%,transparent);color:var(--chip);font-weight:600;
+  background:color-mix(in srgb,var(--chip) 6%,transparent)}
+.relay li:last-child .st-n{background:var(--chip);border-color:var(--chip);color:#fff;
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 14%,transparent)}
+/* the after-fix card: the pension exists at step 01, so 01 is the filled one (on request, 2026-09-30) */
+.relay.first-done li:last-child .st-n{background:color-mix(in srgb,var(--chip) 6%,transparent);border-color:color-mix(in srgb,var(--chip) 45%,transparent);color:var(--chip);box-shadow:none}
+.relay.first-done li:first-child .st-n{background:var(--chip);border-color:var(--chip);color:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 14%,transparent)}
+/* and a divider after 01: what happens at once, above; what the partners do after, below (on request, 2026-09-30) */
+.relay.first-done li:first-child{padding-bottom:18px}
+.relay.first-done li:first-child::before{display:none}
+.relay.first-done li:first-child::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
+/* below the divider: sad grey dots, grey numbers (on request, 2026-09-30) */
+.relay.first-done li:not(:first-child){--sad:#98A0A8}
+.relay.first-done li:not(:first-child) .st-n{color:var(--mut);box-shadow:none;
+  border-color:color-mix(in srgb,var(--sad) 55%,transparent);
+  background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--sad) 30%,transparent) 0 2px,transparent 2px 5px)}   /* ring and faded fill as above, in grey, striped like tape on a site under construction */
+.relay.first-done li:not(:first-child)::before{background:color-mix(in srgb,var(--sad) 45%,transparent)}
+.page[data-theme="dark"] .relay.first-done li:not(:first-child){--sad:#7C8188}
+.relay.first-done li:not(:first-child) code{background:#E3E6EA;color:#6B737B}   /* and light grey tags below the divider (on request, 2026-09-30) */
+.page[data-theme="dark"] .relay.first-done li:not(:first-child) code{background:#2C3138;color:#B3B7BD}
+.ans code,.relay code{font-family:'Geist Mono',ui-monospace,monospace;font-size:.78em;letter-spacing:.02em;padding:3px 7px;border-radius:4px;background:var(--chip);color:#FFFFFF;white-space:nowrap}   /* the ID names in Cracking: small tags, as the Penfold chip at the top */
 
 /* a big line that carries the section for skimmers */
 .pull{padding-top:40px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
@@ -64,6 +105,13 @@ h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
 
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 48px;padding-top:44px;border-top:1px solid var(--line)}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.rule-below{border-top:0;padding-top:0;border-bottom:1px solid var(--line);padding-bottom:44px}   /* Cracking: the three parties sit above their divider (on request, 2026-09-30) */
+.group.rule-above{border-top:1px solid var(--line);padding-top:44px}   /* Cracking: a divider above "Slow and manual…", as the one above "Creating a pension…" (on request, 2026-09-30) */
+.group > .brow-block.rule-above{margin-top:36px;padding-top:44px;border-top:1px solid var(--line)}   /* a divider above "Instant pension": 56 above, 44 below, as the others (on request, 2026-09-30) */
+.group > .txt.rule-after{padding-bottom:36px;border-bottom:1px solid var(--line)}   /* a divider under "…nobody else had.", 56px either side (on request, 2026-09-30) */
+.group > .txt.rule-after + .ann{margin-top:36px}
+.item:has(> p.rule-after){padding-bottom:36px;border-bottom:1px solid var(--line)}   /* full-width divider under the instant block */
+.group > .item:has(> p.rule-after) + .ann{margin-top:36px}
 .grid.stack{grid-template-columns:minmax(0,1fr)}   /* full body width, so its screens match every other strip (894, as on Cable) */
 .grid.stack .item > h3,.grid.stack .item > p{max-width:820px}   /* its text keeps the reading measure */
 .grid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 32px}
@@ -182,7 +230,8 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .st-t{font-size:16px;line-height:1.35;font-weight:600;color:var(--ink)}   /* 16 / 15, as the "what if I die?" copy (on request, 2026-09-30) */
 .st-b{font-size:15px;line-height:1.5;color:var(--body)}
 .brow-block{display:flex;flex-direction:column;gap:24px}   /* an eyebrow straight over a strip of screens (Shipping) */
-.item > .iter,.item > .ann,.item > .duo{margin:14px 0 22px}   /* eyebrow, then the screens, then the title and body (Modular, Mobile, Combine; as Shipping) */
+.item > .iter,.item > .ann,.item > .duo,.item > .relay{margin:14px 0 22px}   /* eyebrow, then the screens, then the title and body (Modular, Mobile, Combine; as Shipping) */
+.item:has(> .relay) > h3,.item:has(> .relay) > p{max-width:820px}   /* the 6-days card: eyebrow, card, title, copy as one item, as Modular (on request, 2026-09-30) */
 .grid.stack > .item + .item:has(> .iter,> .ann,> .duo){margin-top:56px}
 .item > p + .iter,.item > p + .webs{margin:28px 0 0}   /* December: the screens under their text (on request, 2026-09-30) */
 .grid.stack > .item:has(> .webs) + .item{margin-top:12px;padding-top:56px;border-top:1px solid var(--line)}   /* a divider between Message and Combine: 56px either side */   /* a new sub-section with screens: 44 + 56 = 100px above it */
@@ -280,6 +329,7 @@ section.ch.first{border-top-color:var(--ink)}
  .body{gap:32px}
  h2{font-size:36px;line-height:1.06;letter-spacing:-.04em}
  .txt{font-size:17px}
+.ans li{font-size:17px}
  .two,.grid,.grid.three,.grid.four{grid-template-columns:minmax(0,1fr);gap:28px}
  .pull .big{font-size:28px}
  .ring{box-shadow:0 0 0 3px var(--glow)}
@@ -307,7 +357,7 @@ section.ch.first{border-top-color:var(--ink)}
 <header>
 <div class="mono kick"><span class="chip">Penfold</span><span>Pensions &middot; B2C fintech, mobile and web</span></div>
 <h1>Pensions took days.<br><span class="soft">Ours took minutes.</span></h1>
-<p class="lede">First hire, lured by an impossible, and irresistible mandate to &ldquo;make pensions sexy&rdquo;. <span>Shipped an ugly, slow, and cumbersome first version within 7 days. And in less than a year, iterated our way into 3,000 savers and &pound;4M under management.</span></p>
+<p class="lede">First hire. Shipped an ugly, slow, and cumbersome first version within 7 days. And in less than a year, <span>iterated our way into 3,000 savers and &pound;4M under management.</span></p>
 <img class="heroimg" src="/penfold/img/hero.webp" alt="Five Penfold app screens on tilted phones beside the Penfold logo" width="2500" height="1406" fetchpriority="high">
 <div class="stats">
 <div class="stat"><b>0 &rarr; 1</b><span class="mono">Live product in 7 days</span></div>
@@ -323,12 +373,18 @@ section.ch.first{border-top-color:var(--ink)}
 
 
 <section class="ch first">
-<div class="tag"><b>June</b><span class="mono">Shipping</span></div>
+<div class="tag"><b>Jun</b><span class="mono">Shipping</span></div>
 <div class="body">
 <h2>Proof of concept to live product <span class="soft">in 7 days.</span></h2>
 <p class="txt">If I had had more time, I&rsquo;d&rsquo;ve made a shorter onboarding. But I joined 7 days from a funding deadline that needed a live product with real customers. And I knew nothing about pensions.</p>
 <img class="shot lt" src="/penfold/img/sketches-strip.webp" alt="Day-one sketches for Penfold: notes, a 3D pot, dashboard layouts, the donut and transaction rows" width="3974" height="1210"><img class="shot dk" src="/penfold/img/sketches-strip-dark.webp" alt="" aria-hidden="true" width="3974" height="1210" decoding="sync">
-<p class="txt">I had to work fast. Day one: read code from proof of concept, start sketching. Day two: check all required steps are covered. Day three: high fidelity. Day four: handover to our developer, with three days to ship it. Tick. Tock.</p>
+<div class="group"><p class="txt">I had to work fast.</p>
+<ul class="ans">
+<li><b>Day 1:</b> read code from proof of concept, start sketching</li>
+<li><b>Day 2:</b> check and test all required steps are covered</li>
+<li><b>Day 3:</b> ready for handover</li>
+<li><b>Day 4:</b> handover to our developer, with three days to ship it. Tick. Tock</li>
+</ul></div>
 <div class="brow-block"><span class="mono">First onboarding</span>
 <!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->
 <figure class="ann"><div class="sw">
@@ -1634,12 +1690,12 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 </figure>
 <!-- FLOW33 end -->
 </div>
-<div class="group"><p class="txt">We made the deadline. The flow was 10 pages and 33 steps long, took more than 15 minutes to finish, and needed about 5 days to set up a pension.</p><p class="txt">Funding secured.</p></div>
+<div class="group"><p class="txt">We made the deadline. The flow was 10 pages and 33 steps long, took more than 15 minutes to finish, and needed up to 6 days to set up a pension.</p><p class="txt">Funding secured.</p></div>
 </div>
 </section>
 
 <section class="ch">
-<div class="tag"><b>July</b><span class="mono">Onboarding</span></div>
+<div class="tag"><b>Jul</b><span class="mono">Onboarding</span></div>
 <div class="body">
 <h2>Added mobile and modular onboarding. <span class="soft">Signups tripled.</span></h2>
 <p class="txt">The long onboarding secured a win, but bled users from day one. Drop-off was around 80%, which hurt acquisition and growth, metrics our investors paid close attention to. However, I had anticipated this and was already working on improvements.</p>
@@ -2239,7 +2295,7 @@ p{margin:0}
 <div class="lead" style="top:50%;width:40px"></div><div class="dot" style="top:calc(50% - 3.5px)"></div><figcaption class="cap" style="top:calc(50% - 14px)"><span class="ct">Optimized for users.</span><span class="cb">Clean, with room to breathe, the revised onboarding had half the screens, in a logical flow. First, how much to save, then how to invest it, and only once you'd committed, your personal information. No more filling in every detail, only to discover the product doesn't fit your needs.</span></figcaption>
 </figure>
 <!-- MODULAR end -->
-<h3>The wrong architecture.</h3><p>As a pension service, we assumed every account would have a pension, and never treated zero as a valid state. So onboarding drop-off meant no pension, no account, nothing saved. We broke the dependency, and I split onboarding into modules people could finish in their own time. Signups lifted again.</p></div>
+<h3>Saving state.</h3><p>Making it modular required us to change our data model. Accounts assumed one or more pensions, so zero didn&rsquo;t work and our initial flow couldn&rsquo;t save progress, as there wasn&rsquo;t an account yet. Fixing that allowed users to complete modules individually and finish onboarding at their convenience.</p></div>
 <div class="item"><span class="mono">Mobile + Desktop</span>
 <!-- MOBILE start: built by source/mobile.py from CodeCatalog screens, do not edit by hand -->
 <div class="duo" style="--pw:431.000;--dw:371.893;--mw:116.217;--sh:251.648;--drop:50">
@@ -3278,24 +3334,39 @@ svg { display: block; }
 </div>
 </div>
 <!-- MOBILE end -->
-<h3>The wrong platform.</h3><p>One developer meant one platform, and I argued a mobile-only pension would look less serious, favoring desktop. The live data disagreed: we needed mobile. So I created a mobile flow that reused the same components to derive a desktop flow. We had our 2 for 1. Signups followed.</p></div>
+<h3>2 for 1.</h3><p>One developer meant one platform, and I argued a mobile-only pension would look less serious, favoring desktop, but the live data would quickly disagree. With a few tweaks to the components, I made a mobile flow that gave us the desktop one for free. And free we could handle.</p></div>
 </div>
 </div>
 </section>
 
 <section class="ch">
-<div class="tag"><b>September</b><span class="mono">Cracking</span></div>
+<div class="tag"><b>Sep</b><span class="mono">Cracking</span></div>
 <div class="body">
 <h2>A pension in minutes, <span class="soft">not days, or weeks.</span></h2>
-<div class="group"><p class="txt">With onboarding smoothed out, signup was now a few minutes start to finish. But creating the pension required one final step, reliant on three external parties, none of which shared our enthusiasm for speed. This added several days of overhead. Still faster than a bank.</p><p class="txt">Just not actually fast.</p></div>
-<div class="grid three">
+<p class="txt">Signup was now just a few minutes. But creating the pension required a final step that could take up to 6 days. Better than the banks, but an eternity by any other standard. And the problem was a bank and two other parties, none of which shared our enthusiasm for speed.</p>
+<div class="grid three rule-below">
 <div class="item"><span class="mono">Up to 24 hours</span><h3>The Custodian</h3><p>Bad.</p></div>
 <div class="item"><span class="mono">Up to 72 hours</span><h3>The Operator</h3><p>Much worse.</p></div>
 <div class="item"><span class="mono">Up to 48 hours</span><h3>The Bank</h3><p>No relief.</p></div>
 </div>
-<p class="txt">We relayed a series of IDs from the custodian, to the operator, and finally the bank. Each took the ID and a really long time, to create an ID of their own. Once we got the last ID, some 5 days later, we could finally create a pension. Legally and technically, this was peak efficiency, and also textbook region-beta paradox: a bad process gets tolerated, but this one I had to crack.</p>
-<div class="group"><h3>Slow and manual turned out to be the upside.</h3><p class="txt">In a mix of blind optimism and youthful arrogance, I offered to help the parties speed things up. They declined, but explained their process, which gave me a key insight: ID checks were manual and rare, and mistaken IDs were simply overridden with a correct one. So I suggested sending all three provisional IDs at once, swapping in the real ones later. That afternoon, we eradicated days of overhead with a simple tracking database.</p><p class="txt closing">Now we were fast!</p>
-<!-- FAST start: built by source/fast.py from CodeCatalog screens, do not edit by hand -->
+<div class="item"><span class="mono">6 days to a pension</span>
+<ol class="relay">
+<li><span class="st-n">01</span><span class="rl-t">Once the user finishes onboarding, Penfold creates a request for a pension and a <code>userID</code></span></li>
+<li><span class="st-n">02</span><span class="rl-t">Penfold passes it on to the <b>Custodian</b>, to create <code>custodianID</code></span></li>
+<li><span class="st-n">03</span><span class="rl-t">Penfold receives the new ID and passes it on to the <b>Operator</b>, to create <code>operatorID</code></span></li>
+<li><span class="st-n">04</span><span class="rl-t">Penfold receives the new ID and passes it on to the <b>Bank</b>, to create <code>bankID</code></span></li>
+<li><span class="st-n">05</span><span class="rl-t">With all 4 IDs, Penfold creates the <code class="pn">pension</code></span></li>
+</ol>
+<h3>Creating a pension required 4 IDs and a long time.</h3><p>Legally and technically, this was peak efficiency, taking up to a meager 144 hours to complete. It was also textbook region-beta paradox: a bad process gets tolerated, but this I had to crack.</p></div>
+<div class="group rule-above"><div class="item"><span class="mono">Instant pension</span>
+<ol class="relay first-done">
+<li><span class="st-n">01</span><span class="rl-t">Once the user finishes onboarding, Penfold creates a <code>userID</code>, 2 <code>temporaryIDs</code>, and the <code class="pn">pension</code></span></li>
+<li><span class="st-n">02</span><span class="rl-t">The <b>Custodian</b>, <b>Operator</b>, and <b>Bank</b> receive the <code>userID</code> and the <code>temporaryIDs</code></span></li>
+<li><span class="st-n">03</span><span class="rl-t">The <b>Custodian</b>, <b>Operator</b>, and <b>Bank</b> take up to 72h to create <code>custodianID</code>, <code>operatorID</code>, and <code>bankID</code></span></li>
+<li><span class="st-n">04</span><span class="rl-t">Penfold receives the new IDs, updates the ID ledger, the <b>Operator</b>, and the <b>Bank</b></span></li>
+<li><span class="st-n">05</span><span class="rl-t">With all 4 IDs, Penfold creates&hellip; no wait, we&rsquo;ve done this part instantly, in the first step</span></li>
+</ol>
+<h3>Slow, but instant!</h3><p>With some prodding, I learned their ID checks were manual, and if found, an incorrect ID could simply be overridden with a new one without consequence. It got me thinking: if we created a couple of temporary IDs, tracked them, and then replaced them accordingly, we&rsquo;d have instant pensions, a first in our industry.</p><p class="rule-after">Built, tested, and launched that afternoon.</p></div><!-- FAST start: built by source/fast.py from CodeCatalog screens, do not edit by hand -->
 <figure class="ann"><div class="sw">
 <div class="flow fast" style="--n:5;--tw:166.000;--h:359" role="group" aria-label="The modular onboarding on mobile, screen by screen">
 <div class="stack"><div class="step" style="--fw:375;--fb:359" data-screen="penfold/mobile/modular-sign-up"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -4638,7 +4709,7 @@ svg { display: block; }
 </section>
 
 <section class="ch">
-<div class="tag"><b>October</b><span class="mono">Tuning</span></div>
+<div class="tag"><b>Oct</b><span class="mono">Tuning</span></div>
 <div class="body">
 <h2>Amplifying the signal, <span class="soft">listening for growth.</span></h2>
 <p class="txt">Onboarding was fast, and the major leaks patched. So I turned to the quieter work: single-digit gains, and finding several of them. Tuning the engine that grows the product: reliable, repeatable. Unremarkable work, executed remarkably.</p>
@@ -5475,13 +5546,13 @@ svg{display:block}
 </section>
 
 <section class="ch">
-<div class="tag"><b>December</b><span class="mono">Targeting</span></div>
+<div class="tag"><b>Dec</b><span class="mono">Targeting</span></div>
 <div class="body">
 <h2>Growth. <span class="soft">Boom.</span></h2>
-<div class="group"><p class="txt">In the UK, most people get their pension from an employer, often retiring to multiple pensions. The self-employed are left to set it up themselves, and often don&rsquo;t. We were trying to help them with that, yet they simply weren&rsquo;t tuning in.</p><p class="txt">So I made the case to flip the strategy. The product was already built to handle either market. And by targeting users with existing pensions, we&rsquo;d be taking market from other services, competing on product merits, not just ad spend.</p></div>
+<p class="txt">For months we tried to educate the unpensioned market, specifically the self-employed. But it looked like they simply didn&rsquo;t care. And with no clear holes in the product that would otherwise hurt traction, I suggested we target those who&rsquo;d proven they cared, by already having a pension. The pensioned.</p>
 <div class="grid stack">
-<div class="item"><span class="mono">Message</span>
-<h3>A new target.</h3><p>We were in the midst of a website redesign, so the timing was in our favour. First, the message changed from free money to how simple and fast Penfold was. Second, we moved the section on existing pensions closer to the top. The signal was clear: the redesign helped conversion overall, but the new targeting was a much better match.</p>
+<div class="item"><span class="mono">Target</span>
+<h3>A new message.</h3><p>Combine, the way by which a pension is transferred from one provider to another and combined with the existing pension, was dead last on our website. The whole structure and look were already a bit stiff, so we just redesigned the whole thing. Bumping Combine to the third section, following ease of use.</p>
 <!-- WEBSITE start: built by source/website.py, do not edit by hand -->
 <div class="webs" style="--rh:0.3009">
 <div class="web-head"><button type="button" class="web-prev" aria-pressed="false">Previously</button></div>
@@ -5496,7 +5567,7 @@ svg{display:block}
 <!-- WEBSITE end -->
 </div>
 <div class="item"><span class="mono">Combine</span>
-<h3>A new flagship.</h3><p>Most new users now went straight to Combine, our overnight flagship, and it had my full attention. Friction there cost us pensions, so every improvement shipped the moment it was ready, however small. Some days that meant several releases. And it went beyond Combine itself: I reworked the places that led to it, like notifications, which gained Combine actions of their own.</p>
+<h3>A new flagship.</h3><p>The new targeting jolted our Combine feature to the top of my priority list, essentially becoming the product&rsquo;s flagship overnight. This meant any minor improvement had a disproportionate effect on our growth. So we shipped every little refinement as it was ready.</p>
 <!-- ITERATE start: built by source/iterate.py from CodeCatalog screens, do not edit by hand -->
 <div class="iter st" style="--pw:260;--ph:563" role="group" aria-label="Six iterations of the Combine screen">
 <div class="st-phone"><div class="st-screen" id="st-s0" role="tabpanel" data-screen="penfold/mobile/master-combine-v10"><div class="win"><div class="pg" style="--fw:375;--tw:260.000"><template shadowrootmode="open"><style>
@@ -7774,7 +7845,7 @@ svg { display: block; }
 <div class="tag"><b>Year 1</b><span class="mono">Outcome</span></div>
 <div class="body">
 <h2>From 0 to 3,000 savers, <span class="soft">and &pound;4M under management.</span></h2>
-<div class="group"><p class="txt">We got here by moving fast and testing what we believed. That meant refusing to accept a wait that sat outside our remit, and reversing the very strategy Penfold was founded on.</p><p class="txt">All the while, the focus stayed on providing a great experience to all Penfold savers.</p></div>
+<p class="txt">For months the market challenged us, and we challenged everything else, be it the speed at which partners moved, or how much our audience actually cared about our product. We held our resolve to keep failing until we didn&rsquo;t, and an unwavering focus on the only non-negotiable: the excellence with which we served our users. To this day, Penfold is the best working experience I&rsquo;ve had, and a true 0 &rarr; 1 that I&rsquo;m tremendously proud of.</p>
 <!-- CLOSER start: built by source/closer.py from CodeCatalog screens, do not edit by hand -->
 <div class="flow wall" style="--n:6;--tw:135.667;--h:294;--gap:16;--out:0.000" role="group" aria-label="Penfold, twelve screens of the app">
 <div class="stack"><div class="step" style="--fw:375;--fb:294" data-screen="penfold/mobile/closer-sign-up"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -9984,3 +10055,5 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
 </script>
 </body>
 </html>
+
+</body></html>
