@@ -195,6 +195,13 @@ body.bolt .flag .scrl{display:inline-flex}
 /* The pull at the TOP is ours, not the browser's: the page still comes down with the fingers, but on
    release it eases back with no bounce. The browser's own elastic is off only near the top, so the
    bottom keeps it. Mouse and trackpad only; touch screens keep the native pull at both ends. */
+/* The navbar sits ON the body, fixed to the window, not in the page's flow: the browser's elastic at
+   the bottom then stretches the body alone and the bar stays put. 44 is the bar's own height, which
+   the body's top padding now stands in for. Desktop only; the phone bar keeps its sticky build. */
+@media(hover:hover) and (pointer:fine) and (min-width:481px){
+  .flag.bare{position:fixed;top:0;left:0;right:0;margin:0}
+  body{padding-top:44px}
+}
 @media(hover:hover) and (pointer:fine){
   html.attop{overscroll-behavior-y:none}
   html.pulling .flag,html.pulling .wrap,html.pulling #deck{translate:0 var(--pull,0px)}
