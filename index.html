@@ -192,7 +192,7 @@ body.bolt .flag .scrl{display:inline-flex}
 @media(max-width:960px){.flag .lft{display:contents}.flag .scrl{display:none !important}}
 @media(max-width:960px){.flag .bolt{display:none}}
 #deck{display:none}
-html:has(body.bolt){overscroll-behavior:none}   /* no elastic pull at the ends: the panes are pinned, so only the navbar would bounce */
+html{overscroll-behavior:none}   /* no elastic pull at the page's ends, in either view: the navbar stays pinned to the top */
 body.bolt{min-height:0}
 body.bolt .wrap{display:none}
 body.bolt.loose{overflow:hidden}
