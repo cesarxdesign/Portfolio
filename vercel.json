@@ -4,6 +4,12 @@
   "headers": [{
     "source": "/(.*)\\.woff2",
     "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+  }, {
+    "source": "/Cesar-Garcia-CV.pdf",
+    "headers": [{ "key": "Content-Disposition", "value": "inline; filename=\"Cesar Garcia CV.pdf\"" }]
   }],
-  "rewrites": [{ "source": "/cv", "destination": "/cv.pdf" }]
+  "redirects": [
+    { "source": "/cv", "destination": "/Cesar-Garcia-CV.pdf", "permanent": false },
+    { "source": "/cv.pdf", "destination": "/Cesar-Garcia-CV.pdf", "permanent": false }
+  ]
 }
