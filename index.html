@@ -192,20 +192,12 @@ body.bolt .flag .scrl{display:inline-flex}
 @media(max-width:960px){.flag .lft{display:contents}.flag .scrl{display:none !important}}
 @media(max-width:960px){.flag .bolt{display:none}}
 #deck{display:none}
-/* The pull at the TOP is ours, not the browser's: the page still comes down with the fingers, but on
-   release it eases back with no bounce. The browser's own elastic is off only near the top, so the
-   bottom keeps it. Mouse and trackpad only; touch screens keep the native pull at both ends. */
-/* The navbar sits ON the body, fixed to the window, not in the page's flow: the browser's elastic at
-   the bottom then stretches the body alone and the bar stays put. 44 is the bar's own height, which
+/* The navbar sits ON the body, fixed to the window, not in the page's flow: the browser's elastic, at
+   either end, then moves the body alone and the bar stays put. 44 is the bar's own height, which
    the body's top padding now stands in for. Desktop only; the phone bar keeps its sticky build. */
 @media(hover:hover) and (pointer:fine) and (min-width:481px){
   .flag.bare{position:fixed;top:0;left:0;right:0;margin:0}
   body{padding-top:44px}
-}
-@media(hover:hover) and (pointer:fine){
-  html.attop{overscroll-behavior-y:none}
-  html.pulling .flag,html.pulling .wrap,html.pulling #deck{translate:0 var(--pull,0px)}
-  html.settling .flag,html.settling .wrap,html.settling #deck{transition:translate .5s cubic-bezier(.22,1,.36,1)}
 }
 body.bolt{min-height:0}
 body.bolt .wrap{display:none}
@@ -445,41 +437,6 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&on) setOn(false); });
   tabsPaint();
   try{ if(sessionStorage.getItem('folioBolt')==='1'&&innerWidth>960) setOn(true); }catch(e){}
-})();
-</script>
-<script>
-/* the top pull: see the note beside html.attop in the styles */
-(function(){
-  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  var R=document.documentElement, MAX=130, acc=0, last=0, live=false, prev=0, fall=0, timer=0, done=0;
-  function near(){ R.classList.toggle('attop',scrollY<200); }
-  addEventListener('scroll',near,{passive:true}); near();
-  function release(){
-    clearTimeout(timer); if(!acc) return;
-    acc=0; live=false;
-    R.classList.add('settling'); R.style.setProperty('--pull','0px');
-    clearTimeout(done);
-    done=setTimeout(function(){ if(!acc){ R.classList.remove('pulling','settling'); R.style.removeProperty('--pull'); } },540);
-  }
-  addEventListener('wheel',function(e){
-    var now=performance.now(), d=e.deltaY;
-    /* a pull only counts when the gesture STARTS at the top: scrolling up into the top just stops */
-    if(now-last>180){ live=scrollY<=0&&!e.ctrlKey; prev=0; fall=0; }
-    last=now;
-    if(!live) return;
-    if(document.body.classList.contains('loose')&&e.target.closest&&e.target.closest('#deck .view')) return;
-    if(!acc&&(d>=0||scrollY>0)) return;
-    /* fingers lifted: what follows is the trackpad's coasting, each step weaker than the last */
-    fall=(Math.abs(d)<prev)?fall+1:0; prev=Math.abs(d);
-    if(fall>=4){ release(); return; }
-    e.preventDefault();
-    acc=Math.max(0,acc-d);
-    if(!acc){ R.classList.remove('pulling','settling'); R.style.removeProperty('--pull'); return; }
-    clearTimeout(done);
-    R.classList.remove('settling'); R.classList.add('pulling');
-    R.style.setProperty('--pull',(MAX*(1-Math.exp(-acc/300))).toFixed(1)+'px');
-    clearTimeout(timer); timer=setTimeout(release,110);
-  },{passive:false});
 })();
 </script>
 <script>
