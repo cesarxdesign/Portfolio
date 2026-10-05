@@ -71,12 +71,12 @@
 :where(body[data-h="cable"]) .facts{margin-top:calc(var(--h-heroB) - var(--h-heroGap));padding-top:0;border-top:0;font-size:var(--h-facts);line-height:var(--h-factsL)}
 :where(body[data-h="cable"]) .ver{column-gap:var(--h-gutter);padding:var(--h-sec) 0}
 :where(body[data-h="cable"]) .ver.first{padding:var(--h-secFirst) 0 var(--h-sec)}
-:where(body[data-h="cable"]) .ver.tight{padding:96px 0}   /* Cable's own short sections: left as they are */
+:where(body[data-h="cable"]) .ver.tight{padding:var(--h-sec) 0}   /* Cable's short sections had 96 and a 40 gap; they take the standard rhythm (2026-10-05) */
 :where(body[data-h="cable"]) .vlab{padding-top:var(--h-labT)}
 :where(body[data-h="cable"]) .vlab .v{font-size:var(--h-lab);letter-spacing:var(--h-labS)}
 :where(body[data-h="cable"]) .vlab .t{font-size:var(--h-labTag)}
 :where(body[data-h="cable"]) .col{gap:var(--h-secGap)}
-:where(body[data-h="cable"]) .ver.tight .col{gap:40px}
+:where(body[data-h="cable"]) .ver.tight .col{gap:var(--h-secGap)}
 :where(body[data-h="cable"]) .h2{font-size:var(--h-h2);line-height:var(--h-h2L);letter-spacing:var(--h-h2S)}
 :where(body[data-h="cable"]) .body{max-width:var(--h-textW);font-size:var(--h-text);line-height:var(--h-textL)}
 :where(body[data-h="cable"]) .sub{font-size:var(--h-sub);line-height:var(--h-subL);letter-spacing:var(--h-subS)}
