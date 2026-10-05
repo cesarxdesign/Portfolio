@@ -169,11 +169,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 }
 </style>
 <link rel="stylesheet" href="/footer.css">
-</head><body>
-<div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Starcount <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a class="on" href="index.html">Starcount</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Starcount</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+</head><body data-h="lite">
+<link rel="stylesheet" href="/harmony.css?v=9db8ba57"><div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Starcount <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a class="on" href="index.html">Starcount</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Starcount</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="page">
-  <header class="hd">
-    <h1>Hit &pound;1M first-year target, in 91 days.</h1>
+  <header class="hd"><div class="hkick"><span class="hchip">Starcount</span><span>Data intelligence &middot; Enterprise &middot; Desktop web</span></div>
+    <h1>Hit &pound;1M first-year target, <em>in 91 days.</em></h1>
     <p class="lede">Starcount built a clever dataset of its own, and had rights to data nobody had monetized before, including Twitter&rsquo;s first-ever data deal. But all that data wouldn&rsquo;t become a product, until I made it lie.</p>
       </header>
   <div class="band">
@@ -181,12 +181,12 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
       <div class="stat"><b>&pound;1M</b><span>first-year target</span></div>
       <div class="stat"><b>91 days</b><span>to reach it</span></div>
       <div class="stat"><b>1st ever</b><span>Twitter data deal</span></div>
-      <div class="stat"><b>1 lie</b><span>to make it work</span></div>
+      
     </div>
-    <p class="roleline"><b>Head of Product Design, the company&rsquo;s first designer.</b> Audience intelligence, desktop web, sold into enterprise. I ran discovery across data, engineering, sales and client interviews, and grew the team off the back of that success: four designers alongside me. 2015/2019, London, onsite.</p>
+    <div class="hfacts"><div><span class="k">Role</span><span>Head of Product Design, first designer</span></div><div><span class="k">Timeline</span><span>Dec 2015 to May 2019</span></div><div><span class="k">Users</span><span>Enterprise marketing teams</span></div></div>
   </div>
   <section class="sec">
-  <p class="lab">context</p>
+  <p class="lab">reports</p>
   <h2>Starcount had unique data, but sold it as <em>consultancy reports</em>.</h2>
 <ul class="ans">
   <li>Its inference layer tied what people follow to what they care about: relations advertisers pay for.</li>
@@ -236,7 +236,7 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
     </div>
 </section>
   <section class="sec">
-  <p class="lab">data visualization</p>
+  <p class="lab">the&nbsp;lie</p>
   <h2>The map was accurate but useless, so I made it <em>lie, correctly</em>.</h2>
 <ul class="ans">
   <li>Nudging a filter by <b>8%</b> blanked <b>90%</b> of the country: London always won.</li>
@@ -1849,7 +1849,7 @@ img,svg{display:block;vertical-align:middle}
 </section>
   </div>
 
-<footer class="sfoot"><div class="snx"><span class="slab">Next</span><a class="snext" href="/penfold">Penfold <span>&rarr;</span></a></div><a class="smail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
+<script>/* between phone and full width the page keeps its 1440 layout and scales, as Penfold and Cable do; a figure drawn wider than the content column is scaled down to it, as every flagship image is */(function(){var el=document.querySelector(".page"),W=1440,M=760;function fit(){var w=document.documentElement.clientWidth,on=w>M;el.style.zoom=(on&&w<W)?(w/W):"";document.querySelectorAll(".sec").forEach(function(s){var h=s.querySelector("h2");if(!h)return;s.querySelectorAll(":scope>*:not(.lab):not(.wrap),:scope>.wrap>*:not(.lab)").forEach(function(e){e.style.zoom="";if(!on)return;var c=h.getBoundingClientRect().width,x=e.getBoundingClientRect().width;if(x>c+1)e.style.zoom=c/x;});});}fit();addEventListener("resize",fit);addEventListener("load",fit);if(document.fonts)document.fonts.ready.then(fit);})();</script><footer class="sfoot"><div class="snx"><span class="slab">Next</span><a class="snext" href="/penfold">Penfold <span>&rarr;</span></a></div><a class="smail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
 <script>
 (function(){
   var KEY="folio0", mq=matchMedia("(prefers-color-scheme: dark)"), el=document.getElementById("thsw");
