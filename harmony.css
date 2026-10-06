@@ -130,11 +130,11 @@ body[data-h="lite"] .hkick,body[data-h="lite"] .hkick span{font-family:var(--h-m
 :where(body[data-h="lite"]) .ans li:last-child{margin-bottom:0}
 :where(body[data-h="lite"]) .ans li::before{top:.66em}
 
-/* the bridge between two sections: set as the flagships' boxed line, closing the section above it */
+/* the bridge between two sections: the flagships' quote bar on the left, no rules above or below (on request, 2026-10-06); it closes the section above it */
 :where(body[data-h="lite"]) .sec:has(+ .brg){padding-bottom:var(--h-secGap)}
 :where(body[data-h="lite"]) .brg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--h-gutter);max-width:none;margin:0;padding:0 0 var(--h-sec)}
 :where(body[data-h="lite"]) .brg>.wrap{display:contents}
-:where(body[data-h="lite"]) .brg p{grid-column:4/span 9;max-width:var(--h-boxW);margin:0;padding:var(--h-boxY) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+:where(body[data-h="lite"]) .brg p{grid-column:4/span 9;max-width:calc(var(--h-boxW) - 36px);margin:0;padding:8px 0 8px 36px;border-left:2px solid var(--accent);
   font:400 var(--h-box)/var(--h-boxL) var(--h-sans);letter-spacing:var(--h-boxS);color:var(--ink)}
 :where(body[data-h="lite"]) .brg p:first-child::before{display:none}
 }
