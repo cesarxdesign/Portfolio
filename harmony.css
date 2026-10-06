@@ -97,6 +97,7 @@ body:where([data-h="lite"]){--h-grad:linear-gradient(115deg,var(--accent2) 10%,v
 :where(body[data-h="lite"]) .hd:not(:has(.band)){padding-bottom:0}
 :where(body[data-h="lite"]) .hd>.wrap{display:contents}
 :where(body[data-h="lite"]) .hkick{display:flex;align-items:center;gap:16px;font:400 var(--h-key)/normal var(--h-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+body[data-h="lite"] .hkick,body[data-h="lite"] .hkick span{font-family:var(--h-mono)}   /* at real weight: Mara sets a family on every span and div */
 :where(body[data-h="lite"]) .hchip{padding:5px 9px;border-radius:4px;background:var(--accent);color:#FFFFFF}
 :root[data-theme="dark"] :where(body[data-h="lite"]) .hchip{color:var(--bg)}
 :where(body[data-h="lite"]) h1{max-width:none;margin:0 0 -.18em;padding-bottom:.18em;font:600 var(--h-h1)/var(--h-h1L) var(--h-sans);letter-spacing:var(--h-h1S);text-wrap:wrap;
@@ -146,6 +147,16 @@ body:where([data-h="lite"]){--h-grad:linear-gradient(115deg,var(--accent2) 10%,v
   :where(body[data-h="lite"]) .hfacts{display:flex;flex-direction:column;gap:10px;margin-top:20px;font:400 15px/1.45 var(--h-sans);color:var(--ink)}
   :where(body[data-h="lite"]) .hfacts>div{display:flex;justify-content:space-between;gap:16px;text-align:right}
   :where(body[data-h="lite"]) .hfacts .k{font:400 11px/normal var(--h-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+}
+
+/* the Lite pages' lede in two tones, as on the flagships: the turn is in a span, in the page's own soft colour.
+   Soft is one step lighter than muted, at Penfold's lightness on every page (L 65 light, 54 dark). */
+:where(body[data-h="lite"]) .lede span{color:var(--soft,var(--mut))}
+
+/* the Lite pages' hero image: the flagships' own, between the lede and the numbers */
+:where(body[data-h="lite"]) .heroimg{display:block;width:100%;height:600px;object-fit:cover;border-radius:12px}
+@media (max-width:760px){
+  :where(body[data-h="lite"]) .heroimg{height:280px;margin:28px 0 -20px;object-position:62% 50%;border-radius:8px}   /* 28 above and below, as on the flagships' phones */
 }
 
 /* the hero image sits flat on the page: no shadow under it, at any width (on request, 2026-10-05) */
