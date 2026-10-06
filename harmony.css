@@ -124,7 +124,7 @@ body[data-h="lite"] .hkick,body[data-h="lite"] .hkick span{font-family:var(--h-m
   font:600 var(--h-lab)/1 var(--h-sans);letter-spacing:var(--h-labS);text-transform:none;color:var(--ink)}
 :where(body[data-h="lite"]) .sec .lab::before{content:none}
 :where(body[data-h="lite"]) .sec .lab::first-letter{text-transform:uppercase}
-:where(body[data-h="lite"]) .sec h2{grid-row:1;max-width:none;margin-bottom:-.18em!important;padding-bottom:.18em;font:600 var(--h-h2)/var(--h-h2L) var(--h-sans);letter-spacing:var(--h-h2S);text-wrap:wrap}
+:where(body[data-h="lite"]) .sec h2,:where(body[data-h="lite"]) .sec>.wrap>h2{grid-row:1;max-width:none;margin-bottom:-.18em!important;padding-bottom:.18em;font:600 var(--h-h2)/var(--h-h2L) var(--h-sans);letter-spacing:var(--h-h2S);text-wrap:wrap}
 :where(body[data-h="lite"]) .ans{max-width:var(--h-textW)}
 :where(body[data-h="lite"]) .ans li{margin:0 0 12px;font:400 var(--h-text)/var(--h-textL) var(--h-sans)}
 :where(body[data-h="lite"]) .ans li:last-child{margin-bottom:0}

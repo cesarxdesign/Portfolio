@@ -64,7 +64,7 @@ h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
 .ans li::before{content:"";position:absolute;left:4px;top:.66em;width:6px;height:6px;background:var(--accent);border-radius:50%}
 .ans b{color:var(--ink);font-weight:600;font-family:'Geist Mono',ui-monospace,monospace;font-size:.9em}   /* "Day 1:" in mono (on request, 2026-09-30) */
 /* the ID relay in Cracking: numbered as the Combine stepper, without the interaction */
-.relay{list-style:none;margin:0;padding:32px 49px 32px 36px;display:flex;flex-direction:column;gap:18px;border:1px solid var(--line);border-radius:16px;width:100%;box-sizing:border-box}   /* both cards the full column (894), as every image and strip */   /* the box ends at its longest step; right padding 74 = left edge to text (36 + 26 ring + 12 gap), on request (2026-09-30) */
+.relay{list-style:none;margin:0;padding:32px 49px 32px 36px;display:flex;flex-direction:column;gap:20px;border:1px solid var(--line);border-radius:16px;width:100%;box-sizing:border-box}   /* both cards the full column (894), as every image and strip */   /* the box ends at its longest step; right padding 74 = left edge to text (36 + 26 ring + 12 gap), on request (2026-09-30) */
 /* set as a graphic: a light card on the page (on request, 2026-09-30) */
 .page[data-theme="light"] .relay{background:rgba(255,255,255,.40)}   /* thin: white at 40% (on request, 2026-09-30) */
 .page[data-theme="dark"] .relay{background:rgba(255,255,255,.05)}
@@ -74,7 +74,7 @@ h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
 .relay code.pn{background:#FF5081}   /* the pension tags in Penfold pink (on request, 2026-09-30) */
 /* the relay's numbers: accent rings joined by a thread, the last one filled (the pension exists) */
 .relay li{position:relative}
-.relay li:not(:last-child)::before{content:"";position:absolute;left:12.5px;top:29px;bottom:-15px;width:1px;
+.relay li:not(:last-child)::before{content:"";position:absolute;left:12.5px;top:29px;bottom:-17px;width:1px;
   background:linear-gradient(color-mix(in srgb,var(--chip) 55%,transparent),color-mix(in srgb,var(--chip) 15%,transparent))}
 .relay .st-n{border-color:color-mix(in srgb,var(--chip) 45%,transparent);color:var(--chip);font-weight:600;
   background:color-mix(in srgb,var(--chip) 6%,transparent)}
@@ -84,7 +84,7 @@ h2{font-size:68px;line-height:1.02;letter-spacing:-.045em;font-weight:600}
 .relay.first-done li:last-child .st-n{background:color-mix(in srgb,var(--chip) 6%,transparent);border-color:color-mix(in srgb,var(--chip) 45%,transparent);color:var(--chip);box-shadow:none}
 .relay.first-done li:first-child .st-n{background:var(--chip);border-color:var(--chip);color:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--chip) 14%,transparent)}
 /* and a divider after 01: what happens at once, above; what the partners do after, below (on request, 2026-09-30) */
-.relay.first-done li:first-child{padding-bottom:18px}
+.relay.first-done li:first-child{padding-bottom:20px}
 .relay.first-done li:first-child::before{display:none}
 .relay.first-done li:first-child::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
 /* below the divider: sad grey dots, grey numbers (on request, 2026-09-30) */
@@ -127,7 +127,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .box .flow{margin-block:8px 16px}
 .box.split{display:grid;grid-template-columns:600px minmax(0,1fr);gap:40px;align-items:center;max-width:none}   /* "what if I die?": the screens, and the copy to their right (on request, 2026-09-30) */
 .box.split .flow{margin:0}
-.box-copy{display:flex;flex-direction:column;gap:8px}
+.box-copy{display:flex;flex-direction:column;gap:10px}
 .box-copy .sub{font-size:16px;line-height:1.35;letter-spacing:0;font-weight:600;color:var(--ink)}   /* the Combine stepper's type, bumped up (16 / 15) on request (2026-09-30) */
 .box-copy .capt{font-size:15px;line-height:1.5;letter-spacing:0;color:var(--body)}   /* the screens inside a story box get a little more room than its lines of text */
 .group{display:flex;flex-direction:column;gap:20px}
@@ -208,7 +208,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
   transition:top .6s cubic-bezier(.65,0,.35,1)}   /* the red square, as in Figma: it travels between the two Combine sections */
 .web.prev .web-red{top:var(--was)}
 @media (prefers-reduced-motion:reduce){.web > img,.web-cap,.web-red{transition:none}}
-.grid.stack > .item + .flow,.grid.stack > .item + .duo{margin-top:56px}   /* a new sub-section: clearly more room above its screens than between screens and their label */
+.grid.stack > .item + .flow,.grid.stack > .item + .duo{margin-top:44px}   /* a new sub-section: clearly more room above its screens than between screens and their label */
 .grid.stack > .flow{margin-bottom:28px}
 .grid.stack > .ann{margin-bottom:28px}
 /* Iterate: the four Combine iterations over the Figma folio's progression arrows (source/iterate.py) */
@@ -230,11 +230,11 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .st-t{font-size:16px;line-height:1.35;font-weight:600;color:var(--ink)}   /* 16 / 15, as the "what if I die?" copy (on request, 2026-09-30) */
 .st-b{font-size:15px;line-height:1.5;color:var(--body)}
 .brow-block{display:flex;flex-direction:column;gap:24px}   /* an eyebrow straight over a strip of screens (Shipping) */
-.item > .iter,.item > .ann,.item > .duo,.item > .relay{margin:14px 0 22px}   /* eyebrow, then the screens, then the title and body (Modular, Mobile, Combine; as Shipping) */
+.item > .iter,.item > .ann,.item > .duo,.item > .relay{margin:14px 0 22px}.item > .mono + :is(.iter,.ann,.duo,.relay){margin-top:12px}   /* eyebrow, then the screens, then the title and body (Modular, Mobile, Combine; as Shipping) */
 .item:has(> .relay) > h3,.item:has(> .relay) > p{max-width:820px}   /* the 6-days card: eyebrow, card, title, copy as one item, as Modular (on request, 2026-09-30) */
-.grid.stack > .item + .item:has(> .iter,> .ann,> .duo){margin-top:56px}
-.item > p + .iter,.item > p + .webs{margin:28px 0 0}   /* December: the screens under their text (on request, 2026-09-30) */
-.grid.stack > .item:has(> .webs) + .item{margin-top:12px;padding-top:56px;border-top:1px solid var(--line)}   /* a divider between Message and Combine: 56px either side */   /* a new sub-section with screens: 44 + 56 = 100px above it */
+.grid.stack > .item + .item:has(> .iter,> .ann,> .duo){margin-top:44px}
+.item > p + .iter,.item > p + .webs{margin:22px 0 0}   /* December: the screens under their text (on request, 2026-09-30) */
+.grid.stack > .item:has(> .webs) + .item{margin-top:44px;padding-top:56px;border-top:1px solid var(--line)}   /* a divider between Message and Combine: 56px either side */   /* a new sub-section with screens: 44 + 56 = 100px above it */
 .txt.closing{max-width:none;border-top:1px solid var(--line);padding-top:56px}   /* a divider above a closing line and its screens */
 .flow.final{display:none}   /* the final-onboarding strip (Login to Dashboard) is hidden on request, 2026-09-29; kept in the page to bring back */
 .group > .txt.closing{margin-top:36px}   /* in a text group (20px gap): the same 56px above the divider as in the body */
@@ -247,7 +247,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 .it-step{margin:0;flex:0 0 calc(var(--tw)*1px);min-width:0;display:flex;flex-direction:column;gap:10px}
 .it-step .step{flex:none;height:calc(var(--fb)*1px)}
 .it-cap{font:400 10px/1.4 'Geist Mono',ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--soft)}   /* an annotated strip, the same room above its label */
-.stores{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:-32px}   /* the app store badges under the closing line */
+.stores{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:-36px}   /* 20 under the line they belong to: the group gap, inside the 56 between blocks */   /* the app store badges under the closing line */
 .stores a{display:block;line-height:0}
 .stores img{display:block;height:40px;width:auto}
 .group > .flow,.group > .ann{margin-block:12px}
@@ -288,7 +288,7 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:600}
 /* the annotated prototype is code (craft.html, the montage rebuilt from Figma). Its white frame (1734 x 1109
    in the montage) is the box on the column; the iframe is larger, so the notes and arrows hang outside it
    (montage box 0,30 to 2178,1350; the frame sits at 227,132) */
-.proto{position:relative;aspect-ratio:1734/1109;margin-bottom:24px}   /* room for the notes that hang below the frame */
+.proto{position:relative;aspect-ratio:1734/1109;margin-bottom:56px}   /* the notes hang 56 below the frame; this keeps the 56 between blocks clear of them */   /* room for the notes that hang below the frame */
 .proto iframe{position:absolute;left:calc(-227 / 1734 * 100%);top:calc(-102 / 1109 * 100%);
        width:calc(2178 / 1734 * 100%);height:calc(1320 / 1109 * 100%);border:0;background:transparent;color-scheme:light}   /* pinned to match craft.html: a scheme mismatch makes the frame opaque white */
 
@@ -344,12 +344,12 @@ section.ch.first{border-top-color:var(--ink)}
  .qs{grid-template-columns:minmax(0,1fr);gap:16px}.qs-nav{justify-content:flex-end}
  .qs-head{flex-direction:column;align-items:flex-start;gap:12px}
  .closer{padding:88px 0 40px}.closer .big{font-size:44px;line-height:1.02}
- .proto{margin-bottom:12px}
+ .proto{margin-bottom:12px}.stores{margin-top:-32px}
 }
 </style>
 </head>
 <body>
-<link rel="stylesheet" href="/harmony.css?v=d28c76df"><style>.page[data-theme="light"]{--acc:#FF5081;--acc2:#FF7A9F;--accg:#FF5081;--chip:#FF5081;--glow:rgba(255,80,129,.05);--halo:rgba(255,80,129,.14)}:root:not([data-theme="dark"]){--accent:#FF5081;--tint:#FFEEF3}.page[data-theme="light"] .relay code.pn{background:#6076DD}</style><div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Penfold <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a class="on" href="index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Penfold</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<link rel="stylesheet" href="/harmony.css?v=0bfe8758"><style>.page[data-theme="light"]{--acc:#FF5081;--acc2:#FF7A9F;--accg:#FF5081;--chip:#FF5081;--glow:rgba(255,80,129,.05);--halo:rgba(255,80,129,.14)}:root:not([data-theme="dark"]){--accent:#FF5081;--tint:#FFEEF3}.page[data-theme="light"] .relay code.pn{background:#6076DD}</style><div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Penfold <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a class="on" href="index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../confirmo/index.html">Confirmo</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Penfold</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="page" id="case" data-theme="light">
 <div class="col">
 
@@ -358,7 +358,7 @@ section.ch.first{border-top-color:var(--ink)}
 <div class="mono kick"><span class="chip">Penfold</span><span>Pensions &middot; B2C fintech, mobile and web</span></div>
 <h1>Pensions took days.<br><span class="soft">Ours took minutes.</span></h1>
 <p class="lede">First hire. Shipped an ugly, slow, and cumbersome first version within 7 days. And in less than a year, <span>iterated our way into 3,000 savers and &pound;4M under management.</span></p>
-<img class="heroimg" src="/penfold/img/hero.webp" alt="Five Penfold app screens on tilted phones beside the Penfold logo" width="2500" height="1406" fetchpriority="high">
+<img class="heroimg" src="/penfold/img/hero.webp" alt="Five Penfold app screens on tilted phones beside the Penfold logo, App Store and Google Play badges and five Trustpilot stars" width="2500" height="1406" fetchpriority="high">
 <div class="stats">
 <div class="stat"><b>0 &rarr; 1</b><span class="mono">Live product in 7 days</span></div>
 <div class="stat"><b>&pound;4M</b><span class="mono">Under management, year one</span></div>
