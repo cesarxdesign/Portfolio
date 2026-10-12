@@ -350,6 +350,9 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
  function save(){if(busy)return;try{S.setItem(K,String(Math.round(scrollY)));}catch(e){}}
  addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(save,120);},{passive:true});addEventListener("pagehide",save);
  document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".pjsw a,.pjd a");if(!a||a.classList.contains("on"))return;save();try{S.setItem("pos:swap","1");}catch(x){}},true);
+ /* the current project's own button: one click does nothing (it used to reload the page), a double click goes back to the top */
+ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".pjsw a.on");if(a)e.preventDefault();});
+ document.addEventListener("dblclick",function(e){var a=e.target.closest&&e.target.closest(".pjsw a.on");if(!a)return;e.preventDefault();scrollTo({top:0,left:0,behavior:"smooth"});});
  var via=S.getItem("pos:swap");S.removeItem("pos:swap");var y=+S.getItem(K)||0;
  if(via&&y){try{history.scrollRestoration="manual";}catch(e){}
   /* the page grows as fonts and pictures land, so one jump falls short: hold the place until the layout has been still for a moment, or the reader moves */
