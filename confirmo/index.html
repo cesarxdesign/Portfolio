@@ -283,6 +283,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
+--body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3ed;--paper:#fffdf8;--paperT:rgba(255,253,248,.86);--ink:#17171a;--ink2:#4b4b51;--mut:#74726c;--flagink:#74726c;--soft:#a29e95;--line:#e6e2d8;
+--orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
+--quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
+--body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
+--quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3fa;--ink:#211e30;--body:#655d89;--mut:#746f89;--soft:#a19abf;--accent:#6f45e0;--line:rgba(70,45,140,.16);--hair:rgba(70,45,140,.24);--flagbg:rgba(247,244,253,.92);--flagink:#746f89;--ctl:rgba(88,54,168,.07);--ctlbd:rgba(88,54,168,.24);--ctlon:rgba(88,54,168,.13);--phbg:rgba(70,45,140,.04);--phbd:rgba(70,45,140,.3);--danger:#cf4f3e;--ok:#2f8f5a;--shA:drop-shadow(0 10px 18px rgba(40,28,80,.14));--shB:drop-shadow(0 14px 24px rgba(40,28,80,.18));--shH:drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13));--shHb:0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13);--glow:rgba(111,69,224,.05);--accent2:#9a6ff0;--grain:.03;--sel:rgba(111,69,224,.22);--glass:rgba(245,243,250,.44);--paperT:var(--flagbg)}:root[data-theme="dark"]{--bg:#12101a;--ink:#f5f3fb;--body:#b9b3ca;--mut:#918aab;--soft:#847d9c;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44)}</style>
 <style>
 /* ---- placed: cxd's colours; the blocks hold the screens ---- */
@@ -14034,7 +14039,12 @@ svg { display: block; flex: none; }
 
 /* ---------- the board: three rows of groups in a frame of the slot's proportions; every length is in Figma px, the page scales the whole frame ---------- */
 .frame { position: relative; background: transparent; }   /* the page's card shows through */
-.dsb { box-sizing: border-box; display: flex; align-items: stretch; gap: 112px; padding: 72px; width: 2285px; height: 1586px; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+.dsb { box-sizing: border-box; display: flex; flex-direction: column; gap: 96px; padding: 72px; width: 2285px; height: 1586px; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+.dsb-top { display: flex; align-items: stretch; gap: 112px; flex: 1 1 0; min-height: 0; }
+.dsb-F { flex: none; }
+.dsb-F .dsb-row, .dsb-F .dsb-g { display: block; }
+.dsb-F .dsb-flow { align-items: stretch; }
+.dsb-F .dsb-line { justify-content: space-between; gap: 20px; }   /* eleven controls on one line: 20 between them is what fits the board's width */
 .dsb-side { display: flex; flex-direction: column; min-width: 0; }
 .dsb-L { flex: none; width: 788px; justify-content: space-between; }
 .dsb-R { flex: 1 1 0; justify-content: space-between; }
@@ -14587,188 +14597,6 @@ svg { display: block; flex: none; }
 /* selection dot: out of the flow, pinned to the row's top right corner (x 287, y 0), 40 x 40, padding 0 8, content centred */
 .b05-dot { position: absolute; right: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
 .b05-selected { flex: none; width: 22px; height: 40px; }
-/* D01 */
-/* D01 · "progress pills" · Figma 124:34062 · 123.33332824707031 x 18. An auto-layout frame (row, gap 8, centred on both axes, no fill,
-   no stroke) holding four "status pill" instances, each 24 wide: column, items at start > "status pill / self" (full width, 8 high)
-   > one rectangle filling it (Rectangle 17). 4 x 24 + 3 x 8 = 120, so the centring lands the first pill at x 1.6667, as get_metadata reports.
-   Fills, left to right: #713FFF (state=complete; the file's own value, NOT --main #7040F0), #F8C808 (variable Brand/Secondary = --secondary;
-   this instance is a different main component, no state prop), #F0F2FF twice (state=incomplete = --f0f2ff).
-   Stroke: 0.4px black at 8%, INSIDE (Figma's SVG export of this node draws it as a 23.6 x 7.6 rect inset 0.2, stroke-width 0.4), so an inset
-   box-shadow. The stroke paint is multiply-blended in the file; black multiplied at alpha a is colour x (1 - a), the same as black laid
-   normally at alpha a, so the plain rgba is exact.
-   Radius 16 on an 8-high box: both Figma and CSS clamp it to 4 (the export says rx 4). */
-.d01-pills { display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; position: relative; width: 123.33332824707031px; height: 18px; }
-.d01-pill { display: flex; flex-direction: column; align-items: flex-start; position: relative; flex: none; width: 24px; }
-.d01-self { position: relative; flex: none; width: 100%; height: 8px; }
-.d01-rect { position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 16px; box-shadow: inset 0 0 0 0.4px rgba(0, 0, 0, 0.08); }
-.d01-complete { background: #713FFF; }
-.d01-secondary { background: var(--secondary); }
-.d01-incomplete { background: var(--f0f2ff); }
-/* D02 */
-/* D02 · "v2 / dropdown" · Figma 124:33989 · 79 x 21. Auto-layout row: gap 8, baseline-aligned, centred; radius 8; no fill, no stroke, no effect. */
-.d02-dropdown { display: flex; gap: 8px; align-items: baseline; justify-content: center; width: 100%; height: 100%; border-radius: 8px; }
-/* label (I124:33989;1:1255): IBM Plex Sans Medium 16, 'wdth' 100, tracking 0.16px, #4C3F91 (no token), centred, one line, hug width.
-   Figma's box is 58 x 21 (auto line height, 20.8, on the pixel grid) and its own outline of the text sits on y 17 (the P runs 5.832 to 17).
-   A 21px line box would put the baseline at 16.5 ((21 - 20.8) / 2 + 16.4), so the line box is 22px inside the 21px box
-   (0.6 + 16.4 = 17). Deliberate: do not "tidy" it to 21. */
-.d02-label { flex: none; height: 21px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 22px;
-  letter-spacing: 0.16px; color: #4C3F91; text-align: center; white-space: nowrap; }
-/* CSS adds the tracking after the last glyph, Figma's text box does not (its outline starts 0.056 in: (58 - 57.888) / 2). The margin is the negative of the tracking. */
-.d02-trk { margin-right: -0.16px; }
-/* chevron (I124:33989;1:1256): a text node holding the SF Symbol chevron.up.chevron.down, box 13 x 17 at 66, 4. The face cannot ship, so the glyph is
-   Figma's own outline of it. An outline has no text baseline to align on; Figma's box for it ends on the frame's bottom edge (4 + 17 = 21). */
-.d02-glyph { flex: none; align-self: flex-end; width: 13px; height: 17px; }
-/* path data and fill untouched from the SVG export of 124:33989; the viewBox is the text node's own box in the component's coordinates. */
-.d02-chevron { width: 13px; height: 17px; }
-/* D03 */
-/* D03 · "back button" · Figma 124:33990 · 123.33333587646484 x 18. An instance whose frame is auto-layout: row, gap 4, items on the
-   baseline, no padding, no fill, no stroke; wider (123.33) than its two children (11 + 4 + 44 = 59), which sit at the start.
-   Children, as get_metadata on the instance reports them:
-   1. text "chevron.backward", an SF Symbols glyph, box 11 x 17 at 0, 1. That face cannot ship, so the glyph is the outline Figma's own
-      SVG export of this instance draws for it (fill #999999), cut to the node's box: viewBox 0 1 11 17. The path is untouched.
-      Its box starts 1px lower than the label's because its baseline sits 13px into its 17px line and Inter's sits 14px in; a box with
-      no text has no baseline in CSS, so the box is placed where Figma's baseline alignment put it (y 1) instead.
-   2. text "Return", style 14/Regular: Inter Regular 14, line height auto = its 17px box over one line, letter-spacing 0, #999999 (--f99),
-      no wrap; box 44 x 17 at 15, 0. Left to the flex row, so its x (15) and width fall out of the gap and the face, not a number.
-      Known and left alone: Figma set this string in an older Inter than the board ships. Its SVG export has the cap height at exactly
-      8/11 em and the x-height at 6/11 em (the 2816-unit Inter 3 build); the shared face is Inter 4.001. R, e and n agree; t, u and r sit
-      up to 0.55px further right in Figma and u is 0.13px narrower. No tracking is added to imitate it. */
-.d03-back { display: flex; flex-direction: row; gap: 4px; align-items: baseline; position: relative; width: 123.33333587646484px; height: 18px; }
-.d03-chev { position: relative; flex: none; align-self: flex-start; margin-top: 1px; width: 11px; height: 17px; }
-.d03-glyph { position: absolute; left: 0; top: 0; }
-/* Baseline strut, deliberate. Figma sets the baseline on a whole pixel: its SVG export of this node has the feet of "Return" at y 14.0000,
-   14 under the text box top (0). Chrome rounds Inter's 13.5625 ascent to the device grid instead (14 at 1x, 13.5 at 2x, 13.667 at 3x),
-   so the line is baseline-aligned to a 14px strut inside its 17px box and lands on 14 at any zoom. No effect at 1x. */
-.d03-label { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; height: 17px; white-space: nowrap; color: var(--f99);
-  font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; letter-spacing: 0; }
-.d03-label::before { content: ''; flex: none; width: 0; height: 14px; }
-.d03-txt { flex: none; line-height: 17px; }
-/* D04 */
-/* options button: auto-layout row, gap 12, packed to the right edge. Figma aligns on baselines; the two SF Symbols text nodes
-   cannot ship as text (their outlines are inlined), so they take their own y from Figma: 1px below the 18px line. */
-.d04-options { display: flex; flex-direction: row; gap: 12px; align-items: flex-start; justify-content: flex-end; width: 100%; height: 100%; }
-.d04-language { display: flex; flex-direction: row; flex: none; gap: 4px; align-items: flex-start; }
-.d04-sym { flex: none; width: 17px; height: 17px; margin-top: 1px; }
-/* "En": IBM Plex Sans Regular 14, tracking -2%. Line 18px and box 16px wide are Figma's own text box (16 x 18). */
-.d04-en { flex: none; width: 16px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.28px; color: var(--f99); white-space: nowrap; }
-/* D09 */
-/* D09 · "left" (left action, label "Verify") · Figma 124:33998 · 127 x 37.
-   Auto-layout row, centred on both axes, padding 8 16; no fill, no stroke, no radius, no effect. */
-.d09-left { display: flex; flex-direction: row; align-items: center; justify-content: center; padding: 8px 16px; width: 100%; height: 100%; }
-/* label (I124:33998;1:1382): IBM Plex Sans Bold 16, 'wdth' 100, tracking -0.16px, #7040F0 (= --main), left-aligned, one line.
-   Width 44 and height 21 are Figma's own text box (44 x 21 at 41.5, 8): the string's advance is 43.56 and Figma puts the box on the pixel grid,
-   so hugging the string instead would start it 0.2px to the right.
-   Line height is "auto" (20.8, boxed at 21) and Figma's own outline of the text sits on y 25, which is 17 inside the box.
-   A 21px line box would put the baseline at 16 or 16.5, so the line box is 22px inside the 21px box (0.6 + 16.4 = 17). Deliberate: do not "tidy" it to 21. */
-.d09-label { flex: none; width: 44px; height: 21px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-style: normal; font-weight: 700; font-size: 16px; line-height: 22px;
-  letter-spacing: -0.16px; color: var(--main); text-align: left; white-space: nowrap; }
-/* D10 */
-/* D10 · "right" (right action, label "Request refund") · Figma 124:33999 · 135 x 33.
-   Auto-layout row, centred on both axes, padding 8 16; no fill, no stroke, no radius, no effect. */
-.d10-right { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; padding: 8px 16px; width: 100%; height: 100%; }
-/* label (I124:33999;1:1382): style 14/Medium = Inter Medium 14, tracking 0, Foundation/69 #696969 (= --f69), left-aligned, one line.
-   Width 103 and height 17 are Figma's own text box (103 x 17 at 16, 8). Line height is "auto"; the 17px box over one line gives 17px. */
-.d10-label { position: relative; flex: none; width: 103px; height: 17px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 500; font-size: 14px; line-height: 17px;
-  letter-spacing: 0; color: var(--f69); text-align: left; white-space: nowrap; }
-/* Baseline strut, deliberate. Figma's vector export of this node starts the "R" at y 22.0000: the baseline is 14px under the
-   text box top (8). Chrome rounds Inter's 13.56px ascent in device pixels, so at 3x the baseline lands at 13.67px; this empty
-   inline-block sits on the baseline and holds it 14px down at every zoom. No effect at 1x. */
-.d10-label::before { content: ''; display: inline-block; width: 0; height: 14px; }
-/* D05 */
-/* D05 · "List / lineWithAction" · Figma 124:33992 · 179 x 40. An instance whose frame is auto-layout: row, gap 16, items on the
-   baseline, centred, padding 8 0, radius 8, no fill, no stroke. Its "label" text and the "button" inside "swap label" are hidden
-   in this instance, so two children draw (143 + 16 + 20 = 179):
-   1. "swap label", 143 x 18 at 0, 8.5: column, gap 8, items at the end, centred. Its one visible child is the text "value":
-      style 16/Regular (Inter Regular 16, letter-spacing 0, black), right-aligned, auto width, line height auto = its 19px box
-      over one line, so it overhangs the 18px frame by half a pixel top and bottom (box 143 x 19 at 0, 8).
-      The frame keeps Figma's 143 and the text hangs from its end edge, as items-end and text-right do in the file. Figma set this
-      string in Inter 3 (its outlines sit on a 2816-unit em) at 142.05 wide; the board's Inter is 4.001, which sets it 143.58 wide,
-      so it reaches 0.58 past the frame's start. Deliberate: no tracking is added to hide a different release of the face.
-   2. text "icon", an SF Symbols glyph ("square.on.square"), box 20 x 19 at 159, 8. That face cannot ship, so the glyph is the
-      outline Figma's own SVG export of this instance draws for it, cut to the node's box: viewBox 159 8 20 19. The path is untouched.
-      A box with no text has no baseline in CSS; Figma's is 15px into the 19px line (the export sets the feet of the value's
-      letters at y 23 and the icon box starts at y 8), so a 15px strut gives the box that baseline and the row aligns on it,
-      which lands the value's baseline on 23 at any zoom. */
-.d05-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 179px; height: 40px; padding: 8px 0; border-radius: 8px; }
-.d05-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; width: 143px; height: 18px; }
-.d05-value { position: relative; flex: none; min-width: 100%; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
-.d05-icon { display: flex; flex-direction: row; align-items: flex-start; position: relative; flex: none; width: 20px; height: 19px; }
-.d05-icon::before { content: ''; flex: none; width: 0; height: 15px; }
-.d05-glyph { position: absolute; left: 0; top: 0; }
-/* D08 */
-/* Figma 124:33997 "List / lineWithAction": horizontal auto-layout, gap 16, baseline-aligned, centred, padding 8 0, radius 8, no fill */
-.d08-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 164px; height: 40px; padding: 8px 0; border-radius: 8px; }
-/* "swap label": vertical auto-layout, gap 8, right-aligned, centred, fixed height 18. The 28px button overhangs it by 5 above and 5 below, as in Figma (button y = -5). */
-.d08-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; height: 18px; }
-/* "button": 128 x 28, fill #F0F2FF, radius 6, padding 2 48 4 (uneven on purpose: it lifts the label 1px). The 55px label overflows the 32px content width evenly, as in Figma (label x = 36.5). */
-.d08-button { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; flex: none; width: 128px; height: 28px; padding: 2px 48px 4px 48px; border-radius: 6px; background: var(--f0f2ff); }
-.d08-label-box { display: flex; flex-direction: column; justify-content: center; position: relative; flex: none; line-height: 0; text-align: right; white-space: nowrap; color: var(--f00); }
-/* "label": 16/Regular, Inter 400 16px, auto line height = 19px box, box 55 wide, right-aligned */
-.d08-label { position: relative; flex: none; width: 55px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
-/* "icon": a 20 x 19 text node in Figma (SF Symbol "chevron.up.chevron.down"), so it sits on the row's baseline with a 19px line box. The glyph ships as Figma's outlined SVG; the empty line box keeps the baseline alignment that puts the icon at y 8 and the swap label at y 9.5. */
-.d08-icon { position: relative; flex: none; width: 20px; height: 19px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; white-space: nowrap; color: var(--f00); }
-.d08-icon::before { content: "\200B"; }
-.d08-glyph { position: absolute; left: 0; top: 0; }
-/* D06 */
-/* D06 · "List / lineWithAction" · Figma 124:33993 · 206 x 40. An instance whose frame is auto-layout: row, gap 16, items on the
-   baseline, centred, padding 8 0, radius 8, no fill, no stroke. Its "label" text and the "button" inside "swap label" are hidden
-   in this instance, so two children draw (170 + 16 + 20 = 206):
-   1. "swap label", 170 x 18 at 0, 8.5: column, gap 8, items at the end, centred. Its one visible child is the text "value":
-      style 16/Regular (Inter Regular 16, letter-spacing 0, black), right-aligned, auto width, line height auto = its 19px box
-      over one line, so it overhangs the 18px frame by half a pixel top and bottom (box 170 x 19 at 0, 8).
-      The frame keeps Figma's 170 and the text hangs from its end edge, as items-end and text-right do in the file. Figma set this
-      string in Inter 3 (its outlines sit on a 2816-unit em); the board's Inter is 4.001, which sets it 170.55 wide, so it reaches
-      0.55 past the frame's start. Deliberate: no tracking is added to hide a different release of the face.
-   2. text "icon", an SF Symbols glyph ("paperplane"), box 20 x 19 at 186, 8. That face cannot ship, so the glyph is the outline
-      Figma's own SVG export of this instance draws for it, cut to the node's box: viewBox 186 8 20 19. The path is untouched.
-      A box with no text has no baseline in CSS; Figma's is 15px into the 19px line (the export sets the feet of the value's
-      letters at y 23 and the icon box starts at y 8), so a 15px strut gives the box that baseline and the row aligns on it,
-      which lands the value's baseline on 23 at any zoom. */
-.d06-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 206px; height: 40px; padding: 8px 0; border-radius: 8px; }
-.d06-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; width: 170px; height: 18px; }
-.d06-value { position: relative; flex: none; min-width: 100%; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
-.d06-icon { display: flex; flex-direction: row; align-items: flex-start; position: relative; flex: none; width: 20px; height: 19px; }
-.d06-icon::before { content: ''; flex: none; width: 0; height: 15px; }
-.d06-glyph { position: absolute; left: 0; top: 0; }
-/* D07 */
-/* D07 · "connected wallet line" · Figma 124:33994 (frame "connected") · 320.75 x 49. A plain auto-layout frame, not an instance: row, gap 12,
-   items on the baseline, centred on the main axis, padding 14 all round, no fill, no stroke, no radius. Its two children are wider together
-   (268 + 12 + 29.75 = 309.75) than the padded box (292.75), so the centring overhangs the padding by 8.5 each side and they land at x 5.5 and
-   285.5, as get_metadata reports. Both sit at y 14, 19 high, in a 21px content box.
-   1. text 124:33995 "Connected wallet: 0xCCe9...C8C47", style 16/Regular: Inter Regular 16, line height auto = its 19px box over one line,
-      letter-spacing 0, black (--f00) with LAYER opacity 0.8 and blend mode multiply (both kept: rgb 51,51,51 on white), no wrap.
-      Box 268 wide: Figma hugs the string and rounds the box up to a whole pixel (the shared Inter sets it 267.70 wide), so the width is the
-      file's number, not left to the face; otherwise the centring would put the string 0.15px right and the glyph 0.15px left.
-   2. text 124:33996, one SF Symbols glyph (design context: Image(systemName: "personalhotspot.slash")), box 29.75 x 19. That face cannot ship,
-      so the glyph is the outline Figma's own SVG export of this frame draws for it, path untouched, fill #713FFF (the file's own value for
-      this glyph, NOT --main #7040F0). The export is in frame coordinates, so the viewBox is the node's box widened to whole pixels
-      (285..316 by 14..33) and the svg starts 0.5px left of the 285.5 box: Chrome snaps an svg's origin to the device grid, and at x 285.5
-      that moved the ink half a device pixel right. On whole pixels the ink sits at 289.148 to 311.594 at any zoom, as in Figma.
-   Known and left alone: Figma set the string in an older Inter than the board ships (its export has the cap height at exactly 8/11 em and
-   the x-height at 6/11 em, the 2816-unit Inter 3 build; the shared face is Inter 4.001). The line starts and ends on the same pixels, but
-   letters inside it sit up to 0.6px left or right of Figma's. No tracking is added to imitate it. */
-.d07-connected { display: flex; flex-direction: row; gap: 12px; align-items: baseline; justify-content: center; position: relative; width: 320.75px; height: 49px; padding: 14px; }
-/* Baseline strut, deliberate. Figma sets the baseline on a whole pixel: its SVG export has the feet of the letters at y 29.0000, 15 under the
-   text box top (14). Chrome rounds Inter's 15.5 ascent to the device grid instead and lands the line on 15 at 1x and 2x but 15.333 at 3x. So
-   the line is baseline-aligned to a 15px strut inside its 19px box; the span's 1px negative margin only lets the strut, not that rounding,
-   decide (any lift of 0.82px or more does it; the strut sets the position). No effect at 1x. */
-.d07-label { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; width: 268px; height: 19px; white-space: nowrap; color: var(--f00); opacity: 0.8; mix-blend-mode: multiply;
-  font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; }
-.d07-label::before { content: ''; flex: none; width: 0; height: 15px; }
-.d07-txt { flex: none; margin-top: -1px; line-height: 19px; }
-/* The glyph's box has no text in CSS, so it carries the same 15px strut: both children then share a baseline, as in Figma, and the row's
-   baseline alignment puts both at y 14. */
-.d07-symbol { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; width: 29.75px; height: 19px; }
-.d07-symbol::before { content: ''; flex: none; width: 0; height: 15px; }
-.d07-glyph { position: absolute; left: -0.5px; top: 0; }
-/* D11 */
-/* D11 · "Frame 1000002132" (text button, label "Request refund") · Figma 124:34000 · 354 x 27.
-   Auto-layout row, centred on both axes, padding 5 2, radius 24; no fill, no stroke, no effect. */
-.d11-btn { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; padding: 5px 2px; width: 100%; height: 100%; border-radius: 24px; }
-/* label (124:34001): IBM Plex Sans Medium 13, wdth 100, tracking 0, Foundation/42 #424242 (= --f42), layer opacity 88%, centred, one line.
-   Width 350 and height 17 are Figma's own text box (350 x 17 at 2, 5). Line height is "auto"; the 17px box over one line gives 17px. */
-.d11-label { position: relative; flex: none; width: 350px; height: 17px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 500; font-stretch: 100%; font-variation-settings: "wdth" 100; font-size: 13px; line-height: 17px;
-  letter-spacing: 0; color: var(--f42); opacity: 0.88; text-align: center; white-space: nowrap; }
 /* E01 */
 .e01-root { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 32px; width: 402px; height: 108px; }
 .e01-line { display: flex; gap: 16px; align-items: center; flex: none; width: 100%; }
@@ -14996,6 +14824,188 @@ svg { display: block; flex: none; }
 .f04-arrow { position: absolute; left: 11.694px; top: 13.343px; }
 .f04-aux { display: flex; align-items: center; justify-content: center; flex: none; width: 100%; }
 .f04-aux-p { flex: 1 0 0; min-width: 1px; font-weight: 300; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: rgba(105,105,105,0.8); mix-blend-mode: multiply; word-break: break-word; }
+/* D01 */
+/* D01 · "progress pills" · Figma 124:34062 · 123.33332824707031 x 18. An auto-layout frame (row, gap 8, centred on both axes, no fill,
+   no stroke) holding four "status pill" instances, each 24 wide: column, items at start > "status pill / self" (full width, 8 high)
+   > one rectangle filling it (Rectangle 17). 4 x 24 + 3 x 8 = 120, so the centring lands the first pill at x 1.6667, as get_metadata reports.
+   Fills, left to right: #713FFF (state=complete; the file's own value, NOT --main #7040F0), #F8C808 (variable Brand/Secondary = --secondary;
+   this instance is a different main component, no state prop), #F0F2FF twice (state=incomplete = --f0f2ff).
+   Stroke: 0.4px black at 8%, INSIDE (Figma's SVG export of this node draws it as a 23.6 x 7.6 rect inset 0.2, stroke-width 0.4), so an inset
+   box-shadow. The stroke paint is multiply-blended in the file; black multiplied at alpha a is colour x (1 - a), the same as black laid
+   normally at alpha a, so the plain rgba is exact.
+   Radius 16 on an 8-high box: both Figma and CSS clamp it to 4 (the export says rx 4). */
+.d01-pills { display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; position: relative; width: 123.33332824707031px; height: 18px; }
+.d01-pill { display: flex; flex-direction: column; align-items: flex-start; position: relative; flex: none; width: 24px; }
+.d01-self { position: relative; flex: none; width: 100%; height: 8px; }
+.d01-rect { position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 16px; box-shadow: inset 0 0 0 0.4px rgba(0, 0, 0, 0.08); }
+.d01-complete { background: #713FFF; }
+.d01-secondary { background: var(--secondary); }
+.d01-incomplete { background: var(--f0f2ff); }
+/* D02 */
+/* D02 · "v2 / dropdown" · Figma 124:33989 · 79 x 21. Auto-layout row: gap 8, baseline-aligned, centred; radius 8; no fill, no stroke, no effect. */
+.d02-dropdown { display: flex; gap: 8px; align-items: baseline; justify-content: center; width: 100%; height: 100%; border-radius: 8px; }
+/* label (I124:33989;1:1255): IBM Plex Sans Medium 16, 'wdth' 100, tracking 0.16px, #4C3F91 (no token), centred, one line, hug width.
+   Figma's box is 58 x 21 (auto line height, 20.8, on the pixel grid) and its own outline of the text sits on y 17 (the P runs 5.832 to 17).
+   A 21px line box would put the baseline at 16.5 ((21 - 20.8) / 2 + 16.4), so the line box is 22px inside the 21px box
+   (0.6 + 16.4 = 17). Deliberate: do not "tidy" it to 21. */
+.d02-label { flex: none; height: 21px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 22px;
+  letter-spacing: 0.16px; color: #4C3F91; text-align: center; white-space: nowrap; }
+/* CSS adds the tracking after the last glyph, Figma's text box does not (its outline starts 0.056 in: (58 - 57.888) / 2). The margin is the negative of the tracking. */
+.d02-trk { margin-right: -0.16px; }
+/* chevron (I124:33989;1:1256): a text node holding the SF Symbol chevron.up.chevron.down, box 13 x 17 at 66, 4. The face cannot ship, so the glyph is
+   Figma's own outline of it. An outline has no text baseline to align on; Figma's box for it ends on the frame's bottom edge (4 + 17 = 21). */
+.d02-glyph { flex: none; align-self: flex-end; width: 13px; height: 17px; }
+/* path data and fill untouched from the SVG export of 124:33989; the viewBox is the text node's own box in the component's coordinates. */
+.d02-chevron { width: 13px; height: 17px; }
+/* D03 */
+/* D03 · "back button" · Figma 124:33990 · 123.33333587646484 x 18. An instance whose frame is auto-layout: row, gap 4, items on the
+   baseline, no padding, no fill, no stroke; wider (123.33) than its two children (11 + 4 + 44 = 59), which sit at the start.
+   Children, as get_metadata on the instance reports them:
+   1. text "chevron.backward", an SF Symbols glyph, box 11 x 17 at 0, 1. That face cannot ship, so the glyph is the outline Figma's own
+      SVG export of this instance draws for it (fill #999999), cut to the node's box: viewBox 0 1 11 17. The path is untouched.
+      Its box starts 1px lower than the label's because its baseline sits 13px into its 17px line and Inter's sits 14px in; a box with
+      no text has no baseline in CSS, so the box is placed where Figma's baseline alignment put it (y 1) instead.
+   2. text "Return", style 14/Regular: Inter Regular 14, line height auto = its 17px box over one line, letter-spacing 0, #999999 (--f99),
+      no wrap; box 44 x 17 at 15, 0. Left to the flex row, so its x (15) and width fall out of the gap and the face, not a number.
+      Known and left alone: Figma set this string in an older Inter than the board ships. Its SVG export has the cap height at exactly
+      8/11 em and the x-height at 6/11 em (the 2816-unit Inter 3 build); the shared face is Inter 4.001. R, e and n agree; t, u and r sit
+      up to 0.55px further right in Figma and u is 0.13px narrower. No tracking is added to imitate it. */
+.d03-back { display: flex; flex-direction: row; gap: 4px; align-items: baseline; position: relative; width: 123.33333587646484px; height: 18px; }
+.d03-chev { position: relative; flex: none; align-self: flex-start; margin-top: 1px; width: 11px; height: 17px; }
+.d03-glyph { position: absolute; left: 0; top: 0; }
+/* Baseline strut, deliberate. Figma sets the baseline on a whole pixel: its SVG export of this node has the feet of "Return" at y 14.0000,
+   14 under the text box top (0). Chrome rounds Inter's 13.5625 ascent to the device grid instead (14 at 1x, 13.5 at 2x, 13.667 at 3x),
+   so the line is baseline-aligned to a 14px strut inside its 17px box and lands on 14 at any zoom. No effect at 1x. */
+.d03-label { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; height: 17px; white-space: nowrap; color: var(--f99);
+  font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; letter-spacing: 0; }
+.d03-label::before { content: ''; flex: none; width: 0; height: 14px; }
+.d03-txt { flex: none; line-height: 17px; }
+/* D04 */
+/* options button: auto-layout row, gap 12, packed to the right edge. Figma aligns on baselines; the two SF Symbols text nodes
+   cannot ship as text (their outlines are inlined), so they take their own y from Figma: 1px below the 18px line. */
+.d04-options { display: flex; flex-direction: row; gap: 12px; align-items: flex-start; justify-content: flex-end; width: 100%; height: 100%; }
+.d04-language { display: flex; flex-direction: row; flex: none; gap: 4px; align-items: flex-start; }
+.d04-sym { flex: none; width: 17px; height: 17px; margin-top: 1px; }
+/* "En": IBM Plex Sans Regular 14, tracking -2%. Line 18px and box 16px wide are Figma's own text box (16 x 18). */
+.d04-en { flex: none; width: 16px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.28px; color: var(--f99); white-space: nowrap; }
+/* D09 */
+/* D09 · "left" (left action, label "Verify") · Figma 124:33998 · 127 x 37.
+   Auto-layout row, centred on both axes, padding 8 16; no fill, no stroke, no radius, no effect. */
+.d09-left { display: flex; flex-direction: row; align-items: center; justify-content: center; padding: 8px 16px; width: 100%; height: 100%; }
+/* label (I124:33998;1:1382): IBM Plex Sans Bold 16, 'wdth' 100, tracking -0.16px, #7040F0 (= --main), left-aligned, one line.
+   Width 44 and height 21 are Figma's own text box (44 x 21 at 41.5, 8): the string's advance is 43.56 and Figma puts the box on the pixel grid,
+   so hugging the string instead would start it 0.2px to the right.
+   Line height is "auto" (20.8, boxed at 21) and Figma's own outline of the text sits on y 25, which is 17 inside the box.
+   A 21px line box would put the baseline at 16 or 16.5, so the line box is 22px inside the 21px box (0.6 + 16.4 = 17). Deliberate: do not "tidy" it to 21. */
+.d09-label { flex: none; width: 44px; height: 21px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-style: normal; font-weight: 700; font-size: 16px; line-height: 22px;
+  letter-spacing: -0.16px; color: var(--main); text-align: left; white-space: nowrap; }
+/* D10 */
+/* D10 · "right" (right action, label "Request refund") · Figma 124:33999 · 135 x 33.
+   Auto-layout row, centred on both axes, padding 8 16; no fill, no stroke, no radius, no effect. */
+.d10-right { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; padding: 8px 16px; width: 100%; height: 100%; }
+/* label (I124:33999;1:1382): style 14/Medium = Inter Medium 14, tracking 0, Foundation/69 #696969 (= --f69), left-aligned, one line.
+   Width 103 and height 17 are Figma's own text box (103 x 17 at 16, 8). Line height is "auto"; the 17px box over one line gives 17px. */
+.d10-label { position: relative; flex: none; width: 103px; height: 17px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 500; font-size: 14px; line-height: 17px;
+  letter-spacing: 0; color: var(--f69); text-align: left; white-space: nowrap; }
+/* Baseline strut, deliberate. Figma's vector export of this node starts the "R" at y 22.0000: the baseline is 14px under the
+   text box top (8). Chrome rounds Inter's 13.56px ascent in device pixels, so at 3x the baseline lands at 13.67px; this empty
+   inline-block sits on the baseline and holds it 14px down at every zoom. No effect at 1x. */
+.d10-label::before { content: ''; display: inline-block; width: 0; height: 14px; }
+/* D05 */
+/* D05 · "List / lineWithAction" · Figma 124:33992 · 179 x 40. An instance whose frame is auto-layout: row, gap 16, items on the
+   baseline, centred, padding 8 0, radius 8, no fill, no stroke. Its "label" text and the "button" inside "swap label" are hidden
+   in this instance, so two children draw (143 + 16 + 20 = 179):
+   1. "swap label", 143 x 18 at 0, 8.5: column, gap 8, items at the end, centred. Its one visible child is the text "value":
+      style 16/Regular (Inter Regular 16, letter-spacing 0, black), right-aligned, auto width, line height auto = its 19px box
+      over one line, so it overhangs the 18px frame by half a pixel top and bottom (box 143 x 19 at 0, 8).
+      The frame keeps Figma's 143 and the text hangs from its end edge, as items-end and text-right do in the file. Figma set this
+      string in Inter 3 (its outlines sit on a 2816-unit em) at 142.05 wide; the board's Inter is 4.001, which sets it 143.58 wide,
+      so it reaches 0.58 past the frame's start. Deliberate: no tracking is added to hide a different release of the face.
+   2. text "icon", an SF Symbols glyph ("square.on.square"), box 20 x 19 at 159, 8. That face cannot ship, so the glyph is the
+      outline Figma's own SVG export of this instance draws for it, cut to the node's box: viewBox 159 8 20 19. The path is untouched.
+      A box with no text has no baseline in CSS; Figma's is 15px into the 19px line (the export sets the feet of the value's
+      letters at y 23 and the icon box starts at y 8), so a 15px strut gives the box that baseline and the row aligns on it,
+      which lands the value's baseline on 23 at any zoom. */
+.d05-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 179px; height: 40px; padding: 8px 0; border-radius: 8px; }
+.d05-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; width: 143px; height: 18px; }
+.d05-value { position: relative; flex: none; min-width: 100%; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
+.d05-icon { display: flex; flex-direction: row; align-items: flex-start; position: relative; flex: none; width: 20px; height: 19px; }
+.d05-icon::before { content: ''; flex: none; width: 0; height: 15px; }
+.d05-glyph { position: absolute; left: 0; top: 0; }
+/* D08 */
+/* Figma 124:33997 "List / lineWithAction": horizontal auto-layout, gap 16, baseline-aligned, centred, padding 8 0, radius 8, no fill */
+.d08-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 164px; height: 40px; padding: 8px 0; border-radius: 8px; }
+/* "swap label": vertical auto-layout, gap 8, right-aligned, centred, fixed height 18. The 28px button overhangs it by 5 above and 5 below, as in Figma (button y = -5). */
+.d08-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; height: 18px; }
+/* "button": 128 x 28, fill #F0F2FF, radius 6, padding 2 48 4 (uneven on purpose: it lifts the label 1px). The 55px label overflows the 32px content width evenly, as in Figma (label x = 36.5). */
+.d08-button { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; flex: none; width: 128px; height: 28px; padding: 2px 48px 4px 48px; border-radius: 6px; background: var(--f0f2ff); }
+.d08-label-box { display: flex; flex-direction: column; justify-content: center; position: relative; flex: none; line-height: 0; text-align: right; white-space: nowrap; color: var(--f00); }
+/* "label": 16/Regular, Inter 400 16px, auto line height = 19px box, box 55 wide, right-aligned */
+.d08-label { position: relative; flex: none; width: 55px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
+/* "icon": a 20 x 19 text node in Figma (SF Symbol "chevron.up.chevron.down"), so it sits on the row's baseline with a 19px line box. The glyph ships as Figma's outlined SVG; the empty line box keeps the baseline alignment that puts the icon at y 8 and the swap label at y 9.5. */
+.d08-icon { position: relative; flex: none; width: 20px; height: 19px; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; white-space: nowrap; color: var(--f00); }
+.d08-icon::before { content: "\200B"; }
+.d08-glyph { position: absolute; left: 0; top: 0; }
+/* D06 */
+/* D06 · "List / lineWithAction" · Figma 124:33993 · 206 x 40. An instance whose frame is auto-layout: row, gap 16, items on the
+   baseline, centred, padding 8 0, radius 8, no fill, no stroke. Its "label" text and the "button" inside "swap label" are hidden
+   in this instance, so two children draw (170 + 16 + 20 = 206):
+   1. "swap label", 170 x 18 at 0, 8.5: column, gap 8, items at the end, centred. Its one visible child is the text "value":
+      style 16/Regular (Inter Regular 16, letter-spacing 0, black), right-aligned, auto width, line height auto = its 19px box
+      over one line, so it overhangs the 18px frame by half a pixel top and bottom (box 170 x 19 at 0, 8).
+      The frame keeps Figma's 170 and the text hangs from its end edge, as items-end and text-right do in the file. Figma set this
+      string in Inter 3 (its outlines sit on a 2816-unit em); the board's Inter is 4.001, which sets it 170.55 wide, so it reaches
+      0.55 past the frame's start. Deliberate: no tracking is added to hide a different release of the face.
+   2. text "icon", an SF Symbols glyph ("paperplane"), box 20 x 19 at 186, 8. That face cannot ship, so the glyph is the outline
+      Figma's own SVG export of this instance draws for it, cut to the node's box: viewBox 186 8 20 19. The path is untouched.
+      A box with no text has no baseline in CSS; Figma's is 15px into the 19px line (the export sets the feet of the value's
+      letters at y 23 and the icon box starts at y 8), so a 15px strut gives the box that baseline and the row aligns on it,
+      which lands the value's baseline on 23 at any zoom. */
+.d06-line { display: flex; flex-direction: row; gap: 16px; align-items: baseline; justify-content: center; position: relative; width: 206px; height: 40px; padding: 8px 0; border-radius: 8px; }
+.d06-swap { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; justify-content: center; position: relative; flex: none; width: 170px; height: 18px; }
+.d06-value { position: relative; flex: none; min-width: 100%; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; text-align: right; white-space: nowrap; color: var(--f00); }
+.d06-icon { display: flex; flex-direction: row; align-items: flex-start; position: relative; flex: none; width: 20px; height: 19px; }
+.d06-icon::before { content: ''; flex: none; width: 0; height: 15px; }
+.d06-glyph { position: absolute; left: 0; top: 0; }
+/* D07 */
+/* D07 · "connected wallet line" · Figma 124:33994 (frame "connected") · 320.75 x 49. A plain auto-layout frame, not an instance: row, gap 12,
+   items on the baseline, centred on the main axis, padding 14 all round, no fill, no stroke, no radius. Its two children are wider together
+   (268 + 12 + 29.75 = 309.75) than the padded box (292.75), so the centring overhangs the padding by 8.5 each side and they land at x 5.5 and
+   285.5, as get_metadata reports. Both sit at y 14, 19 high, in a 21px content box.
+   1. text 124:33995 "Connected wallet: 0xCCe9...C8C47", style 16/Regular: Inter Regular 16, line height auto = its 19px box over one line,
+      letter-spacing 0, black (--f00) with LAYER opacity 0.8 and blend mode multiply (both kept: rgb 51,51,51 on white), no wrap.
+      Box 268 wide: Figma hugs the string and rounds the box up to a whole pixel (the shared Inter sets it 267.70 wide), so the width is the
+      file's number, not left to the face; otherwise the centring would put the string 0.15px right and the glyph 0.15px left.
+   2. text 124:33996, one SF Symbols glyph (design context: Image(systemName: "personalhotspot.slash")), box 29.75 x 19. That face cannot ship,
+      so the glyph is the outline Figma's own SVG export of this frame draws for it, path untouched, fill #713FFF (the file's own value for
+      this glyph, NOT --main #7040F0). The export is in frame coordinates, so the viewBox is the node's box widened to whole pixels
+      (285..316 by 14..33) and the svg starts 0.5px left of the 285.5 box: Chrome snaps an svg's origin to the device grid, and at x 285.5
+      that moved the ink half a device pixel right. On whole pixels the ink sits at 289.148 to 311.594 at any zoom, as in Figma.
+   Known and left alone: Figma set the string in an older Inter than the board ships (its export has the cap height at exactly 8/11 em and
+   the x-height at 6/11 em, the 2816-unit Inter 3 build; the shared face is Inter 4.001). The line starts and ends on the same pixels, but
+   letters inside it sit up to 0.6px left or right of Figma's. No tracking is added to imitate it. */
+.d07-connected { display: flex; flex-direction: row; gap: 12px; align-items: baseline; justify-content: center; position: relative; width: 320.75px; height: 49px; padding: 14px; }
+/* Baseline strut, deliberate. Figma sets the baseline on a whole pixel: its SVG export has the feet of the letters at y 29.0000, 15 under the
+   text box top (14). Chrome rounds Inter's 15.5 ascent to the device grid instead and lands the line on 15 at 1x and 2x but 15.333 at 3x. So
+   the line is baseline-aligned to a 15px strut inside its 19px box; the span's 1px negative margin only lets the strut, not that rounding,
+   decide (any lift of 0.82px or more does it; the strut sets the position). No effect at 1x. */
+.d07-label { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; width: 268px; height: 19px; white-space: nowrap; color: var(--f00); opacity: 0.8; mix-blend-mode: multiply;
+  font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 16px; line-height: 19px; letter-spacing: 0; }
+.d07-label::before { content: ''; flex: none; width: 0; height: 15px; }
+.d07-txt { flex: none; margin-top: -1px; line-height: 19px; }
+/* The glyph's box has no text in CSS, so it carries the same 15px strut: both children then share a baseline, as in Figma, and the row's
+   baseline alignment puts both at y 14. */
+.d07-symbol { display: flex; flex: none; flex-direction: row; align-items: baseline; position: relative; width: 29.75px; height: 19px; }
+.d07-symbol::before { content: ''; flex: none; width: 0; height: 15px; }
+.d07-glyph { position: absolute; left: -0.5px; top: 0; }
+/* D11 */
+/* D11 · "Frame 1000002132" (text button, label "Request refund") · Figma 124:34000 · 354 x 27.
+   Auto-layout row, centred on both axes, padding 5 2, radius 24; no fill, no stroke, no effect. */
+.d11-btn { display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; padding: 5px 2px; width: 100%; height: 100%; border-radius: 24px; }
+/* label (124:34001): IBM Plex Sans Medium 13, wdth 100, tracking 0, Foundation/42 #424242 (= --f42), layer opacity 88%, centred, one line.
+   Width 350 and height 17 are Figma's own text box (350 x 17 at 2, 5). Line height is "auto"; the 17px box over one line gives 17px. */
+.d11-label { position: relative; flex: none; width: 350px; height: 17px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 500; font-stretch: 100%; font-variation-settings: "wdth" 100; font-size: 13px; line-height: 17px;
+  letter-spacing: 0; color: var(--f42); opacity: 0.88; text-align: center; white-space: nowrap; }
 /* ---------- dark mode (generated) ---------- */
 :host(.dark) .dsb-l{color:#FFFFFF}
 :host(.dark) .dsb-n{color:#8A8799}
@@ -15057,87 +15067,6 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d01-rect{box-shadow:inset 0 0 0 0.4px rgba(255,255,255,0.12)}
-:host(.dark) .d01-incomplete{background:rgba(152,128,255,0.14)}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d02-label{color:#C9BEFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d03-label{color:#8A8799}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d04-en{color:#8A8799}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d09-label{color:#A98BFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d10-label{color:#A9A6B8}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d05-value{color:#FFFFFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d08-button{background:rgba(152,128,255,0.14)}
-:host(.dark) .d08-label-box{color:#FFFFFF}
-:host(.dark) .d08-label{color:#FFFFFF}
-:host(.dark) .d08-icon{color:#FFFFFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d06-value{color:#FFFFFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d07-label{color:#FFFFFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d11-label{color:#D6D4E0}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 :host(.dark) .e01-label{color:#A9A6B8}
 :host(.dark) .e01-label-total{color:#A98BFF}
 :host(.dark) .e01-pair{color:#8A8799}
@@ -15260,9 +15189,90 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d01-rect{box-shadow:inset 0 0 0 0.4px rgba(255,255,255,0.12)}
+:host(.dark) .d01-incomplete{background:rgba(152,128,255,0.14)}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d02-label{color:#C9BEFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d03-label{color:#8A8799}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d04-en{color:#8A8799}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d09-label{color:#A98BFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d10-label{color:#A9A6B8}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d05-value{color:#FFFFFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d08-button{background:rgba(152,128,255,0.14)}
+:host(.dark) .d08-label-box{color:#FFFFFF}
+:host(.dark) .d08-label{color:#FFFFFF}
+:host(.dark) .d08-icon{color:#FFFFFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d06-value{color:#FFFFFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d07-label{color:#FFFFFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d11-label{color:#D6D4E0}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 
 </style>
-<div class="frame dsb"><div class="dsb-side dsb-L"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Confirmo button<span class="dsb-n">8 states</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="A01" data-node="124:33942" data-name="confirmo button v2 / select token (nothing selected)" style="width:378px;height:96px">
+<div class="frame dsb"><div class="dsb-top"><div class="dsb-side dsb-L"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Confirmo button<span class="dsb-n">8 states</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="A01" data-node="124:33942" data-name="confirmo button v2 / select token (nothing selected)" style="width:378px;height:96px">
   <div class="a01-btn">
     <div class="a01-info"><div class="a01-label"><p class="a01-label-line">select token</p></div></div>
     <div class="a01-token">
@@ -15988,69 +15998,6 @@ svg { display: block; flex: none; }
 </div>
 </div>
 </div>
-</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
-  <div class="d01-pills" data-node-id="124:34062">
-    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
-  <div class="d02-dropdown" data-node-id="124:33989">
-    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
-    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
-      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
-    </div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
-  <div class="d03-back" data-node-id="124:33990">
-    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
-    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
-<div class="d04-options">
-<div class="d04-language">
-<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
-</svg>
-<p class="d04-en">En</p>
-</div>
-<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
-</svg>
-</div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
-  <div class="d09-left" data-node-id="124:33998">
-    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
-  <div class="d10-right" data-node-id="124:33999">
-    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
-  <div class="d05-line" data-node-id="124:33992">
-    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
-    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
-  <div class="d08-line" data-node-id="124:33997">
-    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
-    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
-  <div class="d06-line" data-node-id="124:33993">
-    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
-    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
-  <div class="d07-connected" data-node-id="124:33994">
-    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
-    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
-  <div class="d11-btn" data-node-id="124:34000">
-    <p class="d11-label" data-node-id="124:34001">Request refund</p>
-  </div>
 </div></div></div></div></section></div></div><div class="dsb-side dsb-R"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Price breakdown and history<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="E01" data-node="124:34106" data-name="payment details / price breakdown" style="width:402px;height:108px">
 <div class="e01-root">
   <div class="e01-line">
@@ -16397,6 +16344,69 @@ svg { display: block; flex: none; }
       </div>
       <div class="f04-aux"><p class="f04-aux-p f04-half">This will never be used for marketing purposes or similar.</p></div>
     </div>
+  </div>
+</div></div></div></div></section></div></div></div><div class="dsb-side dsb-F"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
+  <div class="d01-pills" data-node-id="124:34062">
+    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
+  <div class="d02-dropdown" data-node-id="124:33989">
+    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
+    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
+      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
+    </div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
+  <div class="d03-back" data-node-id="124:33990">
+    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
+    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
+<div class="d04-options">
+<div class="d04-language">
+<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
+</svg>
+<p class="d04-en">En</p>
+</div>
+<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
+</svg>
+</div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
+  <div class="d09-left" data-node-id="124:33998">
+    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
+  <div class="d10-right" data-node-id="124:33999">
+    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
+  <div class="d05-line" data-node-id="124:33992">
+    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
+    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
+  <div class="d08-line" data-node-id="124:33997">
+    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
+    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
+  <div class="d06-line" data-node-id="124:33993">
+    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
+    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
+  <div class="d07-connected" data-node-id="124:33994">
+    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
+    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
+  <div class="d11-btn" data-node-id="124:34000">
+    <p class="d11-label" data-node-id="124:34001">Request refund</p>
   </div>
 </div></div></div></div></section></div></div></div>
 </template></div></div></div></div></figure></div>
