@@ -213,6 +213,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
+--body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3ed;--paper:#fffdf8;--paperT:rgba(255,253,248,.86);--ink:#17171a;--ink2:#4b4b51;--mut:#74726c;--flagink:#74726c;--soft:#a29e95;--line:#e6e2d8;
+--orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
+--quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
+--body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
+--quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3fa;--ink:#211e30;--body:#655d89;--mut:#746f89;--soft:#a19abf;--accent:#6f45e0;--line:rgba(70,45,140,.16);--hair:rgba(70,45,140,.24);--flagbg:rgba(247,244,253,.92);--flagink:#746f89;--ctl:rgba(88,54,168,.07);--ctlbd:rgba(88,54,168,.24);--ctlon:rgba(88,54,168,.13);--phbg:rgba(70,45,140,.04);--phbd:rgba(70,45,140,.3);--danger:#cf4f3e;--ok:#2f8f5a;--shA:drop-shadow(0 10px 18px rgba(40,28,80,.14));--shB:drop-shadow(0 14px 24px rgba(40,28,80,.18));--shH:drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13));--shHb:0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13);--glow:rgba(111,69,224,.05);--accent2:#9a6ff0;--grain:.03;--sel:rgba(111,69,224,.22);--glass:rgba(245,243,250,.44);--paperT:var(--flagbg)}:root[data-theme="dark"]{--bg:#12101a;--ink:#f5f3fb;--body:#b9b3ca;--mut:#918aab;--soft:#847d9c;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44)}</style>
 <style>
 /* ---- placed: cxd's colours; the blocks hold the screens ---- */
@@ -20464,7 +20469,7 @@ svg { display: block; }
 })();
 </script>
 <script>/* phone view: the strip phones keep their share of the screen (104 of 375), from 320 up to the 760 line */
-(function(){function s(){var w=document.documentElement.clientWidth;document.documentElement.style.setProperty("--mpw",w<=760?Math.max(92,Math.round(w*104/375)):104);}s();addEventListener("resize",s);})();
+(function(){var last=0;function s(){var w=document.documentElement.clientWidth;if(w===last)return;last=w;document.documentElement.style.setProperty("--mpw",w<=760?Math.max(92,Math.round(w*104/375)):104);}s();addEventListener("resize",s);})();   /* only when the width really changes: a phone fires resize every time its toolbar slides, and touching a root property restyles every screen on the page */
 </script>
 
 
