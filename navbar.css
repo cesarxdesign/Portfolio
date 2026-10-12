@@ -263,4 +263,5 @@
 }
 
 /* GitHub rests on phones: the drawer keeps Home, CV, LinkedIn and Contact (2026-10-12). Desktop keeps all four links. */
-@media(max-width:480px){.flag .tops a[href*="github.com"]{display:none}}
+@media(max-width:480px){.flag .tops a[href*="github.com"]{display:none}
+  .flag:has(.bgr[open]) .tops .thsw{margin-top:38px}}   /* one link fewer above it: the pill drops one 44pt row (-6 + 44), so its bottom is back on the bottom of the last project row */
