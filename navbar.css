@@ -256,7 +256,7 @@
 .flag .pjsw{display:none}
 @media(min-width:1000px){
   .flag:has(.pjsw) .pjx{display:none}
-  .flag .pjsw{display:inline-flex;position:absolute;left:calc(var(--pjxL,96px) - 2px);top:50%;transform:translateY(-50%);justify-self:auto;cursor:default}   /* 14px after the divider Home already carries */
+  .flag .pjsw{display:inline-flex;position:absolute;left:calc(var(--pjxL,96px) - 2px);top:50%;transform:translateY(-50%);justify-self:auto;cursor:default;border:0;padding:0;gap:2px}   /* 14px after the divider Home already carries; no pill around the group, only the current project wears chrome */
   .flag .pjsw a{font:600 10px/1 var(--sysFont);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-decoration:none;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
   .flag .pjsw a:hover{color:var(--ink)}
   .flag .pjsw a.on{background:var(--line);color:var(--ink)}
