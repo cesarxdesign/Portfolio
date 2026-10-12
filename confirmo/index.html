@@ -248,6 +248,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
+--body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3ed;--paper:#fffdf8;--paperT:rgba(255,253,248,.86);--ink:#17171a;--ink2:#4b4b51;--mut:#74726c;--flagink:#74726c;--soft:#a29e95;--line:#e6e2d8;
+--orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
+--quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
+--body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
+--quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3fa;--ink:#211e30;--body:#655d89;--mut:#746f89;--soft:#a19abf;--accent:#6f45e0;--line:rgba(70,45,140,.16);--hair:rgba(70,45,140,.24);--flagbg:rgba(247,244,253,.92);--flagink:#746f89;--ctl:rgba(88,54,168,.07);--ctlbd:rgba(88,54,168,.24);--ctlon:rgba(88,54,168,.13);--phbg:rgba(70,45,140,.04);--phbd:rgba(70,45,140,.3);--danger:#cf4f3e;--ok:#2f8f5a;--shA:drop-shadow(0 10px 18px rgba(40,28,80,.14));--shB:drop-shadow(0 14px 24px rgba(40,28,80,.18));--shH:drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13));--shHb:0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13);--glow:rgba(111,69,224,.05);--accent2:#9a6ff0;--grain:.03;--sel:rgba(111,69,224,.22);--glass:rgba(245,243,250,.44);--paperT:var(--flagbg)}:root[data-theme="dark"]{--bg:#12101a;--ink:#f5f3fb;--body:#b9b3ca;--mut:#918aab;--soft:#847d9c;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44)}</style>
 <style>
 /* ---- placed: cxd's colours; the blocks hold the screens ---- */
@@ -14298,53 +14303,6 @@ svg { display: block; flex: none; }
 .a08-eth { position: absolute; left: 0; top: 0; width: 48px; height: 48px; border-radius: 8px; background: #333369; overflow: hidden; }
 .a08-eth-g { position: absolute; left: 15.0498px; top: 9px; }
 .a08-chain { position: absolute; left: 32px; top: 2px; width: 14px; height: 14px; }   /* 12px disc at 33,3 plus its 1px outside ring */
-/* G02 */
-/* G02: two sibling nodes of frame 124:34108. details 124:34110 (284x144, frame x 151) + QR/address row 124:34128 (492x152, frame x 47), 24px apart.
-   Wrapper origin = the QR row's left edge (the item box x). The details frame is 151 - 47 = 104px in; its background rect 124:34111 starts 104.22px
-   left of it, so it overhangs the wrapper by 0.22px on the left and 0.22px on the right. Deliberate: Figma's numbers.
-   Text 'top' offsets below restore Figma's whole-pixel baselines, read from Figma's outlined SVG export of each node (not nudges). */
-.g02-details { position: absolute; left: 104px; top: 0; width: 284px; height: 144px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 0; border-radius: 8px; }
-.g02-details-bg { position: absolute; left: -104.22018432617188px; top: 0; width: 492.44036865234375px; height: 144px; border-radius: 8px; background: rgba(240,242,255,0.4); box-shadow: inset 0 1px 4px 0 rgba(0,0,0,0.08); pointer-events: none; }
-.g02-row { position: relative; flex: none; display: flex; align-items: baseline; gap: 4px; white-space: nowrap; }
-.g02-row-wide { width: 100%; }
-.g02-val { position: relative; flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 18px; line-height: 24px; color: #4C3F91; top: 0.25px; /* export baseline 19 below the row top; CSS puts it at 18.75 */ }
-.g02-val-amount { width: 94px; /* Figma text node width; keeps the copy glyph at x 98 */ font-weight: 600; letter-spacing: 0.18px; }
-.g02-lab { position: absolute; left: -8.15px; /* Figma: right edge at -8, with no trailing letter-spacing; CSS adds the trailing -0.15 inside the box */ top: 1.375px; /* node y 1; export baseline 18 below it, CSS 17.625 */ transform: translateX(-100%); font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 15px; line-height: 24px; letter-spacing: -0.15px; color: rgba(76,63,145,0.4); text-align: right; }
-/* SF Symbol text nodes (24x21): box from metadata, glyph ink from Figma's SVG export of the node, placed at the export's own origin inside the box */
-.g02-sf-copy { position: relative; flex: none; width: 24px; height: 21px; }
-.g02-sf-copy-amount { align-self: flex-start; margin-top: 2px; }
-.g02-sf-copy-addr { position: absolute; left: 0; top: -21px; }
-.g02-ink-copy { position: absolute; left: 2.481px; top: 1.25px; }
-.g02-qrrow { position: absolute; left: 0; top: 168px; width: 492px; height: 152px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 16px; }
-.g02-qr { position: relative; flex: none; width: 152px; height: 152px; overflow: clip; }
-.g02-qr-frame { position: absolute; left: -24px; top: -24px; width: 200px; height: 200px; }
-.g02-address { position: relative; flex: none; width: 284px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px 0; }
-.g02-full { position: relative; flex: none; width: 100%; display: flex; align-items: flex-start; justify-content: center; gap: 8px; padding: 4px 0; }
-.g02-addr-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 18px; line-height: 23px; /* Figma "normal": 46px box / 2 lines */ color: #000000; position: relative; /* export baselines 18 and 41 below the box top: where a 23px CSS line puts them */ word-break: break-word; overflow-wrap: break-word; }
-.g02-pill { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 6px; padding: 3px 8px 6px; border-radius: 8px; white-space: nowrap; color: #4C3F91; font-size: 16px; letter-spacing: 0.16px; }
-.g02-pill-bg { position: absolute; left: 0; top: 0; }
-.g02-sf-warn { position: relative; flex: none; width: 20px; height: 19px; margin-top: 2px; }
-.g02-ink-warn { position: absolute; left: 1.594px; top: 1.859px; }
-.g02-pill-text { position: relative; flex: none; width: 242px; /* Figma text node width */ font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; /* Figma "normal": 21px box, 1 line */ letter-spacing: 0.16px; color: #4C3F91; top: 0.5px; /* export baseline 17 below the node top; CSS 16.5 */ }
-/* G01 */
-/* G01 · Figma 124:34109 · instance "magical compo" · 218 x 265. Labels and the tinted panel overhang 80px to the left (panel also 80px to the right). */
-.g01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px 0; width: 218px; height: 265px; position: relative; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-.g01-details { position: relative; flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 0; width: 100%; border-radius: 8px; }
-.g01-panel { position: absolute; left: -80px; top: 0; width: 378px; height: 144px; border-radius: 8px; background: rgba(240,242,255,0.4); box-shadow: inset 0 1px 4px 0 rgba(0,0,0,0.08); pointer-events: none; }
-.g01-row { position: relative; flex: none; display: flex; align-items: flex-start; gap: 4px; height: 24px; white-space: nowrap; }
-.g01-row-full { width: 100%; }
-.g01-val { position: relative; flex: none; font-size: 14px; font-weight: 500; line-height: 24px; color: #4C3F91; }
-.g01-val-amount { font-weight: 600; letter-spacing: 0.14px; }
-.g01-label { position: absolute; left: -8px; top: 1px; transform: translateX(-100%); font-size: 11px; font-weight: 400; line-height: 24px; letter-spacing: -0.11px; text-align: right; color: rgba(76,63,145,0.4); white-space: nowrap; }
-.g01-copy { position: absolute; left: 77px; top: 4px; width: 19px; height: 17px; }
-.g01-address { position: relative; flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; }
-.g01-full { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 8px; padding: 4px 0; width: 100%; }
-.g01-addr { flex: 1 0 0; min-width: 1px; font-size: 14px; font-weight: 400; line-height: 18px; color: #000000; word-break: break-word; overflow-wrap: break-word; }
-.g01-copy-abs { position: absolute; left: -23px; top: 4px; width: 19px; height: 17px; }
-.g01-warn { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 6px; padding: 3px 8px 6px; width: 218px; height: 25px; border-radius: 8px; background: #F0F2FF; color: #4C3F91; white-space: nowrap; }
-.g01-warn-ring { position: absolute; left: 0; top: 0; width: 218px; height: 25px; mix-blend-mode: color-burn; pointer-events: none; }
-.g01-warn-ico { flex: none; width: 15px; height: 14px; margin-top: 2px; }
-.g01-warn-txt { position: relative; flex: none; margin-top: 0.5px; /* row is baseline-aligned in Figma: its export puts this baseline 16px below the frame top (3 + 0.5 + 12.5) */ font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: 0.12px; }
 /* C01 */
 /* Button, full width (Figma 124:34002, 354 x 43): auto-layout mirrored as flex. Fill #000, radius 24 (more than half the 43px height, so both engines draw a pill), padding 5px 2px, content centred on both axes. */
 .c01-btn { display: flex; align-items: center; justify-content: center; width: 354px; height: 43px; padding: 5px 2px; border-radius: 24px; background: var(--f00); }
@@ -14597,6 +14555,186 @@ svg { display: block; flex: none; }
 /* selection dot: out of the flow, pinned to the row's top right corner (x 287, y 0), 40 x 40, padding 0 8, content centred */
 .b05-dot { position: absolute; right: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
 .b05-selected { flex: none; width: 22px; height: 40px; }
+/* E01 */
+.e01-root { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 32px; width: 402px; height: 108px; }
+.e01-line { display: flex; gap: 16px; align-items: center; flex: none; width: 100%; }
+.e01-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; height: 17px; line-height: 16.25px; color: var(--f69); white-space: nowrap; }
+.e01-label-total { font-weight: 600; color: var(--main); }
+.e01-guide-wrap { display: flex; flex: 1 0 0; flex-direction: row; align-items: center; align-self: stretch; }
+.e01-guide { display: flex; flex: 1 0 0; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; min-width: 1px; padding: 3px 0; }
+.e01-stroke { position: relative; flex: none; width: 100%; height: 1px; }
+.e01-values { display: flex; gap: 16px; align-items: center; flex: none; white-space: nowrap; }
+.e01-pair { display: flex; gap: 4px; align-items: center; justify-content: flex-end; flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; height: 17px; line-height: 16.25px; color: #949494; }
+.e01-pair-total { font-weight: 600; color: var(--main); }
+.e01-num { flex: none; text-align: right; }
+.e01-cur { flex: none; }
+.e01-w39 { width: 39px; }
+.e01-w24 { width: 24px; }
+.e01-w71 { width: 71px; }
+.e01-w32 { width: 32px; }
+.e01-w164 { width: 164px; }
+.e01-w83 { width: 83px; }
+.e01-w78 { width: 78px; }
+.e01-w92 { width: 92px; }
+.e01-w70 { width: 70px; }
+/* E02 */
+/* 124:34076 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e02-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 99px; }
+/* Baselines: Figma's text boxes are its auto line height (Plex 1.3em) on the pixel grid (16 / 18 / 17px) and its own outlines
+   (SVG export of this node) put every baseline on a whole pixel: 13px below the box top for the 12px and 13px text, 14px for the 14px label.
+   Chrome sets the same line boxes with the baseline at 12.5 (12px), 14.25 (14px) and 13.375 (13px); the `top` offsets restore Figma's baseline.
+   Widths: Figma's text boxes are whole pixels (57, 135, 71, 32), wider than the glyph run; set here so the glyphs start where Figma starts them. */
+/* button / timestamp: 80x24 pill, padding 2 8 4 */
+.e02-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e02-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e02-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; width: 57px; position: relative; top: 0.5px; }
+/* info: column, gap 8, fills */
+.e02-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e02-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e02-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e02-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; width: 83px; position: relative; top: -0.25px; }
+.e02-rate { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--f69); white-space: nowrap; width: 135px; position: relative; top: 0.5px; }
+/* Payment Details: column, gap 8, padding-left 16, 1px left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e02-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e02-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e02-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); position: relative; top: -0.375px; }
+.e02-pair { flex: none; display: flex; align-items: center; gap: 8px; }
+.e02-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; white-space: nowrap; }
+.e02-num { flex: none; width: 71px; text-align: right; position: relative; top: -0.375px; }
+.e02-cur { flex: none; width: 32px; position: relative; top: -0.375px; }
+/* E04 */
+/* 124:34082 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e04-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 74px; }
+/* button / timestamp: 80x24 pill, padding 2 8 4, radius 32, fill #F8F8F8 */
+.e04-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e04-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e04-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
+/* info: column, gap 8, fills (258 wide) */
+.e04-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e04-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e04-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e04-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
+.e04-amount { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--main); white-space: nowrap; }
+/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e04-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e04-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e04-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); }
+.e04-pair { flex: none; display: flex; align-items: center; gap: 8px; }
+.e04-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
+.e04-num { flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; text-align: right; white-space: nowrap; }
+/* SF Symbols glyph "square.on.square" (text node, box 19 x 17, #7040F0): the face cannot ship, so this is the outline from
+   Figma's own SVG export of 124:34082, cut to the node's box by viewBox only. Path untouched. */
+.e04-copy { flex: none; width: 19px; height: 17px; }
+/* E03 */
+/* 124:34080 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e03-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 195px; }
+/* button / timestamp: 80x24 pill, padding 2 8 4, fill solid/F0F2FF; text #4C3F91 at layer opacity .56 */
+.e03-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--f0f2ff); }
+.e03-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e03-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: #4C3F91; white-space: nowrap; }
+/* info: column, gap 8, fills */
+.e03-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e03-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e03-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e03-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
+/* icon: a text node set in SF Symbols ("exclamationmark.shield.fill"), box 17 x 19 at 229, 2.5 in the component. That face cannot
+   ship, so the glyph is the "icon" path of Figma's own SVG export of 124:34080, untouched, in the component's coordinates.
+   The box sits on a half pixel (2.5); the svg starts half a pixel higher (viewBox 229 2 17 20) so it lands on the device grid
+   and the path keeps Figma's y. */
+.e03-icon { position: relative; flex: none; width: 17px; height: 19px; }
+.e03-glyph { position: absolute; left: 0; top: -0.5px; width: 17px; height: 20px; }
+/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e03-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e03-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e03-copy { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; color: var(--f69); word-break: break-word; }
+.e03-para { line-height: 17px; }
+/* buttons: row, padding 8 0, centred; left fills, right hugs; each padding 8 16 */
+.e03-buttons { flex: none; display: flex; align-items: center; justify-content: center; width: 100%; padding: 8px 0; }
+.e03-left { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
+.e03-left-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
+.e03-left-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 700; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); white-space: nowrap; }
+.e03-right { flex: none; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
+.e03-right-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
+.e03-right-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; color: var(--f69); white-space: nowrap; }
+/* E05 */
+/* E05 · "payment detail header" (underpaid) · Figma 124:34083 · 370 x 161. Auto-layout row, gap 8, items start, padding 0 16 0 8. */
+.e05-root { display: flex; gap: 8px; align-items: flex-start; padding: 0 16px 0 8px; width: 370px; height: 161px; }
+/* button / timestamp: 80 x 24, fill #F8F8F8, radius 32, padding 2 8 4 */
+.e05-time { display: flex; flex: none; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e05-time-txt { flex: none; opacity: 0.56; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
+/* info: fill, column, gap 8 */
+.e05-info { display: flex; flex: 1 0 0; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 1px; }
+.e05-main { display: flex; flex: none; gap: 8px; align-items: center; width: 100%; height: 24px; }
+.e05-label-wrap { display: flex; flex: 1 0 0; gap: 4px; align-items: center; min-width: 1px; }
+.e05-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; }
+/* icon: text node "exclamationmark.shield.fill" (SF Symbols), box 17 x 19. The face cannot ship, so the glyph is the outline Figma's own
+   SVG export of this instance draws for it, cut to the node's box (viewBox 286 2.5 17 19). The path is untouched. */
+.e05-icon { flex: none; width: 17px; height: 19px; }
+/* Payment Details: left stroke 1px inside rgba(66,66,66,0.4), padding-left 16, opacity 0.8 */
+.e05-details { display: flex; flex: none; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 rgba(66,66,66,0.4); }
+.e05-line { display: flex; flex: none; gap: 16px; align-items: center; width: 100%; }
+.e05-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); word-break: break-word; }
+/* buttons: padding 8 0, opacity 0.4; left: fill white, padding 8 16 */
+.e05-buttons { display: flex; flex: none; align-items: center; justify-content: center; width: 100%; padding: 8px 0; opacity: 0.4; }
+.e05-left { display: flex; flex: 1 0 0; align-items: center; justify-content: center; min-width: 1px; padding: 8px 16px; background: var(--fff); }
+.e05-left-txt { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); word-break: break-word; }
+/* F01 */
+.f01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 402px; height: 97px; padding: 12px 32px; color: var(--f42); word-break: break-word; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+.f01-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f01-body { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
+.f01-p { width: 100%; }
+/* Figma's body box is 48px over 3 lines (auto line height, 15.6, on the pixel grid) and its outline export puts the baselines at y 50, 66, 82:
+   13px below the box top (37). A 16px CSS line puts Plex's baseline at 12.5, so 0.5px restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
+.f01-p-body { position: relative; top: 0.5px; }
+/* F02 */
+.f02-root { display: flex; align-items: baseline; justify-content: center; width: 402px; height: 32px; padding: 8px 24px; }
+.f02-cookies { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.24px; color: var(--f42); text-align: center; word-break: break-word; position: relative; top: 0.5px; }
+/* top 0.5px: Figma's outline export of this node puts the baseline at y 21, 13px below the text box top (8). A 16px CSS line puts Plex's baseline at 12.5; the half pixel restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
+/* CSS adds the 0.24px tracking after the last glyph, Figma does not: cancel it so the centred line sits where Figma's does. */
+.f02-b { font-weight: 700; margin-right: -0.24px; }
+/* F03 */
+.f03-body { position: relative; display: flex; flex-direction: column; align-items: center; width: 354px; height: 195px; padding: 8px 16px; overflow: clip; background: var(--fff); border-radius: 16px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+/* Figma's stroke: 1px inside, linear gradient at 40%, blend mode multiply. Its own SVG export of the stroke, laid over the fill. */
+.f03-stroke { position: absolute; left: 0; top: 0; mix-blend-mode: multiply; pointer-events: none; }
+.f03-header { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; padding: 18px 16px; color: var(--f42); word-break: break-word; }
+.f03-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f03-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; white-space: pre-wrap; }
+.f03-p { width: 100%; }
+/* Figma's outline export puts the body baselines at y 64, 80, (96), 112: 13px below each 16px line top; and the button label baselines at y 167: 17px below the 21px line top (150).
+   CSS centres Plex's 1.3em content box in the line, which lands the baselines at 12.5 and 16.5. 0.5px restores Figma's whole-pixel baselines. Deliberate, not a nudge. */
+.f03-p-text { position: relative; top: 0.5px; }
+.f03-p-label { position: relative; top: 0.5px; }
+.f03-divider { position: relative; flex: none; width: 100%; height: 1px; }
+.f03-beam { position: absolute; inset: 0; background: rgba(105,105,105,0.08); }
+.f03-buttons { display: flex; align-items: center; justify-content: center; flex: none; padding: 8px 0; }
+.f03-btn { display: flex; align-items: center; justify-content: center; flex: none; width: 160px; padding: 8px 16px; }
+.f03-label { display: flex; flex-direction: column; justify-content: center; flex: none; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; white-space: nowrap; word-break: break-word; }
+.f03-label-left { font-weight: 500; color: var(--negative); }
+.f03-label-right { font-weight: 600; color: var(--f69); }
+/* F04 */
+.f04-body { position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 354px; height: 225px; padding: 24px 16px; border-radius: 16px; background: #FFFFFF; overflow: clip; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+/* Figma strokes are gradients (inside 1px at 40% multiply on the body, outside 1px at 80% overlay on the input): Figma's own exported rects, not box-shadows. */
+.f04-stk { position: absolute; left: 0; top: 0; pointer-events: none; }
+.f04-stk-body { mix-blend-mode: multiply; }
+.f04-stk-input { mix-blend-mode: overlay; }
+.f04-head { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; color: var(--f42); word-break: break-word; }
+.f04-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f04-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
+.f04-p { width: 100%; }
+/* Figma's outline export puts the baselines on these three texts 0.5px lower than a CSS line box does (body 62, label 154.5, aux 198; CSS gives 61.5, 154, 197.5):
+   Figma sets Plex's auto line height on the pixel grid. 0.5px restores Figma's baseline. Deliberate, read from the export, not a nudge. */
+.f04-half { position: relative; top: 0.5px; }
+.f04-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; flex: none; width: 100%; }
+.f04-input { position: relative; display: flex; align-items: center; justify-content: space-between; flex: none; width: 100%; padding: 8px; border-radius: 16px; background: #FBFBFB; }
+/* Figma casts the input's inner shadow from the outer edge of its outside stroke (export filter region 324 x 58; stroke outer radius 16.5 + 0.5), so it sits on a layer 1px outside the box. */
+.f04-inner { position: absolute; inset: -1px; border-radius: 17px; pointer-events: none; box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.04); }
+.f04-label-pad { position: relative; display: flex; align-items: center; justify-content: center; flex: none; padding: 0 8px 2px; }
+.f04-label { flex: none; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: #000000; opacity: 0.56; white-space: nowrap; }
+.f04-btn { position: relative; flex: none; width: 40px; height: 40px; border-radius: 30px; background: var(--main); }
+/* SF Symbol arrow.forward: Figma's outline export of node 124:34103, at the offset it has inside the 40px button in the frame export. */
+.f04-arrow { position: absolute; left: 11.694px; top: 13.343px; }
+.f04-aux { display: flex; align-items: center; justify-content: center; flex: none; width: 100%; }
+.f04-aux-p { flex: 1 0 0; min-width: 1px; font-weight: 300; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: rgba(105,105,105,0.8); mix-blend-mode: multiply; word-break: break-word; }
 /* D01 */
 /* D01 · "progress pills" · Figma 124:34062 · 123.33332824707031 x 18. An auto-layout frame (row, gap 8, centred on both axes, no fill,
    no stroke) holding four "status pill" instances, each 24 wide: column, items at start > "status pill / self" (full width, 8 high)
@@ -14779,214 +14917,57 @@ svg { display: block; flex: none; }
    Width 350 and height 17 are Figma's own text box (350 x 17 at 2, 5). Line height is "auto"; the 17px box over one line gives 17px. */
 .d11-label { position: relative; flex: none; width: 350px; height: 17px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 500; font-stretch: 100%; font-variation-settings: "wdth" 100; font-size: 13px; line-height: 17px;
   letter-spacing: 0; color: var(--f42); opacity: 0.88; text-align: center; white-space: nowrap; }
-/* E01 */
-.e01-root { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 32px; width: 402px; height: 108px; }
-.e01-line { display: flex; gap: 16px; align-items: center; flex: none; width: 100%; }
-.e01-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; height: 17px; line-height: 16.25px; color: var(--f69); white-space: nowrap; }
-.e01-label-total { font-weight: 600; color: var(--main); }
-.e01-guide-wrap { display: flex; flex: 1 0 0; flex-direction: row; align-items: center; align-self: stretch; }
-.e01-guide { display: flex; flex: 1 0 0; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; min-width: 1px; padding: 3px 0; }
-.e01-stroke { position: relative; flex: none; width: 100%; height: 1px; }
-.e01-values { display: flex; gap: 16px; align-items: center; flex: none; white-space: nowrap; }
-.e01-pair { display: flex; gap: 4px; align-items: center; justify-content: flex-end; flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; height: 17px; line-height: 16.25px; color: #949494; }
-.e01-pair-total { font-weight: 600; color: var(--main); }
-.e01-num { flex: none; text-align: right; }
-.e01-cur { flex: none; }
-.e01-w39 { width: 39px; }
-.e01-w24 { width: 24px; }
-.e01-w71 { width: 71px; }
-.e01-w32 { width: 32px; }
-.e01-w164 { width: 164px; }
-.e01-w83 { width: 83px; }
-.e01-w78 { width: 78px; }
-.e01-w92 { width: 92px; }
-.e01-w70 { width: 70px; }
-/* E02 */
-/* 124:34076 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e02-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 99px; }
-/* Baselines: Figma's text boxes are its auto line height (Plex 1.3em) on the pixel grid (16 / 18 / 17px) and its own outlines
-   (SVG export of this node) put every baseline on a whole pixel: 13px below the box top for the 12px and 13px text, 14px for the 14px label.
-   Chrome sets the same line boxes with the baseline at 12.5 (12px), 14.25 (14px) and 13.375 (13px); the `top` offsets restore Figma's baseline.
-   Widths: Figma's text boxes are whole pixels (57, 135, 71, 32), wider than the glyph run; set here so the glyphs start where Figma starts them. */
-/* button / timestamp: 80x24 pill, padding 2 8 4 */
-.e02-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e02-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e02-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; width: 57px; position: relative; top: 0.5px; }
-/* info: column, gap 8, fills */
-.e02-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e02-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e02-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e02-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; width: 83px; position: relative; top: -0.25px; }
-.e02-rate { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--f69); white-space: nowrap; width: 135px; position: relative; top: 0.5px; }
-/* Payment Details: column, gap 8, padding-left 16, 1px left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e02-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e02-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e02-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); position: relative; top: -0.375px; }
-.e02-pair { flex: none; display: flex; align-items: center; gap: 8px; }
-.e02-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; white-space: nowrap; }
-.e02-num { flex: none; width: 71px; text-align: right; position: relative; top: -0.375px; }
-.e02-cur { flex: none; width: 32px; position: relative; top: -0.375px; }
-/* E04 */
-/* 124:34082 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e04-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 74px; }
-/* button / timestamp: 80x24 pill, padding 2 8 4, radius 32, fill #F8F8F8 */
-.e04-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e04-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e04-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
-/* info: column, gap 8, fills (258 wide) */
-.e04-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e04-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e04-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e04-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
-.e04-amount { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--main); white-space: nowrap; }
-/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e04-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e04-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e04-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); }
-.e04-pair { flex: none; display: flex; align-items: center; gap: 8px; }
-.e04-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
-.e04-num { flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; text-align: right; white-space: nowrap; }
-/* SF Symbols glyph "square.on.square" (text node, box 19 x 17, #7040F0): the face cannot ship, so this is the outline from
-   Figma's own SVG export of 124:34082, cut to the node's box by viewBox only. Path untouched. */
-.e04-copy { flex: none; width: 19px; height: 17px; }
-/* E03 */
-/* 124:34080 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e03-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 195px; }
-/* button / timestamp: 80x24 pill, padding 2 8 4, fill solid/F0F2FF; text #4C3F91 at layer opacity .56 */
-.e03-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--f0f2ff); }
-.e03-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e03-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: #4C3F91; white-space: nowrap; }
-/* info: column, gap 8, fills */
-.e03-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e03-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e03-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e03-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
-/* icon: a text node set in SF Symbols ("exclamationmark.shield.fill"), box 17 x 19 at 229, 2.5 in the component. That face cannot
-   ship, so the glyph is the "icon" path of Figma's own SVG export of 124:34080, untouched, in the component's coordinates.
-   The box sits on a half pixel (2.5); the svg starts half a pixel higher (viewBox 229 2 17 20) so it lands on the device grid
-   and the path keeps Figma's y. */
-.e03-icon { position: relative; flex: none; width: 17px; height: 19px; }
-.e03-glyph { position: absolute; left: 0; top: -0.5px; width: 17px; height: 20px; }
-/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e03-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e03-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e03-copy { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; color: var(--f69); word-break: break-word; }
-.e03-para { line-height: 17px; }
-/* buttons: row, padding 8 0, centred; left fills, right hugs; each padding 8 16 */
-.e03-buttons { flex: none; display: flex; align-items: center; justify-content: center; width: 100%; padding: 8px 0; }
-.e03-left { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
-.e03-left-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
-.e03-left-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 700; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); white-space: nowrap; }
-.e03-right { flex: none; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
-.e03-right-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
-.e03-right-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; color: var(--f69); white-space: nowrap; }
-/* E05 */
-/* E05 · "payment detail header" (underpaid) · Figma 124:34083 · 370 x 161. Auto-layout row, gap 8, items start, padding 0 16 0 8. */
-.e05-root { display: flex; gap: 8px; align-items: flex-start; padding: 0 16px 0 8px; width: 370px; height: 161px; }
-/* button / timestamp: 80 x 24, fill #F8F8F8, radius 32, padding 2 8 4 */
-.e05-time { display: flex; flex: none; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e05-time-txt { flex: none; opacity: 0.56; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
-/* info: fill, column, gap 8 */
-.e05-info { display: flex; flex: 1 0 0; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 1px; }
-.e05-main { display: flex; flex: none; gap: 8px; align-items: center; width: 100%; height: 24px; }
-.e05-label-wrap { display: flex; flex: 1 0 0; gap: 4px; align-items: center; min-width: 1px; }
-.e05-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; }
-/* icon: text node "exclamationmark.shield.fill" (SF Symbols), box 17 x 19. The face cannot ship, so the glyph is the outline Figma's own
-   SVG export of this instance draws for it, cut to the node's box (viewBox 286 2.5 17 19). The path is untouched. */
-.e05-icon { flex: none; width: 17px; height: 19px; }
-/* Payment Details: left stroke 1px inside rgba(66,66,66,0.4), padding-left 16, opacity 0.8 */
-.e05-details { display: flex; flex: none; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 rgba(66,66,66,0.4); }
-.e05-line { display: flex; flex: none; gap: 16px; align-items: center; width: 100%; }
-.e05-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); word-break: break-word; }
-/* buttons: padding 8 0, opacity 0.4; left: fill white, padding 8 16 */
-.e05-buttons { display: flex; flex: none; align-items: center; justify-content: center; width: 100%; padding: 8px 0; opacity: 0.4; }
-.e05-left { display: flex; flex: 1 0 0; align-items: center; justify-content: center; min-width: 1px; padding: 8px 16px; background: var(--fff); }
-.e05-left-txt { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); word-break: break-word; }
-/* F01 */
-.f01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 402px; height: 97px; padding: 12px 32px; color: var(--f42); word-break: break-word; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-.f01-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f01-body { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
-.f01-p { width: 100%; }
-/* Figma's body box is 48px over 3 lines (auto line height, 15.6, on the pixel grid) and its outline export puts the baselines at y 50, 66, 82:
-   13px below the box top (37). A 16px CSS line puts Plex's baseline at 12.5, so 0.5px restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
-.f01-p-body { position: relative; top: 0.5px; }
-/* F02 */
-.f02-root { display: flex; align-items: baseline; justify-content: center; width: 402px; height: 32px; padding: 8px 24px; }
-.f02-cookies { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.24px; color: var(--f42); text-align: center; word-break: break-word; position: relative; top: 0.5px; }
-/* top 0.5px: Figma's outline export of this node puts the baseline at y 21, 13px below the text box top (8). A 16px CSS line puts Plex's baseline at 12.5; the half pixel restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
-/* CSS adds the 0.24px tracking after the last glyph, Figma does not: cancel it so the centred line sits where Figma's does. */
-.f02-b { font-weight: 700; margin-right: -0.24px; }
-/* F03 */
-.f03-body { position: relative; display: flex; flex-direction: column; align-items: center; width: 354px; height: 195px; padding: 8px 16px; overflow: clip; background: var(--fff); border-radius: 16px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-/* Figma's stroke: 1px inside, linear gradient at 40%, blend mode multiply. Its own SVG export of the stroke, laid over the fill. */
-.f03-stroke { position: absolute; left: 0; top: 0; mix-blend-mode: multiply; pointer-events: none; }
-.f03-header { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; padding: 18px 16px; color: var(--f42); word-break: break-word; }
-.f03-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f03-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; white-space: pre-wrap; }
-.f03-p { width: 100%; }
-/* Figma's outline export puts the body baselines at y 64, 80, (96), 112: 13px below each 16px line top; and the button label baselines at y 167: 17px below the 21px line top (150).
-   CSS centres Plex's 1.3em content box in the line, which lands the baselines at 12.5 and 16.5. 0.5px restores Figma's whole-pixel baselines. Deliberate, not a nudge. */
-.f03-p-text { position: relative; top: 0.5px; }
-.f03-p-label { position: relative; top: 0.5px; }
-.f03-divider { position: relative; flex: none; width: 100%; height: 1px; }
-.f03-beam { position: absolute; inset: 0; background: rgba(105,105,105,0.08); }
-.f03-buttons { display: flex; align-items: center; justify-content: center; flex: none; padding: 8px 0; }
-.f03-btn { display: flex; align-items: center; justify-content: center; flex: none; width: 160px; padding: 8px 16px; }
-.f03-label { display: flex; flex-direction: column; justify-content: center; flex: none; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; white-space: nowrap; word-break: break-word; }
-.f03-label-left { font-weight: 500; color: var(--negative); }
-.f03-label-right { font-weight: 600; color: var(--f69); }
-/* F04 */
-.f04-body { position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 354px; height: 225px; padding: 24px 16px; border-radius: 16px; background: #FFFFFF; overflow: clip; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-/* Figma strokes are gradients (inside 1px at 40% multiply on the body, outside 1px at 80% overlay on the input): Figma's own exported rects, not box-shadows. */
-.f04-stk { position: absolute; left: 0; top: 0; pointer-events: none; }
-.f04-stk-body { mix-blend-mode: multiply; }
-.f04-stk-input { mix-blend-mode: overlay; }
-.f04-head { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; color: var(--f42); word-break: break-word; }
-.f04-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f04-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
-.f04-p { width: 100%; }
-/* Figma's outline export puts the baselines on these three texts 0.5px lower than a CSS line box does (body 62, label 154.5, aux 198; CSS gives 61.5, 154, 197.5):
-   Figma sets Plex's auto line height on the pixel grid. 0.5px restores Figma's baseline. Deliberate, read from the export, not a nudge. */
-.f04-half { position: relative; top: 0.5px; }
-.f04-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; flex: none; width: 100%; }
-.f04-input { position: relative; display: flex; align-items: center; justify-content: space-between; flex: none; width: 100%; padding: 8px; border-radius: 16px; background: #FBFBFB; }
-/* Figma casts the input's inner shadow from the outer edge of its outside stroke (export filter region 324 x 58; stroke outer radius 16.5 + 0.5), so it sits on a layer 1px outside the box. */
-.f04-inner { position: absolute; inset: -1px; border-radius: 17px; pointer-events: none; box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.04); }
-.f04-label-pad { position: relative; display: flex; align-items: center; justify-content: center; flex: none; padding: 0 8px 2px; }
-.f04-label { flex: none; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: #000000; opacity: 0.56; white-space: nowrap; }
-.f04-btn { position: relative; flex: none; width: 40px; height: 40px; border-radius: 30px; background: var(--main); }
-/* SF Symbol arrow.forward: Figma's outline export of node 124:34103, at the offset it has inside the 40px button in the frame export. */
-.f04-arrow { position: absolute; left: 11.694px; top: 13.343px; }
-.f04-aux { display: flex; align-items: center; justify-content: center; flex: none; width: 100%; }
-.f04-aux-p { flex: 1 0 0; min-width: 1px; font-weight: 300; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: rgba(105,105,105,0.8); mix-blend-mode: multiply; word-break: break-word; }
+/* G02 */
+/* G02: two sibling nodes of frame 124:34108. details 124:34110 (284x144, frame x 151) + QR/address row 124:34128 (492x152, frame x 47), 24px apart.
+   Wrapper origin = the QR row's left edge (the item box x). The details frame is 151 - 47 = 104px in; its background rect 124:34111 starts 104.22px
+   left of it, so it overhangs the wrapper by 0.22px on the left and 0.22px on the right. Deliberate: Figma's numbers.
+   Text 'top' offsets below restore Figma's whole-pixel baselines, read from Figma's outlined SVG export of each node (not nudges). */
+.g02-details { position: absolute; left: 104px; top: 0; width: 284px; height: 144px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 0; border-radius: 8px; }
+.g02-details-bg { position: absolute; left: -104.22018432617188px; top: 0; width: 492.44036865234375px; height: 144px; border-radius: 8px; background: rgba(240,242,255,0.4); box-shadow: inset 0 1px 4px 0 rgba(0,0,0,0.08); pointer-events: none; }
+.g02-row { position: relative; flex: none; display: flex; align-items: baseline; gap: 4px; white-space: nowrap; }
+.g02-row-wide { width: 100%; }
+.g02-val { position: relative; flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 18px; line-height: 24px; color: #4C3F91; top: 0.25px; /* export baseline 19 below the row top; CSS puts it at 18.75 */ }
+.g02-val-amount { width: 94px; /* Figma text node width; keeps the copy glyph at x 98 */ font-weight: 600; letter-spacing: 0.18px; }
+.g02-lab { position: absolute; left: -8.15px; /* Figma: right edge at -8, with no trailing letter-spacing; CSS adds the trailing -0.15 inside the box */ top: 1.375px; /* node y 1; export baseline 18 below it, CSS 17.625 */ transform: translateX(-100%); font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 15px; line-height: 24px; letter-spacing: -0.15px; color: rgba(76,63,145,0.4); text-align: right; }
+/* SF Symbol text nodes (24x21): box from metadata, glyph ink from Figma's SVG export of the node, placed at the export's own origin inside the box */
+.g02-sf-copy { position: relative; flex: none; width: 24px; height: 21px; }
+.g02-sf-copy-amount { align-self: flex-start; margin-top: 2px; }
+.g02-sf-copy-addr { position: absolute; left: 0; top: -21px; }
+.g02-ink-copy { position: absolute; left: 2.481px; top: 1.25px; }
+.g02-qrrow { position: absolute; left: 0; top: 168px; width: 492px; height: 152px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 16px; }
+.g02-qr { position: relative; flex: none; width: 152px; height: 152px; overflow: clip; }
+.g02-qr-frame { position: absolute; left: -24px; top: -24px; width: 200px; height: 200px; }
+.g02-address { position: relative; flex: none; width: 284px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px 0; }
+.g02-full { position: relative; flex: none; width: 100%; display: flex; align-items: flex-start; justify-content: center; gap: 8px; padding: 4px 0; }
+.g02-addr-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 18px; line-height: 23px; /* Figma "normal": 46px box / 2 lines */ color: #000000; position: relative; /* export baselines 18 and 41 below the box top: where a 23px CSS line puts them */ word-break: break-word; overflow-wrap: break-word; }
+.g02-pill { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 6px; padding: 3px 8px 6px; border-radius: 8px; white-space: nowrap; color: #4C3F91; font-size: 16px; letter-spacing: 0.16px; }
+.g02-pill-bg { position: absolute; left: 0; top: 0; }
+.g02-sf-warn { position: relative; flex: none; width: 20px; height: 19px; margin-top: 2px; }
+.g02-ink-warn { position: absolute; left: 1.594px; top: 1.859px; }
+.g02-pill-text { position: relative; flex: none; width: 242px; /* Figma text node width */ font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; /* Figma "normal": 21px box, 1 line */ letter-spacing: 0.16px; color: #4C3F91; top: 0.5px; /* export baseline 17 below the node top; CSS 16.5 */ }
+/* G01 */
+/* G01 · Figma 124:34109 · instance "magical compo" · 218 x 265. Labels and the tinted panel overhang 80px to the left (panel also 80px to the right). */
+.g01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px 0; width: 218px; height: 265px; position: relative; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+.g01-details { position: relative; flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 0; width: 100%; border-radius: 8px; }
+.g01-panel { position: absolute; left: -80px; top: 0; width: 378px; height: 144px; border-radius: 8px; background: rgba(240,242,255,0.4); box-shadow: inset 0 1px 4px 0 rgba(0,0,0,0.08); pointer-events: none; }
+.g01-row { position: relative; flex: none; display: flex; align-items: flex-start; gap: 4px; height: 24px; white-space: nowrap; }
+.g01-row-full { width: 100%; }
+.g01-val { position: relative; flex: none; font-size: 14px; font-weight: 500; line-height: 24px; color: #4C3F91; }
+.g01-val-amount { font-weight: 600; letter-spacing: 0.14px; }
+.g01-label { position: absolute; left: -8px; top: 1px; transform: translateX(-100%); font-size: 11px; font-weight: 400; line-height: 24px; letter-spacing: -0.11px; text-align: right; color: rgba(76,63,145,0.4); white-space: nowrap; }
+.g01-copy { position: absolute; left: 77px; top: 4px; width: 19px; height: 17px; }
+.g01-address { position: relative; flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; }
+.g01-full { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 8px; padding: 4px 0; width: 100%; }
+.g01-addr { flex: 1 0 0; min-width: 1px; font-size: 14px; font-weight: 400; line-height: 18px; color: #000000; word-break: break-word; overflow-wrap: break-word; }
+.g01-copy-abs { position: absolute; left: -23px; top: 4px; width: 19px; height: 17px; }
+.g01-warn { position: relative; flex: none; display: flex; align-items: flex-start; justify-content: center; gap: 6px; padding: 3px 8px 6px; width: 218px; height: 25px; border-radius: 8px; background: #F0F2FF; color: #4C3F91; white-space: nowrap; }
+.g01-warn-ring { position: absolute; left: 0; top: 0; width: 218px; height: 25px; mix-blend-mode: color-burn; pointer-events: none; }
+.g01-warn-ico { flex: none; width: 15px; height: 14px; margin-top: 2px; }
+.g01-warn-txt { position: relative; flex: none; margin-top: 0.5px; /* row is baseline-aligned in Figma: its export puts this baseline 16px below the frame top (3 + 0.5 + 12.5) */ font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: 0.12px; }
 /* ---------- dark mode (generated) ---------- */
 :host(.dark) .dsb-l{color:#FFFFFF}
 :host(.dark) .dsb-n{color:#8A8799}
 :host(.dark) .ds-item{color:#FFFFFF}
-:host(.dark) .g02-details-bg{background:rgba(152,128,255,0.08);box-shadow:inset 0 1px 4px 0 rgba(255,255,255,0.12)}
-:host(.dark) .g02-val{color:#C9BEFF}
-:host(.dark) .g02-lab{color:rgba(201,190,255,0.5)}
-:host(.dark) .g02-addr-text{color:#FFFFFF}
-:host(.dark) .g02-pill{color:#C9BEFF}
-:host(.dark) .g02-pill-text{color:#C9BEFF}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="G02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) [data-key="G02"] svg[width="200"]{background:#FFFFFF}
-:host(.dark) .g01-panel{background:rgba(152,128,255,0.08);box-shadow:inset 0 1px 4px 0 rgba(255,255,255,0.12)}
-:host(.dark) .g01-val{color:#C9BEFF}
-:host(.dark) .g01-label{color:rgba(201,190,255,0.5)}
-:host(.dark) .g01-addr{color:#FFFFFF}
-:host(.dark) .g01-warn{background:rgba(152,128,255,0.14);color:#C9BEFF}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="G01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 :host(.dark) [data-key="C01"] > *{box-shadow:0 0 0 1px rgba(255,255,255,0.18)}
 :host(.dark) [data-key="C07"] > *{box-shadow:0 0 0 1px rgba(255,255,255,0.18)}
 :host(.dark) [data-key="C08"] > *{box-shadow:0 0 0 1px rgba(255,255,255,0.18)}
@@ -15044,87 +15025,6 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d01-rect{box-shadow:inset 0 0 0 0.4px rgba(255,255,255,0.12)}
-:host(.dark) .d01-incomplete{background:rgba(152,128,255,0.14)}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d02-label{color:#C9BEFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d03-label{color:#8A8799}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d04-en{color:#8A8799}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d09-label{color:#A98BFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D09"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d10-label{color:#A9A6B8}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D10"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d05-value{color:#FFFFFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d08-button{background:rgba(152,128,255,0.14)}
-:host(.dark) .d08-label-box{color:#FFFFFF}
-:host(.dark) .d08-label{color:#FFFFFF}
-:host(.dark) .d08-icon{color:#FFFFFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D08"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d06-value{color:#FFFFFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D06"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d07-label{color:#FFFFFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D07"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .d11-label{color:#D6D4E0}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="D11"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 :host(.dark) .e01-label{color:#A9A6B8}
 :host(.dark) .e01-label-total{color:#A98BFF}
 :host(.dark) .e01-pair{color:#8A8799}
@@ -15223,6 +15123,111 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="F04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d01-rect{box-shadow:inset 0 0 0 0.4px rgba(255,255,255,0.12)}
+:host(.dark) .d01-incomplete{background:rgba(152,128,255,0.14)}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d02-label{color:#C9BEFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d03-label{color:#8A8799}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d04-en{color:#8A8799}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d09-label{color:#A98BFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D09"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d10-label{color:#A9A6B8}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D10"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d05-value{color:#FFFFFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d08-button{background:rgba(152,128,255,0.14)}
+:host(.dark) .d08-label-box{color:#FFFFFF}
+:host(.dark) .d08-label{color:#FFFFFF}
+:host(.dark) .d08-icon{color:#FFFFFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D08"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d06-value{color:#FFFFFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D06"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d07-label{color:#FFFFFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D07"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .d11-label{color:#D6D4E0}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="D11"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .g02-details-bg{background:rgba(152,128,255,0.08);box-shadow:inset 0 1px 4px 0 rgba(255,255,255,0.12)}
+:host(.dark) .g02-val{color:#C9BEFF}
+:host(.dark) .g02-lab{color:rgba(201,190,255,0.5)}
+:host(.dark) .g02-addr-text{color:#FFFFFF}
+:host(.dark) .g02-pill{color:#C9BEFF}
+:host(.dark) .g02-pill-text{color:#C9BEFF}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="G02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) [data-key="G02"] svg[width="200"]{background:#FFFFFF}
+:host(.dark) .g01-panel{background:rgba(152,128,255,0.08);box-shadow:inset 0 1px 4px 0 rgba(255,255,255,0.12)}
+:host(.dark) .g01-val{color:#C9BEFF}
+:host(.dark) .g01-label{color:rgba(201,190,255,0.5)}
+:host(.dark) .g01-addr{color:#FFFFFF}
+:host(.dark) .g01-warn{background:rgba(152,128,255,0.14);color:#C9BEFF}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="G01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 
 </style>
 <div class="frame dsb"><div class="dsb-side dsb-L"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Confirmo button<span class="dsb-n">8 states</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="A01" data-node="124:33942" data-name="confirmo button v2 / select token (nothing selected)" style="width:378px;height:96px">
@@ -15652,209 +15657,7 @@ svg { display: block; flex: none; }
 </feComponentTransfer>
 </filter>
 </defs>
-</svg></div></div></div></div></div></div></div></section></div><div class="dsb-row fill"><section class="dsb-g"><p class="dsb-l">Payment details<span class="dsb-n">2</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="G02" data-node="124:34110" data-name="payment details, large / details + QR and address" style="width:492px;height:320px">
-<div class="g02-details" data-node-id="124:34110">
-<div class="g02-details-bg" data-node-id="124:34111"></div>
-<div class="g02-row g02-row-amount"><p class="g02-val g02-val-amount">11.284667</p><div class="g02-sf-copy g02-sf-copy-amount" data-node-id="124:34114"><svg class="g02-ink-copy" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="offset magically" d="M2.88281 14.6602C0.984375 14.6602 0 13.6846 0 11.8037V2.84766C0 0.966797 0.984375 0 2.88281 0H11.7773C13.6758 0 14.6602 0.975586 14.6602 2.84766V4.1748H16.1543C18.0527 4.1748 19.0371 5.15039 19.0371 7.02246V15.9873C19.0371 17.8594 18.0527 18.835 16.1543 18.835H7.25977C5.35254 18.835 4.37695 17.8594 4.37695 15.9873V14.6602H2.88281ZM2.98828 12.9375H4.37695V7.02246C4.37695 5.15039 5.35254 4.1748 7.25977 4.1748H12.9463V2.99707C12.9463 2.14453 12.4893 1.71387 11.6807 1.71387H2.98828C2.1709 1.71387 1.72266 2.14453 1.72266 2.99707V11.6631C1.72266 12.5156 2.1709 12.9375 2.98828 12.9375ZM7.35645 17.1123H16.0488C16.8574 17.1123 17.3145 16.6904 17.3145 15.8379V7.17188C17.3145 6.31934 16.8574 5.89746 16.0488 5.89746H7.35645C6.53906 5.89746 6.09961 6.31934 6.09961 7.17188V15.8379C6.09961 16.6904 6.53906 17.1123 7.35645 17.1123Z" fill="#7040F0"/></svg></div><p class="g02-lab">Amount</p></div>
-<div class="g02-row g02-row-token"><p class="g02-val">USDC</p><p class="g02-lab">Token</p></div>
-<div class="g02-row g02-row-wide"><p class="g02-val">Ethereum network (ERC20)</p><p class="g02-lab">Network</p></div>
-<div class="g02-row g02-row-wide"><p class="g02-val">Confirmo</p><p class="g02-lab">Provider</p></div>
-<div class="g02-row g02-row-wide"><p class="g02-val">Jon Doe</p><p class="g02-lab">Beneficiary</p></div>
-</div>
-<div class="g02-qrrow" data-node-id="124:34128">
-<div class="g02-qr" data-node-id="124:34129"><div class="g02-qr-frame" data-node-id="124:34131">
-<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Frame" clip-path="url(#g02-qr-clip)">
-<path id="Vector" d="M200 0H0V200H200V0Z" fill="white"/>
-<path id="Vector_2" d="M89.6552 27.5862H82.7586V34.4828H89.6552V27.5862Z" fill="black"/>
-<path id="Vector_3" d="M96.5517 27.5862H89.6552V34.4828H96.5517V27.5862Z" fill="black"/>
-<path id="Vector_4" d="M110.345 27.5862H103.448V34.4828H110.345V27.5862Z" fill="black"/>
-<path id="Vector_5" d="M117.241 27.5862H110.345V34.4828H117.241V27.5862Z" fill="black"/>
-<path id="Vector_6" d="M96.5517 34.4828H89.6552V41.3793H96.5517V34.4828Z" fill="black"/>
-<path id="Vector_7" d="M110.345 34.4828H103.448V41.3793H110.345V34.4828Z" fill="black"/>
-<path id="Vector_8" d="M117.241 34.4828H110.345V41.3793H117.241V34.4828Z" fill="black"/>
-<path id="Vector_9" d="M89.6552 41.3793H82.7586V48.2759H89.6552V41.3793Z" fill="black"/>
-<path id="Vector_10" d="M103.448 41.3793H96.5517V48.2759H103.448V41.3793Z" fill="black"/>
-<path id="Vector_11" d="M96.5517 48.2759H89.6552V55.1724H96.5517V48.2759Z" fill="black"/>
-<path id="Vector_12" d="M110.345 48.2759H103.448V55.1724H110.345V48.2759Z" fill="black"/>
-<path id="Vector_13" d="M117.241 48.2759H110.345V55.1724H117.241V48.2759Z" fill="black"/>
-<path id="Vector_14" d="M103.448 55.1724H96.5517V62.069H103.448V55.1724Z" fill="black"/>
-<path id="Vector_15" d="M117.241 55.1724H110.345V62.069H117.241V55.1724Z" fill="black"/>
-<path id="Vector_16" d="M89.6552 62.069H82.7586V68.9655H89.6552V62.069Z" fill="black"/>
-<path id="Vector_17" d="M103.448 62.069H96.5517V68.9655H103.448V62.069Z" fill="black"/>
-<path id="Vector_18" d="M89.6552 68.9655H82.7586V75.8621H89.6552V68.9655Z" fill="black"/>
-<path id="Vector_19" d="M103.448 68.9655H96.5517V75.8621H103.448V68.9655Z" fill="black"/>
-<path id="Vector_20" d="M117.241 68.9655H110.345V75.8621H117.241V68.9655Z" fill="black"/>
-<path id="Vector_21" d="M110.345 75.8621H103.448V82.7586H110.345V75.8621Z" fill="black"/>
-<path id="Vector_22" d="M34.4828 82.7586H27.5862V89.6552H34.4828V82.7586Z" fill="black"/>
-<path id="Vector_23" d="M48.2759 82.7586H41.3793V89.6552H48.2759V82.7586Z" fill="black"/>
-<path id="Vector_24" d="M75.8621 82.7586H68.9655V89.6552H75.8621V82.7586Z" fill="black"/>
-<path id="Vector_25" d="M82.7586 82.7586H75.8621V89.6552H82.7586V82.7586Z" fill="black"/>
-<path id="Vector_26" d="M96.5517 82.7586H89.6552V89.6552H96.5517V82.7586Z" fill="black"/>
-<path id="Vector_27" d="M110.345 82.7586H103.448V89.6552H110.345V82.7586Z" fill="black"/>
-<path id="Vector_28" d="M117.241 82.7586H110.345V89.6552H117.241V82.7586Z" fill="black"/>
-<path id="Vector_29" d="M137.931 82.7586H131.034V89.6552H137.931V82.7586Z" fill="black"/>
-<path id="Vector_30" d="M158.621 82.7586H151.724V89.6552H158.621V82.7586Z" fill="black"/>
-<path id="Vector_31" d="M172.414 82.7586H165.517V89.6552H172.414V82.7586Z" fill="black"/>
-<path id="Vector_32" d="M48.2759 89.6552H41.3793V96.5517H48.2759V89.6552Z" fill="black"/>
-<path id="Vector_33" d="M55.1724 89.6552H48.2759V96.5517H55.1724V89.6552Z" fill="black"/>
-<path id="Vector_34" d="M62.069 89.6552H55.1724V96.5517H62.069V89.6552Z" fill="black"/>
-<path id="Vector_35" d="M68.9655 89.6552H62.069V96.5517H68.9655V89.6552Z" fill="black"/>
-<path id="Vector_36" d="M124.138 89.6552H117.241V96.5517H124.138V89.6552Z" fill="black"/>
-<path id="Vector_37" d="M137.931 89.6552H131.034V96.5517H137.931V89.6552Z" fill="black"/>
-<path id="Vector_38" d="M144.828 89.6552H137.931V96.5517H144.828V89.6552Z" fill="black"/>
-<path id="Vector_39" d="M151.724 89.6552H144.828V96.5517H151.724V89.6552Z" fill="black"/>
-<path id="Vector_40" d="M62.069 96.5517H55.1724V103.448H62.069V96.5517Z" fill="black"/>
-<path id="Vector_41" d="M68.9655 96.5517H62.069V103.448H68.9655V96.5517Z" fill="black"/>
-<path id="Vector_42" d="M75.8621 96.5517H68.9655V103.448H75.8621V96.5517Z" fill="black"/>
-<path id="Vector_43" d="M103.448 96.5517H96.5517V103.448H103.448V96.5517Z" fill="black"/>
-<path id="Vector_44" d="M124.138 96.5517H117.241V103.448H124.138V96.5517Z" fill="black"/>
-<path id="Vector_45" d="M137.931 96.5517H131.034V103.448H137.931V96.5517Z" fill="black"/>
-<path id="Vector_46" d="M144.828 96.5517H137.931V103.448H144.828V96.5517Z" fill="black"/>
-<path id="Vector_47" d="M151.724 96.5517H144.828V103.448H151.724V96.5517Z" fill="black"/>
-<path id="Vector_48" d="M165.517 96.5517H158.621V103.448H165.517V96.5517Z" fill="black"/>
-<path id="Vector_49" d="M41.3793 103.448H34.4828V110.345H41.3793V103.448Z" fill="black"/>
-<path id="Vector_50" d="M48.2759 103.448H41.3793V110.345H48.2759V103.448Z" fill="black"/>
-<path id="Vector_51" d="M62.069 103.448H55.1724V110.345H62.069V103.448Z" fill="black"/>
-<path id="Vector_52" d="M68.9655 103.448H62.069V110.345H68.9655V103.448Z" fill="black"/>
-<path id="Vector_53" d="M82.7586 103.448H75.8621V110.345H82.7586V103.448Z" fill="black"/>
-<path id="Vector_54" d="M89.6552 103.448H82.7586V110.345H89.6552V103.448Z" fill="black"/>
-<path id="Vector_55" d="M103.448 103.448H96.5517V110.345H103.448V103.448Z" fill="black"/>
-<path id="Vector_56" d="M117.241 103.448H110.345V110.345H117.241V103.448Z" fill="black"/>
-<path id="Vector_57" d="M124.138 103.448H117.241V110.345H124.138V103.448Z" fill="black"/>
-<path id="Vector_58" d="M131.034 103.448H124.138V110.345H131.034V103.448Z" fill="black"/>
-<path id="Vector_59" d="M144.828 103.448H137.931V110.345H144.828V103.448Z" fill="black"/>
-<path id="Vector_60" d="M151.724 103.448H144.828V110.345H151.724V103.448Z" fill="black"/>
-<path id="Vector_61" d="M158.621 103.448H151.724V110.345H158.621V103.448Z" fill="black"/>
-<path id="Vector_62" d="M48.2759 110.345H41.3793V117.241H48.2759V110.345Z" fill="black"/>
-<path id="Vector_63" d="M68.9655 110.345H62.069V117.241H68.9655V110.345Z" fill="black"/>
-<path id="Vector_64" d="M75.8621 110.345H68.9655V117.241H75.8621V110.345Z" fill="black"/>
-<path id="Vector_65" d="M82.7586 110.345H75.8621V117.241H82.7586V110.345Z" fill="black"/>
-<path id="Vector_66" d="M96.5517 110.345H89.6552V117.241H96.5517V110.345Z" fill="black"/>
-<path id="Vector_67" d="M103.448 110.345H96.5517V117.241H103.448V110.345Z" fill="black"/>
-<path id="Vector_68" d="M144.828 110.345H137.931V117.241H144.828V110.345Z" fill="black"/>
-<path id="Vector_69" d="M151.724 110.345H144.828V117.241H151.724V110.345Z" fill="black"/>
-<path id="Vector_70" d="M165.517 110.345H158.621V117.241H165.517V110.345Z" fill="black"/>
-<path id="Vector_71" d="M172.414 110.345H165.517V117.241H172.414V110.345Z" fill="black"/>
-<path id="Vector_72" d="M89.6552 117.241H82.7586V124.138H89.6552V117.241Z" fill="black"/>
-<path id="Vector_73" d="M103.448 117.241H96.5517V124.138H103.448V117.241Z" fill="black"/>
-<path id="Vector_74" d="M110.345 117.241H103.448V124.138H110.345V117.241Z" fill="black"/>
-<path id="Vector_75" d="M124.138 117.241H117.241V124.138H124.138V117.241Z" fill="black"/>
-<path id="Vector_76" d="M144.828 117.241H137.931V124.138H144.828V117.241Z" fill="black"/>
-<path id="Vector_77" d="M151.724 117.241H144.828V124.138H151.724V117.241Z" fill="black"/>
-<path id="Vector_78" d="M89.6552 124.138H82.7586V131.034H89.6552V124.138Z" fill="black"/>
-<path id="Vector_79" d="M103.448 124.138H96.5517V131.034H103.448V124.138Z" fill="black"/>
-<path id="Vector_80" d="M110.345 124.138H103.448V131.034H110.345V124.138Z" fill="black"/>
-<path id="Vector_81" d="M117.241 124.138H110.345V131.034H117.241V124.138Z" fill="black"/>
-<path id="Vector_82" d="M124.138 124.138H117.241V131.034H124.138V124.138Z" fill="black"/>
-<path id="Vector_83" d="M151.724 124.138H144.828V131.034H151.724V124.138Z" fill="black"/>
-<path id="Vector_84" d="M172.414 124.138H165.517V131.034H172.414V124.138Z" fill="black"/>
-<path id="Vector_85" d="M103.448 131.034H96.5517V137.931H103.448V131.034Z" fill="black"/>
-<path id="Vector_86" d="M110.345 131.034H103.448V137.931H110.345V131.034Z" fill="black"/>
-<path id="Vector_87" d="M124.138 131.034H117.241V137.931H124.138V131.034Z" fill="black"/>
-<path id="Vector_88" d="M131.034 131.034H124.138V137.931H131.034V131.034Z" fill="black"/>
-<path id="Vector_89" d="M144.828 131.034H137.931V137.931H144.828V131.034Z" fill="black"/>
-<path id="Vector_90" d="M158.621 131.034H151.724V137.931H158.621V131.034Z" fill="black"/>
-<path id="Vector_91" d="M172.414 131.034H165.517V137.931H172.414V131.034Z" fill="black"/>
-<path id="Vector_92" d="M96.5517 137.931H89.6552V144.828H96.5517V137.931Z" fill="black"/>
-<path id="Vector_93" d="M103.448 137.931H96.5517V144.828H103.448V137.931Z" fill="black"/>
-<path id="Vector_94" d="M110.345 137.931H103.448V144.828H110.345V137.931Z" fill="black"/>
-<path id="Vector_95" d="M117.241 137.931H110.345V144.828H117.241V137.931Z" fill="black"/>
-<path id="Vector_96" d="M131.034 137.931H124.138V144.828H131.034V137.931Z" fill="black"/>
-<path id="Vector_97" d="M137.931 137.931H131.034V144.828H137.931V137.931Z" fill="black"/>
-<path id="Vector_98" d="M144.828 137.931H137.931V144.828H144.828V137.931Z" fill="black"/>
-<path id="Vector_99" d="M158.621 137.931H151.724V144.828H158.621V137.931Z" fill="black"/>
-<path id="Vector_100" d="M165.517 137.931H158.621V144.828H165.517V137.931Z" fill="black"/>
-<path id="Vector_101" d="M96.5517 144.828H89.6552V151.724H96.5517V144.828Z" fill="black"/>
-<path id="Vector_102" d="M103.448 144.828H96.5517V151.724H103.448V144.828Z" fill="black"/>
-<path id="Vector_103" d="M137.931 144.828H131.034V151.724H137.931V144.828Z" fill="black"/>
-<path id="Vector_104" d="M151.724 144.828H144.828V151.724H151.724V144.828Z" fill="black"/>
-<path id="Vector_105" d="M165.517 144.828H158.621V151.724H165.517V144.828Z" fill="black"/>
-<path id="Vector_106" d="M89.6552 151.724H82.7586V158.621H89.6552V151.724Z" fill="black"/>
-<path id="Vector_107" d="M96.5517 151.724H89.6552V158.621H96.5517V151.724Z" fill="black"/>
-<path id="Vector_108" d="M103.448 151.724H96.5517V158.621H103.448V151.724Z" fill="black"/>
-<path id="Vector_109" d="M124.138 151.724H117.241V158.621H124.138V151.724Z" fill="black"/>
-<path id="Vector_110" d="M131.034 151.724H124.138V158.621H131.034V151.724Z" fill="black"/>
-<path id="Vector_111" d="M144.828 151.724H137.931V158.621H144.828V151.724Z" fill="black"/>
-<path id="Vector_112" d="M151.724 151.724H144.828V158.621H151.724V151.724Z" fill="black"/>
-<path id="Vector_113" d="M165.517 151.724H158.621V158.621H165.517V151.724Z" fill="black"/>
-<path id="Vector_114" d="M172.414 151.724H165.517V158.621H172.414V151.724Z" fill="black"/>
-<path id="Vector_115" d="M96.5517 158.621H89.6552V165.517H96.5517V158.621Z" fill="black"/>
-<path id="Vector_116" d="M117.241 158.621H110.345V165.517H117.241V158.621Z" fill="black"/>
-<path id="Vector_117" d="M144.828 158.621H137.931V165.517H144.828V158.621Z" fill="black"/>
-<path id="Vector_118" d="M158.621 158.621H151.724V165.517H158.621V158.621Z" fill="black"/>
-<path id="Vector_119" d="M165.517 158.621H158.621V165.517H165.517V158.621Z" fill="black"/>
-<path id="Vector_120" d="M172.414 158.621H165.517V165.517H172.414V158.621Z" fill="black"/>
-<path id="Vector_121" d="M89.6552 165.517H82.7586V172.414H89.6552V165.517Z" fill="black"/>
-<path id="Vector_122" d="M103.448 165.517H96.5517V172.414H103.448V165.517Z" fill="black"/>
-<path id="Vector_123" d="M124.138 165.517H117.241V172.414H124.138V165.517Z" fill="black"/>
-<path id="Vector_124" d="M131.034 165.517H124.138V172.414H131.034V165.517Z" fill="black"/>
-<path id="Vector_125" d="M144.828 165.517H137.931V172.414H144.828V165.517Z" fill="black"/>
-<path id="Vector_126" d="M172.414 165.517H165.517V172.414H172.414V165.517Z" fill="black"/>
-<path id="Vector_127" fill-rule="evenodd" clip-rule="evenodd" d="M27.5862 27.5862H75.8621V75.8621H27.5862V27.5862ZM34.4828 34.4828H68.9655V68.9655H34.4828V34.4828Z" fill="black"/>
-<path id="Vector_128" fill-rule="evenodd" clip-rule="evenodd" d="M124.138 27.5862H172.414V75.8621H124.138V27.5862ZM131.034 34.4828H165.517V68.9655H131.034V34.4828Z" fill="black"/>
-<path id="Vector_129" d="M62.069 41.3793H41.3793V62.069H62.069V41.3793Z" fill="black"/>
-<path id="Vector_130" d="M158.621 41.3793H137.931V62.069H158.621V41.3793Z" fill="black"/>
-<path id="Vector_131" fill-rule="evenodd" clip-rule="evenodd" d="M27.5862 124.138H75.8621V172.414H27.5862V124.138ZM34.4828 131.034H68.9655V165.517H34.4828V131.034Z" fill="black"/>
-<path id="Vector_132" d="M62.069 137.931H41.3793V158.621H62.069V137.931Z" fill="black"/>
-</g>
-<defs>
-<clipPath id="g02-qr-clip">
-<rect width="200" height="200" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-</div></div>
-<div class="g02-address" data-node-id="124:34264">
-<div class="g02-full" data-node-id="124:34265"><p class="g02-addr-text">0x52DF1440197F618Bc7048141e32D8150E641cf7b</p><div class="g02-sf-copy g02-sf-copy-addr" data-node-id="124:34267"><svg class="g02-ink-copy" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="offset magically" d="M2.88281 14.6602C0.984375 14.6602 0 13.6846 0 11.8037V2.84766C0 0.966797 0.984375 0 2.88281 0H11.7773C13.6758 0 14.6602 0.975586 14.6602 2.84766V4.1748H16.1543C18.0527 4.1748 19.0371 5.15039 19.0371 7.02246V15.9873C19.0371 17.8594 18.0527 18.835 16.1543 18.835H7.25977C5.35254 18.835 4.37695 17.8594 4.37695 15.9873V14.6602H2.88281ZM2.98828 12.9375H4.37695V7.02246C4.37695 5.15039 5.35254 4.1748 7.25977 4.1748H12.9463V2.99707C12.9463 2.14453 12.4893 1.71387 11.6807 1.71387H2.98828C2.1709 1.71387 1.72266 2.14453 1.72266 2.99707V11.6631C1.72266 12.5156 2.1709 12.9375 2.98828 12.9375ZM7.35645 17.1123H16.0488C16.8574 17.1123 17.3145 16.6904 17.3145 15.8379V7.17188C17.3145 6.31934 16.8574 5.89746 16.0488 5.89746H7.35645C6.53906 5.89746 6.09961 6.31934 6.09961 7.17188V15.8379C6.09961 16.6904 6.53906 17.1123 7.35645 17.1123Z" fill="#7040F0"/></svg></div></div>
-<div class="g02-pill" data-node-id="124:34268">
-<svg class="g02-pill-bg" width="284" height="30" viewBox="0 0 284 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="284" height="30" rx="8" fill="#F0F2FF"/>
-<rect x="0.5" y="0.5" width="283" height="29" rx="7.5" stroke="url(#g02-pill-stroke)" stroke-opacity="0.6" style="mix-blend-mode:color-burn"/>
-<defs>
-<linearGradient id="g02-pill-stroke" x1="263.292" y1="1.2049e-06" x2="261.695" y2="35.4" gradientUnits="userSpaceOnUse">
-<stop stop-color="#323232"/>
-<stop offset="0.269231" stop-color="#D4D4D4"/>
-<stop offset="0.600962" stop-color="#EBEBEB"/>
-<stop offset="1" stop-color="#333333"/>
-</linearGradient>
-</defs>
-</svg>
-<div class="g02-sf-warn" data-node-id="124:34269"><svg class="g02-ink-warn" width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="&#244;&#128;&#135;&#191;" d="M2.21875 14.9922C0.851562 14.9922 0 14.0078 0 12.7812C0 12.4062 0.101562 12.0234 0.3125 11.6562L6.35938 1.10938C6.77344 0.375 7.50781 0 8.25781 0C9 0 9.73438 0.375 10.1562 1.10938L16.2031 11.6562C16.4062 12.0156 16.5156 12.4062 16.5156 12.7812C16.5156 14.0078 15.6562 14.9922 14.2969 14.9922H2.21875ZM8.26562 9.64062C8.70312 9.64062 8.96094 9.39062 8.97656 8.91406L9.09375 4.98438C9.10938 4.50781 8.75 4.17188 8.25781 4.17188C7.75 4.17188 7.40625 4.50781 7.42188 4.98438L7.53125 8.92188C7.54688 9.38281 7.80469 9.64062 8.26562 9.64062ZM8.26562 12.3281C8.78125 12.3281 9.21875 11.9531 9.21875 11.4375C9.21875 10.9219 8.78906 10.5469 8.26562 10.5469C7.73438 10.5469 7.30469 10.9297 7.30469 11.4375C7.30469 11.9531 7.74219 12.3281 8.26562 12.3281Z" fill="#4C3F91"/></svg></div><p class="g02-pill-text">Do not save, single-use address.</p></div>
-</div>
-</div>
-</div></div><div class="dsb-cell" style="margin-left:80px"><div class="ds-item" data-key="G01" data-node="124:34109" data-name="payment details, compact / magical compo" style="width:218px;height:265px">
-<div class="g01-root">
-<div class="g01-details">
-<div class="g01-panel"></div>
-<div class="g01-row"><p class="g01-val g01-val-amount">11.284667</p><svg class="g01-copy" width="19" height="17" viewBox="157 28 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path id="g01-copy-a" d="M161.339 40.1523C159.862 40.1523 159.097 39.3936 159.097 37.9307V30.9648C159.097 29.502 159.862 28.75 161.339 28.75H168.257C169.733 28.75 170.499 29.5088 170.499 30.9648V31.9971H171.661C173.138 31.9971 173.903 32.7559 173.903 34.2119V41.1846C173.903 42.6406 173.138 43.3994 171.661 43.3994H164.743C163.26 43.3994 162.501 42.6406 162.501 41.1846V40.1523H161.339ZM161.421 38.8125H162.501V34.2119C162.501 32.7559 163.26 31.9971 164.743 31.9971H169.166V31.0811C169.166 30.418 168.811 30.083 168.182 30.083H161.421C160.785 30.083 160.437 30.418 160.437 31.0811V37.8213C160.437 38.4844 160.785 38.8125 161.421 38.8125ZM164.818 42.0596H171.579C172.208 42.0596 172.563 41.7314 172.563 41.0684V34.3281C172.563 33.665 172.208 33.3369 171.579 33.3369H164.818C164.183 33.3369 163.841 33.665 163.841 34.3281V41.0684C163.841 41.7314 164.183 42.0596 164.818 42.0596Z" fill="#7040F0"/>
-</svg><p class="g01-label">Amount</p></div>
-<div class="g01-row"><p class="g01-val">USDC</p><p class="g01-label">Token</p></div>
-<div class="g01-row g01-row-full"><p class="g01-val">Ethereum network (ERC20)</p><p class="g01-label">Network</p></div>
-<div class="g01-row g01-row-full"><p class="g01-val">Confirmo</p><p class="g01-label">Provider</p></div>
-<div class="g01-row g01-row-full"><p class="g01-val">Jon Doe</p><p class="g01-label">Beneficiary</p></div>
-</div>
-<div class="g01-address">
-<div class="g01-full"><p class="g01-addr">0x52DF1440197F618Bc7048141e32D8150E641cf7b</p><svg class="g01-copy-abs" width="19" height="17" viewBox="57 180 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path id="g01-copy-b" d="M61.3389 192.152C59.8623 192.152 59.0967 191.394 59.0967 189.931V182.965C59.0967 181.502 59.8623 180.75 61.3389 180.75H68.2568C69.7334 180.75 70.499 181.509 70.499 182.965V183.997H71.6611C73.1377 183.997 73.9033 184.756 73.9033 186.212V193.185C73.9033 194.641 73.1377 195.399 71.6611 195.399H64.7432C63.2598 195.399 62.501 194.641 62.501 193.185V192.152H61.3389ZM61.4209 190.812H62.501V186.212C62.501 184.756 63.2598 183.997 64.7432 183.997H69.166V183.081C69.166 182.418 68.8105 182.083 68.1816 182.083H61.4209C60.7852 182.083 60.4365 182.418 60.4365 183.081V189.821C60.4365 190.484 60.7852 190.812 61.4209 190.812ZM64.8184 194.06H71.5791C72.208 194.06 72.5635 193.731 72.5635 193.068V186.328C72.5635 185.665 72.208 185.337 71.5791 185.337H64.8184C64.1826 185.337 63.8408 185.665 63.8408 186.328V193.068C63.8408 193.731 64.1826 194.06 64.8184 194.06Z" fill="#7040F0"/>
-</svg></div>
-<div class="g01-warn"><svg class="g01-warn-ring" width="218" height="25" viewBox="80 224 218 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="80.5" y="224.5" width="217" height="24" rx="7.5" stroke="url(#g01-paint0)" stroke-opacity="0.6"/>
-<defs>
-<linearGradient id="g01-paint0" x1="282.104" y1="224" x2="280.66" y2="253.489" gradientUnits="userSpaceOnUse">
-<stop stop-color="#323232"/>
-<stop offset="0.269231" stop-color="#D4D4D4"/>
-<stop offset="0.600962" stop-color="#EBEBEB"/>
-<stop offset="1" stop-color="#333333"/>
-</linearGradient>
-</defs>
-</svg><div class="g01-warn-ico"><svg class="g01-warn-svg" width="15" height="14" viewBox="88 229 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path id="g01-warn-glyph" d="M90.8594 241.389C89.834 241.389 89.1953 240.65 89.1953 239.73C89.1953 239.449 89.2715 239.162 89.4297 238.887L93.9648 230.977C94.2754 230.426 94.8262 230.145 95.3887 230.145C95.9453 230.145 96.4961 230.426 96.8125 230.977L101.348 238.887C101.5 239.156 101.582 239.449 101.582 239.73C101.582 240.65 100.938 241.389 99.918 241.389H90.8594ZM95.3945 237.375C95.7227 237.375 95.916 237.188 95.9277 236.83L96.0156 233.883C96.0273 233.525 95.7578 233.273 95.3887 233.273C95.0078 233.273 94.75 233.525 94.7617 233.883L94.8438 236.836C94.8555 237.182 95.0488 237.375 95.3945 237.375ZM95.3945 239.391C95.7812 239.391 96.1094 239.109 96.1094 238.723C96.1094 238.336 95.7871 238.055 95.3945 238.055C94.9961 238.055 94.6738 238.342 94.6738 238.723C94.6738 239.109 95.002 239.391 95.3945 239.391Z" fill="#4C3F91"/>
-</svg></div><p class="g01-warn-txt">Do not save, single-use address.</p></div>
-</div>
-</div>
-</div></div></div></div></section></div></div><div class="dsb-side dsb-R"><div class="dsb-row even"><section class="dsb-g"><p class="dsb-l">Buttons<span class="dsb-n">9</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="C01" data-node="124:34002" data-name="button full width / Continue" style="width:354px;height:43px">
+</svg></div></div></div></div></div></div></div></section></div><div class="dsb-row fill"><section class="dsb-g"><p class="dsb-l">Buttons<span class="dsb-n">9</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="C01" data-node="124:34002" data-name="button full width / Continue" style="width:354px;height:43px">
   <div class="c01-btn">
     <p class="c01-label">Continue</p>
   </div>
@@ -16153,70 +15956,7 @@ svg { display: block; flex: none; }
 </div>
 </div>
 </div>
-</div></div></div></div></section><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
-  <div class="d01-pills" data-node-id="124:34062">
-    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
-  <div class="d02-dropdown" data-node-id="124:33989">
-    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
-    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
-      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
-    </div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
-  <div class="d03-back" data-node-id="124:33990">
-    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
-    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
-<div class="d04-options">
-<div class="d04-language">
-<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
-</svg>
-<p class="d04-en">En</p>
-</div>
-<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
-</svg>
-</div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
-  <div class="d09-left" data-node-id="124:33998">
-    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
-  <div class="d10-right" data-node-id="124:33999">
-    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
-  <div class="d05-line" data-node-id="124:33992">
-    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
-    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
-  <div class="d08-line" data-node-id="124:33997">
-    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
-    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
-  <div class="d06-line" data-node-id="124:33993">
-    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
-    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
-  <div class="d07-connected" data-node-id="124:33994">
-    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
-    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
-  <div class="d11-btn" data-node-id="124:34000">
-    <p class="d11-label" data-node-id="124:34001">Request refund</p>
-  </div>
-</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Price breakdown and history<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="E01" data-node="124:34106" data-name="payment details / price breakdown" style="width:402px;height:108px">
+</div></div></div></div></section></div></div><div class="dsb-side dsb-R"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Price breakdown and history<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="E01" data-node="124:34106" data-name="payment details / price breakdown" style="width:402px;height:108px">
 <div class="e01-root">
   <div class="e01-line">
     <p class="e01-label e01-w83">Exchange rate</p>
@@ -16361,6 +16101,271 @@ svg { display: block; flex: none; }
       <div class="f04-aux"><p class="f04-aux-p f04-half">This will never be used for marketing purposes or similar.</p></div>
     </div>
   </div>
+</div></div></div></div></section><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
+  <div class="d01-pills" data-node-id="124:34062">
+    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
+  <div class="d02-dropdown" data-node-id="124:33989">
+    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
+    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
+      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
+    </div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
+  <div class="d03-back" data-node-id="124:33990">
+    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
+    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
+<div class="d04-options">
+<div class="d04-language">
+<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
+</svg>
+<p class="d04-en">En</p>
+</div>
+<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
+</svg>
+</div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
+  <div class="d09-left" data-node-id="124:33998">
+    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
+  <div class="d10-right" data-node-id="124:33999">
+    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
+  <div class="d05-line" data-node-id="124:33992">
+    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
+    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
+  <div class="d08-line" data-node-id="124:33997">
+    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
+    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
+  <div class="d06-line" data-node-id="124:33993">
+    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
+    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
+  <div class="d07-connected" data-node-id="124:33994">
+    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
+    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
+  <div class="d11-btn" data-node-id="124:34000">
+    <p class="d11-label" data-node-id="124:34001">Request refund</p>
+  </div>
+</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Payment details<span class="dsb-n">2</span></p><div class="dsb-cols" style="gap:140px"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="G02" data-node="124:34110" data-name="payment details, large / details + QR and address" style="width:492px;height:320px">
+<div class="g02-details" data-node-id="124:34110">
+<div class="g02-details-bg" data-node-id="124:34111"></div>
+<div class="g02-row g02-row-amount"><p class="g02-val g02-val-amount">11.284667</p><div class="g02-sf-copy g02-sf-copy-amount" data-node-id="124:34114"><svg class="g02-ink-copy" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="offset magically" d="M2.88281 14.6602C0.984375 14.6602 0 13.6846 0 11.8037V2.84766C0 0.966797 0.984375 0 2.88281 0H11.7773C13.6758 0 14.6602 0.975586 14.6602 2.84766V4.1748H16.1543C18.0527 4.1748 19.0371 5.15039 19.0371 7.02246V15.9873C19.0371 17.8594 18.0527 18.835 16.1543 18.835H7.25977C5.35254 18.835 4.37695 17.8594 4.37695 15.9873V14.6602H2.88281ZM2.98828 12.9375H4.37695V7.02246C4.37695 5.15039 5.35254 4.1748 7.25977 4.1748H12.9463V2.99707C12.9463 2.14453 12.4893 1.71387 11.6807 1.71387H2.98828C2.1709 1.71387 1.72266 2.14453 1.72266 2.99707V11.6631C1.72266 12.5156 2.1709 12.9375 2.98828 12.9375ZM7.35645 17.1123H16.0488C16.8574 17.1123 17.3145 16.6904 17.3145 15.8379V7.17188C17.3145 6.31934 16.8574 5.89746 16.0488 5.89746H7.35645C6.53906 5.89746 6.09961 6.31934 6.09961 7.17188V15.8379C6.09961 16.6904 6.53906 17.1123 7.35645 17.1123Z" fill="#7040F0"/></svg></div><p class="g02-lab">Amount</p></div>
+<div class="g02-row g02-row-token"><p class="g02-val">USDC</p><p class="g02-lab">Token</p></div>
+<div class="g02-row g02-row-wide"><p class="g02-val">Ethereum network (ERC20)</p><p class="g02-lab">Network</p></div>
+<div class="g02-row g02-row-wide"><p class="g02-val">Confirmo</p><p class="g02-lab">Provider</p></div>
+<div class="g02-row g02-row-wide"><p class="g02-val">Jon Doe</p><p class="g02-lab">Beneficiary</p></div>
+</div>
+<div class="g02-qrrow" data-node-id="124:34128">
+<div class="g02-qr" data-node-id="124:34129"><div class="g02-qr-frame" data-node-id="124:34131">
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame" clip-path="url(#g02-qr-clip)">
+<path id="Vector" d="M200 0H0V200H200V0Z" fill="white"/>
+<path id="Vector_2" d="M89.6552 27.5862H82.7586V34.4828H89.6552V27.5862Z" fill="black"/>
+<path id="Vector_3" d="M96.5517 27.5862H89.6552V34.4828H96.5517V27.5862Z" fill="black"/>
+<path id="Vector_4" d="M110.345 27.5862H103.448V34.4828H110.345V27.5862Z" fill="black"/>
+<path id="Vector_5" d="M117.241 27.5862H110.345V34.4828H117.241V27.5862Z" fill="black"/>
+<path id="Vector_6" d="M96.5517 34.4828H89.6552V41.3793H96.5517V34.4828Z" fill="black"/>
+<path id="Vector_7" d="M110.345 34.4828H103.448V41.3793H110.345V34.4828Z" fill="black"/>
+<path id="Vector_8" d="M117.241 34.4828H110.345V41.3793H117.241V34.4828Z" fill="black"/>
+<path id="Vector_9" d="M89.6552 41.3793H82.7586V48.2759H89.6552V41.3793Z" fill="black"/>
+<path id="Vector_10" d="M103.448 41.3793H96.5517V48.2759H103.448V41.3793Z" fill="black"/>
+<path id="Vector_11" d="M96.5517 48.2759H89.6552V55.1724H96.5517V48.2759Z" fill="black"/>
+<path id="Vector_12" d="M110.345 48.2759H103.448V55.1724H110.345V48.2759Z" fill="black"/>
+<path id="Vector_13" d="M117.241 48.2759H110.345V55.1724H117.241V48.2759Z" fill="black"/>
+<path id="Vector_14" d="M103.448 55.1724H96.5517V62.069H103.448V55.1724Z" fill="black"/>
+<path id="Vector_15" d="M117.241 55.1724H110.345V62.069H117.241V55.1724Z" fill="black"/>
+<path id="Vector_16" d="M89.6552 62.069H82.7586V68.9655H89.6552V62.069Z" fill="black"/>
+<path id="Vector_17" d="M103.448 62.069H96.5517V68.9655H103.448V62.069Z" fill="black"/>
+<path id="Vector_18" d="M89.6552 68.9655H82.7586V75.8621H89.6552V68.9655Z" fill="black"/>
+<path id="Vector_19" d="M103.448 68.9655H96.5517V75.8621H103.448V68.9655Z" fill="black"/>
+<path id="Vector_20" d="M117.241 68.9655H110.345V75.8621H117.241V68.9655Z" fill="black"/>
+<path id="Vector_21" d="M110.345 75.8621H103.448V82.7586H110.345V75.8621Z" fill="black"/>
+<path id="Vector_22" d="M34.4828 82.7586H27.5862V89.6552H34.4828V82.7586Z" fill="black"/>
+<path id="Vector_23" d="M48.2759 82.7586H41.3793V89.6552H48.2759V82.7586Z" fill="black"/>
+<path id="Vector_24" d="M75.8621 82.7586H68.9655V89.6552H75.8621V82.7586Z" fill="black"/>
+<path id="Vector_25" d="M82.7586 82.7586H75.8621V89.6552H82.7586V82.7586Z" fill="black"/>
+<path id="Vector_26" d="M96.5517 82.7586H89.6552V89.6552H96.5517V82.7586Z" fill="black"/>
+<path id="Vector_27" d="M110.345 82.7586H103.448V89.6552H110.345V82.7586Z" fill="black"/>
+<path id="Vector_28" d="M117.241 82.7586H110.345V89.6552H117.241V82.7586Z" fill="black"/>
+<path id="Vector_29" d="M137.931 82.7586H131.034V89.6552H137.931V82.7586Z" fill="black"/>
+<path id="Vector_30" d="M158.621 82.7586H151.724V89.6552H158.621V82.7586Z" fill="black"/>
+<path id="Vector_31" d="M172.414 82.7586H165.517V89.6552H172.414V82.7586Z" fill="black"/>
+<path id="Vector_32" d="M48.2759 89.6552H41.3793V96.5517H48.2759V89.6552Z" fill="black"/>
+<path id="Vector_33" d="M55.1724 89.6552H48.2759V96.5517H55.1724V89.6552Z" fill="black"/>
+<path id="Vector_34" d="M62.069 89.6552H55.1724V96.5517H62.069V89.6552Z" fill="black"/>
+<path id="Vector_35" d="M68.9655 89.6552H62.069V96.5517H68.9655V89.6552Z" fill="black"/>
+<path id="Vector_36" d="M124.138 89.6552H117.241V96.5517H124.138V89.6552Z" fill="black"/>
+<path id="Vector_37" d="M137.931 89.6552H131.034V96.5517H137.931V89.6552Z" fill="black"/>
+<path id="Vector_38" d="M144.828 89.6552H137.931V96.5517H144.828V89.6552Z" fill="black"/>
+<path id="Vector_39" d="M151.724 89.6552H144.828V96.5517H151.724V89.6552Z" fill="black"/>
+<path id="Vector_40" d="M62.069 96.5517H55.1724V103.448H62.069V96.5517Z" fill="black"/>
+<path id="Vector_41" d="M68.9655 96.5517H62.069V103.448H68.9655V96.5517Z" fill="black"/>
+<path id="Vector_42" d="M75.8621 96.5517H68.9655V103.448H75.8621V96.5517Z" fill="black"/>
+<path id="Vector_43" d="M103.448 96.5517H96.5517V103.448H103.448V96.5517Z" fill="black"/>
+<path id="Vector_44" d="M124.138 96.5517H117.241V103.448H124.138V96.5517Z" fill="black"/>
+<path id="Vector_45" d="M137.931 96.5517H131.034V103.448H137.931V96.5517Z" fill="black"/>
+<path id="Vector_46" d="M144.828 96.5517H137.931V103.448H144.828V96.5517Z" fill="black"/>
+<path id="Vector_47" d="M151.724 96.5517H144.828V103.448H151.724V96.5517Z" fill="black"/>
+<path id="Vector_48" d="M165.517 96.5517H158.621V103.448H165.517V96.5517Z" fill="black"/>
+<path id="Vector_49" d="M41.3793 103.448H34.4828V110.345H41.3793V103.448Z" fill="black"/>
+<path id="Vector_50" d="M48.2759 103.448H41.3793V110.345H48.2759V103.448Z" fill="black"/>
+<path id="Vector_51" d="M62.069 103.448H55.1724V110.345H62.069V103.448Z" fill="black"/>
+<path id="Vector_52" d="M68.9655 103.448H62.069V110.345H68.9655V103.448Z" fill="black"/>
+<path id="Vector_53" d="M82.7586 103.448H75.8621V110.345H82.7586V103.448Z" fill="black"/>
+<path id="Vector_54" d="M89.6552 103.448H82.7586V110.345H89.6552V103.448Z" fill="black"/>
+<path id="Vector_55" d="M103.448 103.448H96.5517V110.345H103.448V103.448Z" fill="black"/>
+<path id="Vector_56" d="M117.241 103.448H110.345V110.345H117.241V103.448Z" fill="black"/>
+<path id="Vector_57" d="M124.138 103.448H117.241V110.345H124.138V103.448Z" fill="black"/>
+<path id="Vector_58" d="M131.034 103.448H124.138V110.345H131.034V103.448Z" fill="black"/>
+<path id="Vector_59" d="M144.828 103.448H137.931V110.345H144.828V103.448Z" fill="black"/>
+<path id="Vector_60" d="M151.724 103.448H144.828V110.345H151.724V103.448Z" fill="black"/>
+<path id="Vector_61" d="M158.621 103.448H151.724V110.345H158.621V103.448Z" fill="black"/>
+<path id="Vector_62" d="M48.2759 110.345H41.3793V117.241H48.2759V110.345Z" fill="black"/>
+<path id="Vector_63" d="M68.9655 110.345H62.069V117.241H68.9655V110.345Z" fill="black"/>
+<path id="Vector_64" d="M75.8621 110.345H68.9655V117.241H75.8621V110.345Z" fill="black"/>
+<path id="Vector_65" d="M82.7586 110.345H75.8621V117.241H82.7586V110.345Z" fill="black"/>
+<path id="Vector_66" d="M96.5517 110.345H89.6552V117.241H96.5517V110.345Z" fill="black"/>
+<path id="Vector_67" d="M103.448 110.345H96.5517V117.241H103.448V110.345Z" fill="black"/>
+<path id="Vector_68" d="M144.828 110.345H137.931V117.241H144.828V110.345Z" fill="black"/>
+<path id="Vector_69" d="M151.724 110.345H144.828V117.241H151.724V110.345Z" fill="black"/>
+<path id="Vector_70" d="M165.517 110.345H158.621V117.241H165.517V110.345Z" fill="black"/>
+<path id="Vector_71" d="M172.414 110.345H165.517V117.241H172.414V110.345Z" fill="black"/>
+<path id="Vector_72" d="M89.6552 117.241H82.7586V124.138H89.6552V117.241Z" fill="black"/>
+<path id="Vector_73" d="M103.448 117.241H96.5517V124.138H103.448V117.241Z" fill="black"/>
+<path id="Vector_74" d="M110.345 117.241H103.448V124.138H110.345V117.241Z" fill="black"/>
+<path id="Vector_75" d="M124.138 117.241H117.241V124.138H124.138V117.241Z" fill="black"/>
+<path id="Vector_76" d="M144.828 117.241H137.931V124.138H144.828V117.241Z" fill="black"/>
+<path id="Vector_77" d="M151.724 117.241H144.828V124.138H151.724V117.241Z" fill="black"/>
+<path id="Vector_78" d="M89.6552 124.138H82.7586V131.034H89.6552V124.138Z" fill="black"/>
+<path id="Vector_79" d="M103.448 124.138H96.5517V131.034H103.448V124.138Z" fill="black"/>
+<path id="Vector_80" d="M110.345 124.138H103.448V131.034H110.345V124.138Z" fill="black"/>
+<path id="Vector_81" d="M117.241 124.138H110.345V131.034H117.241V124.138Z" fill="black"/>
+<path id="Vector_82" d="M124.138 124.138H117.241V131.034H124.138V124.138Z" fill="black"/>
+<path id="Vector_83" d="M151.724 124.138H144.828V131.034H151.724V124.138Z" fill="black"/>
+<path id="Vector_84" d="M172.414 124.138H165.517V131.034H172.414V124.138Z" fill="black"/>
+<path id="Vector_85" d="M103.448 131.034H96.5517V137.931H103.448V131.034Z" fill="black"/>
+<path id="Vector_86" d="M110.345 131.034H103.448V137.931H110.345V131.034Z" fill="black"/>
+<path id="Vector_87" d="M124.138 131.034H117.241V137.931H124.138V131.034Z" fill="black"/>
+<path id="Vector_88" d="M131.034 131.034H124.138V137.931H131.034V131.034Z" fill="black"/>
+<path id="Vector_89" d="M144.828 131.034H137.931V137.931H144.828V131.034Z" fill="black"/>
+<path id="Vector_90" d="M158.621 131.034H151.724V137.931H158.621V131.034Z" fill="black"/>
+<path id="Vector_91" d="M172.414 131.034H165.517V137.931H172.414V131.034Z" fill="black"/>
+<path id="Vector_92" d="M96.5517 137.931H89.6552V144.828H96.5517V137.931Z" fill="black"/>
+<path id="Vector_93" d="M103.448 137.931H96.5517V144.828H103.448V137.931Z" fill="black"/>
+<path id="Vector_94" d="M110.345 137.931H103.448V144.828H110.345V137.931Z" fill="black"/>
+<path id="Vector_95" d="M117.241 137.931H110.345V144.828H117.241V137.931Z" fill="black"/>
+<path id="Vector_96" d="M131.034 137.931H124.138V144.828H131.034V137.931Z" fill="black"/>
+<path id="Vector_97" d="M137.931 137.931H131.034V144.828H137.931V137.931Z" fill="black"/>
+<path id="Vector_98" d="M144.828 137.931H137.931V144.828H144.828V137.931Z" fill="black"/>
+<path id="Vector_99" d="M158.621 137.931H151.724V144.828H158.621V137.931Z" fill="black"/>
+<path id="Vector_100" d="M165.517 137.931H158.621V144.828H165.517V137.931Z" fill="black"/>
+<path id="Vector_101" d="M96.5517 144.828H89.6552V151.724H96.5517V144.828Z" fill="black"/>
+<path id="Vector_102" d="M103.448 144.828H96.5517V151.724H103.448V144.828Z" fill="black"/>
+<path id="Vector_103" d="M137.931 144.828H131.034V151.724H137.931V144.828Z" fill="black"/>
+<path id="Vector_104" d="M151.724 144.828H144.828V151.724H151.724V144.828Z" fill="black"/>
+<path id="Vector_105" d="M165.517 144.828H158.621V151.724H165.517V144.828Z" fill="black"/>
+<path id="Vector_106" d="M89.6552 151.724H82.7586V158.621H89.6552V151.724Z" fill="black"/>
+<path id="Vector_107" d="M96.5517 151.724H89.6552V158.621H96.5517V151.724Z" fill="black"/>
+<path id="Vector_108" d="M103.448 151.724H96.5517V158.621H103.448V151.724Z" fill="black"/>
+<path id="Vector_109" d="M124.138 151.724H117.241V158.621H124.138V151.724Z" fill="black"/>
+<path id="Vector_110" d="M131.034 151.724H124.138V158.621H131.034V151.724Z" fill="black"/>
+<path id="Vector_111" d="M144.828 151.724H137.931V158.621H144.828V151.724Z" fill="black"/>
+<path id="Vector_112" d="M151.724 151.724H144.828V158.621H151.724V151.724Z" fill="black"/>
+<path id="Vector_113" d="M165.517 151.724H158.621V158.621H165.517V151.724Z" fill="black"/>
+<path id="Vector_114" d="M172.414 151.724H165.517V158.621H172.414V151.724Z" fill="black"/>
+<path id="Vector_115" d="M96.5517 158.621H89.6552V165.517H96.5517V158.621Z" fill="black"/>
+<path id="Vector_116" d="M117.241 158.621H110.345V165.517H117.241V158.621Z" fill="black"/>
+<path id="Vector_117" d="M144.828 158.621H137.931V165.517H144.828V158.621Z" fill="black"/>
+<path id="Vector_118" d="M158.621 158.621H151.724V165.517H158.621V158.621Z" fill="black"/>
+<path id="Vector_119" d="M165.517 158.621H158.621V165.517H165.517V158.621Z" fill="black"/>
+<path id="Vector_120" d="M172.414 158.621H165.517V165.517H172.414V158.621Z" fill="black"/>
+<path id="Vector_121" d="M89.6552 165.517H82.7586V172.414H89.6552V165.517Z" fill="black"/>
+<path id="Vector_122" d="M103.448 165.517H96.5517V172.414H103.448V165.517Z" fill="black"/>
+<path id="Vector_123" d="M124.138 165.517H117.241V172.414H124.138V165.517Z" fill="black"/>
+<path id="Vector_124" d="M131.034 165.517H124.138V172.414H131.034V165.517Z" fill="black"/>
+<path id="Vector_125" d="M144.828 165.517H137.931V172.414H144.828V165.517Z" fill="black"/>
+<path id="Vector_126" d="M172.414 165.517H165.517V172.414H172.414V165.517Z" fill="black"/>
+<path id="Vector_127" fill-rule="evenodd" clip-rule="evenodd" d="M27.5862 27.5862H75.8621V75.8621H27.5862V27.5862ZM34.4828 34.4828H68.9655V68.9655H34.4828V34.4828Z" fill="black"/>
+<path id="Vector_128" fill-rule="evenodd" clip-rule="evenodd" d="M124.138 27.5862H172.414V75.8621H124.138V27.5862ZM131.034 34.4828H165.517V68.9655H131.034V34.4828Z" fill="black"/>
+<path id="Vector_129" d="M62.069 41.3793H41.3793V62.069H62.069V41.3793Z" fill="black"/>
+<path id="Vector_130" d="M158.621 41.3793H137.931V62.069H158.621V41.3793Z" fill="black"/>
+<path id="Vector_131" fill-rule="evenodd" clip-rule="evenodd" d="M27.5862 124.138H75.8621V172.414H27.5862V124.138ZM34.4828 131.034H68.9655V165.517H34.4828V131.034Z" fill="black"/>
+<path id="Vector_132" d="M62.069 137.931H41.3793V158.621H62.069V137.931Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="g02-qr-clip">
+<rect width="200" height="200" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</div></div>
+<div class="g02-address" data-node-id="124:34264">
+<div class="g02-full" data-node-id="124:34265"><p class="g02-addr-text">0x52DF1440197F618Bc7048141e32D8150E641cf7b</p><div class="g02-sf-copy g02-sf-copy-addr" data-node-id="124:34267"><svg class="g02-ink-copy" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="offset magically" d="M2.88281 14.6602C0.984375 14.6602 0 13.6846 0 11.8037V2.84766C0 0.966797 0.984375 0 2.88281 0H11.7773C13.6758 0 14.6602 0.975586 14.6602 2.84766V4.1748H16.1543C18.0527 4.1748 19.0371 5.15039 19.0371 7.02246V15.9873C19.0371 17.8594 18.0527 18.835 16.1543 18.835H7.25977C5.35254 18.835 4.37695 17.8594 4.37695 15.9873V14.6602H2.88281ZM2.98828 12.9375H4.37695V7.02246C4.37695 5.15039 5.35254 4.1748 7.25977 4.1748H12.9463V2.99707C12.9463 2.14453 12.4893 1.71387 11.6807 1.71387H2.98828C2.1709 1.71387 1.72266 2.14453 1.72266 2.99707V11.6631C1.72266 12.5156 2.1709 12.9375 2.98828 12.9375ZM7.35645 17.1123H16.0488C16.8574 17.1123 17.3145 16.6904 17.3145 15.8379V7.17188C17.3145 6.31934 16.8574 5.89746 16.0488 5.89746H7.35645C6.53906 5.89746 6.09961 6.31934 6.09961 7.17188V15.8379C6.09961 16.6904 6.53906 17.1123 7.35645 17.1123Z" fill="#7040F0"/></svg></div></div>
+<div class="g02-pill" data-node-id="124:34268">
+<svg class="g02-pill-bg" width="284" height="30" viewBox="0 0 284 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="284" height="30" rx="8" fill="#F0F2FF"/>
+<rect x="0.5" y="0.5" width="283" height="29" rx="7.5" stroke="url(#g02-pill-stroke)" stroke-opacity="0.6" style="mix-blend-mode:color-burn"/>
+<defs>
+<linearGradient id="g02-pill-stroke" x1="263.292" y1="1.2049e-06" x2="261.695" y2="35.4" gradientUnits="userSpaceOnUse">
+<stop stop-color="#323232"/>
+<stop offset="0.269231" stop-color="#D4D4D4"/>
+<stop offset="0.600962" stop-color="#EBEBEB"/>
+<stop offset="1" stop-color="#333333"/>
+</linearGradient>
+</defs>
+</svg>
+<div class="g02-sf-warn" data-node-id="124:34269"><svg class="g02-ink-warn" width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="&#244;&#128;&#135;&#191;" d="M2.21875 14.9922C0.851562 14.9922 0 14.0078 0 12.7812C0 12.4062 0.101562 12.0234 0.3125 11.6562L6.35938 1.10938C6.77344 0.375 7.50781 0 8.25781 0C9 0 9.73438 0.375 10.1562 1.10938L16.2031 11.6562C16.4062 12.0156 16.5156 12.4062 16.5156 12.7812C16.5156 14.0078 15.6562 14.9922 14.2969 14.9922H2.21875ZM8.26562 9.64062C8.70312 9.64062 8.96094 9.39062 8.97656 8.91406L9.09375 4.98438C9.10938 4.50781 8.75 4.17188 8.25781 4.17188C7.75 4.17188 7.40625 4.50781 7.42188 4.98438L7.53125 8.92188C7.54688 9.38281 7.80469 9.64062 8.26562 9.64062ZM8.26562 12.3281C8.78125 12.3281 9.21875 11.9531 9.21875 11.4375C9.21875 10.9219 8.78906 10.5469 8.26562 10.5469C7.73438 10.5469 7.30469 10.9297 7.30469 11.4375C7.30469 11.9531 7.74219 12.3281 8.26562 12.3281Z" fill="#4C3F91"/></svg></div><p class="g02-pill-text">Do not save, single-use address.</p></div>
+</div>
+</div>
+</div></div></div><div class="dsb-stack"><div class="dsb-cell" style="margin-left:80px"><div class="ds-item" data-key="G01" data-node="124:34109" data-name="payment details, compact / magical compo" style="width:218px;height:265px">
+<div class="g01-root">
+<div class="g01-details">
+<div class="g01-panel"></div>
+<div class="g01-row"><p class="g01-val g01-val-amount">11.284667</p><svg class="g01-copy" width="19" height="17" viewBox="157 28 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="g01-copy-a" d="M161.339 40.1523C159.862 40.1523 159.097 39.3936 159.097 37.9307V30.9648C159.097 29.502 159.862 28.75 161.339 28.75H168.257C169.733 28.75 170.499 29.5088 170.499 30.9648V31.9971H171.661C173.138 31.9971 173.903 32.7559 173.903 34.2119V41.1846C173.903 42.6406 173.138 43.3994 171.661 43.3994H164.743C163.26 43.3994 162.501 42.6406 162.501 41.1846V40.1523H161.339ZM161.421 38.8125H162.501V34.2119C162.501 32.7559 163.26 31.9971 164.743 31.9971H169.166V31.0811C169.166 30.418 168.811 30.083 168.182 30.083H161.421C160.785 30.083 160.437 30.418 160.437 31.0811V37.8213C160.437 38.4844 160.785 38.8125 161.421 38.8125ZM164.818 42.0596H171.579C172.208 42.0596 172.563 41.7314 172.563 41.0684V34.3281C172.563 33.665 172.208 33.3369 171.579 33.3369H164.818C164.183 33.3369 163.841 33.665 163.841 34.3281V41.0684C163.841 41.7314 164.183 42.0596 164.818 42.0596Z" fill="#7040F0"/>
+</svg><p class="g01-label">Amount</p></div>
+<div class="g01-row"><p class="g01-val">USDC</p><p class="g01-label">Token</p></div>
+<div class="g01-row g01-row-full"><p class="g01-val">Ethereum network (ERC20)</p><p class="g01-label">Network</p></div>
+<div class="g01-row g01-row-full"><p class="g01-val">Confirmo</p><p class="g01-label">Provider</p></div>
+<div class="g01-row g01-row-full"><p class="g01-val">Jon Doe</p><p class="g01-label">Beneficiary</p></div>
+</div>
+<div class="g01-address">
+<div class="g01-full"><p class="g01-addr">0x52DF1440197F618Bc7048141e32D8150E641cf7b</p><svg class="g01-copy-abs" width="19" height="17" viewBox="57 180 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="g01-copy-b" d="M61.3389 192.152C59.8623 192.152 59.0967 191.394 59.0967 189.931V182.965C59.0967 181.502 59.8623 180.75 61.3389 180.75H68.2568C69.7334 180.75 70.499 181.509 70.499 182.965V183.997H71.6611C73.1377 183.997 73.9033 184.756 73.9033 186.212V193.185C73.9033 194.641 73.1377 195.399 71.6611 195.399H64.7432C63.2598 195.399 62.501 194.641 62.501 193.185V192.152H61.3389ZM61.4209 190.812H62.501V186.212C62.501 184.756 63.2598 183.997 64.7432 183.997H69.166V183.081C69.166 182.418 68.8105 182.083 68.1816 182.083H61.4209C60.7852 182.083 60.4365 182.418 60.4365 183.081V189.821C60.4365 190.484 60.7852 190.812 61.4209 190.812ZM64.8184 194.06H71.5791C72.208 194.06 72.5635 193.731 72.5635 193.068V186.328C72.5635 185.665 72.208 185.337 71.5791 185.337H64.8184C64.1826 185.337 63.8408 185.665 63.8408 186.328V193.068C63.8408 193.731 64.1826 194.06 64.8184 194.06Z" fill="#7040F0"/>
+</svg></div>
+<div class="g01-warn"><svg class="g01-warn-ring" width="218" height="25" viewBox="80 224 218 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="80.5" y="224.5" width="217" height="24" rx="7.5" stroke="url(#g01-paint0)" stroke-opacity="0.6"/>
+<defs>
+<linearGradient id="g01-paint0" x1="282.104" y1="224" x2="280.66" y2="253.489" gradientUnits="userSpaceOnUse">
+<stop stop-color="#323232"/>
+<stop offset="0.269231" stop-color="#D4D4D4"/>
+<stop offset="0.600962" stop-color="#EBEBEB"/>
+<stop offset="1" stop-color="#333333"/>
+</linearGradient>
+</defs>
+</svg><div class="g01-warn-ico"><svg class="g01-warn-svg" width="15" height="14" viewBox="88 229 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="g01-warn-glyph" d="M90.8594 241.389C89.834 241.389 89.1953 240.65 89.1953 239.73C89.1953 239.449 89.2715 239.162 89.4297 238.887L93.9648 230.977C94.2754 230.426 94.8262 230.145 95.3887 230.145C95.9453 230.145 96.4961 230.426 96.8125 230.977L101.348 238.887C101.5 239.156 101.582 239.449 101.582 239.73C101.582 240.65 100.938 241.389 99.918 241.389H90.8594ZM95.3945 237.375C95.7227 237.375 95.916 237.188 95.9277 236.83L96.0156 233.883C96.0273 233.525 95.7578 233.273 95.3887 233.273C95.0078 233.273 94.75 233.525 94.7617 233.883L94.8438 236.836C94.8555 237.182 95.0488 237.375 95.3945 237.375ZM95.3945 239.391C95.7812 239.391 96.1094 239.109 96.1094 238.723C96.1094 238.336 95.7871 238.055 95.3945 238.055C94.9961 238.055 94.6738 238.342 94.6738 238.723C94.6738 239.109 95.002 239.391 95.3945 239.391Z" fill="#4C3F91"/>
+</svg></div><p class="g01-warn-txt">Do not save, single-use address.</p></div>
+</div>
+</div>
 </div></div></div></div></section></div></div></div>
 </template></div></div></div></div></figure></div>
 <div class="txtg"><p class="txt">The full rollout held the test result: around 15% success, with spikes close to 20%. Sales could now reach more established clients, and those clients asked for one thing: branded and white-label options.</p><p class="txt">So this iteration reversed the last one: aesthetics over mechanics.</p><p class="txt">Confirmo had no design system. I rebuilt every production screen first, which doubled as the audit, then derived a small system from it: which components were in use, and where one could do the job of several. It stayed small through discipline: solve with the parts available, add one only when needed. This is the last version, covering the full checkout, 20+ screens.</p></div>
