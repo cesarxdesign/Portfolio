@@ -287,6 +287,17 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
   var flag=document.querySelector('.flag'), rules=document.createElement('style');
   var panes=[], on=false, built=false, mode='prop', homeY=0, last=-1, V=0, R=0, H=[], END=[];
   document.head.appendChild(rules);
+  /* analytics for this view. bolt_open: it was turned on (source: button, hint, or restore = it was already on in this tab, or the visit came through /all).
+     bolt_mode: a scroll mode was clicked. bolt_scroll: the reader then scrolled 300px or more in a mode (once per mode each time the view is opened; picked = the mode
+     was clicked in this visit, not just the one it opened in). Pages opened from a pane ride on project_open (via, bolt_mode), sent by the click handler at the foot.
+     Events wait in a queue until the analytics object, set up further down the page, exists. */
+  var Q=[], picked=false, scrolled={}, y0=0, quiet=0;
+  function track(n,pr){ if(window.posthog&&posthog.capture) posthog.capture(n,pr); else Q.push([n,pr]); }
+  addEventListener('load',function(){ Q.splice(0).forEach(function(x){ track(x[0],x[1]); }); });
+  function rearm(){ quiet=Date.now()+600; panes.forEach(function(o){ o.s0=null; }); setTimeout(function(){ y0=scrollY; },620); }   /* the layout moves the page itself for a moment after a switch: that is not the reader scrolling */
+  function moved(extra){ if(!on||scrolled[mode]||Date.now()<quiet) return; scrolled[mode]=1; var pr={mode:mode,picked:picked}; if(extra) pr.pane=extra; track('bolt_scroll',pr); }
+  addEventListener('scroll',function(){ if(on&&mode!=='loose'&&Date.now()>=quiet&&Math.abs(scrollY-y0)>=300) moved(); },{passive:true});
+  window.__boltMode=function(){ return on?mode:null; };
   try{var m=localStorage.getItem('folioBoltMode'); if(m==='sync'||m==='prop'||m==='loose') mode=m;}catch(e){}
 
   function build(){
@@ -303,7 +314,7 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
       sh.appendChild(f); a.appendChild(sh); pane.appendChild(ph); pane.appendChild(a); deck.appendChild(pane);
       var o={a:a,sh:sh,f:f,h:900,pane:pane}; panes.push(o);
       grab(ph.firstChild,i);
-      a.addEventListener('scroll',function(){ if(mode==='loose') last=i; },{passive:true});
+      a.addEventListener('scroll',function(){ if(mode==='loose'){ last=i; if(on&&Date.now()>=quiet){ if(o.s0==null) o.s0=a.scrollTop; if(Math.abs(a.scrollTop-o.s0)>=300) moved(p); } } },{passive:true});
       /* the page is read in and handed over as srcdoc, so three things can go in ahead of anything
          it loads or runs: its base address, a mute analytics object (five panes are not five
          visits), and a rule that drops its navbar, which the pane's header replaces */
@@ -422,11 +433,12 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
   function setMode(m){
     if(m===mode) return;
     var pos=offsets(), anchor=mode==='loose'?(last>=0?last:tallest()):tallest();
-    mode=m; last=-1;
+    var was=mode; mode=m; last=-1;
     try{localStorage.setItem('folioBoltMode',m);}catch(e){}
     tabsPaint(); layout(pos,anchor);
+    picked=true; rearm(); track('bolt_mode',{mode:m,from:was});
   }
-  function setOn(v){
+  function setOn(v,src){
     if(v===on) return;
     if(v){ homeY=scrollY; }
     on=v; btn.setAttribute('aria-pressed',v); btn.className=v?'ic on':'ic';
@@ -436,18 +448,19 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
       if(!built) build();
       layout(panes.map(function(){return 0;}),0);
       scrollTo({top:0,behavior:'instant'});
+      scrolled={}; picked=false; rearm(); track('bolt_open',{source:src||'button',mode:mode});
     }else{
       document.body.classList.remove('loose');
       document.body.style.height=''; rules.textContent='';
       scrollTo({top:homeY,behavior:'instant'});
     }
   }
-  btn.addEventListener('click',function(){ setOn(!on); });
-  document.querySelector('.flag .hint').addEventListener('click',function(){ setOn(true); });
+  btn.addEventListener('click',function(){ setOn(!on,'button'); });
+  document.querySelector('.flag .hint').addEventListener('click',function(){ setOn(true,'hint'); });
   tabs.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) setMode(b.dataset.m); });
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&on) setOn(false); });
   tabsPaint();
-  try{ if(sessionStorage.getItem('folioBolt')==='1'&&innerWidth>960) setOn(true); }catch(e){}
+  try{ if(sessionStorage.getItem('folioBolt')==='1'&&innerWidth>960) setOn(true,'restore'); }catch(e){}
 })();
 </script>
 <script>
@@ -504,7 +517,9 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
     if(a.host!==location.host) return;
     var p=(a.pathname||'').replace(/\/index\.html$/,'').replace(/\/$/,'');
     if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(p) && p.slice(1)!==PAGE)
-      posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth()},{transport:'sendBeacon'});
+      posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth(),
+        via:a.closest('.pane')?(a.classList.contains('open')?'bolt_header':'bolt_pane'):'page',   /* from a pane of the five-pane view: its header link, or the pane itself */
+        bolt_mode:window.__boltMode?window.__boltMode():null},{transport:'sendBeacon'});
   },true);
 })();
 </script>
