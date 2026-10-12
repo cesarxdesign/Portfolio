@@ -395,7 +395,7 @@ section.ch.first{border-top-color:var(--ink)}
 <li><b>Day 3:</b> ready for handover</li>
 <li><b>Day 4:</b> handover to our developer, with three days to ship it. Tick. Tock</li>
 </ul></div>
-<div class="brow-block"><span class="mono">First onboarding</span>
+<div class="brow-block" data-sub="First onboarding"><span class="mono">First onboarding</span>
 <!-- FLOW33 start: built by source/flow33.py from CodeCatalog screens, do not edit by hand -->
 <figure class="ann"><div class="sw">
 <div class="flow" style="--n:5;--tw:166.000;--h:534" role="group" aria-label="The first onboarding, screen by screen">
@@ -1710,7 +1710,7 @@ select.f{appearance:none;-webkit-appearance:none;cursor:pointer;
 <h2>Added mobile and modular onboarding. <span class="soft">Signups tripled.</span></h2>
 <p class="txt">The long onboarding secured a win, but bled users from day one. Drop-off was around 80%, which hurt acquisition and growth, metrics our investors paid close attention to. However, I had anticipated this and was already working on improvements.</p>
 <div class="grid stack">
-<div class="item"><span class="mono">Modular onboarding</span>
+<div class="item" data-sub="Saving state"><span class="mono">Modular onboarding</span>
 <!-- MODULAR start: built by source/modular.py from CodeCatalog screens, do not edit by hand -->
 <figure class="ann"><div class="sw">
 <div class="flow" style="--n:3;--tw:287.333;--h:640" role="group" aria-label="The modular onboarding, screen by screen">
@@ -2306,7 +2306,7 @@ p{margin:0}
 </figure>
 <!-- MODULAR end -->
 <h3>Saving state.</h3><p>Making it modular required us to change our data model. Accounts assumed one or more pensions, so zero didn&rsquo;t work and our initial flow couldn&rsquo;t save progress, as there wasn&rsquo;t an account yet. Fixing that allowed users to complete modules individually and finish onboarding at their convenience.</p></div>
-<div class="item"><span class="mono">Mobile + Desktop</span>
+<div class="item" data-sub="2 for 1"><span class="mono">Mobile + Desktop</span>
 <!-- MOBILE start: built by source/mobile.py from CodeCatalog screens, do not edit by hand -->
 <div class="duo" style="--pw:431.000;--dw:371.893;--mw:116.217;--sh:251.648;--drop:50">
 <div class="pair" role="img" aria-label="Choosing a fund, on desktop and on mobile">
@@ -10068,6 +10068,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
 
 <style>/* chapter rail, as on Cable and Confirmo: fixed on the left, one line per chapter; the line for where you are is lit and a click jumps there */
 .rail{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:40;margin:0;padding:8px 16px 8px 12px;list-style:none}
+.rail ul{margin:0;padding:0;list-style:none}
 .rail li.g{min-height:16px}
 .rail li.g.top{min-height:8px}
 .rail a{display:flex;align-items:center;height:8px;min-width:64px;text-decoration:none;color:var(--mut);white-space:nowrap}
@@ -10087,13 +10088,18 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
 (function(){
   var groups=[{el:document.documentElement,txt:'Top',top:true}];
   [].forEach.call(document.querySelectorAll('#case section.ch'),function(sec,i){ var b=sec.querySelector('.tag b'); if(!b) return;
-    var t=b.textContent.trim(); if(!sec.id) sec.id='ch-'+(i+1); groups.push({el:sec,txt:t}); });
+    var t=b.textContent.trim(); if(!sec.id) sec.id='ch-'+(i+1); var g={el:sec,txt:t,subs:[]};
+    [].forEach.call(sec.querySelectorAll('[data-sub]'),function(x,j){ if(!x.id) x.id=sec.id+'-'+(j+1); g.subs.push({el:x,txt:x.getAttribute('data-sub'),sub:true}); }); groups.push(g); });
   var ul=document.createElement('ul'); ul.className='rail';
-  groups.forEach(function(g){ var li=document.createElement('li'); li.className=g.top?'g top':'g'; var a=document.createElement('a'); a.className=g.top?'x':'s'; a.href=location.pathname+(g.top?'':'#'+g.el.id);
+  function link(g){ var a=document.createElement('a'); a.className=(g.top||g.sub)?'x':'s'; a.href=location.pathname+(g.top?'':'#'+g.el.id);
     a.appendChild(document.createElement('i')); var sp=document.createElement('span'); sp.textContent=g.txt; a.appendChild(sp);
-    a.addEventListener('click',function(e){ e.preventDefault(); g.el.scrollIntoView({behavior:'smooth',block:'start'}); }); g.a=a; li.appendChild(a); ul.appendChild(li); });
+    a.addEventListener('click',function(e){ e.preventDefault(); g.el.scrollIntoView({behavior:'smooth',block:'start'}); }); g.a=a; return a; }
+  groups.forEach(function(g){ var li=document.createElement('li'); li.className=g.top?'g top':'g'; li.appendChild(link(g));
+    if(g.subs&&g.subs.length){ var su=document.createElement('ul'); g.subs.forEach(function(x){ var sl=document.createElement('li'); sl.appendChild(link(x)); su.appendChild(sl); }); li.appendChild(su); }
+    ul.appendChild(li); });
   document.body.appendChild(ul);
-  function update(){ var y=innerHeight*0.35, cur=null; groups.forEach(function(g){ if(g.el.getBoundingClientRect().top<=y) cur=g; }); groups.forEach(function(g){ g.a.classList.toggle('on',g===cur); }); }
+  function update(){ var y=innerHeight*0.35, cur=null, cs=null; groups.forEach(function(g){ if(g.el.getBoundingClientRect().top<=y){ cur=g; cs=null; (g.subs||[]).forEach(function(x){ if(x.el.getBoundingClientRect().top<=y) cs=x; }); } });
+    groups.forEach(function(g){ g.a.classList.toggle('on',g===cur); (g.subs||[]).forEach(function(x){ x.a.classList.toggle('on',x===cs); }); }); }
   addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
 })();
 </script>
