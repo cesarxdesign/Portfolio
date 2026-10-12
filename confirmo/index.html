@@ -21189,7 +21189,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
  document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".pjsw a.on");if(a)e.preventDefault();});
  document.addEventListener("dblclick",function(e){var a=e.target.closest&&e.target.closest(".pjsw a.on");if(!a)return;e.preventDefault();scrollTo({top:0,left:0,behavior:"smooth"});});
  var via=S.getItem("pos:swap");S.removeItem("pos:swap");var y=+S.getItem(K)||0;
- if(via&&y){try{history.scrollRestoration="manual";}catch(e){}
+ if(via&&y&&matchMedia("(min-width:481px)").matches){try{history.scrollRestoration="manual";}catch(e){}   /* desktop only: on a phone a project always opens at its top */
   /* the page grows as fonts and pictures land, so one jump falls short: hold the place until the layout has been still for a moment, or the reader moves */
   busy=true;var n=0,last=-1,still=0,stop=function(){busy=false;clearInterval(iv);};
   var go=function(){scrollTo({top:y,left:0,behavior:"instant"});};go();
