@@ -359,7 +359,7 @@ section.ch.first{border-top-color:var(--ink)}
 </style>
 </head>
 <body>
-<link rel="stylesheet" href="/harmony.css?v=09ca90cd"><style>.page[data-theme="light"]{--acc:#FF5081;--acc2:#FF7A9F;--accg:#FF5081;--chip:#FF5081;--glow:rgba(255,80,129,.05);--halo:rgba(255,80,129,.14)}:root:not([data-theme="dark"]){--accent:#FF5081;--tint:#FFEEF3}.page[data-theme="light"] .relay code.pn{background:#6076DD}</style><div class="flag"><a class="navhome" href="/">Home</a><details class="pjx"><summary>Penfold <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a class="on" href="index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a><a href="../confirmo/index.html">Confirmo</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Penfold</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
+<link rel="stylesheet" href="/harmony.css?v=09ca90cd"><style>.page[data-theme="light"]{--acc:#FF5081;--acc2:#FF7A9F;--accg:#FF5081;--chip:#FF5081;--glow:rgba(255,80,129,.05);--halo:rgba(255,80,129,.14)}:root:not([data-theme="dark"]){--accent:#FF5081;--tint:#FFEEF3}.page[data-theme="light"] .relay code.pn{background:#6076DD}</style><div class="flag"><a class="navhome" href="/">Home</a><span class="thsw pjsw" role="group" aria-label="Project"><a href="/confirmo">Confirmo</a><a href="/cable">Cable</a><a class="on" href="/penfold" aria-current="page">Penfold</a><a href="/starcount">Starcount</a><a href="/mara">Mara</a></span><details class="pjx"><summary>Penfold <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../confirmo/index.html">Confirmo</a><a href="../cable/index.html">Cable</a><a class="on" href="index.html">Penfold</a><a href="../starcount/index.html">Starcount</a><a href="../mara/index.html">Mara</a></nav><details class="bgr"><summary aria-label="Menu"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg><span class="bn">Penfold</span></summary></details><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="page" id="case" data-theme="light">
 <div class="col">
 
@@ -9954,7 +9954,7 @@ new IntersectionObserver(function(es){seen=es[0].isIntersecting;tick()},{thresho
 </div>
 </div>
 
-<footer class="sfoot"><div class="snx"><span class="slab">Next</span><a class="snext" href="/cable">Cable <span>&rarr;</span></a></div><a class="smail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
+<footer class="sfoot"><div class="snx"><span class="slab">Next</span><a class="snext" href="/starcount">Starcount <span>&rarr;</span></a></div><a class="smail" href="mailto:cesarxdesign@gmail.com">cesarxdesign@gmail.com</a></footer>
 <script>
 /* the page follows the site theme: mirror the root's data-theme onto .page, which the page's CSS and the
    prototype frame read */
@@ -10066,4 +10066,50 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
 </body>
 </html>
 
+<style>/* chapter rail, as on Cable and Confirmo: fixed on the left, one line per chapter; the line for where you are is lit and a click jumps there */
+.rail{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:40;margin:0;padding:8px 16px 8px 12px;list-style:none}
+.rail li.g{min-height:16px}
+.rail li.g.top{min-height:8px}
+.rail a{display:flex;align-items:center;height:8px;min-width:64px;text-decoration:none;color:var(--mut);white-space:nowrap}
+.rail i{display:block;flex:none;height:1.5px;background:currentColor;opacity:.5;transition:opacity .15s,background .15s,width .15s}
+.rail a.s i{width:22px}
+.rail a.x i{width:10px}
+.rail a span{margin-left:12px;font:600 11px/1 var(--sysMono);letter-spacing:.18em;text-transform:uppercase}
+.rail a.x span{display:none}
+.rail a:hover{color:var(--ink)}
+.rail a:hover i{opacity:1}
+.rail a.on{color:var(--ink)}
+.rail a.on i{background:var(--accent);opacity:1}
+@media (max-width:1180px){.rail{display:none}}
+</style>
+<script>
+/* the chapter rail */
+(function(){
+  var groups=[{el:document.documentElement,txt:'Top',top:true}];
+  [].forEach.call(document.querySelectorAll('#case section.ch'),function(sec,i){ var b=sec.querySelector('.tag b'); if(!b) return;
+    var t=b.textContent.trim(); if(!sec.id) sec.id='ch-'+(i+1); groups.push({el:sec,txt:t}); });
+  var ul=document.createElement('ul'); ul.className='rail';
+  groups.forEach(function(g){ var li=document.createElement('li'); li.className=g.top?'g top':'g'; var a=document.createElement('a'); a.className=g.top?'x':'s'; a.href=location.pathname+(g.top?'':'#'+g.el.id);
+    a.appendChild(document.createElement('i')); var sp=document.createElement('span'); sp.textContent=g.txt; a.appendChild(sp);
+    a.addEventListener('click',function(e){ e.preventDefault(); g.el.scrollIntoView({behavior:'smooth',block:'start'}); }); g.a=a; li.appendChild(a); ul.appendChild(li); });
+  document.body.appendChild(ul);
+  function update(){ var y=innerHeight*0.35, cur=null; groups.forEach(function(g){ if(g.el.getBoundingClientRect().top<=y) cur=g; }); groups.forEach(function(g){ g.a.classList.toggle('on',g===cur); }); }
+  addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
+})();
+</script>
+<script>/* project toggle: each project keeps its place. The position is saved as you scroll; a swap made from the toggle, the dropdown or the drawer restores it on the page you land on. A visit from anywhere else starts at the top. */
+(function(){var S;try{S=sessionStorage;}catch(e){return;}
+ var K="pos:"+location.pathname.replace(/\/(index\.html)?$/,""),t,busy=false;
+ function save(){if(busy)return;try{S.setItem(K,String(Math.round(scrollY)));}catch(e){}}
+ addEventListener("scroll",function(){clearTimeout(t);t=setTimeout(save,120);},{passive:true});addEventListener("pagehide",save);
+ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".pjsw a,.pjd a");if(!a||a.classList.contains("on"))return;save();try{S.setItem("pos:swap","1");}catch(x){}},true);
+ var via=S.getItem("pos:swap");S.removeItem("pos:swap");var y=+S.getItem(K)||0;
+ if(via&&y){try{history.scrollRestoration="manual";}catch(e){}
+  /* the page grows as fonts and pictures land, so one jump falls short: hold the place until the layout has been still for a moment, or the reader moves */
+  busy=true;var n=0,last=-1,still=0,stop=function(){busy=false;clearInterval(iv);};
+  var go=function(){scrollTo({top:y,left:0,behavior:"instant"});};go();
+  var iv=setInterval(function(){var h=document.documentElement.scrollHeight;if(Math.abs(scrollY-y)>1)go();still=(h===last&&document.readyState==="complete")?still+1:0;last=h;if(still>=6||++n>80)stop();},100);
+  ["wheel","touchstart","keydown","mousedown"].forEach(function(ev){addEventListener(ev,stop,{passive:true,once:true});});}
+})();
+</script>
 </body></html>

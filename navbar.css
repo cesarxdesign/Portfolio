@@ -244,3 +244,20 @@
     .flag:has(.pjx[open])::before{clip-path:shape(from 0 0,hline to 100%,vline to 44px,hline to calc(var(--pjxL) + 188px),vline to 250px,arc to calc(var(--pjxL) + 180px) 258px of 8px cw,hline to calc(var(--pjxL) - 20px),arc to calc(var(--pjxL) - 28px) 250px of 8px cw,vline to 44px,hline to 0,close)}
   }
 }
+
+/* ----------------------------------------------------------------
+   HOME | PROJECT TOGGLE  (2026-10-12, every case page)
+   From 1000px up the dropdown gives way to a pill holding every project,
+   as on CXR: one click swaps project. It hangs off --pjxL like the
+   trigger did, after the divider Home already carries. Below 1000 the pill
+   does not fit beside the right-hand links, so the dropdown (481-999)
+   and the drawer (to 480) carry on unchanged.
+   ---------------------------------------------------------------- */
+.flag .pjsw{display:none}
+@media(min-width:1000px){
+  .flag:has(.pjsw) .pjx{display:none}
+  .flag .pjsw{display:inline-flex;position:absolute;left:calc(var(--pjxL,96px) - 2px);top:50%;transform:translateY(-50%);justify-self:auto;cursor:default}   /* 14px after the divider Home already carries */
+  .flag .pjsw a{font:600 10px/1 var(--sysFont);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-decoration:none;padding:5px 9px;border-radius:999px;transition:background .15s,color .15s}
+  .flag .pjsw a:hover{color:var(--ink)}
+  .flag .pjsw a.on{background:var(--line);color:var(--ink)}
+}
