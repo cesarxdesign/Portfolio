@@ -49,7 +49,7 @@
    second half and read IN and GIT. The word is whole in the markup, the half
    is a span: nothing is renamed, only hidden. Above 560 the bar has the room
    and the names return; below 481 the drawer owns them and never crops. */
-@media(min-width:481px) and (max-width:560px){
+@media(min-width:761px) and (max-width:860px){
   .flag .tops a .hlf{display:none}
 }
 .flag .tops .thsw{justify-self:auto}
@@ -87,7 +87,7 @@
    included, and the chevron opens a dropdown of the projects (the same
    .pjd node the mobile drawer uses), hanging from the bar at the group's
    left line. The centered steppers hide while this rides. */
-@media(min-width:481px){
+@media(min-width:761px){
   .flag:has(.pjx){height:44px}   /* height pinned so the veil's clip geometry is a constant */
   /* the bar's veil moves to a ::before, as the mobile tier does: with
      backdrop-filter on .flag itself the bar becomes the backdrop root and
@@ -157,7 +157,7 @@
     .flag:has(.pjx[open]) .pjd{opacity:0;transform:translateY(-6px)}
   }
 }
-@media(max-width:480px){
+@media(max-width:760px){
   .flag:has(.bgr){height:calc(44px + var(--sat));padding:var(--sat) 16px 0;--mnavH:296px;   /* the design constant: bar 44 + air 16 + 5 borderless rows at 44pt + floor 16. ONE edge inset for bar and drawer: 16, sitting a touch inside the body's 22 by intent. --sat rides on top everywhere, so the glass owns the status area */
     background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent}
   .flag:has(.bgr)::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(44px + var(--sat));z-index:-2;
@@ -234,7 +234,7 @@
    hang off it, so they move with it (panel = trigger - 28 pad, 216 wide).
    ---------------------------------------------------------------- */
 .flag,.flag *,.flag *::before,.flag *::after{box-sizing:border-box}
-@media(min-width:481px){
+@media(min-width:761px){
   .flag:has(.pjx){--pjxL:96px}
   .flag:has(.pjx) .navhome::after{content:"";display:inline-block;width:1px;height:12px;margin-left:16px;vertical-align:-2px;background:var(--ctlbd,var(--line))}
   .flag .pjx{left:var(--pjxL)}
@@ -263,5 +263,8 @@
 }
 
 /* GitHub rests on phones: the drawer keeps Home, CV, LinkedIn and Contact (2026-10-12). Desktop keeps all four links. */
-@media(max-width:480px){.flag .tops a[href*="github.com"]{display:none}
+@media(max-width:760px){.flag .tops a[href*="github.com"]{display:none}
   .flag:has(.bgr[open]) .tops .thsw{margin-top:38px}}   /* one link fewer above it: the pill drops one 44pt row (-6 + 44), so its bottom is back on the bottom of the last project row */
+
+/* 2026-10-12: the phone bar (drawer) now runs to 760px, the same line where the pages themselves turn to their phone layout (harmony.css).
+   It used to stop at 480, so a narrow desktop window (Safari bottoms out near 560) got phone content under a desktop bar. */
