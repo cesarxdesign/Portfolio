@@ -21762,12 +21762,18 @@ svg { display: block; }
     if(w<=760&&inRow){inRow.classList.add("capflow");rr.after(inRow);}else if(w>760&&nx&&nx.classList.contains("capflow")){nx.classList.remove("capflow");rr.appendChild(nx);}}
   /* the last label of the old/new grid is cut to "not stuck." on phones, where the full line runs off the screen */
   [].forEach.call(document.querySelectorAll(".caprow .num"),function(n){var full=n.getAttribute("data-full")||n.textContent;if(full.indexOf("not stuck")!==0)return;n.setAttribute("data-full",full);n.textContent=w<=760?"not stuck.":full;});
+  function ink(e,q){var m=q.right,M=q.left,tw=document.createTreeWalker(e,NodeFilter.SHOW_TEXT),n,rg=document.createRange();while((n=tw.nextNode())){if(!n.nodeValue.trim())continue;rg.selectNodeContents(n);[].forEach.call(rg.getClientRects(),function(c){if(c.width>1){m=Math.min(m,c.left);M=Math.max(M,c.right);}});}return m<M?[m,M]:[q.left,q.right];}function inkL(e,q){return ink(e,q)[0];}   /* where a note's text really starts: set flush right, its longest line is shorter than its box */
   /* rows with notes in the left gutter open on their first screen: scrolled until that screen's edge sits on the text column's line */
-  [].forEach.call(document.querySelectorAll(".v0row:not(.protorow)"),function(row){var has=[].some.call(row.children,function(e){return e.classList.contains("cap")&&e.getBoundingClientRect().width>0;});
-    row.classList.toggle("gut",has&&w<=760);row.style.removeProperty("--gut");if(!has||w>760)return;var ph=row.querySelector(".ph");if(!ph)return;
-    /* the gutter is cut to the notes' own reach, so swiped fully over, the left note's edge sits on the text column's line (300 is only the starting allowance) */
-    row.scrollLeft=0;var zz=parseFloat(getComputedStyle(row).zoom)||1,pl=ph.getBoundingClientRect().left,ml=1e9;[].forEach.call(row.children,function(e){if(!e.classList.contains("cap"))return;var q=e.getBoundingClientRect();if(q.width>0&&q.right<=pl)ml=Math.min(ml,q.left);});
+  [].forEach.call(document.querySelectorAll(".v0row:not(.protorow)"),function(row){[].forEach.call(row.children,function(e){if(e.classList.contains("cap")&&e.dataset.fitw){e.style.width="";delete e.dataset.fitw;}});var has=[].some.call(row.children,function(e){return e.classList.contains("cap")&&e.getBoundingClientRect().width>0;});
+    row.classList.toggle("gut",has&&w<=760);row.style.removeProperty("--gut");if(!has||w>760){var os=row.querySelector(":scope>.capstop");if(os)os.remove();return;}var ph=row.querySelector(".ph");if(!ph)return;
+    /* the gutter is cut to the notes' own reach, so swiped fully over, the left note's edge sits on the text column's line (300 is only the starting allowance). The edge is the text's, not the box's */
+    row.scrollLeft=0;var zz=parseFloat(getComputedStyle(row).zoom)||1,pl=ph.getBoundingClientRect().left,ml=1e9;[].forEach.call(row.children,function(e){if(!e.classList.contains("cap"))return;var q=e.getBoundingClientRect();if(q.width>0&&q.right<=pl)ml=Math.min(ml,inkL(e,q));});
     if(ml<1e9)row.style.setProperty("--gut",(300-(ml-l)/zz).toFixed(1)+"px");
+    /* notes right of the screens: the swipe ends one margin past the furthest note, as it does past the last screen (a note is placed, not laid out, so the row's own padding never reached it) */
+    /* a note right of the screens is cut to its own text, so a short one does not hold the swipe open with an empty box: the text itself ends on the margin */
+    [].forEach.call(row.children,function(e){if(!e.classList.contains("cap"))return;var q=e.getBoundingClientRect();if(!(q.width>0)||q.right<=pl)return;var k=ink(e,q),cut=(q.right-k[1])/zz;if(cut>1){e.style.width=Math.ceil(parseFloat(getComputedStyle(e).width)-cut+1)+"px";e.dataset.fitw="1";}});
+    var stop=row.querySelector(":scope>.capstop"),mr=-1e9,rl=row.getBoundingClientRect().left;if(stop)stop.style.left="0";[].forEach.call(row.children,function(e){if(!e.classList.contains("cap"))return;var q=e.getBoundingClientRect();if(q.width>0)mr=Math.max(mr,ink(e,q)[1]);});
+    if(mr>-1e9){if(!stop){stop=document.createElement("i");stop.className="capstop";stop.style.cssText="position:absolute;top:0;width:1px;height:1px;pointer-events:none";row.appendChild(stop);}stop.style.left=((mr-rl+l)/zz-1).toFixed(1)+"px";}
     for(var i=0;i<3;i++){var d=ph.getBoundingClientRect().left-(l+2);if(Math.abs(d)<1)break;var z=parseFloat(getComputedStyle(row).zoom)||1,b=row.scrollLeft;row.scrollLeft=b+d;if(Math.abs(ph.getBoundingClientRect().left-(l+2))>Math.abs(d)/2)row.scrollLeft=b+d/z;}});
   /* Easy fix? opens on its middle screen, centred on the screen itself (the ring that hangs off it is not counted) */
   if(rr&&w<=760){var mid=rr.querySelectorAll(".ph")[1];if(mid)for(var i=0;i<3;i++){var q=mid.getBoundingClientRect(),d=q.left+q.width/2-w/2;if(Math.abs(d)<1)break;var z=parseFloat(getComputedStyle(rr).zoom)||1,b=rr.scrollLeft;rr.scrollLeft=b+d;var q2=mid.getBoundingClientRect();if(Math.abs(q2.left+q2.width/2-w/2)>Math.abs(d)/2)rr.scrollLeft=b+d/z;}}}s();addEventListener("resize",s);addEventListener("load",function(){last=0;s();});})();   /* only when the width really changes: a phone fires resize every time its toolbar slides, and touching a root property restyles every screen on the page */
@@ -21942,7 +21948,7 @@ svg { display: block; }
     var H={back:null,lbl:null,help:null};
     function setFoot(k){ if(foot.dataset.k===k) return; foot.dataset.k=k; foot.innerHTML=''; foot.appendChild(FOOT[k].cloneNode(true)); }
     function head(){
-      var off=S.scr==='wallets', lbl=S.scr==='done'?'Return':'Back', act=S.scr==='done'?'reset':'back', on=S.scr==='help';
+      var off=S.scr==='wallets'||S.scr==='signing', lbl=S.scr==='done'?'Return':'Back', act=S.scr==='done'?'reset':'back', on=S.scr==='help';
       if(H.back!==off){ H.back=off; backBtn.classList.toggle('off',off); }
       if(H.lbl!==lbl){ H.lbl=lbl; backLbl.textContent=lbl; }
       if(backBtn.getAttribute('data-act')!==act) backBtn.setAttribute('data-act',act);
@@ -22039,7 +22045,7 @@ svg { display: block; }
       var cta=el.querySelector('.c175v'); cta.style.justifyContent='center'; var p=cta.querySelector('.c72h'); p.innerHTML='<span class="cf">Confirming<span class="dots"></span></span>';
       var n=0;
       timers.push(setInterval(function(){ n=(n+1)%4; var d=slot.querySelector('.dots'); if(d) d.textContent=['','.','..','...'][n]; },420));
-      timers.push(setTimeout(function(){ go({scr:'done'},'push'); },6000));
+      if(!dead()) timers.push(setTimeout(function(){ go({scr:'done'},'push'); },6000));   /* on a phone's page the screens are pictures: it stays on Confirming */
       return el;
     }
     function vDone(){
@@ -22060,6 +22066,7 @@ svg { display: block; }
       var el=bodyOf('08'); el.querySelector('.c197v').setAttribute('data-act','email');
       var ref=el.querySelector('.c164h .c98v'), box=ref.parentNode; box.style.cssText+=';flex-direction:row;align-items:center;justify-content:flex-start;gap:4px;overflow:visible';   /* the reference, then its copy button */
       var cp=document.createElement('div'); cp.className='cpy'; cp.setAttribute('data-act','copyref'); cp.setAttribute('role','button'); cp.setAttribute('aria-label','Copy payment reference'); cp.innerHTML=ICO_COPY; box.appendChild(cp);
+      var gap=el.querySelector('.c48v > .c40v'), xit=document.createElement('div'); xit.className='xit'; xit.setAttribute('data-act','exit'); xit.setAttribute('role','button'); xit.textContent='Exit prototype'; gap.style.cssText+=';display:flex;align-items:center;justify-content:center;overflow:visible'; gap.appendChild(xit);   /* app mode: the way back to the page, in the middle of the air between the references and the email note */
       return el;
     }
     var VIEWS={wallets:vWallets,tokens:vTokens,ready:vReady,signing:vSigning,done:vDone,failed:vFailed,help:vHelp};
@@ -22069,13 +22076,14 @@ svg { display: block; }
     function settle(){ [].slice.call(vp.children).slice(0,-1).forEach(function(k){ k.remove(); }); var k=vp.lastElementChild; if(k){ k.style.transition=''; k.style.transform=''; } }
     var cardB=null;   /* the back of the card: Support, while it is showing */
     function flipTo(view){   /* turn the card over to Support */
+      noFlip();
       if(cardB) cardB.remove(); cardB=document.createElement('div'); cardB.className='card back'; var vp2=document.createElement('div'); vp2.className='vp'; cardB.appendChild(vp2); vp2.appendChild(view);
       cardB.style.transform='rotateY(-180deg)'; cardbox.appendChild(cardB); void cardB.offsetWidth;
       timers.push(setTimeout(function(){ card.classList.add('turning'); cardB.classList.add('turning'); card.style.transform='rotateY(180deg)'; cardB.style.transform='rotateY(0deg)'; },20));
       timers.push(setTimeout(function(){ card.classList.remove('turning'); cardB.classList.remove('turning'); },600));
     }
     function flipBack(){   /* and back to the front */
-      if(!cardB) return; var b=cardB; cardB=null;
+      if(!cardB) return; var b=cardB; cardB=null; noFlip();
       card.classList.add('turning'); b.classList.add('turning'); card.style.transform='rotateY(0deg)'; b.style.transform='rotateY(-180deg)';
       timers.push(setTimeout(function(){ card.classList.remove('turning'); card.style.transform=''; b.remove(); },600));
     }
@@ -22241,6 +22249,7 @@ svg { display: block; }
       else if(k==='cancel') go({scr:'failed'},'push');
       else if(k==='retry'){ if(hist.length&&hist[hist.length-1].scr==='signing') S=hist.pop(); else S.scr='signing'; render('pop'); }   /* the same selection, straight back into Processing */
       else if(k==='email') email(el);
+      else if(k==='exit') exitApp();
       else if(k==='copyref'){   /* copies the reference; the icon turns to a tick for a moment */
         var tx=el.parentNode.querySelector('.c98v').textContent; try{ if(navigator.clipboard) navigator.clipboard.writeText(tx).catch(function(){}); }catch(err){}
         if(!el.classList.contains('done')){ el.classList.add('done'); el.innerHTML=ICO_TICK; timers.push(setTimeout(function(){ el.classList.remove('done'); el.innerHTML=ICO_COPY; },1400)); } }
@@ -22310,16 +22319,19 @@ svg { display: block; }
     function stepZoom(d){ fsZoom=Math.min(1,Math.max(0.4,Math.round((fsZoom+d)*10)/10)); zoom.querySelector('.zplus').disabled=fsZoom>=1; zoom.querySelector('.zminus').disabled=fsZoom<=0.4; size(); keep(); }
     function place(){ if(isFs){ strip.insertBefore(rs,strip.firstChild); strip.appendChild(fsb); } else { pbtns.appendChild(rs); pbtns.appendChild(fsb); } }   /* on the page: beside the screen, under the notes; maximised: either side of the strip */
     /* maximised: an overlay over the page (the page stays behind it, blurred), whatever size the window is; the screen 20% under the largest that fits, the strip mid-way in the air below it */
+    var mpw=0;   /* the screen's width on a phone's page; 0 elsewhere */
     function size(){
-      var pw=PW0; if(isFs){ var h=(window.innerHeight-2*(strip.offsetHeight+64))*fsZoom, w=window.innerWidth-2*(64+300); pw=Math.max(220,Math.floor(Math.min(h*IW/IH,w)));
+      var pw=(mpw&&!isFs)?mpw:PW0; if(isFs){ var h=(window.innerHeight-2*(strip.offsetHeight+64))*fsZoom, w=window.innerWidth-2*(64+300); pw=Math.max(220,Math.floor(Math.min(h*IW/IH,w)));
         var H=window.innerHeight, ph=pw*IH/IW, band=Math.floor((H-ph)/2), sh=strip.offsetHeight; pr.style.setProperty('--band',band+'px');
         var mid=((H-band/2-sh/2)-ph)/2; pr.style.setProperty('--lift',Math.round(0.6*(band-mid))+'px'); }   /* lifted most of the way to the middle of the space above the strip; the rest is a deliberate downward bias */
       [stage,live].forEach(function(el){ el.style.setProperty('--pw',pw); }); alignTitle();
     }
-    function alignTitle(){   /* the screen's name sits level with the price, the 29, inside the screen */
-      var p=root.querySelector('.c19h'), t=pinfo.querySelector('.pt'); if(!p||!t) return; pinfo.style.paddingTop='0px';
-      var pb=p.getBoundingClientRect(), sb=stage.getBoundingClientRect(), tb=t.getBoundingClientRect(), ib=pinfo.getBoundingClientRect();
-      var want=(pb.top+pb.height/2)-sb.top-(tb.height/2)-(tb.top-ib.top); pinfo.style.paddingTop=Math.max(0,Math.round(want))+'px';
+    function capTop(el){ var g=document.createRange(); g.selectNodeContents(el); var r=g.getClientRects()[0]||el.getBoundingClientRect(); return r.top+0.2*r.height; }   /* the top of the capitals and digits: Inter's sit a fifth of the way down its text box */
+    function alignTitle(){   /* the screen's name starts level with the top of the price, the 29; the first note's title starts level with the bottom of the header inside the screen */
+      var cur=pinfo.querySelector('.pi:not(.pi-out)')||pinfo, pt=cur.querySelector('.pt'), t=cur.querySelector('.st-t'), price=root.querySelector('.c19h'); if(!pt||!t) return;
+      pinfo.style.paddingTop='0px'; pt.style.marginBottom=''; if(dead()) return;   /* on a phone's page the notes start level with the top of the screen */
+      if(price) pinfo.style.paddingTop=Math.max(0,Math.round((capTop(price)-capTop(pt))*10)/10)+'px';
+      var mb=parseFloat(getComputedStyle(pt).marginBottom)||0, d=hd.getBoundingClientRect().bottom-capTop(t); pt.style.marginBottom=Math.max(4,Math.round((mb+d)*10)/10)+'px';
     }
     function keep(){ try{ sessionStorage.setItem('subs.fs',JSON.stringify({fs:isFs,z:fsZoom,n:num()})); }catch(e){} }   /* survives a reload of the page, so edits land in the open view */
     function setFs(on){
@@ -22380,14 +22392,108 @@ svg { display: block; }
       if(t.classList.contains('zb')){ stepZoom(t.classList.contains('zplus')?0.1:-0.1); return; }
       e.stopImmediatePropagation(); e.preventDefault();
       if(t.classList.contains('fsx')) setFs(false);
-      else if(t.classList.contains('fsbtn')) setFs(!isFs);
+      else if(t.classList.contains('fsbtn')){ if(isPhone()) setApp(true,true); else setFs(!isFs); }
       else if(t.classList.contains('restart')) reset();
       else jump(jumps.indexOf(t)+1);
     },true);
     pr.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.stopImmediatePropagation(); jump(num()+(e.key==='ArrowRight'?1:-1)); } },true);
-    window.__subs={get S(){return S;},get hist(){return hist;},root:root,jump:jump};
+    /* ---------- app mode (phones): the prototype is the page. The phone drawn on the page goes; the screen fills the browser, without the drawn status bar
+       and home bar (the real phone has its own). It is a history entry, so the browser's Back and the back-swipe leave it, and so does Exit in Support. ---------- */
+    function dead(){ return isPhone()&&!isApp; }   /* a phone's page: the screens are pictures */
+    function noFlip(){ if(!dead()) return; cardbox.classList.add('inst'); setTimeout(function(){ cardbox.classList.remove('inst'); },700); }   /* there Support just appears */
+    var appLand=false;   /* opened straight into the prototype: leaving it lands on this section */
+    var isApp=false, appPushed=false, appY=0, APPH=+((/apph=(\d+)/.exec(location.hash||'')||[])[1]||772), APPW=320, themeWas=null;   /* the least height the screens need (Select wallet and Review are the tight ones); the full design is 778 without the drawn status bar and home bar */
+    function isPhone(){ return window.matchMedia('(max-width:760px)').matches; }
+    var appCss=document.createElement('style'); appCss.textContent=
+      'html.subs-app,html.subs-app body{overflow:hidden!important;overscroll-behavior:none}'+
+      '.protorow .pr.stp.app{position:fixed;inset:0;z-index:1000;display:block;background:linear-gradient(var(--hdc,#fff) 0 calc(var(--hdh,0px) + env(safe-area-inset-top)),#fff calc(var(--hdh,0px) + env(safe-area-inset-top)));padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}'+
+      '.protorow .pr.stp.app .pinfo,.protorow .pr.stp.app .steps,.protorow .pr.stp.app .pbtns,.protorow .pr.stp.app .fsx,.protorow .pr.stp.app .fszoom{display:none!important}'+
+      '.protorow .pr.stp.app .stage{display:block;width:100%;height:100%;margin:0!important}'+
+      '.protorow .pr.stp.app .ph.live{position:relative;inset:auto;margin:0 auto;border-radius:0;box-shadow:none;content-visibility:visible}.protorow .pr.stp.app .ph:not(.live){display:none}'+
+      /* on a phone's page: Try it out; under it one row, the screen and its notes, that rests in two places only (the screen on the left margin, or the notes ending on the right one); under that the strip, swiped sideways */
+      '.protorow .mrow,.protorow .mtrack{display:contents}.protorow .pr.stp.app .mrow,.protorow .pr.stp.app .mtrack{display:block;width:100%;height:100%}'+
+      /* a card, as the step cards of the 1-click dream: the title, the play button in the accent, the way out */
+      '.subs-look{display:none!important}.tryrow{display:flex;flex-direction:column;align-items:flex-start;gap:18px;box-sizing:border-box;width:100%;max-width:var(--h-textW,640px);margin:36px 0 0;padding:28px 24px 28px 28px;border:1px solid var(--line);border-radius:16px;--sad:#98A0A8;background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--sad) 7.5%,transparent) 0 2px,transparent 2px 5px),rgba(255,255,255,.40)}:root[data-theme="dark"] .tryrow{--sad:#7C8188;background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--sad) 4.2%,transparent) 0 2px,transparent 2px 5px),rgba(255,255,255,.05)}'+   /* the work-in-progress stripes of the step numbers, very faint */
+      '.tryrow .tryline{display:flex;align-items:center;gap:28px}.tryrow .tryt{margin:0;font:600 20px/1.2 var(--h-sans);letter-spacing:-.01em;color:var(--ink)}'+
+      '.tryrow .tryhint{display:flex;align-items:center;gap:6px;font:400 13px/1 var(--h-sans);color:var(--mut);white-space:nowrap}.tryrow .tryhint .hq{flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line)}.tryrow .tryhint .hq svg{display:block}'+   /* the screen's own Support button: its white disc and its question mark */
+      '.tryrow .tryit{flex:none;display:grid;place-items:center;width:56px;height:56px;margin:0;padding:0 0 0 3px;appearance:none;border:0;border-radius:50%;background:var(--accent);color:#fff;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 14%,transparent);cursor:pointer;-webkit-tap-highlight-color:transparent}:root[data-theme="dark"] .tryrow .tryit{color:color-mix(in srgb,var(--accent) 30%,#000)}'+
+      '.tryrow .trydesk{display:flex;align-items:center;gap:28px}.tryrow .tryph{flex:none;display:block;color:var(--accent)}.tryrow .tryph rect{fill:color-mix(in srgb,#fff 40%,var(--bg))}:root[data-theme="dark"] .tryrow .tryph rect{fill:color-mix(in srgb,#fff 5%,var(--bg))}.tryrow .trylines{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}'+
+      '.tryrow .tryl1{display:flex;align-items:center;gap:8px;margin:0;font:400 16px/1.5 var(--h-sans);color:var(--body)}.tryrow .tryl1 b{font-weight:600;color:var(--ink)}'+
+      '.tryrow .trycopy{flex:none;display:grid;place-items:center;width:30px;height:30px;padding:0;appearance:none;border:0;border-radius:999px;background:transparent;color:var(--mut);cursor:pointer}.tryrow .trycopy:hover{color:var(--ink);background:var(--line)}.tryrow .trycopy.done{color:var(--accent)}.tryrow .trycopy svg{width:15px;height:15px}'+
+      '@media(min-width:761px){.v0row.protorow .fig{padding:20px 0 32px}}'+   /* desktop: 76 from the line above to the screen and 100 from the strip's screens to the next title, as the page's other rows */
+      '@media(min-width:761px){.tryrow .tryline{display:none}.tryrow{display:grid;grid-template-columns:max-content max-content;column-gap:28px;row-gap:18px;align-items:center;width:fit-content;max-width:100%;padding-right:28px}.tryrow .trydesk{display:contents}.tryrow .tryt{grid-column:1}.tryrow .tryph{grid-column:1;justify-self:center}.tryrow .trylines{grid-column:2}.tryrow{position:relative}.tryrow .trycopy{position:absolute;top:20px;right:20px}}'+   /* desktop: the phone is centred under the title, whose width sets the first column */
+      '@media(max-width:760px){'+
+      '.tryrow .trydesk{display:none}.tryrow{cursor:pointer;-webkit-tap-highlight-color:transparent;margin-bottom:88px}.tryrow .tryline{align-self:stretch}.tryrow .tryline .tryhint{flex:1 1 0;justify-content:center}'+   /* phones: the exit line is centred in the space right of the play button */
+      '.protorow .pr.stp:not(.app){display:block}'+
+            '.protorow .pr.stp:not(.app) .mtrack{display:flex;align-items:flex-start;gap:16px;box-sizing:border-box;width:var(--mtw,auto);padding:0 0 48px var(--mb,22px);overflow:hidden}'+   /* the track is exactly the screen, the gap and the notes: nothing else can add to the travel */
+      '.protorow .pr.stp:not(.app) .mrow{display:block;margin:0 calc(var(--mb,22px)*-1) -48px;padding:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-left:var(--mb,22px);scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}'+
+      '.protorow .pr.stp:not(.app) .mrow::-webkit-scrollbar,.protorow .pr.stp:not(.app) .steps::-webkit-scrollbar{display:none}'+
+      '.protorow .pr.stp:not(.app) .mrow .stage{flex:none;margin:0!important;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}'+
+      '.protorow .pr.stp:not(.app) .mrow .pinfo{flex:none;box-sizing:border-box;max-width:none;padding-right:var(--mb,22px);scroll-snap-align:end;scroll-snap-stop:always}'+
+      '.protorow .pr.stp:not(.app) .pinfo .pt{margin-left:0;font-size:calc(22px*var(--az,.79))}.protorow .pr.stp:not(.app) .pinfo .st-row{padding:8px 0;gap:10px}'+
+      /* the notes are set as the page's other annotations are on a phone: the same title and body, at the same reduction */
+      '.protorow .pr.stp:not(.app) .pinfo .st-t{font:500 calc(17px*var(--az,.79))/1.25 var(--h-sans);letter-spacing:-.02em;color:var(--ink)}.protorow .pr.stp:not(.app) .pinfo .st-b{font:400 calc(15px*var(--az,.79))/1.5 var(--h-sans);color:var(--mut)}.protorow .pr.stp:not(.app) .pinfo .st-tx{padding-top:5px;gap:3px}.protorow .pr.stp:not(.app) .pinfo .st-b + .st-b{display:none}'+   /* Recovery, Back: its second paragraph is left out on phones (the only note with one) */
+      '.v0row.protorow .fig{padding:20px 0 32px}.protorow .pr.stp:not(.app) .steps{margin:21px calc(var(--mb,22px)*-1) 0;padding:1px var(--mb,22px) 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}.protorow .pr.stp:not(.app) .steps button.st{flex:none}'+
+      '.protorow .pr.stp:not(.app) .pbtns{display:none!important}'+
+      '}';
+    document.head.appendChild(appCss);
+    var appSt=document.createElement('style'); appSt.textContent=
+      '#app.am .iph,#app.am .iph-lay,#app.am .frame,#app.am .c49ar{width:var(--W)!important;height:var(--H)!important}#app.am .iph-lay{top:0!important}#app.am .iph-sb,#app.am .iph-hi{display:none!important}'+
+      '.xit{display:none;position:relative;flex:none;padding:5px 9px 4px;border-radius:999px;font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:rgb(209,37,37);background:rgba(209,37,37,.08);box-shadow:inset 0 0 0 1px rgba(209,37,37,.08)}.xit::before{content:"";position:absolute;inset:-12px}#app.am .xit{display:block}';
+    root.appendChild(appSt);
+    function appSize(){
+      if(!isApp) return; var cs=getComputedStyle(pr), w=pr.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight), h=pr.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+      var s=Math.min(1,w/APPW,h/APPH), W=w/s, H=h/s;   /* responsive: the screen is laid out at the browser's own size, 1 to 1. Select wallet needs 772 of height; in a shorter window the screen is laid out wider and scaled down to fit, still edge to edge */
+      [stage,live].forEach(function(el){ el.style.setProperty('--pw',w.toFixed(3)); }); live.style.setProperty('--iw',W.toFixed(3)); live.style.setProperty('--ih',H.toFixed(3)); app.style.setProperty('--W',W.toFixed(3)+'px'); app.style.setProperty('--H',H.toFixed(3)+'px');
+      var hc=getComputedStyle(hd).backgroundColor; pr.style.setProperty('--hdc',hc); pr.style.setProperty('--hdh',(hd.offsetHeight*s).toFixed(2)+'px'); setTheme(hc);   /* the header's band runs edge to edge, and the browser's bar takes its colour */
+    }
+    function setTheme(c){ var m=document.querySelector('meta[name="theme-color"]'); if(c!==null){ if(!m){ m=document.createElement('meta'); m.name='theme-color'; m.dataset.subs='1'; document.head.appendChild(m); } else if(themeWas===null) themeWas=m.content; m.content=c; }
+      else if(m){ if(m.dataset.subs) m.remove(); else if(themeWas!==null){ m.content=themeWas; themeWas=null; } } }
+    function setApp(on,tap){
+      if(on===isApp) return; if(on&&isFs) setFs(false); isApp=on;
+      if(on){ appY=window.scrollY; try{ history.scrollRestoration='manual'; }catch(e){} try{ history.pushState({subsApp:1},''); appPushed=true; }catch(e){}
+        if(tap){ var de=document.documentElement; try{ if(de.requestFullscreen) de.requestFullscreen({navigationUI:'hide'}).catch(function(){}); }catch(e){} } }   /* Android hides the browser's bars; the iPhone has no such call and keeps Safari's bar */
+      else { try{ if(document.fullscreenElement) document.exitFullscreen().catch(function(){}); }catch(e){} }
+      if(on&&num()!==1){ ar.classList.add('inst'); jump(1); setTimeout(function(){ ar.classList.remove('inst'); },700); }   /* the prototype always starts at the start */
+      pr.classList.toggle('app',on); app.classList.toggle('am',on); document.documentElement.classList.toggle('subs-app',on); if(!on) setTheme(null);
+      if(on) appSize(); else { live.style.removeProperty('--iw'); live.style.removeProperty('--ih'); app.style.removeProperty('--W'); app.style.removeProperty('--H'); size(); relayout(); msize(true); if(appLand){ appLand=false; appY=Math.max(0,window.scrollY+(pr.closest('.protorow')||pr).getBoundingClientRect().top-80); } window.scrollTo({top:appY,behavior:'instant'}); [60,300].forEach(function(t){ setTimeout(function(){ if(!isApp) window.scrollTo({top:appY,behavior:'instant'}); },t); }); setTimeout(function(){ try{ history.scrollRestoration='auto'; }catch(e){} },400); }   /* the page comes back where it was left */
+      if(!on) msize(true); dockPad(); alignTitle(); if(!on&&num()!==1) jump(1);   /* back on the page, the picture is the first screen again */
+    }
+    var mrow=document.createElement('div'), mtrack=document.createElement('div'); mrow.className='mrow'; mtrack.className='mtrack'; pr.insertBefore(mrow,stage); mrow.appendChild(mtrack); mtrack.appendChild(stage); mtrack.appendChild(pinfo);
+    var tryb=document.createElement('button'); tryb.type='button'; tryb.className='tryit'; tryb.innerHTML='<svg width="17" height="20" viewBox="0 0 12 14" fill="currentColor" aria-hidden="true"><path d="M1 1.2v11.6a.9.9 0 0 0 1.36.77l9.7-5.8a.9.9 0 0 0 0-1.54L2.36.43A.9.9 0 0 0 1 1.2z"/></svg>'; tryb.setAttribute('aria-label','Try it');
+    var tryrow=document.createElement('div'), tryhint=document.createElement('span'); tryrow.className='tryrow'; tryhint.className='tryhint';
+    tryhint.innerHTML='<span>Tap</span><span class="hq" role="img" aria-label="the question mark"><svg width="12" height="12" viewBox="485 260 12 12" fill="none" aria-hidden="true"><path d="M489.125 264.5C489.125 263.45 489.95 262.625 491 262.625C492.05 262.625 492.875 263.45 492.875 264.5C492.875 265.325 492.35 265.625 491.75 266C491.15 266.375 491 266.75 491 267.275" stroke="#3D3B45" stroke-width="1.2" stroke-linecap="round"/><path d="M491 269.674C491.373 269.674 491.675 269.372 491.675 268.999C491.675 268.626 491.373 268.324 491 268.324C490.627 268.324 490.325 268.626 490.325 268.999C490.325 269.372 490.627 269.674 491 269.674Z" fill="#3D3B45"/></svg></span><span>to exit prototype.</span>';
+    var tryt=document.createElement('p'); tryt.className='tryt'; tryt.textContent='Try it'; var tryline=document.createElement('div'); tryline.className='tryline'; tryline.appendChild(tryb); tryline.appendChild(tryhint); tryrow.appendChild(tryt); tryrow.appendChild(tryline);
+    var PROTO_URL=(/(^|\.)cesargx\.com$/.test(location.hostname)?'cesargx.com':'cesarxdesign.com')+'/proto',   /* each site names its own address, and its /proto opens its own page */
+         trydesk=document.createElement('div'); trydesk.className='trydesk';
+    trydesk.innerHTML='<svg class="tryph" width="32" height="56" viewBox="0 0 32 56" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="1.75" y="1.75" width="28.5" height="52.5" rx="6.5"/><path d="M12.5 6.5h7"/><path d="M11.5 49.5h9"/></svg>'+   /* a phone, where the play button is on a phone */
+      '<div class="trylines"><p class="tryl1"><span>Open <b>'+PROTO_URL+'</b> on your mobile phone to try.</span><button type="button" class="trycopy" aria-label="Copy the link">'+ICO_COPY+'</button></p></div>';
+    trydesk.querySelector('.trylines').appendChild(tryhint.cloneNode(true)); tryrow.appendChild(trydesk);
+    trydesk.querySelector('.trycopy').addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); var b=this; try{ if(navigator.clipboard) navigator.clipboard.writeText('https://'+PROTO_URL).catch(function(){}); }catch(err){}
+      if(!b.classList.contains('done')){ b.classList.add('done'); b.innerHTML=ICO_TICK; setTimeout(function(){ b.classList.remove('done'); b.innerHTML=ICO_COPY; },1400); } });   /* copied on a Mac, it pastes on the phone */
+    /* the card takes the place of the list of things to look for, under A transition (the list and its lead-in are hidden) */
+    var look=null; [].forEach.call(document.querySelectorAll('.sub .txtg > p.txt'),function(x){ if(/^Things to look for/.test(x.textContent)) look=x; });
+    if(look){ look.classList.add('subs-look'); var ul=look.nextElementSibling; if(ul&&ul.matches('ul.ans')){ ul.classList.add('subs-look'); ul.after(tryrow); } else look.after(tryrow); } else pr.insertBefore(tryrow,mrow);
+    tryb.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); if(isPhone()) setApp(true,true); });
+    tryrow.addEventListener('click',function(e){ if(isPhone()){ e.preventDefault(); setApp(true,true); } });   /* on a phone the whole card is the button */
+    function msize(rest){   /* the screen is the size of the page's other phones (the Paying attention row's); in the notes' position 30% of the browser shows the screen and the notes have the other 70% */
+      if(!isPhone()||isApp){ if(mpw){ mpw=0; pinfo.style.width=''; pr.style.removeProperty('--mb'); pr.style.removeProperty('--mtw'); if(!isApp){ size(); relayout(); } } return; }
+      var was=mpw, vw=document.documentElement.clientWidth, mb=Math.round(pr.getBoundingClientRect().left+window.scrollX), ref=document.querySelector('.v0row.semrow .ph')||document.querySelector('.v0row:not(.protorow) .frow .ph'), rw=ref?ref.getBoundingClientRect().width:0, G=16;
+      mpw=Math.round((rw>80?rw:0.542*vw)*100)/100; pr.style.setProperty('--mb',mb+'px'); var SPLIT=0.30, pwd=Math.max(140,Math.round((1-SPLIT)*vw-G)), az=parseFloat(getComputedStyle(document.querySelector('.v0row:not(.protorow)')||pr).zoom)||0.79; pr.style.setProperty('--az',az); pinfo.style.width=pwd+'px'; pr.style.setProperty('--mtw',(mb+mpw+G+pwd)+'px'); size();
+      if(rest||!was) mrow.scrollLeft=0;   /* it opens on the screen, whole, on the left margin */
+    }
+    window.addEventListener('resize',function(){ msize(); }); window.addEventListener('load',function(){ msize(true); });
+    function exitApp(){ if(!isApp) return; if(appPushed){ appPushed=false; history.back(); } else setApp(false); }
+    window.addEventListener('popstate',function(){ if(isApp){ appPushed=false; setApp(false); } });
+    window.addEventListener('resize',appSize); if(window.visualViewport) window.visualViewport.addEventListener('resize',appSize);
+    pr.addEventListener('touchmove',function(e){ if(isApp) e.preventDefault(); },{passive:false});   /* the page behind does not scroll or bounce */
+    msize(true);
+    window.__subs={get S(){return S;},get hist(){return hist;},root:root,jump:jump,setApp:setApp};
     S=fresh(); render('none'); setTimeout(function(){ dockL.style.transition=''; ctaL.style.transition=''; },80);
     var m=/proto=(\d)(?:,(\d+))?(,fs)?(,still|,slow)?/.exec(location.hash||''); if(m){ setTimeout(function(){ if(m[4]===',slow'){ var q2=document.createElement('style'); q2.textContent='*{transition-duration:40s!important}'; root.appendChild(q2); } if(m[4]===',still'){ var q=document.createElement('style'); q.textContent='*{transition:none!important;animation:none!important}'; root.appendChild(q); } if(m[3]) setFs(true); jump(+m[1]); if(!m[3]){ pr.scrollIntoView({block:'start'}); window.scrollBy(0,-40); } },+(m[2]||0)); }   /* #proto=N[,delay]: open at step N (for checking the build) */
+    else if(/(^|#|&)app\b/.test(location.hash||'')){ setApp(true); }
+    else if(/^#try\b/.test(location.hash||'')){ var row=pr.closest('.protorow')||pr, land=function(){ if(!isApp) window.scrollTo({top:Math.max(0,window.scrollY+row.getBoundingClientRect().top-80),behavior:'instant'}); };
+      if(isPhone()){ setApp(true); appLand=true; } else { land(); window.addEventListener('load',function(){ land(); [150,500,1200].forEach(function(t){ setTimeout(land,t); }); }); } }
     else { var kept=null; try{ kept=JSON.parse(sessionStorage.getItem('subs.fs')||'null'); }catch(e){}
       if(kept&&kept.fs){ fsZoom=kept.z||0.8; stepZoom(0); setFs(true); if(kept.n>1) jump(kept.n); } }   /* reloaded while maximised: come back maximised, same size, same step */
   }
