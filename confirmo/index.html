@@ -278,6 +278,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
+--body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3ed;--paper:#fffdf8;--paperT:rgba(255,253,248,.86);--ink:#17171a;--ink2:#4b4b51;--mut:#74726c;--flagink:#74726c;--soft:#a29e95;--line:#e6e2d8;
+--orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
+--quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
+--body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
+--quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3fa;--ink:#211e30;--body:#655d89;--mut:#746f89;--soft:#a19abf;--accent:#6f45e0;--line:rgba(70,45,140,.16);--hair:rgba(70,45,140,.24);--flagbg:rgba(247,244,253,.92);--flagink:#746f89;--ctl:rgba(88,54,168,.07);--ctlbd:rgba(88,54,168,.24);--ctlon:rgba(88,54,168,.13);--phbg:rgba(70,45,140,.04);--phbd:rgba(70,45,140,.3);--danger:#cf4f3e;--ok:#2f8f5a;--shA:drop-shadow(0 10px 18px rgba(40,28,80,.14));--shB:drop-shadow(0 14px 24px rgba(40,28,80,.18));--shH:drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13));--shHb:0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13);--glow:rgba(111,69,224,.05);--accent2:#9a6ff0;--grain:.03;--sel:rgba(111,69,224,.22);--glass:rgba(245,243,250,.44);--paperT:var(--flagbg)}:root[data-theme="dark"]{--bg:#12101a;--ink:#f5f3fb;--body:#b9b3ca;--mut:#918aab;--soft:#847d9c;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44)}</style>
 <style>
 /* ---- placed: cxd's colours; the blocks hold the screens ---- */
@@ -14031,7 +14036,7 @@ svg { display: block; flex: none; }
 .frame { position: relative; background: transparent; }   /* the page's card shows through */
 .dsb { box-sizing: border-box; display: flex; align-items: stretch; gap: 112px; padding: 72px; width: 2285px; height: 1586px; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 .dsb-side { display: flex; flex-direction: column; min-width: 0; }
-.dsb-L { flex: none; width: 788px; gap: 96px; }
+.dsb-L { flex: none; width: 788px; justify-content: space-between; }
 .dsb-R { flex: 1 1 0; justify-content: space-between; }
 .dsb-row { display: flex; align-items: flex-start; justify-content: space-between; }
 .dsb-g { display: flex; flex-direction: column; flex: none; }
@@ -14582,143 +14587,6 @@ svg { display: block; flex: none; }
 /* selection dot: out of the flow, pinned to the row's top right corner (x 287, y 0), 40 x 40, padding 0 8, content centred */
 .b05-dot { position: absolute; right: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0 8px; }
 .b05-selected { flex: none; width: 22px; height: 40px; }
-/* E01 */
-.e01-root { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 32px; width: 402px; height: 108px; }
-.e01-line { display: flex; gap: 16px; align-items: center; flex: none; width: 100%; }
-.e01-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; height: 17px; line-height: 16.25px; color: var(--f69); white-space: nowrap; }
-.e01-label-total { font-weight: 600; color: var(--main); }
-.e01-guide-wrap { display: flex; flex: 1 0 0; flex-direction: row; align-items: center; align-self: stretch; }
-.e01-guide { display: flex; flex: 1 0 0; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; min-width: 1px; padding: 3px 0; }
-.e01-stroke { position: relative; flex: none; width: 100%; height: 1px; }
-.e01-values { display: flex; gap: 16px; align-items: center; flex: none; white-space: nowrap; }
-.e01-pair { display: flex; gap: 4px; align-items: center; justify-content: flex-end; flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; height: 17px; line-height: 16.25px; color: #949494; }
-.e01-pair-total { font-weight: 600; color: var(--main); }
-.e01-num { flex: none; text-align: right; }
-.e01-cur { flex: none; }
-.e01-w39 { width: 39px; }
-.e01-w24 { width: 24px; }
-.e01-w71 { width: 71px; }
-.e01-w32 { width: 32px; }
-.e01-w164 { width: 164px; }
-.e01-w83 { width: 83px; }
-.e01-w78 { width: 78px; }
-.e01-w92 { width: 92px; }
-.e01-w70 { width: 70px; }
-/* E02 */
-/* 124:34076 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e02-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 99px; }
-/* Baselines: Figma's text boxes are its auto line height (Plex 1.3em) on the pixel grid (16 / 18 / 17px) and its own outlines
-   (SVG export of this node) put every baseline on a whole pixel: 13px below the box top for the 12px and 13px text, 14px for the 14px label.
-   Chrome sets the same line boxes with the baseline at 12.5 (12px), 14.25 (14px) and 13.375 (13px); the `top` offsets restore Figma's baseline.
-   Widths: Figma's text boxes are whole pixels (57, 135, 71, 32), wider than the glyph run; set here so the glyphs start where Figma starts them. */
-/* button / timestamp: 80x24 pill, padding 2 8 4 */
-.e02-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e02-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e02-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; width: 57px; position: relative; top: 0.5px; }
-/* info: column, gap 8, fills */
-.e02-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e02-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e02-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e02-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; width: 83px; position: relative; top: -0.25px; }
-.e02-rate { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--f69); white-space: nowrap; width: 135px; position: relative; top: 0.5px; }
-/* Payment Details: column, gap 8, padding-left 16, 1px left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e02-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e02-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e02-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); position: relative; top: -0.375px; }
-.e02-pair { flex: none; display: flex; align-items: center; gap: 8px; }
-.e02-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; white-space: nowrap; }
-.e02-num { flex: none; width: 71px; text-align: right; position: relative; top: -0.375px; }
-.e02-cur { flex: none; width: 32px; position: relative; top: -0.375px; }
-/* E04 */
-/* 124:34082 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e04-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 74px; }
-/* button / timestamp: 80x24 pill, padding 2 8 4, radius 32, fill #F8F8F8 */
-.e04-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e04-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e04-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
-/* info: column, gap 8, fills (258 wide) */
-.e04-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e04-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e04-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e04-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
-.e04-amount { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--main); white-space: nowrap; }
-/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e04-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e04-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e04-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); }
-.e04-pair { flex: none; display: flex; align-items: center; gap: 8px; }
-.e04-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
-.e04-num { flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; text-align: right; white-space: nowrap; }
-/* SF Symbols glyph "square.on.square" (text node, box 19 x 17, #7040F0): the face cannot ship, so this is the outline from
-   Figma's own SVG export of 124:34082, cut to the node's box by viewBox only. Path untouched. */
-.e04-copy { flex: none; width: 19px; height: 17px; }
-/* E03 */
-/* 124:34080 payment detail header: row, gap 8, padding 0 16 0 8, align start */
-.e03-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 195px; }
-/* button / timestamp: 80x24 pill, padding 2 8 4, fill solid/F0F2FF; text #4C3F91 at layer opacity .56 */
-.e03-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--f0f2ff); }
-.e03-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
-.e03-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: #4C3F91; white-space: nowrap; }
-/* info: column, gap 8, fills */
-.e03-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.e03-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
-.e03-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
-.e03-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
-/* icon: a text node set in SF Symbols ("exclamationmark.shield.fill"), box 17 x 19 at 229, 2.5 in the component. That face cannot
-   ship, so the glyph is the "icon" path of Figma's own SVG export of 124:34080, untouched, in the component's coordinates.
-   The box sits on a half pixel (2.5); the svg starts half a pixel higher (viewBox 229 2 17 20) so it lands on the device grid
-   and the path keeps Figma's y. */
-.e03-icon { position: relative; flex: none; width: 17px; height: 19px; }
-.e03-glyph { position: absolute; left: 0; top: -0.5px; width: 17px; height: 20px; }
-/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
-.e03-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
-.e03-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
-.e03-copy { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; color: var(--f69); word-break: break-word; }
-.e03-para { line-height: 17px; }
-/* buttons: row, padding 8 0, centred; left fills, right hugs; each padding 8 16 */
-.e03-buttons { flex: none; display: flex; align-items: center; justify-content: center; width: 100%; padding: 8px 0; }
-.e03-left { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
-.e03-left-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
-.e03-left-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 700; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); white-space: nowrap; }
-.e03-right { flex: none; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
-.e03-right-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
-.e03-right-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; color: var(--f69); white-space: nowrap; }
-/* E05 */
-/* E05 · "payment detail header" (underpaid) · Figma 124:34083 · 370 x 161. Auto-layout row, gap 8, items start, padding 0 16 0 8. */
-.e05-root { display: flex; gap: 8px; align-items: flex-start; padding: 0 16px 0 8px; width: 370px; height: 161px; }
-/* button / timestamp: 80 x 24, fill #F8F8F8, radius 32, padding 2 8 4 */
-.e05-time { display: flex; flex: none; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
-.e05-time-txt { flex: none; opacity: 0.56; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
-/* info: fill, column, gap 8 */
-.e05-info { display: flex; flex: 1 0 0; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 1px; }
-.e05-main { display: flex; flex: none; gap: 8px; align-items: center; width: 100%; height: 24px; }
-.e05-label-wrap { display: flex; flex: 1 0 0; gap: 4px; align-items: center; min-width: 1px; }
-.e05-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; }
-/* icon: text node "exclamationmark.shield.fill" (SF Symbols), box 17 x 19. The face cannot ship, so the glyph is the outline Figma's own
-   SVG export of this instance draws for it, cut to the node's box (viewBox 286 2.5 17 19). The path is untouched. */
-.e05-icon { flex: none; width: 17px; height: 19px; }
-/* Payment Details: left stroke 1px inside rgba(66,66,66,0.4), padding-left 16, opacity 0.8 */
-.e05-details { display: flex; flex: none; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 rgba(66,66,66,0.4); }
-.e05-line { display: flex; flex: none; gap: 16px; align-items: center; width: 100%; }
-.e05-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); word-break: break-word; }
-/* buttons: padding 8 0, opacity 0.4; left: fill white, padding 8 16 */
-.e05-buttons { display: flex; flex: none; align-items: center; justify-content: center; width: 100%; padding: 8px 0; opacity: 0.4; }
-.e05-left { display: flex; flex: 1 0 0; align-items: center; justify-content: center; min-width: 1px; padding: 8px 16px; background: var(--fff); }
-.e05-left-txt { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); word-break: break-word; }
-/* F01 */
-.f01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 402px; height: 97px; padding: 12px 32px; color: var(--f42); word-break: break-word; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-.f01-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f01-body { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
-.f01-p { width: 100%; }
-/* Figma's body box is 48px over 3 lines (auto line height, 15.6, on the pixel grid) and its outline export puts the baselines at y 50, 66, 82:
-   13px below the box top (37). A 16px CSS line puts Plex's baseline at 12.5, so 0.5px restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
-.f01-p-body { position: relative; top: 0.5px; }
-/* F02 */
-.f02-root { display: flex; align-items: baseline; justify-content: center; width: 402px; height: 32px; padding: 8px 24px; }
-.f02-cookies { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.24px; color: var(--f42); text-align: center; word-break: break-word; position: relative; top: 0.5px; }
-/* top 0.5px: Figma's outline export of this node puts the baseline at y 21, 13px below the text box top (8). A 16px CSS line puts Plex's baseline at 12.5; the half pixel restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
-/* CSS adds the 0.24px tracking after the last glyph, Figma does not: cancel it so the centred line sits where Figma's does. */
-.f02-b { font-weight: 700; margin-right: -0.24px; }
 /* D01 */
 /* D01 · "progress pills" · Figma 124:34062 · 123.33332824707031 x 18. An auto-layout frame (row, gap 8, centred on both axes, no fill,
    no stroke) holding four "status pill" instances, each 24 wide: column, items at start > "status pill / self" (full width, 8 high)
@@ -14901,49 +14769,143 @@ svg { display: block; flex: none; }
    Width 350 and height 17 are Figma's own text box (350 x 17 at 2, 5). Line height is "auto"; the 17px box over one line gives 17px. */
 .d11-label { position: relative; flex: none; width: 350px; height: 17px; font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 500; font-stretch: 100%; font-variation-settings: "wdth" 100; font-size: 13px; line-height: 17px;
   letter-spacing: 0; color: var(--f42); opacity: 0.88; text-align: center; white-space: nowrap; }
-/* F03 */
-.f03-body { position: relative; display: flex; flex-direction: column; align-items: center; width: 354px; height: 195px; padding: 8px 16px; overflow: clip; background: var(--fff); border-radius: 16px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-/* Figma's stroke: 1px inside, linear gradient at 40%, blend mode multiply. Its own SVG export of the stroke, laid over the fill. */
-.f03-stroke { position: absolute; left: 0; top: 0; mix-blend-mode: multiply; pointer-events: none; }
-.f03-header { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; padding: 18px 16px; color: var(--f42); word-break: break-word; }
-.f03-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f03-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; white-space: pre-wrap; }
-.f03-p { width: 100%; }
-/* Figma's outline export puts the body baselines at y 64, 80, (96), 112: 13px below each 16px line top; and the button label baselines at y 167: 17px below the 21px line top (150).
-   CSS centres Plex's 1.3em content box in the line, which lands the baselines at 12.5 and 16.5. 0.5px restores Figma's whole-pixel baselines. Deliberate, not a nudge. */
-.f03-p-text { position: relative; top: 0.5px; }
-.f03-p-label { position: relative; top: 0.5px; }
-.f03-divider { position: relative; flex: none; width: 100%; height: 1px; }
-.f03-beam { position: absolute; inset: 0; background: rgba(105,105,105,0.08); }
-.f03-buttons { display: flex; align-items: center; justify-content: center; flex: none; padding: 8px 0; }
-.f03-btn { display: flex; align-items: center; justify-content: center; flex: none; width: 160px; padding: 8px 16px; }
-.f03-label { display: flex; flex-direction: column; justify-content: center; flex: none; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; white-space: nowrap; word-break: break-word; }
-.f03-label-left { font-weight: 500; color: var(--negative); }
-.f03-label-right { font-weight: 600; color: var(--f69); }
-/* F04 */
-.f04-body { position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 354px; height: 225px; padding: 24px 16px; border-radius: 16px; background: #FFFFFF; overflow: clip; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
-/* Figma strokes are gradients (inside 1px at 40% multiply on the body, outside 1px at 80% overlay on the input): Figma's own exported rects, not box-shadows. */
-.f04-stk { position: absolute; left: 0; top: 0; pointer-events: none; }
-.f04-stk-body { mix-blend-mode: multiply; }
-.f04-stk-input { mix-blend-mode: overlay; }
-.f04-head { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; color: var(--f42); word-break: break-word; }
-.f04-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
-.f04-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
-.f04-p { width: 100%; }
-/* Figma's outline export puts the baselines on these three texts 0.5px lower than a CSS line box does (body 62, label 154.5, aux 198; CSS gives 61.5, 154, 197.5):
-   Figma sets Plex's auto line height on the pixel grid. 0.5px restores Figma's baseline. Deliberate, read from the export, not a nudge. */
-.f04-half { position: relative; top: 0.5px; }
-.f04-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; flex: none; width: 100%; }
-.f04-input { position: relative; display: flex; align-items: center; justify-content: space-between; flex: none; width: 100%; padding: 8px; border-radius: 16px; background: #FBFBFB; }
-/* Figma casts the input's inner shadow from the outer edge of its outside stroke (export filter region 324 x 58; stroke outer radius 16.5 + 0.5), so it sits on a layer 1px outside the box. */
-.f04-inner { position: absolute; inset: -1px; border-radius: 17px; pointer-events: none; box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.04); }
-.f04-label-pad { position: relative; display: flex; align-items: center; justify-content: center; flex: none; padding: 0 8px 2px; }
-.f04-label { flex: none; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: #000000; opacity: 0.56; white-space: nowrap; }
-.f04-btn { position: relative; flex: none; width: 40px; height: 40px; border-radius: 30px; background: var(--main); }
-/* SF Symbol arrow.forward: Figma's outline export of node 124:34103, at the offset it has inside the 40px button in the frame export. */
-.f04-arrow { position: absolute; left: 11.694px; top: 13.343px; }
-.f04-aux { display: flex; align-items: center; justify-content: center; flex: none; width: 100%; }
-.f04-aux-p { flex: 1 0 0; min-width: 1px; font-weight: 300; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: rgba(105,105,105,0.8); mix-blend-mode: multiply; word-break: break-word; }
+/* E01 */
+.e01-root { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 32px; width: 402px; height: 108px; }
+.e01-line { display: flex; gap: 16px; align-items: center; flex: none; width: 100%; }
+.e01-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; height: 17px; line-height: 16.25px; color: var(--f69); white-space: nowrap; }
+.e01-label-total { font-weight: 600; color: var(--main); }
+.e01-guide-wrap { display: flex; flex: 1 0 0; flex-direction: row; align-items: center; align-self: stretch; }
+.e01-guide { display: flex; flex: 1 0 0; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; min-width: 1px; padding: 3px 0; }
+.e01-stroke { position: relative; flex: none; width: 100%; height: 1px; }
+.e01-values { display: flex; gap: 16px; align-items: center; flex: none; white-space: nowrap; }
+.e01-pair { display: flex; gap: 4px; align-items: center; justify-content: flex-end; flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; height: 17px; line-height: 16.25px; color: #949494; }
+.e01-pair-total { font-weight: 600; color: var(--main); }
+.e01-num { flex: none; text-align: right; }
+.e01-cur { flex: none; }
+.e01-w39 { width: 39px; }
+.e01-w24 { width: 24px; }
+.e01-w71 { width: 71px; }
+.e01-w32 { width: 32px; }
+.e01-w164 { width: 164px; }
+.e01-w83 { width: 83px; }
+.e01-w78 { width: 78px; }
+.e01-w92 { width: 92px; }
+.e01-w70 { width: 70px; }
+/* E02 */
+/* 124:34076 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e02-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 99px; }
+/* Baselines: Figma's text boxes are its auto line height (Plex 1.3em) on the pixel grid (16 / 18 / 17px) and its own outlines
+   (SVG export of this node) put every baseline on a whole pixel: 13px below the box top for the 12px and 13px text, 14px for the 14px label.
+   Chrome sets the same line boxes with the baseline at 12.5 (12px), 14.25 (14px) and 13.375 (13px); the `top` offsets restore Figma's baseline.
+   Widths: Figma's text boxes are whole pixels (57, 135, 71, 32), wider than the glyph run; set here so the glyphs start where Figma starts them. */
+/* button / timestamp: 80x24 pill, padding 2 8 4 */
+.e02-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e02-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e02-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; width: 57px; position: relative; top: 0.5px; }
+/* info: column, gap 8, fills */
+.e02-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e02-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e02-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e02-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; width: 83px; position: relative; top: -0.25px; }
+.e02-rate { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--f69); white-space: nowrap; width: 135px; position: relative; top: 0.5px; }
+/* Payment Details: column, gap 8, padding-left 16, 1px left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e02-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e02-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e02-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); position: relative; top: -0.375px; }
+.e02-pair { flex: none; display: flex; align-items: center; gap: 8px; }
+.e02-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; white-space: nowrap; }
+.e02-num { flex: none; width: 71px; text-align: right; position: relative; top: -0.375px; }
+.e02-cur { flex: none; width: 32px; position: relative; top: -0.375px; }
+/* E04 */
+/* 124:34082 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e04-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 74px; }
+/* button / timestamp: 80x24 pill, padding 2 8 4, radius 32, fill #F8F8F8 */
+.e04-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e04-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e04-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
+/* info: column, gap 8, fills (258 wide) */
+.e04-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e04-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e04-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e04-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
+.e04-amount { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: var(--main); white-space: nowrap; }
+/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e04-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e04-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e04-line-label { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); }
+.e04-pair { flex: none; display: flex; align-items: center; gap: 8px; }
+.e04-value { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
+.e04-num { flex: none; font-family: 'IBM Plex Mono', monospace; font-weight: 300; font-size: 13px; line-height: 17px; color: #949494; text-align: right; white-space: nowrap; }
+/* SF Symbols glyph "square.on.square" (text node, box 19 x 17, #7040F0): the face cannot ship, so this is the outline from
+   Figma's own SVG export of 124:34082, cut to the node's box by viewBox only. Path untouched. */
+.e04-copy { flex: none; width: 19px; height: 17px; }
+/* E03 */
+/* 124:34080 payment detail header: row, gap 8, padding 0 16 0 8, align start */
+.e03-root { display: flex; align-items: flex-start; gap: 8px; padding: 0 16px 0 8px; width: 370px; height: 195px; }
+/* button / timestamp: 80x24 pill, padding 2 8 4, fill solid/F0F2FF; text #4C3F91 at layer opacity .56 */
+.e03-stamp { flex: none; display: flex; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--f0f2ff); }
+.e03-stamp-box { flex: none; display: flex; flex-direction: column; justify-content: center; opacity: 0.56; }
+.e03-stamp-text { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: #4C3F91; white-space: nowrap; }
+/* info: column, gap 8, fills */
+.e03-info { flex: 1 0 0; min-width: 1px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.e03-main { flex: none; display: flex; align-items: center; gap: 8px; width: 100%; height: 24px; }
+.e03-label { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; gap: 4px; }
+.e03-label-text { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--main); white-space: nowrap; }
+/* icon: a text node set in SF Symbols ("exclamationmark.shield.fill"), box 17 x 19 at 229, 2.5 in the component. That face cannot
+   ship, so the glyph is the "icon" path of Figma's own SVG export of 124:34080, untouched, in the component's coordinates.
+   The box sits on a half pixel (2.5); the svg starts half a pixel higher (viewBox 229 2 17 20) so it lands on the device grid
+   and the path keeps Figma's y. */
+.e03-icon { position: relative; flex: none; width: 17px; height: 19px; }
+.e03-glyph { position: absolute; left: 0; top: -0.5px; width: 17px; height: 20px; }
+/* Payment Details: column, gap 8, padding-left 16, 1px inside left stroke rgba(66,66,66,.4), layer opacity .8 */
+.e03-details { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 0 rgba(66,66,66,0.4); }
+.e03-line { flex: none; display: flex; align-items: center; gap: 16px; width: 100%; }
+.e03-copy { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; color: var(--f69); word-break: break-word; }
+.e03-para { line-height: 17px; }
+/* buttons: row, padding 8 0, centred; left fills, right hugs; each padding 8 16 */
+.e03-buttons { flex: none; display: flex; align-items: center; justify-content: center; width: 100%; padding: 8px 0; }
+.e03-left { flex: 1 0 0; min-width: 1px; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
+.e03-left-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
+.e03-left-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 700; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); white-space: nowrap; }
+.e03-right { flex: none; display: flex; align-items: center; justify-content: center; padding: 8px 16px; }
+.e03-right-box { flex: none; display: flex; flex-direction: column; justify-content: center; }
+.e03-right-text { font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14px; line-height: 18px; color: var(--f69); white-space: nowrap; }
+/* E05 */
+/* E05 · "payment detail header" (underpaid) · Figma 124:34083 · 370 x 161. Auto-layout row, gap 8, items start, padding 0 16 0 8. */
+.e05-root { display: flex; gap: 8px; align-items: flex-start; padding: 0 16px 0 8px; width: 370px; height: 161px; }
+/* button / timestamp: 80 x 24, fill #F8F8F8, radius 32, padding 2 8 4 */
+.e05-time { display: flex; flex: none; align-items: center; justify-content: center; width: 80px; height: 24px; padding: 2px 8px 4px; border-radius: 32px; background: var(--ff8); }
+.e05-time-txt { flex: none; opacity: 0.56; font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: -0.12px; color: var(--f42); white-space: nowrap; }
+/* info: fill, column, gap 8 */
+.e05-info { display: flex; flex: 1 0 0; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 1px; }
+.e05-main { display: flex; flex: none; gap: 8px; align-items: center; width: 100%; height: 24px; }
+.e05-label-wrap { display: flex; flex: 1 0 0; gap: 4px; align-items: center; min-width: 1px; }
+.e05-label { flex: none; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.14px; color: var(--f69); white-space: nowrap; }
+/* icon: text node "exclamationmark.shield.fill" (SF Symbols), box 17 x 19. The face cannot ship, so the glyph is the outline Figma's own
+   SVG export of this instance draws for it, cut to the node's box (viewBox 286 2.5 17 19). The path is untouched. */
+.e05-icon { flex: none; width: 17px; height: 19px; }
+/* Payment Details: left stroke 1px inside rgba(66,66,66,0.4), padding-left 16, opacity 0.8 */
+.e05-details { display: flex; flex: none; flex-direction: column; gap: 8px; align-items: center; justify-content: flex-end; width: 100%; padding-left: 16px; opacity: 0.8; box-shadow: inset 1px 0 0 rgba(66,66,66,0.4); }
+.e05-line { display: flex; flex: none; gap: 16px; align-items: center; width: 100%; }
+.e05-text { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 13px; line-height: 17px; color: var(--f69); word-break: break-word; }
+/* buttons: padding 8 0, opacity 0.4; left: fill white, padding 8 16 */
+.e05-buttons { display: flex; flex: none; align-items: center; justify-content: center; width: 100%; padding: 8px 0; opacity: 0.4; }
+.e05-left { display: flex; flex: 1 0 0; align-items: center; justify-content: center; min-width: 1px; padding: 8px 16px; background: var(--fff); }
+.e05-left-txt { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: var(--main); word-break: break-word; }
+/* F01 */
+.f01-root { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 402px; height: 97px; padding: 12px 32px; color: var(--f42); word-break: break-word; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+.f01-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f01-body { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
+.f01-p { width: 100%; }
+/* Figma's body box is 48px over 3 lines (auto line height, 15.6, on the pixel grid) and its outline export puts the baselines at y 50, 66, 82:
+   13px below the box top (37). A 16px CSS line puts Plex's baseline at 12.5, so 0.5px restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
+.f01-p-body { position: relative; top: 0.5px; }
+/* F02 */
+.f02-root { display: flex; align-items: baseline; justify-content: center; width: 402px; height: 32px; padding: 8px 24px; }
+.f02-cookies { flex: 1 0 0; min-width: 1px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.24px; color: var(--f42); text-align: center; word-break: break-word; position: relative; top: 0.5px; }
+/* top 0.5px: Figma's outline export of this node puts the baseline at y 21, 13px below the text box top (8). A 16px CSS line puts Plex's baseline at 12.5; the half pixel restores Figma's whole-pixel baseline. Deliberate, not a nudge. */
+/* CSS adds the 0.24px tracking after the last glyph, Figma does not: cancel it so the centred line sits where Figma's does. */
+.f02-b { font-weight: 700; margin-right: -0.24px; }
 /* G02 */
 /* G02: two sibling nodes of frame 124:34108. details 124:34110 (284x144, frame x 151) + QR/address row 124:34128 (492x152, frame x 47), 24px apart.
    Wrapper origin = the QR row's left edge (the item box x). The details frame is 151 - 47 = 104px in; its background rect 124:34111 starts 104.22px
@@ -14991,6 +14953,49 @@ svg { display: block; flex: none; }
 .g01-warn-ring { position: absolute; left: 0; top: 0; width: 218px; height: 25px; mix-blend-mode: color-burn; pointer-events: none; }
 .g01-warn-ico { flex: none; width: 15px; height: 14px; margin-top: 2px; }
 .g01-warn-txt { position: relative; flex: none; margin-top: 0.5px; /* row is baseline-aligned in Figma: its export puts this baseline 16px below the frame top (3 + 0.5 + 12.5) */ font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: 0.12px; }
+/* F03 */
+.f03-body { position: relative; display: flex; flex-direction: column; align-items: center; width: 354px; height: 195px; padding: 8px 16px; overflow: clip; background: var(--fff); border-radius: 16px; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+/* Figma's stroke: 1px inside, linear gradient at 40%, blend mode multiply. Its own SVG export of the stroke, laid over the fill. */
+.f03-stroke { position: absolute; left: 0; top: 0; mix-blend-mode: multiply; pointer-events: none; }
+.f03-header { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; padding: 18px 16px; color: var(--f42); word-break: break-word; }
+.f03-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f03-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; white-space: pre-wrap; }
+.f03-p { width: 100%; }
+/* Figma's outline export puts the body baselines at y 64, 80, (96), 112: 13px below each 16px line top; and the button label baselines at y 167: 17px below the 21px line top (150).
+   CSS centres Plex's 1.3em content box in the line, which lands the baselines at 12.5 and 16.5. 0.5px restores Figma's whole-pixel baselines. Deliberate, not a nudge. */
+.f03-p-text { position: relative; top: 0.5px; }
+.f03-p-label { position: relative; top: 0.5px; }
+.f03-divider { position: relative; flex: none; width: 100%; height: 1px; }
+.f03-beam { position: absolute; inset: 0; background: rgba(105,105,105,0.08); }
+.f03-buttons { display: flex; align-items: center; justify-content: center; flex: none; padding: 8px 0; }
+.f03-btn { display: flex; align-items: center; justify-content: center; flex: none; width: 160px; padding: 8px 16px; }
+.f03-label { display: flex; flex-direction: column; justify-content: center; flex: none; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; white-space: nowrap; word-break: break-word; }
+.f03-label-left { font-weight: 500; color: var(--negative); }
+.f03-label-right { font-weight: 600; color: var(--f69); }
+/* F04 */
+.f04-body { position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 354px; height: 225px; padding: 24px 16px; border-radius: 16px; background: #FFFFFF; overflow: clip; font-family: 'IBM Plex Sans', sans-serif; font-variation-settings: "wdth" 100; }
+/* Figma strokes are gradients (inside 1px at 40% multiply on the body, outside 1px at 80% overlay on the input): Figma's own exported rects, not box-shadows. */
+.f04-stk { position: absolute; left: 0; top: 0; pointer-events: none; }
+.f04-stk-body { mix-blend-mode: multiply; }
+.f04-stk-input { mix-blend-mode: overlay; }
+.f04-head { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: none; width: 100%; color: var(--f42); word-break: break-word; }
+.f04-title { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 600; font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+.f04-text { display: flex; flex-direction: column; justify-content: center; flex: none; width: 100%; font-weight: 400; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; }
+.f04-p { width: 100%; }
+/* Figma's outline export puts the baselines on these three texts 0.5px lower than a CSS line box does (body 62, label 154.5, aux 198; CSS gives 61.5, 154, 197.5):
+   Figma sets Plex's auto line height on the pixel grid. 0.5px restores Figma's baseline. Deliberate, read from the export, not a nudge. */
+.f04-half { position: relative; top: 0.5px; }
+.f04-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; flex: none; width: 100%; }
+.f04-input { position: relative; display: flex; align-items: center; justify-content: space-between; flex: none; width: 100%; padding: 8px; border-radius: 16px; background: #FBFBFB; }
+/* Figma casts the input's inner shadow from the outer edge of its outside stroke (export filter region 324 x 58; stroke outer radius 16.5 + 0.5), so it sits on a layer 1px outside the box. */
+.f04-inner { position: absolute; inset: -1px; border-radius: 17px; pointer-events: none; box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.04); }
+.f04-label-pad { position: relative; display: flex; align-items: center; justify-content: center; flex: none; padding: 0 8px 2px; }
+.f04-label { flex: none; font-weight: 500; font-size: 16px; line-height: 21px; letter-spacing: -0.16px; color: #000000; opacity: 0.56; white-space: nowrap; }
+.f04-btn { position: relative; flex: none; width: 40px; height: 40px; border-radius: 30px; background: var(--main); }
+/* SF Symbol arrow.forward: Figma's outline export of node 124:34103, at the offset it has inside the 40px button in the frame export. */
+.f04-arrow { position: absolute; left: 11.694px; top: 13.343px; }
+.f04-aux { display: flex; align-items: center; justify-content: center; flex: none; width: 100%; }
+.f04-aux-p { flex: 1 0 0; min-width: 1px; font-weight: 300; font-size: 12px; line-height: 16px; letter-spacing: 0.12px; color: rgba(105,105,105,0.8); mix-blend-mode: multiply; word-break: break-word; }
 /* ---------- dark mode (generated) ---------- */
 :host(.dark) .dsb-l{color:#FFFFFF}
 :host(.dark) .dsb-n{color:#8A8799}
@@ -15052,82 +15057,6 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="B05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .e01-label{color:#A9A6B8}
-:host(.dark) .e01-label-total{color:#A98BFF}
-:host(.dark) .e01-pair{color:#8A8799}
-:host(.dark) .e01-pair-total{color:#A98BFF}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="E01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .e02-stamp{background:rgba(255,255,255,0.06)}
-:host(.dark) .e02-stamp-text{color:#D6D4E0}
-:host(.dark) .e02-label-text{color:#A9A6B8}
-:host(.dark) .e02-rate{color:#A9A6B8}
-:host(.dark) .e02-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
-:host(.dark) .e02-line-label{color:#A9A6B8}
-:host(.dark) .e02-value{color:#8A8799}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="E02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .e04-stamp{background:rgba(255,255,255,0.06)}
-:host(.dark) .e04-stamp-text{color:#D6D4E0}
-:host(.dark) .e04-label-text{color:#A98BFF}
-:host(.dark) .e04-amount{color:#A98BFF}
-:host(.dark) .e04-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
-:host(.dark) .e04-line-label{color:#A9A6B8}
-:host(.dark) .e04-num{color:#8A8799}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="E04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .e03-stamp{background:rgba(152,128,255,0.14)}
-:host(.dark) .e03-stamp-text{color:#C9BEFF}
-:host(.dark) .e03-label-text{color:#A98BFF}
-:host(.dark) .e03-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
-:host(.dark) .e03-copy{color:#A9A6B8}
-:host(.dark) .e03-left-text{color:#A98BFF}
-:host(.dark) .e03-right-text{color:#A9A6B8}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="E03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .e05-time{background:rgba(255,255,255,0.06)}
-:host(.dark) .e05-time-txt{color:#D6D4E0}
-:host(.dark) .e05-label{color:#A9A6B8}
-:host(.dark) .e05-details{box-shadow:inset 1px 0 0 rgba(255,255,255,0.24)}
-:host(.dark) .e05-text{color:#A9A6B8}
-:host(.dark) .e05-left{background:#1E1C29}
-:host(.dark) .e05-left-txt{color:#A98BFF}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="E05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .f01-root{color:#D6D4E0}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="F01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .f02-cookies{color:#D6D4E0}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="F02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 :host(.dark) .d01-rect{box-shadow:inset 0 0 0 0.4px rgba(255,255,255,0.12)}
 :host(.dark) .d01-incomplete{background:rgba(152,128,255,0.14)}
 :host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="D01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
@@ -15209,28 +15138,82 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="D11"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="D11"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .f03-body{background:#1E1C29}
-:host(.dark) .f03-header{color:#D6D4E0}
-:host(.dark) .f03-beam{background:rgba(255,255,255,0.08)}
-:host(.dark) .f03-label-right{color:#A9A6B8}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="F03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
-:host(.dark) .f04-body{background:#1E1C29}
-:host(.dark) .f04-head{color:#D6D4E0}
-:host(.dark) .f04-input{background:#1E1C29}
-:host(.dark) .f04-inner{box-shadow:inset 0 1px 2px 0 rgba(255,255,255,0.08)}
-:host(.dark) .f04-label{color:#FFFFFF}
-:host(.dark) .f04-aux-p{color:rgba(200,200,212,0.8)}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
-:host(.dark) [data-key="F04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .e01-label{color:#A9A6B8}
+:host(.dark) .e01-label-total{color:#A98BFF}
+:host(.dark) .e01-pair{color:#8A8799}
+:host(.dark) .e01-pair-total{color:#A98BFF}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="E01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .e02-stamp{background:rgba(255,255,255,0.06)}
+:host(.dark) .e02-stamp-text{color:#D6D4E0}
+:host(.dark) .e02-label-text{color:#A9A6B8}
+:host(.dark) .e02-rate{color:#A9A6B8}
+:host(.dark) .e02-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
+:host(.dark) .e02-line-label{color:#A9A6B8}
+:host(.dark) .e02-value{color:#8A8799}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="E02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .e04-stamp{background:rgba(255,255,255,0.06)}
+:host(.dark) .e04-stamp-text{color:#D6D4E0}
+:host(.dark) .e04-label-text{color:#A98BFF}
+:host(.dark) .e04-amount{color:#A98BFF}
+:host(.dark) .e04-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
+:host(.dark) .e04-line-label{color:#A9A6B8}
+:host(.dark) .e04-num{color:#8A8799}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="E04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .e03-stamp{background:rgba(152,128,255,0.14)}
+:host(.dark) .e03-stamp-text{color:#C9BEFF}
+:host(.dark) .e03-label-text{color:#A98BFF}
+:host(.dark) .e03-details{box-shadow:inset 1px 0 0 0 rgba(255,255,255,0.24)}
+:host(.dark) .e03-copy{color:#A9A6B8}
+:host(.dark) .e03-left-text{color:#A98BFF}
+:host(.dark) .e03-right-text{color:#A9A6B8}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="E03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .e05-time{background:rgba(255,255,255,0.06)}
+:host(.dark) .e05-time-txt{color:#D6D4E0}
+:host(.dark) .e05-label{color:#A9A6B8}
+:host(.dark) .e05-details{box-shadow:inset 1px 0 0 rgba(255,255,255,0.24)}
+:host(.dark) .e05-text{color:#A9A6B8}
+:host(.dark) .e05-left{background:#1E1C29}
+:host(.dark) .e05-left-txt{color:#A98BFF}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="E05"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .f01-root{color:#D6D4E0}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="F01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .f02-cookies{color:#D6D4E0}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="F02"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 :host(.dark) .g02-details-bg{background:rgba(152,128,255,0.08);box-shadow:inset 0 1px 4px 0 rgba(255,255,255,0.12)}
 :host(.dark) .g02-val{color:#C9BEFF}
 :host(.dark) .g02-lab{color:rgba(201,190,255,0.5)}
@@ -15255,6 +15238,28 @@ svg { display: block; flex: none; }
 :host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
 :host(.dark) [data-key="G01"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
 :host(.dark) [data-key="G01"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .f03-body{background:#1E1C29}
+:host(.dark) .f03-header{color:#D6D4E0}
+:host(.dark) .f03-beam{background:rgba(255,255,255,0.08)}
+:host(.dark) .f03-label-right{color:#A9A6B8}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="F03"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
+:host(.dark) .f04-body{background:#1E1C29}
+:host(.dark) .f04-head{color:#D6D4E0}
+:host(.dark) .f04-input{background:#1E1C29}
+:host(.dark) .f04-inner{box-shadow:inset 0 1px 2px 0 rgba(255,255,255,0.08)}
+:host(.dark) .f04-label{color:#FFFFFF}
+:host(.dark) .f04-aux-p{color:rgba(200,200,212,0.8)}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="black"],:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#000000"],:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#000"]{fill:#FFFFFF}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#696969"]{fill:#A9A6B8}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#999999"]{fill:#8A8799}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#4C3F91"]{fill:#C9BEFF}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [fill="#F0F2FF"]{fill:rgba(152,128,255,0.16)}
+:host(.dark) [data-key="F04"] svg:not([width="200"]) [stroke="black"]{stroke:#FFFFFF}
 
 </style>
 <div class="frame dsb"><div class="dsb-side dsb-L"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Confirmo button<span class="dsb-n">8 states</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="A01" data-node="124:33942" data-name="confirmo button v2 / select token (nothing selected)" style="width:378px;height:96px">
@@ -15684,7 +15689,7 @@ svg { display: block; flex: none; }
 </feComponentTransfer>
 </filter>
 </defs>
-</svg></div></div></div></div></div></div></div></section></div><div class="dsb-row fill"><section class="dsb-g"><p class="dsb-l">Buttons<span class="dsb-n">9</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="C01" data-node="124:34002" data-name="button full width / Continue" style="width:354px;height:43px">
+</svg></div></div></div></div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Buttons<span class="dsb-n">9</span></p><div class="dsb-flow" style="gap:18px"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="C01" data-node="124:34002" data-name="button full width / Continue" style="width:354px;height:43px">
   <div class="c01-btn">
     <p class="c01-label">Continue</p>
   </div>
@@ -15780,7 +15785,7 @@ svg { display: block; flex: none; }
       </div>
     </div>
   </div>
-</div></div></div></div></section><section class="dsb-g"><p class="dsb-l">Line item<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="B01" data-node="124:33968" data-name="line item / USDC, 6 networks, selected" style="width:354px;height:80px">
+</div></div></div></div></section><section class="dsb-g"><p class="dsb-l">Line item<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack" style="gap:16px"><div class="dsb-cell"><div class="ds-item" data-key="B01" data-node="124:33968" data-name="line item / USDC, 6 networks, selected" style="width:354px;height:80px">
   <div class="b01-root">
     <div class="b01-item">
       <div class="b01-head">
@@ -15983,6 +15988,69 @@ svg { display: block; flex: none; }
 </div>
 </div>
 </div>
+</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
+  <div class="d01-pills" data-node-id="124:34062">
+    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
+  <div class="d02-dropdown" data-node-id="124:33989">
+    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
+    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
+      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
+    </div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
+  <div class="d03-back" data-node-id="124:33990">
+    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
+    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
+<div class="d04-options">
+<div class="d04-language">
+<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
+</svg>
+<p class="d04-en">En</p>
+</div>
+<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
+</svg>
+</div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
+  <div class="d09-left" data-node-id="124:33998">
+    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
+  <div class="d10-right" data-node-id="124:33999">
+    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
+  <div class="d05-line" data-node-id="124:33992">
+    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
+    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
+  <div class="d08-line" data-node-id="124:33997">
+    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
+    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
+  <div class="d06-line" data-node-id="124:33993">
+    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
+    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
+  </div>
+</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
+  <div class="d07-connected" data-node-id="124:33994">
+    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
+    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
+  </div>
+</div></div><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
+  <div class="d11-btn" data-node-id="124:34000">
+    <p class="d11-label" data-node-id="124:34001">Request refund</p>
+  </div>
 </div></div></div></div></section></div></div><div class="dsb-side dsb-R"><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Price breakdown and history<span class="dsb-n">5</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="E01" data-node="124:34106" data-name="payment details / price breakdown" style="width:402px;height:108px">
 <div class="e01-root">
   <div class="e01-line">
@@ -16097,99 +16165,6 @@ svg { display: block; flex: none; }
 </div></div><div class="dsb-cell"><div class="ds-item" data-key="F02" data-node="124:34073" data-name="v2 / footer (cookie policy)" style="width:402px;height:32px">
   <div class="f02-root">
     <p class="f02-cookies">By using this service, you agree to our <span class="f02-b">Cookie Policy.</span></p>
-  </div>
-</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Controls<span class="dsb-n">11</span></p><div class="dsb-flow"><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D01" data-node="124:34062" data-name="progress pills / complete, secondary, incomplete, incomplete" style="width:123.33px;height:18px">
-  <div class="d01-pills" data-node-id="124:34062">
-    <div class="d01-pill" data-node-id="124:34063"><div class="d01-self"><div class="d01-rect d01-complete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34064"><div class="d01-self"><div class="d01-rect d01-secondary"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34065"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-    <div class="d01-pill" data-node-id="124:34066"><div class="d01-self"><div class="d01-rect d01-incomplete"></div></div></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D02" data-node="124:33989" data-name="v2 / dropdown / Popular" style="width:79px;height:21px">
-  <div class="d02-dropdown" data-node-id="124:33989">
-    <p class="d02-label" data-node-id="I124:33989;1:1255"><span class="d02-trk">Popular</span></p>
-    <div class="d02-glyph" data-node-id="I124:33989;1:1256">
-      <svg class="d02-chevron" width="13" height="17" viewBox="66 4 13 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M72.5 5.48144C72.6709 5.48144 72.8281 5.5498 72.9648 5.68652L76.8682 9.43262C76.9775 9.53516 77.0459 9.67871 77.0459 9.87695C77.0459 10.2324 76.7793 10.5059 76.4238 10.5059C76.2734 10.5059 76.1162 10.458 75.9658 10.3213L72.5 6.92383L69.0273 10.3213C68.8838 10.4648 68.7197 10.5059 68.5693 10.5059C68.2139 10.5059 67.9473 10.2324 67.9473 9.87695C67.9473 9.67871 68.0225 9.53516 68.125 9.43262L72.0283 5.68652C72.165 5.5498 72.3223 5.48144 72.5 5.48144ZM72.5 18.6475C72.3223 18.6475 72.165 18.5723 72.0283 18.4424L68.125 14.6963C68.0225 14.5869 67.9473 14.4502 67.9473 14.2451C67.9473 13.8896 68.2139 13.623 68.5693 13.623C68.7197 13.623 68.8838 13.6641 69.0273 13.8076L72.5 17.2051L75.9658 13.8076C76.1162 13.6709 76.2734 13.623 76.4238 13.623C76.7793 13.623 77.0459 13.8896 77.0459 14.2451C77.0459 14.4502 76.9775 14.5869 76.8682 14.6963L72.9648 18.4424C72.8281 18.5723 72.6709 18.6475 72.5 18.6475Z" fill="#4C3F91"/></svg>
-    </div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D03" data-node="124:33990" data-name="back button / Return" style="width:123.33px;height:18px">
-  <div class="d03-back" data-node-id="124:33990">
-    <div class="d03-chev" data-node-id="I124:33990;215:2186"><svg class="d03-glyph" width="11" height="17" viewBox="0 1 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.28906 9.06445C1.28906 8.89355 1.35059 8.73633 1.48047 8.61328L6.90137 3.30859C7.01758 3.19238 7.16797 3.13086 7.3457 3.13086C7.70117 3.13086 7.97461 3.39746 7.97461 3.75293C7.97461 3.92383 7.89941 4.08105 7.79004 4.19726L2.81348 9.06445L7.79004 13.9316C7.89941 14.0479 7.97461 14.1982 7.97461 14.376C7.97461 14.7314 7.70117 14.998 7.3457 14.998C7.16797 14.998 7.01758 14.9365 6.90137 14.8135L1.48047 9.51562C1.35059 9.38574 1.28906 9.23535 1.28906 9.06445Z" fill="#999999"/></svg></div>
-    <p class="d03-label" data-node-id="I124:33990;215:2187"><span class="d03-txt">Return</span></p>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D04" data-node="124:33991" data-name="options button / language En, help" style="width:123.33px;height:18px">
-<div class="d04-options">
-<div class="d04-language">
-<svg class="d04-sym" width="17" height="17" viewBox="57.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#134;&#170;" d="M65.833 16.0371C61.9844 16.0371 58.8604 12.9131 58.8604 9.06445C58.8604 5.21582 61.9844 2.0918 65.833 2.0918C69.6816 2.0918 72.8057 5.21582 72.8057 9.06445C72.8057 12.9131 69.6816 16.0371 65.833 16.0371ZM61.7314 4.62793C62.0869 4.88086 62.5107 5.08594 63.0029 5.24316C63.3105 4.40918 63.7139 3.72558 64.1855 3.24707C63.2559 3.51367 62.4219 3.99219 61.7314 4.62793ZM67.4805 3.24707C67.9521 3.72558 68.3555 4.40918 68.6631 5.24316C69.1553 5.08594 69.5791 4.88086 69.9346 4.62793C69.2441 3.99219 68.4102 3.51367 67.4805 3.24707ZM63.8848 5.46875C64.3496 5.55078 64.8486 5.60547 65.3887 5.62598V3.41113C64.8008 3.6709 64.2676 4.42285 63.8848 5.46875ZM66.2842 3.41113V5.62598C66.8174 5.60547 67.3164 5.55078 67.7813 5.46875C67.3984 4.42285 66.8652 3.6709 66.2842 3.41113ZM59.8037 8.61328H62.3877C62.4219 7.69726 62.5449 6.84277 62.7432 6.07715C62.0869 5.87207 61.5332 5.59863 61.123 5.27734C60.3779 6.20703 59.8994 7.35547 59.8037 8.61328ZM69.2783 8.61328H71.8623C71.7666 7.35547 71.2881 6.20703 70.543 5.27734C70.1328 5.59863 69.5791 5.87207 68.9229 6.07715C69.1211 6.84277 69.2441 7.69726 69.2783 8.61328ZM63.3037 8.61328H65.3887V6.52148C64.7666 6.49414 64.1787 6.42578 63.6318 6.30957C63.4541 7.00683 63.3379 7.79297 63.3037 8.61328ZM66.2842 8.61328H68.3623C68.3281 7.79297 68.2119 7.00683 68.041 6.30957C67.4941 6.42578 66.8994 6.49414 66.2842 6.52148V8.61328ZM59.8037 9.50879C59.8994 10.7803 60.3848 11.9424 61.1436 12.8721C61.5537 12.5576 62.1006 12.291 62.75 12.0791C62.5449 11.3135 62.4219 10.4453 62.3877 9.50879H59.8037ZM63.3037 9.50879C63.3311 10.3428 63.4541 11.1357 63.6387 11.8467C64.1787 11.7373 64.7734 11.6621 65.3887 11.6416V9.50879H63.3037ZM66.2842 11.6416C66.8994 11.6621 67.4873 11.7373 68.0273 11.8467C68.2119 11.1357 68.335 10.3428 68.3623 9.50879H66.2842V11.6416ZM68.9229 12.0791C69.5654 12.291 70.1191 12.5576 70.5293 12.8721C71.2813 11.9424 71.7666 10.7803 71.8623 9.50879H69.2783C69.2441 10.4453 69.1211 11.3135 68.9229 12.0791ZM66.2842 12.5371V14.7246C66.8584 14.4648 67.3848 13.7197 67.7676 12.6943C67.3096 12.6055 66.8105 12.5576 66.2842 12.5371ZM63.8984 12.6943C64.2812 13.7129 64.8076 14.4648 65.3887 14.7246V12.5371C64.8555 12.5576 64.3564 12.6055 63.8984 12.6943ZM68.6563 12.9131C68.3555 13.7334 67.9521 14.4033 67.4873 14.875C68.4033 14.6152 69.2305 14.1436 69.9141 13.5215C69.5654 13.2754 69.1416 13.0703 68.6563 12.9131ZM61.752 13.5215C62.4355 14.1436 63.2627 14.6152 64.1787 14.875C63.7139 14.4033 63.3105 13.7334 63.0098 12.9131C62.5244 13.0703 62.1006 13.2754 61.752 13.5215Z" fill="#999999"/>
-</svg>
-<p class="d04-en">En</p>
-</div>
-<svg class="d04-sym" width="17" height="17" viewBox="106.33332824707031 1 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path id="d04_&#244;&#128;&#129;&#156;" d="M114.833 16.0371C110.984 16.0371 107.86 12.9131 107.86 9.06445C107.86 5.21582 110.984 2.0918 114.833 2.0918C118.682 2.0918 121.806 5.21582 121.806 9.06445C121.806 12.9131 118.682 16.0371 114.833 16.0371ZM114.833 14.875C118.046 14.875 120.644 12.2773 120.644 9.06445C120.644 5.85156 118.046 3.2539 114.833 3.2539C111.62 3.2539 109.022 5.85156 109.022 9.06445C109.022 12.2773 111.62 14.875 114.833 14.875ZM114.689 10.4795C114.341 10.4795 114.143 10.2949 114.143 9.93945V9.85059C114.143 9.18066 114.512 8.81836 115.004 8.47656C115.599 8.05957 115.886 7.83398 115.886 7.36914C115.886 6.84961 115.482 6.49414 114.86 6.49414C114.402 6.49414 114.047 6.72656 113.808 7.12305L113.685 7.28711C113.562 7.45117 113.411 7.56055 113.179 7.56055C112.953 7.56055 112.714 7.39648 112.714 7.08887C112.714 6.97266 112.734 6.86328 112.769 6.75391C112.953 6.125 113.726 5.56445 114.901 5.56445C116.063 5.56445 117.075 6.17969 117.075 7.31445C117.075 8.13476 116.604 8.53125 115.94 8.96875C115.462 9.2832 115.243 9.5293 115.243 9.91211V9.99414C115.243 10.2607 115.031 10.4795 114.689 10.4795ZM114.676 12.5166C114.279 12.5166 113.938 12.1953 113.938 11.8057C113.938 11.416 114.272 11.0947 114.676 11.0947C115.079 11.0947 115.414 11.4092 115.414 11.8057C115.414 12.2021 115.072 12.5166 114.676 12.5166Z" fill="#999999"/>
-</svg>
-</div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D09" data-node="124:33998" data-name="left action / Verify" style="width:127px;height:37px">
-  <div class="d09-left" data-node-id="124:33998">
-    <p class="d09-label" data-node-id="I124:33998;1:1382">Verify</p>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D10" data-node="124:33999" data-name="right action / Request refund" style="width:135px;height:33px">
-  <div class="d10-right" data-node-id="124:33999">
-    <p class="d10-label" data-node-id="I124:33999;1:1382">Request refund</p>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D05" data-node="124:33992" data-name="list line with action / invoice id, copy icon" style="width:179px;height:40px">
-  <div class="d05-line" data-node-id="124:33992">
-    <div class="d05-swap" data-node-id="I124:33992;11:6266"><p class="d05-value" data-node-id="I124:33992;11:6269">inviwBEdCBwRxFX</p></div>
-    <div class="d05-icon" data-node-id="I124:33992;11:6270"><svg class="d05-glyph" width="20" height="19" viewBox="159 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M163.188 21.9375C161.547 21.9375 160.734 21.125 160.734 19.5156V11.6094C160.734 10 161.547 9.1875 163.188 9.1875H171.031C172.656 9.1875 173.477 10 173.477 11.6094V12.8047H174.82C176.445 12.8047 177.266 13.6172 177.266 15.2266V23.1328C177.266 24.7422 176.445 25.5547 174.82 25.5547H166.977C165.336 25.5547 164.523 24.7422 164.523 23.1328V21.9375H163.188ZM163.203 20.6797H164.523V15.2266C164.523 13.6094 165.336 12.8047 166.977 12.8047H172.219V11.6797C172.219 10.8672 171.781 10.4453 171.008 10.4453H163.203C162.422 10.4453 161.992 10.8672 161.992 11.6797V19.4453C161.992 20.2578 162.422 20.6797 163.203 20.6797ZM166.992 24.2969H174.797C175.57 24.2969 176.008 23.875 176.008 23.0625V15.2969C176.008 14.4844 175.57 14.0625 174.797 14.0625H166.992C166.219 14.0625 165.781 14.4844 165.781 15.2969V23.0625C165.781 23.875 166.219 24.2969 166.992 24.2969Z" fill="black"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D08" data-node="124:33997" data-name="list line with action / English button, stepper icon" style="width:164px;height:40px">
-  <div class="d08-line" data-node-id="124:33997">
-    <div class="d08-swap" data-node-id="I124:33997;11:6266"><div class="d08-button" data-node-id="I124:33997;11:6267"><div class="d08-label-box" data-node-id="I124:33997;11:6268"><p class="d08-label">English</p></div></div></div>
-    <div class="d08-icon" data-node-id="I124:33997;11:6270"><svg class="d08-glyph" width="20" height="19" viewBox="144 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M154 9.83594C154.195 9.83594 154.375 9.91406 154.531 10.0703L158.992 14.3516C159.117 14.4688 159.195 14.6328 159.195 14.8594C159.195 15.2656 158.891 15.5781 158.484 15.5781C158.312 15.5781 158.133 15.5234 157.961 15.3672L154 11.4844L150.031 15.3672C149.867 15.5312 149.68 15.5781 149.508 15.5781C149.102 15.5781 148.797 15.2656 148.797 14.8594C148.797 14.6328 148.883 14.4688 149 14.3516L153.461 10.0703C153.617 9.91406 153.797 9.83594 154 9.83594ZM154 24.8828C153.797 24.8828 153.617 24.7969 153.461 24.6484L149 20.3672C148.883 20.2422 148.797 20.0859 148.797 19.8516C148.797 19.4453 149.102 19.1406 149.508 19.1406C149.68 19.1406 149.867 19.1875 150.031 19.3516L154 23.2344L157.961 19.3516C158.133 19.1953 158.312 19.1406 158.484 19.1406C158.891 19.1406 159.195 19.4453 159.195 19.8516C159.195 20.0859 159.117 20.2422 158.992 20.3672L154.531 24.6484C154.375 24.7969 154.195 24.8828 154 24.8828Z" fill="black"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D06" data-node="124:33993" data-name="list line with action / support email, send icon" style="width:206px;height:40px">
-  <div class="d06-line" data-node-id="124:33993">
-    <div class="d06-swap" data-node-id="I124:33993;11:6266"><p class="d06-value" data-node-id="I124:33993;11:6269">support@confirmo.net</p></div>
-    <div class="d06-icon" data-node-id="I124:33993;11:6270"><svg class="d06-glyph" width="20" height="19" viewBox="186 8 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M197.195 26C196.469 26 196.227 25.4219 195.992 24.6328L194.352 19.0625L188.711 17.4062C187.961 17.1797 187.414 16.9375 187.414 16.2188C187.414 15.6484 187.922 15.25 188.578 15L202.016 9.85156C202.375 9.71094 202.695 9.63281 202.961 9.63281C203.469 9.63281 203.781 9.94531 203.781 10.4531C203.781 10.7188 203.703 11.0391 203.562 11.3984L198.445 24.7656C198.156 25.5156 197.758 26 197.195 26ZM194.703 17.875L200.078 12.5C200.508 12.0703 201.148 11.5703 201.664 11.1484C201.086 11.4141 200.484 11.7266 199.859 11.9609L189.297 15.9609C189.18 16.0078 189.148 16.0469 189.148 16.1016C189.148 16.1562 189.188 16.1875 189.312 16.2266L194.703 17.875ZM197.32 24.2812C197.375 24.2812 197.406 24.2344 197.453 24.1172L201.453 13.5547C201.688 12.9219 202.008 12.3203 202.273 11.7266C201.859 12.2578 201.336 12.9141 200.914 13.3359L195.539 18.7109L197.188 24.1016C197.227 24.2266 197.258 24.2812 197.32 24.2812Z" fill="black"/></svg></div>
-  </div>
-</div></div></div><div class="dsb-line"><div class="dsb-cell"><div class="ds-item" data-key="D07" data-node="124:33994" data-name="connected wallet line / connected" style="width:320.75px;height:49px">
-  <div class="d07-connected" data-node-id="124:33994">
-    <p class="d07-label" data-node-id="124:33995"><span class="d07-txt">Connected wallet: 0xCCe9...C8C47</span></p>
-    <div class="d07-symbol" data-node-id="124:33996"><svg class="d07-glyph" width="31" height="19" viewBox="285 14 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M306.977 30.7422L292.484 16.2656C292.258 16.0312 292.258 15.6406 292.484 15.4141C292.719 15.1719 293.109 15.1797 293.344 15.4141L307.82 29.8906C308.063 30.125 308.055 30.5078 307.82 30.7422C307.594 30.9766 307.211 30.9766 306.977 30.7422ZM304.055 24.8281L303.102 23.8828C303.656 23.3125 303.992 22.5156 303.992 21.5781C303.992 19.6562 302.617 18.2969 300.703 18.2969H297.516L296.258 17.0391H300.789C303.438 17.0391 305.328 18.8984 305.328 21.5781C305.328 22.9219 304.852 24.0469 304.055 24.8281ZM293.688 26.125C291.039 26.125 289.148 24.2656 289.148 21.5781C289.148 19.4375 290.367 17.8203 292.211 17.2812L293.273 18.3438C291.625 18.5469 290.484 19.8359 290.484 21.5781C290.484 23.5156 291.852 24.8672 293.773 24.8672H294.289C294.234 25.2734 294.273 25.7188 294.32 26.125H293.688ZM299.891 20.6719H302.602C302.852 21.0312 302.891 21.625 302.781 21.9297H301.148L299.891 20.6719ZM308.68 29.4688L307.656 28.4297C309.203 28.1562 310.258 26.8984 310.258 25.2109C310.258 23.2812 308.883 21.9297 306.961 21.9297H306.453C306.5 21.5234 306.461 21.0703 306.414 20.6719H307.055C309.703 20.6719 311.594 22.5312 311.594 25.2109C311.594 27.3281 310.43 28.875 308.68 29.4688ZM299.953 29.7578C297.297 29.7578 295.414 27.8984 295.414 25.2109C295.414 23.8281 295.922 22.6562 296.789 21.8672L297.75 22.8125C297.125 23.375 296.75 24.2188 296.75 25.2109C296.75 27.1406 298.125 28.5 300.039 28.5H303.445L304.703 29.7578H299.953ZM298.133 26.125C297.891 25.7656 297.852 25.1719 297.961 24.8672H299.813L301.07 26.125H298.133Z" fill="#713FFF"/></svg></div>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="D11" data-node="124:34000" data-name="text button / Request refund" style="width:354px;height:27px">
-  <div class="d11-btn" data-node-id="124:34000">
-    <p class="d11-label" data-node-id="124:34001">Request refund</p>
-  </div>
-</div></div></div></div></section><section class="dsb-g"><p class="dsb-l">Dialogs<span class="dsb-n">2</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="F03" data-node="124:34087" data-name="dialog body / Exit and lose progress?" style="width:354px;height:195px">
-  <div class="f03-body">
-    <div class="f03-header">
-      <div class="f03-title"><p class="f03-p f03-p-title">Exit and lose progress?</p></div>
-      <div class="f03-text"><p class="f03-p f03-p-text">Returning to the merchant page will exit and discard current progress on the payment flow.</p><p class="f03-p f03-p-text">&#8203;</p><p class="f03-p f03-p-text">You can always initiate this flow again.</p></div>
-    </div>
-    <div class="f03-divider"><div class="f03-beam"></div></div>
-    <div class="f03-buttons">
-      <div class="f03-btn"><div class="f03-label f03-label-left"><p class="f03-p-label">Exit payment</p></div></div>
-      <div class="f03-btn"><div class="f03-label f03-label-right"><p class="f03-p-label">Dismiss</p></div></div>
-    </div>
-    <svg class="f03-stroke" width="354" height="195" viewBox="0 0 354 195" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="353" height="194" rx="15.5" stroke="url(#f03-paint0_linear_0_1)" stroke-opacity="0.4"/><defs><linearGradient id="f03-paint0_linear_0_1" x1="328.188" y1="7.83184e-06" x2="276.789" y2="218.476" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
-  </div>
-</div></div><div class="dsb-cell"><div class="ds-item" data-key="F04" data-node="124:34093" data-name="dialog body / Valid email required" style="width:354px;height:225px">
-  <div class="f04-body">
-    <svg class="f04-stk f04-stk-body" width="354" height="225" viewBox="0 0 354 225" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="353" height="224" rx="15.5" stroke="url(#f04-paint0)" stroke-opacity="0.4"/><defs><linearGradient id="f04-paint0" x1="328.188" y1="9.03674e-06" x2="260.927" y2="247.782" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
-    <div class="f04-head">
-      <div class="f04-title"><p class="f04-p">Valid email required</p></div>
-      <div class="f04-text"><p class="f04-p f04-half">Please provide a valid email address so we can generate your unique deposit details.</p></div>
-    </div>
-    <div class="f04-group">
-      <div class="f04-input">
-        <svg class="f04-stk f04-stk-input" width="322" height="56" viewBox="0 0 322 56" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg"><rect x="-0.5" y="-0.5" width="323" height="57" rx="16.5" stroke="url(#f04-paint1)" stroke-opacity="0.8"/><defs><linearGradient id="f04-paint1" x1="298.521" y1="0" x2="293.63" y2="65.851" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
-        <div class="f04-label-pad"><p class="f04-label f04-half">user@email.com</p></div>
-        <div class="f04-btn"><svg class="f04-arrow" width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.975586 7.76074C0.395508 7.76074 0 7.36523 0 6.80273C0 6.23145 0.395508 5.84473 0.975586 5.84473H11.6631L13.7021 5.95898L11.1182 3.59473L9.14941 1.59961C8.97363 1.42383 8.86816 1.18652 8.86816 0.914062C8.86816 0.386719 9.26367 0 9.80859 0C10.0547 0 10.292 0.0878906 10.5117 0.307617L16.2949 6.09082C16.4971 6.27539 16.6113 6.53906 16.6113 6.80273C16.6113 7.06641 16.4971 7.32129 16.2949 7.51465L10.4941 13.3066C10.2832 13.5088 10.0547 13.6055 9.80859 13.6055C9.26367 13.6055 8.86816 13.21 8.86816 12.6826C8.86816 12.4102 8.97363 12.1729 9.14941 12.0059L11.1182 10.0107L13.7021 7.6377L11.6631 7.76074H0.975586Z" fill="white"/></svg></div>
-        <div class="f04-inner"></div>
-      </div>
-      <div class="f04-aux"><p class="f04-aux-p f04-half">This will never be used for marketing purposes or similar.</p></div>
-    </div>
   </div>
 </div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Payment details<span class="dsb-n">2</span></p><div class="dsb-cols" style="gap:140px"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="G02" data-node="124:34110" data-name="payment details, large / details + QR and address" style="width:492px;height:320px">
 <div class="g02-details" data-node-id="124:34110">
@@ -16393,6 +16368,36 @@ svg { display: block; flex: none; }
 </svg></div><p class="g01-warn-txt">Do not save, single-use address.</p></div>
 </div>
 </div>
+</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Dialogs<span class="dsb-n">2</span></p><div class="dsb-cols"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="F03" data-node="124:34087" data-name="dialog body / Exit and lose progress?" style="width:354px;height:195px">
+  <div class="f03-body">
+    <div class="f03-header">
+      <div class="f03-title"><p class="f03-p f03-p-title">Exit and lose progress?</p></div>
+      <div class="f03-text"><p class="f03-p f03-p-text">Returning to the merchant page will exit and discard current progress on the payment flow.</p><p class="f03-p f03-p-text">&#8203;</p><p class="f03-p f03-p-text">You can always initiate this flow again.</p></div>
+    </div>
+    <div class="f03-divider"><div class="f03-beam"></div></div>
+    <div class="f03-buttons">
+      <div class="f03-btn"><div class="f03-label f03-label-left"><p class="f03-p-label">Exit payment</p></div></div>
+      <div class="f03-btn"><div class="f03-label f03-label-right"><p class="f03-p-label">Dismiss</p></div></div>
+    </div>
+    <svg class="f03-stroke" width="354" height="195" viewBox="0 0 354 195" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="353" height="194" rx="15.5" stroke="url(#f03-paint0_linear_0_1)" stroke-opacity="0.4"/><defs><linearGradient id="f03-paint0_linear_0_1" x1="328.188" y1="7.83184e-06" x2="276.789" y2="218.476" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
+  </div>
+</div></div></div><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="F04" data-node="124:34093" data-name="dialog body / Valid email required" style="width:354px;height:225px">
+  <div class="f04-body">
+    <svg class="f04-stk f04-stk-body" width="354" height="225" viewBox="0 0 354 225" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="353" height="224" rx="15.5" stroke="url(#f04-paint0)" stroke-opacity="0.4"/><defs><linearGradient id="f04-paint0" x1="328.188" y1="9.03674e-06" x2="260.927" y2="247.782" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
+    <div class="f04-head">
+      <div class="f04-title"><p class="f04-p">Valid email required</p></div>
+      <div class="f04-text"><p class="f04-p f04-half">Please provide a valid email address so we can generate your unique deposit details.</p></div>
+    </div>
+    <div class="f04-group">
+      <div class="f04-input">
+        <svg class="f04-stk f04-stk-input" width="322" height="56" viewBox="0 0 322 56" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg"><rect x="-0.5" y="-0.5" width="323" height="57" rx="16.5" stroke="url(#f04-paint1)" stroke-opacity="0.8"/><defs><linearGradient id="f04-paint1" x1="298.521" y1="0" x2="293.63" y2="65.851" gradientUnits="userSpaceOnUse"><stop stop-color="#323232"/><stop offset="0.269231" stop-color="#D4D4D4"/><stop offset="0.600962" stop-color="#EBEBEB"/><stop offset="1" stop-color="#333333"/></linearGradient></defs></svg>
+        <div class="f04-label-pad"><p class="f04-label f04-half">user@email.com</p></div>
+        <div class="f04-btn"><svg class="f04-arrow" width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.975586 7.76074C0.395508 7.76074 0 7.36523 0 6.80273C0 6.23145 0.395508 5.84473 0.975586 5.84473H11.6631L13.7021 5.95898L11.1182 3.59473L9.14941 1.59961C8.97363 1.42383 8.86816 1.18652 8.86816 0.914062C8.86816 0.386719 9.26367 0 9.80859 0C10.0547 0 10.292 0.0878906 10.5117 0.307617L16.2949 6.09082C16.4971 6.27539 16.6113 6.53906 16.6113 6.80273C16.6113 7.06641 16.4971 7.32129 16.2949 7.51465L10.4941 13.3066C10.2832 13.5088 10.0547 13.6055 9.80859 13.6055C9.26367 13.6055 8.86816 13.21 8.86816 12.6826C8.86816 12.4102 8.97363 12.1729 9.14941 12.0059L11.1182 10.0107L13.7021 7.6377L11.6631 7.76074H0.975586Z" fill="white"/></svg></div>
+        <div class="f04-inner"></div>
+      </div>
+      <div class="f04-aux"><p class="f04-aux-p f04-half">This will never be used for marketing purposes or similar.</p></div>
+    </div>
+  </div>
 </div></div></div></div></section></div></div></div>
 </template></div></div></div></div></figure></div>
 <div class="txtg"><p class="txt">The full rollout held the test results: around 15% success, with spikes close to 20%. Sales could now reach more established clients, and those clients asked for one thing: branded and white-label options.</p><p class="txt">This iteration reversed the last one: aesthetics over mechanics. It also let me mature the design system, the first Confirmo ever had. It covers the full checkout, 20+ screens, and stayed small by reusing first and creating new only when needed.</p></div>
