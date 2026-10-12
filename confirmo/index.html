@@ -21515,7 +21515,7 @@ svg { display: block; }
          Otherwise the browser creates a layer when a slide begins and re-rasterises the text around it, which reads as the header's type shifting a hair. */
       '.c135v,.iph-sb,.iph-hi,.foot{will-change:transform;transform:translateZ(0);backface-visibility:hidden}.view{will-change:transform;backface-visibility:hidden}'+
       '.c27h img,.c51h img,img.wl{border-radius:22%}'+   /* MetaMask's own art is square-cornered; every wallet logo gets the same corner */
-      '[data-act]{cursor:pointer}[data-act].off{cursor:default;opacity:.35}.c131h{transition:opacity .36s cubic-bezier(.2,.7,.2,1)}'+   /* Back dissolves on and off, in step with the slide */
+      '[data-act]{cursor:pointer}[data-act].off{cursor:default;opacity:.35}.c137v.dis{opacity:.4}.c131h{transition:opacity .36s cubic-bezier(.2,.7,.2,1)}'+   /* Back dissolves on and off, in step with the slide */
       '.spin{animation:lvspin .9s linear infinite;transform-origin:50% 50%}@keyframes lvspin{to{transform:rotate(360deg)}}'+
       '.cf{position:relative;display:inline-block}.cf .dots{position:absolute;left:100%;top:0}'+
       '.c71v > .c34v{flex:0 1 auto;min-height:0;overflow-y:auto;scrollbar-width:none;padding-bottom:10px}.c71v > .c34v::-webkit-scrollbar{display:none}.c71v > .c34v > *{flex:none}.c71v > .c40v{display:none}'+
@@ -21644,7 +21644,7 @@ svg { display: block; }
     /* ---------- screens: each returns the body under the header ---------- */
     function vWallets(){
       var el=bodyOf('01'); el.classList.add('w01'); el.querySelector('.c142v').classList.add('spacer');
-      el.querySelectorAll('.c137v').forEach(function(r){ var nm=r.querySelector('.c28h').textContent; if(WORKING.indexOf(nm)>=0) r.setAttribute('data-act','wallet:'+nm);
+      el.querySelectorAll('.c137v').forEach(function(r){ var nm=r.querySelector('.c28h').textContent; if(WORKING.indexOf(nm)>=0) r.setAttribute('data-act','wallet:'+nm); else r.classList.add('dis');   /* the rows that do nothing here are dimmed, a hard stop, deeper than a token that can't pay (that one still opens) */
         if(S.wallet===nm){ var d=T['03'].querySelector('.c144h').cloneNode(true); d.style.marginLeft='2px'; r.querySelector('.c28h').parentNode.appendChild(d); } });   /* still connected after Back: it carries the dot */
       return el;
     }
