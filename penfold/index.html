@@ -3359,7 +3359,7 @@ svg { display: block; }
 <div class="item"><span class="mono">Up to 72 hours</span><h3>The Operator</h3><p>Much worse.</p></div>
 <div class="item"><span class="mono">Up to 48 hours</span><h3>The Bank</h3><p>No relief.</p></div>
 </div>
-<div class="item"><span class="mono">6 days to a pension</span>
+<div class="item" data-sub="6 days"><span class="mono">6 days to a pension</span>
 <ol class="relay">
 <li><span class="st-n">01</span><span class="rl-t">Once the user finishes onboarding, Penfold creates a request for a pension and a <code>userID</code></span></li>
 <li><span class="st-n">02</span><span class="rl-t">Penfold passes it on to the <b>Custodian</b>, to create <code>custodianID</code></span></li>
@@ -3368,7 +3368,7 @@ svg { display: block; }
 <li><span class="st-n">05</span><span class="rl-t">With all 4 IDs, Penfold creates the <code class="pn">pension</code></span></li>
 </ol>
 <h3>Creating a pension required 4 IDs and a long time.</h3><p>Legally and technically, this was peak efficiency, taking up to a meager 144 hours to complete. It was also textbook region-beta paradox: a bad process gets tolerated, but this I had to crack.</p></div>
-<div class="group rule-above"><div class="item"><span class="mono">Instant pension</span>
+<div class="group rule-above" data-sub="Instant pension"><div class="item"><span class="mono">Instant pension</span>
 <ol class="relay first-done">
 <li><span class="st-n">01</span><span class="rl-t">Once the user finishes onboarding, Penfold creates a <code>userID</code>, 2 <code>temporaryIDs</code>, and the <code class="pn">pension</code></span></li>
 <li><span class="st-n">02</span><span class="rl-t">The <b>Custodian</b>, <b>Operator</b>, and <b>Bank</b> receive the <code>userID</code> and the <code>temporaryIDs</code></span></li>
@@ -3377,7 +3377,7 @@ svg { display: block; }
 <li><span class="st-n">05</span><span class="rl-t">With all 4 IDs, Penfold creates&hellip; no wait, we&rsquo;ve done this part instantly, in the first step</span></li>
 </ol>
 <h3>Slow, but instant!</h3><p>With some prodding, I learned their ID checks were manual, and if found, an incorrect ID could simply be overridden with a new one without consequence. It got me thinking: if we created a couple of temporary IDs, tracked them, and then replaced them accordingly, we&rsquo;d have instant pensions, a first in our industry.</p><p class="rule-after">Built, tested, and launched that afternoon.</p></div><!-- FAST start: built by source/fast.py from CodeCatalog screens, do not edit by hand -->
-<figure class="ann"><div class="sw">
+<figure class="ann" data-sub="Shipped flow"><div class="sw">
 <div class="flow fast" style="--n:5;--tw:166.000;--h:359" role="group" aria-label="The modular onboarding on mobile, screen by screen">
 <div class="stack"><div class="step" style="--fw:375;--fb:359" data-screen="penfold/mobile/modular-sign-up"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
 :host{display:block;width:375px;height:812px;font-family:'Montserrat',-apple-system,sans-serif;color:#133253}
@@ -5117,13 +5117,13 @@ fit(); addEventListener(&#x27;resize&#x27;,fit);
 &lt;/body&gt;
 &lt;/html&gt;
 " title="The savings estimate prototype: twelve screens, wireframe to high fidelity, wired up with interaction lines and annotated in handwriting: review copy, more contrast, check touch targets, not helpful for small values, allows inconsistent state, spacing" scrolling="no"></iframe></div><!-- PROTO end -->
-<div class="grid">
+<div class="grid" data-sub="Listening">
 <div class="item"><span class="mono">Funnel</span><h3>Daily drops analysed.</h3><p>We checked the funnel daily, and every drop was discussed at the morning stand-up. I followed up with FullStory, rage clicks and coffee.</p></div>
 <div class="item"><span class="mono">Support</span><h3>Customer Support gold mine.</h3><p>Every Friday, Support and I, and the occasional guest user, went through the week&rsquo;s top complaints and requests, setting up the week ahead.</p></div>
 <div class="item"><span class="mono">Beta</span><h3>A voluntary beta programme.</h3><p>Some users are very keen to try new stuff, and eager to give feedback. I started the programme to make it easier for their voices to be heard.</p></div>
 <div class="item"><span class="mono">Appreciation</span><h3>Early users, kept in the loop.</h3><p>When we shipped what a user had asked for, I thanked them personally. We also set up an auto-reply for every fix on a reported bug or feature.</p></div>
 </div>
-<div class="box split">
+<div class="box split" data-sub="What if I die">
 <!-- NOBENI start: built by source/nobeni.py from CodeCatalog screens, do not edit by hand -->
 <div class="flow nobeni" style="--n:3;--tw:189.333;--h:410" role="group" aria-label="Nominating a beneficiary, screen by screen">
 <div class="stack"><div class="step" style="--fw:375;--fb:410" data-screen="penfold/mobile/nominate-beneficiary-form"><div class="win"><div class="pg"><template shadowrootmode="open"><style>
@@ -5561,7 +5561,7 @@ svg{display:block}
 <h2>Growth. <span class="soft">Boom.</span></h2>
 <p class="txt">For months we tried to educate the unpensioned market, specifically the self-employed. But it looked like they simply didn&rsquo;t care. And with no clear holes in the product that would otherwise hurt traction, I suggested we target those who&rsquo;d proven they cared, by already having a pension. The pensioned.</p>
 <div class="grid stack">
-<div class="item"><span class="mono">Target</span>
+<div class="item" data-sub="A new message"><span class="mono">Target</span>
 <h3>A new message.</h3><p>Combine, the way by which a pension is transferred from one provider to another and combined with the existing pension, was dead last on our website. The whole structure and look were already a bit stiff, so we just redesigned the whole thing. Bumping Combine to the third section, following ease of use.</p>
 <!-- WEBSITE start: built by source/website.py, do not edit by hand -->
 <div class="webs" style="--rh:0.3009">
@@ -5576,7 +5576,7 @@ svg{display:block}
 (function(){var w=document.getElementById("web"),b=w.previousElementSibling.firstElementChild;function set(on){w.classList.toggle("prev",on);b.setAttribute("aria-pressed",on)}b.addEventListener("mouseenter",function(){set(true)});b.addEventListener("mouseleave",function(){set(false)});b.addEventListener("focus",function(){set(true)});b.addEventListener("blur",function(){set(false)});b.addEventListener("pointerup",function(e){if(e.pointerType!=="mouse")set(!w.classList.contains("prev"))})})();</script>
 <!-- WEBSITE end -->
 </div>
-<div class="item"><span class="mono">Combine</span>
+<div class="item" data-sub="A new flagship"><span class="mono">Combine</span>
 <h3>A new flagship.</h3><p>The new targeting jolted our Combine feature to the top of my priority list, essentially becoming the product&rsquo;s flagship overnight. This meant any minor improvement had a disproportionate effect on our growth. So we shipped every little refinement as it was ready.</p>
 <!-- ITERATE start: built by source/iterate.py from CodeCatalog screens, do not edit by hand -->
 <div class="iter st" style="--pw:260;--ph:563" role="group" aria-label="Six iterations of the Combine screen">
@@ -9903,7 +9903,7 @@ svg{display:block}
 </template></div></div></div></div>
 </div>
 <!-- CLOSER end -->
-<div class="voices">
+<div class="voices" data-sub="Reviews">
 <div class="qs-head"><div class="mono">App Store, April to June 2020 &middot; 12 reviews, all five stars</div>
 <div class="qs-dots" id="qs-dots" aria-label="Reviews"></div></div>
 <div class="qs" id="qs" role="region" aria-roledescription="carousel" aria-label="App Store reviews">
@@ -10088,7 +10088,7 @@ posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
 (function(){
   var groups=[{el:document.documentElement,txt:'Top',top:true}];
   [].forEach.call(document.querySelectorAll('#case section.ch'),function(sec,i){ var b=sec.querySelector('.tag b'); if(!b) return;
-    var t=b.textContent.trim(); if(!sec.id) sec.id='ch-'+(i+1); var g={el:sec,txt:t,subs:[]};
+    var t=b.textContent.trim(); if(t==='Year 1') t='Y1'; if(!sec.id) sec.id='ch-'+(i+1); var g={el:sec,txt:t,subs:[]};
     [].forEach.call(sec.querySelectorAll('[data-sub]'),function(x,j){ if(!x.id) x.id=sec.id+'-'+(j+1); g.subs.push({el:x,txt:x.getAttribute('data-sub'),sub:true}); }); groups.push(g); });
   var ul=document.createElement('ul'); ul.className='rail';
   function link(g){ var a=document.createElement('a'); a.className=(g.top||g.sub)?'x':'s'; a.href=location.pathname+(g.top?'':'#'+g.el.id);
