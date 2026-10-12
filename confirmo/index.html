@@ -308,6 +308,11 @@ h2{font-size:clamp(26px,3.6vw,36px);max-width:34ch}
 --quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
 --body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
 --quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
+--body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3ed;--paper:#fffdf8;--paperT:rgba(255,253,248,.86);--ink:#17171a;--ink2:#4b4b51;--mut:#74726c;--flagink:#74726c;--soft:#a29e95;--line:#e6e2d8;
+--orange:#ef6a1e;--red:#c53a2c;--green:#2f8f5a;--amber:#d3982e;--maxw:1080px;
+--quote:#3a3a42;--rule:#dcd6c9;--sep:#e6e2d8;--sel:#f6d4ab;--tf:0.48;--ts:0.4;
+--body:#63636a;--hair:#e6e2d8;--accent:#ef6a1e;--glow:rgba(239,106,30,.05);--accent2:#f7bd77}:root[data-theme="dark"]{--bg:#15140f;--paper:#211f18;--paperT:rgba(33,31,24,.86);--ink:#f2efe8;--ink2:#b4b0a6;--mut:#94918a;--flagink:#94918a;--soft:#83817b;--line:#34312a;
+--quote:#cbc8c0;--rule:#514c41;--sep:#4f4c44;--sel:#4d3a18;--tf:0.07;--ts:0.2;
 --body:#b4b0a6;--hair:#34312a;--accent:#ef6a1e;--glow:rgba(239,106,30,.07);--accent2:#f7bd77}:root{--bg:#f5f3fa;--ink:#211e30;--body:#655d89;--mut:#746f89;--soft:#a19abf;--accent:#6f45e0;--line:rgba(70,45,140,.16);--hair:rgba(70,45,140,.24);--flagbg:rgba(247,244,253,.92);--flagink:#746f89;--ctl:rgba(88,54,168,.07);--ctlbd:rgba(88,54,168,.24);--ctlon:rgba(88,54,168,.13);--phbg:rgba(70,45,140,.04);--phbd:rgba(70,45,140,.3);--danger:#cf4f3e;--ok:#2f8f5a;--shA:drop-shadow(0 10px 18px rgba(40,28,80,.14));--shB:drop-shadow(0 14px 24px rgba(40,28,80,.18));--shH:drop-shadow(0 -12px 30px rgba(40,28,80,.13)) drop-shadow(0 18px 34px rgba(40,28,80,.13));--shHb:0 -12px 30px rgba(40,28,80,.13),0 18px 34px rgba(40,28,80,.13);--glow:rgba(111,69,224,.05);--accent2:#9a6ff0;--grain:.03;--sel:rgba(111,69,224,.22);--glass:rgba(245,243,250,.44);--paperT:var(--flagbg)}:root[data-theme="dark"]{--bg:#12101a;--ink:#f5f3fb;--body:#b9b3ca;--mut:#918aab;--soft:#847d9c;--accent:#c0abf5;--line:rgba(192,171,245,.15);--hair:rgba(192,171,245,.28);--flagbg:rgba(18,14,30,.88);--flagink:#c9c3de;--ctl:rgba(255,255,255,.05);--ctlbd:rgba(192,171,245,.22);--ctlon:rgba(255,255,255,.13);--phbg:rgba(192,171,245,.045);--phbd:rgba(192,171,245,.35);--danger:#e0645a;--ok:#57b57f;--shA:drop-shadow(0 12px 26px rgba(0,0,0,.45));--shB:drop-shadow(0 18px 38px rgba(0,0,0,.55));--shH:drop-shadow(0 -12px 30px rgba(0,0,0,.3)) drop-shadow(0 18px 34px rgba(0,0,0,.3));--shHb:0 -12px 30px rgba(0,0,0,.3),0 18px 34px rgba(0,0,0,.3);--glow:rgba(192,171,245,.07);--accent2:#e8e0ff;--grain:.045;--sel:rgba(192,171,245,.3);--glass:rgba(18,16,26,.44)}</style>
 <style>
 /* ---- placed: cxd's colours; the blocks hold the screens ---- */
@@ -14085,6 +14090,7 @@ svg { display: block; flex: none; }
 .dsb-row.fill > .dsb-g > .dsb-flow, .dsb-row.even > .dsb-g > .dsb-flow { flex: 1 0 auto; justify-content: space-between; }
 .dsb-flow.spread { align-items: stretch; }
 .dsb-flow.spread > .dsb-line { justify-content: space-between; }
+.dsb-row.pack { justify-content: flex-start; gap: 96px; }
 .dsb-missing { outline: 2px dashed #D12525; outline-offset: -2px; }
 
 /* A01 */
@@ -16133,7 +16139,7 @@ svg { display: block; flex: none; }
   <div class="f02-root">
     <p class="f02-cookies">By using this service, you agree to our <span class="f02-b">Cookie Policy.</span></p>
   </div>
-</div></div></div></div></section></div><div class="dsb-row"><section class="dsb-g"><p class="dsb-l">Payment details<span class="dsb-n">2</span></p><div class="dsb-cols" style="gap:140px"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="G02" data-node="124:34110" data-name="payment details, large / details + QR and address" style="width:492px;height:320px">
+</div></div></div></div></section></div><div class="dsb-row pack"><section class="dsb-g"><p class="dsb-l">Payment details<span class="dsb-n">2</span></p><div class="dsb-cols" style="gap:140px"><div class="dsb-stack"><div class="dsb-cell"><div class="ds-item" data-key="G02" data-node="124:34110" data-name="payment details, large / details + QR and address" style="width:492px;height:320px">
 <div class="g02-details" data-node-id="124:34110">
 <div class="g02-details-bg" data-node-id="124:34111"></div>
 <div class="g02-row g02-row-amount"><p class="g02-val g02-val-amount">11.284667</p><div class="g02-sf-copy g02-sf-copy-amount" data-node-id="124:34114"><svg class="g02-ink-copy" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="offset magically" d="M2.88281 14.6602C0.984375 14.6602 0 13.6846 0 11.8037V2.84766C0 0.966797 0.984375 0 2.88281 0H11.7773C13.6758 0 14.6602 0.975586 14.6602 2.84766V4.1748H16.1543C18.0527 4.1748 19.0371 5.15039 19.0371 7.02246V15.9873C19.0371 17.8594 18.0527 18.835 16.1543 18.835H7.25977C5.35254 18.835 4.37695 17.8594 4.37695 15.9873V14.6602H2.88281ZM2.98828 12.9375H4.37695V7.02246C4.37695 5.15039 5.35254 4.1748 7.25977 4.1748H12.9463V2.99707C12.9463 2.14453 12.4893 1.71387 11.6807 1.71387H2.98828C2.1709 1.71387 1.72266 2.14453 1.72266 2.99707V11.6631C1.72266 12.5156 2.1709 12.9375 2.98828 12.9375ZM7.35645 17.1123H16.0488C16.8574 17.1123 17.3145 16.6904 17.3145 15.8379V7.17188C17.3145 6.31934 16.8574 5.89746 16.0488 5.89746H7.35645C6.53906 5.89746 6.09961 6.31934 6.09961 7.17188V15.8379C6.09961 16.6904 6.53906 17.1123 7.35645 17.1123Z" fill="#7040F0"/></svg></div><p class="g02-lab">Amount</p></div>
