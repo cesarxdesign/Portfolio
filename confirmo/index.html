@@ -1073,6 +1073,10 @@ svg { display: block; flex: none; }
 .dspair{display:flex;align-items:flex-start;gap:18px}
 .dspair .fig{margin:0;flex:none}
 .dspair .frow{padding:0;margin:0}
+/* the opener's one-line quote: the Cable quote form (rule, size, gradient) in this page's colours */
+.pq{margin:0;padding:8px 0 8px 36px;border-left:2px solid var(--accent)}
+.pq p{margin:0;font:500 56px/1.08 var(--h-sans);letter-spacing:-.035em;padding-right:.08em;background:var(--h-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+@media(max-width:760px){.pq{padding:4px 0 4px 20px}.pq p{font-size:32px;line-height:1.1}}
 </style>
 <!-- 00: the result first -->
 <section class="sec"><div class="wrap"><p class="lab">Final</p>
@@ -3002,9 +3006,12 @@ svg { display: block; flex: none; }
 </g>
 </svg></div></div>
 </template></div></div></div></div></figure></div>
-<p class="txt">Confirmo had never had a designer, but new leadership was keen to move fast, iterate, test, learn, and get results. That was my playbook.</p>
+<p class="txt">Confirmo had never had a designer. The checkout I inherited was built to an engineering spec, not for users trying to complete a payment. The real fix needed engineering time I had to earn first.</p>
+<blockquote class="pq"><p>I couldn’t change anything, so I had to optimize everything.</p></blockquote>
+<p class="txt">Some fixes were obvious, most were small, and not even the biggest would have moved the numbers alone. Together they made a checkout people could trust, and finish.</p>
 <div class="growth" role="img" aria-label="Checkout success: 9% when I arrived, 16% in early tests, 20% at first full rollout; industry average 24%; Confirmo average 27%; Confirmo key markets 43%."><div class="gb base" style="--v:9"><div class="gcol"><span class="gv">9%</span><i class="gbar"></i></div><span class="gl">When I arrived</span></div><div class="gb ver" style="--v:16"><div class="gcol"><span class="gv">16%</span><i class="gbar"></i></div><span class="gl">Early tests</span></div><div class="gb ver" style="--v:20"><div class="gcol"><span class="gv">20%</span><i class="gbar"></i></div><span class="gl">First full rollout</span></div><div class="gb ind" style="--v:24"><div class="gcol"><span class="gv">24%</span><i class="gbar"></i></div><span class="gl">Industry average</span></div><div class="gb ver" style="--v:27"><div class="gcol"><span class="gv">27%</span><i class="gbar"></i></div><span class="gl">Confirmo average</span></div><div class="gb out" style="--v:43"><div class="gcol"><span class="gv">43%</span><i class="gbar"></i></div><span class="gl">Confirmo key markets</span></div></div>
 <ol class="gkey" aria-hidden="true"><li>When I arrived</li><li>Early tests</li><li>First full rollout</li><li>Industry average</li><li>Confirmo average</li><li>Confirmo key markets</li></ol>
+<p class="txt">At 9%, there was plenty of room to grow. Each iteration built on the last, and the shipped version reached 43%, on a flow that still ran on a backwards backend. But the real breakthrough was already in the works as well. I just needed to prove this one first.</p>
 </div></section>
 
 <!-- 01 -->
