@@ -231,7 +231,81 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
 #deck .sheet{overflow:hidden;will-change:transform}
 #deck iframe{display:block;border:0;width:1440px;height:900px;transform-origin:0 0;pointer-events:none}
 </style>
-<link rel="stylesheet" href="/geist.css"></head><body>
+<link rel="stylesheet" href="/geist.css"><script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
+  api_host:'https://eu.i.posthog.com',
+  persistence:'sessionStorage', /* not a cookie, dies with the tab, no banner.
+                                   'memory' loses identity on every navigation, which
+                                   kills every cross-page journey question. */
+  disable_session_recording:true,
+  autocapture:false,
+  capture_pageview:true,
+  capture_pageleave:true       /* gives time-on-page and exit page */
+});
+(function(){
+  var PAGE='home', seen={}, secs={};
+  function depth(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-innerHeight;
+    if(max<=0) return 100;
+    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
+  }
+  function mark(){
+    var d=depth();
+    [25,50,75,100].forEach(function(m){
+      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
+    });
+  }
+  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
+  /* which sections they actually reached, better than a raw percentage */
+  addEventListener('load',function(){
+    var list=[].slice.call(document.querySelectorAll('section.sec'));
+    if(!list.length||!window.IntersectionObserver) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i=list.indexOf(e.target);
+        if(secs[i]) return; secs[i]=1;
+        var lab=e.target.querySelector('.lab');
+        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
+      });
+    },{threshold:.4});
+    list.forEach(function(s){io.observe(s);});
+  });
+  /* outbound clicks, tagged with the page they left from and how far down */
+  addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
+    var h=a.getAttribute('href')||'', kind=null;
+    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
+    else if(/linkedin\.com/i.test(h)) kind='linkedin';
+    else if(/github\.com/i.test(h)) kind='github';
+    else if(/^mailto:/i.test(h)) kind='email';
+    if(kind){posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()},{transport:'sendBeacon'});return;}
+    if(a.host!==location.host) return;
+    var p=(a.pathname||'').replace(/\/index\.html$/,'').replace(/\/$/,'');
+    if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(p) && p.slice(1)!==PAGE)
+      posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth(),
+        via:a.closest('.pane')?(a.classList.contains('open')?'bolt_header':'bolt_pane'):'page',   /* from a pane of the five-pane view: its header link, or the pane itself */
+        bolt_mode:window.__boltMode?window.__boltMode():null},{transport:'sendBeacon'});
+  },true);
+  /* real time on page: visible seconds, sent each time the tab is hidden or the page closes (beacon),
+     so it lands on phones where pageleave never fires. Also carries how far down they got. */
+  (function(){
+    var vis=0, t0=document.visibilityState==='visible'?Date.now():0, deep=0;
+    function stop(){ if(t0){ vis+=Date.now()-t0; t0=0; } }
+    function send(){
+      var s=Math.round(vis/1000); if(s<1) return; vis=0;
+      try{ deep=Math.max(deep, depth()); }catch(e){}
+      posthog.capture('page_engaged',{page:PAGE,seconds:s,scroll_max:deep},{transport:'sendBeacon'});
+    }
+    addEventListener('scroll',function(){ try{ deep=Math.max(deep, depth()); }catch(e){} },{passive:true});
+    document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden'){ stop(); send(); } else t0=Date.now(); });
+    addEventListener('pagehide',function(){ stop(); send(); });
+  })();
+})();
+</script>
+</head><body>
 <div class="flag bare"><div class="lft"><a class="navhome" href="/">CXD</a><div class="bolt"><span class="thsw"><button type="button" class="ic" id="bolt" aria-pressed="false" title="All five case studies, side by side"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.2 2 4.5 13.6h6.2L9.8 22l9.7-12.4h-6.6z"/></svg></button></span><span class="hint" aria-hidden="true"><svg viewBox="0 0 52 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M49 32c-9 5-24 5-26-5-1.600-8 9-9 8-1.500-1 8-13 7-18-2-3-5-4.500-11-5-17.500"/><path d="M2.500 13.500C4.500 10.500 6.500 8 8 5.500c2 2 4 4.500 6.500 6"/></svg><span class="ln">If you&rsquo;re in a rush...</span></span></div><span class="scrl"><span class="lb">Scroll</span><span class="thsw modes" id="modes" role="group" aria-label="Scrolling"><button type="button" data-m="sync" title="Every page moves the same distance">Synchronised</button><button type="button" data-m="prop" title="Every page reaches its middle and its end together">Proportional</button><button type="button" data-m="loose" title="Each page scrolls on its own">Individual</button></span></span></div><details class="bgr"><summary aria-label="Menu"><span class="bn">CXD</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg></summary></details><nav class="pjd" aria-label="Projects"><a href="../confirmo/index.html">Confirmo</a><a href="../penfold/index.html">Penfold</a><a href="../cable/index.html">Cable</a><a href="../mara/index.html">Mara</a><a href="../starcount/index.html">Starcount</a></nav><nav class="tops"><a href="/cv" target="_blank">CV</a><a href="https://www.linkedin.com/in/cesarxdesign" target="_blank"><span class="hlf">Linked</span>In</a><a href="https://github.com/cesarxdesign" target="_blank">Git<span class="hlf">Hub</span></a><a href="mailto:cesarxdesign@gmail.com">Contact</a><span class="thsw" id="thsw" role="group" aria-label="Theme"></span></nav></div>
 <div class="wrap">
   <div class="gap a"></div>
@@ -460,66 +534,6 @@ body.loose #deck .view{overflow-y:auto;overscroll-behavior:contain}   /* only he
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&on) setOn(false); });
   tabsPaint();
   try{ if(sessionStorage.getItem('folioBolt')==='1'&&innerWidth>960) setOn(true,'restore'); }catch(e){}
-})();
-</script>
-<script>
-!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-posthog.init('phc_xZxc8hMNXG9ppVyyms2kUgBxZmceRouDRwcg3dyz2XLQ',{
-  api_host:'https://eu.i.posthog.com',
-  persistence:'sessionStorage', /* not a cookie, dies with the tab, no banner.
-                                   'memory' loses identity on every navigation, which
-                                   kills every cross-page journey question. */
-  disable_session_recording:true,
-  autocapture:false,
-  capture_pageview:true,
-  capture_pageleave:true       /* gives time-on-page and exit page */
-});
-(function(){
-  var PAGE='home', seen={}, secs={};
-  function depth(){
-    var h=document.documentElement;
-    var max=h.scrollHeight-innerHeight;
-    if(max<=0) return 100;
-    return Math.round((h.scrollTop||document.body.scrollTop)/max*100);
-  }
-  function mark(){
-    var d=depth();
-    [25,50,75,100].forEach(function(m){
-      if(d>=m && !seen[m]){ seen[m]=1; posthog.capture('scroll_depth',{page:PAGE,depth:m}); }
-    });
-  }
-  addEventListener('scroll',mark,{passive:true}); addEventListener('load',mark);
-  /* which sections they actually reached, better than a raw percentage */
-  addEventListener('load',function(){
-    var list=[].slice.call(document.querySelectorAll('section.sec'));
-    if(!list.length||!window.IntersectionObserver) return;
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        var i=list.indexOf(e.target);
-        if(secs[i]) return; secs[i]=1;
-        var lab=e.target.querySelector('.lab');
-        posthog.capture('section_view',{page:PAGE,index:i+1,label:lab?lab.innerText.trim():''});
-      });
-    },{threshold:.4});
-    list.forEach(function(s){io.observe(s);});
-  });
-  /* outbound clicks, tagged with the page they left from and how far down */
-  addEventListener('click',function(ev){
-    var a=ev.target.closest&&ev.target.closest('a'); if(!a) return;
-    var h=a.getAttribute('href')||'', kind=null;
-    if(h==='/cv'||/\.pdf$/i.test(h)) kind='cv';
-    else if(/linkedin\.com/i.test(h)) kind='linkedin';
-    else if(/github\.com/i.test(h)) kind='github';
-    else if(/^mailto:/i.test(h)) kind='email';
-    if(kind){posthog.capture('outbound_click',{page:PAGE,target:kind,scroll_at:depth()},{transport:'sendBeacon'});return;}
-    if(a.host!==location.host) return;
-    var p=(a.pathname||'').replace(/\/index\.html$/,'').replace(/\/$/,'');
-    if(/^\/(confirmo|mara|starcount|penfold|cable|done)$/.test(p) && p.slice(1)!==PAGE)
-      posthog.capture('project_open',{from:PAGE,to:p.slice(1),scroll_at:depth(),
-        via:a.closest('.pane')?(a.classList.contains('open')?'bolt_header':'bolt_pane'):'page',   /* from a pane of the five-pane view: its header link, or the pane itself */
-        bolt_mode:window.__boltMode?window.__boltMode():null},{transport:'sendBeacon'});
-  },true);
 })();
 </script>
 </body></html>
